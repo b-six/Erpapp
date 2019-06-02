@@ -75,3 +75,25 @@ body {
 .small-text {
     font-size: 15px;
 }
+
+.orange-color {
+    color: #FF8000 !important;
+}
+
+/* Materialize Form */
+
+  /* label focus color */
+ .input-field input:focus + label {
+    color: #FF8000 !important;
+  }
+
+  /* label underline focus color */
+  .row .input-field input:focus {
+    border-bottom: 1px solid #FF8000 !important;
+    box-shadow: 0 1px 0 0 #FF8000 !important
+  }
+
+.clickable-row {
+    cursor: pointer;
+}
+  
