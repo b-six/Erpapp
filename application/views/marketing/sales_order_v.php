@@ -9,6 +9,90 @@
 <body>
     <!-- navbar -->
     <?php $this->load->view('marketing/partials/navbar.php') ?>
+
+    <!-- Modal Add Sales Order -->
+    <div id="addSO-modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+
+                <form id="form-add-so" class="col s12" action="<?php echo site_url('marketing/sales_order/save_sales_order'); ?>" method="post">
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h4>Tambah Order</h4>
+                        </div>
+                    </div>
+
+                    <!-- generate id sales order -->
+                    <?php
+                    $hitung = 0;
+                    $jumlahIdSama = 0;
+                    $date = date('Ymd');
+                    foreach ($sales_order->result() as $row) :
+                        $hitung++;
+                        if (strpos($row->id_so, $date) !== false) {
+                            $jumlahIdSama++;
+                        }
+                    endforeach;
+                    $id_so = $date . ($jumlahIdSama + 1);
+                    ?>
+                    <!-- end generate id sales order -->
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="id_so" name="id_so" type="text" class="validate" autocomplete="off" value="<?php echo $id_so; ?>" readonly>
+                            <label for="id_so">No. Order</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+
+                        <?php $hitung2 = 0;
+                            foreach ($customer->result() as $col2) :
+                                $hitung2++;
+                                ?>
+                                <input id="<?php echo $col2->id_pelanggan; ?>" value="<?php echo $col2->wilayah; ?>" hidden>
+                                <input id="<?php echo "x".$col2->id_pelanggan; ?>" value="<?php echo $col2->tipe_customer; ?>" hidden>
+                            <?php endforeach; ?>
+
+                            <select id="id_pelanggan" name="id_pelanggan">
+                                <option value="" disabled selected>Select Customer</option>
+                                <?php $hitung = 0;
+                                foreach ($customer->result() as $col) :
+                                    $hitung++;
+                                    ?>
+                                    <option value="<?php echo $col->id_pelanggan ?>"><?php echo $col->nama_pelanggan ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <label>Customer</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="show-wilayah" id="show-wilayah" placeholder="-">
+                            <label for="show-wilayah">Wilayah</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="show-tipe-customer" id="show-tipe-customer" placeholder="-">
+                            <label for="show-tipe-customer">Tipe Customer</label>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-add-so" id="submit-add-so">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- konten -->
     <div class="container">
         <br>
         <div class="row">
@@ -27,7 +111,7 @@
 
             <!-- add sales order -->
             <div class="col s1 center">
-                <nav class="no-shadows blue-dark-grey"><a href=""><i class="material-icons">add_circle_outline</i></a></nav>
+                <nav class="no-shadows blue-dark-grey"><a href="#addSO-modal" class="modal-trigger"><i class="material-icons">add_circle_outline</i></a></nav>
             </div>
 
         </div>
@@ -44,7 +128,10 @@
                 </ul>
                 <br>
             </div>
+
             <!-- konten tab -->
+
+            <!-- tab pending -->
             <div id="pending" class="col s12 white-text content-color">
                 <table class="responsive-table centered highlight">
                     <thead class="bottom-border">
@@ -58,30 +145,37 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>02 - 02 - 2058</td>
-                            <td>1125356</td>
-                            <td>Nasirudin Sabiq</td>
-                            <td>2580</td>
-                            <td>Rp. 25800000</td>
-                        </tr>
-                        <tr>
-                            <td>02 - 02 - 2058</td>
-                            <td>1125357</td>
-                            <td>RVZ Didan</td>
-                            <td>2580</td>
-                            <td>Rp. 25800000</td>
-                        </tr>
-                        <tr>
-                            <td>02 - 02 - 2058</td>
-                            <td>1125358</td>
-                            <td>Aowkwk</td>
-                            <td>2580</td>
-                            <td>Rp. 25800000</td>
-                        </tr>
+                        <?php
+                        $count = 0;
+                        foreach ($sales_order->result() as $row) :
+                            $count++;
+
+                            if ($row->status == 'pending') :
+
+                                $hitung = 0;
+                                foreach ($customer->result() as $col) :
+                                    $hitung++;
+
+
+                                    if ($col->id_pelanggan == $row->id_pelanggan) :
+                                        $nama_pelanggan = $col->nama_pelanggan; ?>
+                                        <tr class="clickable-row" data-href="<?php echo site_url('marketing/shopping_cart/index/' . $row->id_so); ?>">
+                                            <td><?php echo $row->tanggal_pesanan; ?></td>
+                                            <td><?php echo $row->id_so; ?></td>
+                                            <td><?php echo $nama_pelanggan; ?></td>
+                                            <td><?php echo $row->total_barang; ?></td>
+                                            <td><?php echo "Rp. " . number_format($row->total_pesanan) ?></td>
+                                        </tr>
+                                    <?php endif;
+                            endforeach;
+                        endif;
+                    endforeach; ?>
                     </tbody>
+
                 </table>
             </div>
+
+            <!-- tab onprocess -->
             <div id="on-process" class="col s12 white-text content-color">
                 <table class="responsive-table centered highlight">
                     <thead class="bottom-border">
@@ -95,23 +189,37 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>02 - 02 - 2058</td>
-                            <td>1125356</td>
-                            <td>Nasirudin Sabiq</td>
-                            <td>2580</td>
-                            <td>Rp. 25800000</td>
-                        </tr>
-                        <tr>
-                            <td>02 - 02 - 2058</td>
-                            <td>1125358</td>
-                            <td>Aowkwk</td>
-                            <td>2580</td>
-                            <td>Rp. 25800000</td>
-                        </tr>
+                        <?php
+                        $count = 0;
+                        foreach ($sales_order->result() as $row) :
+                            $count++;
+
+                            if ($row->status == 'onprocess') :
+
+                                $hitung = 0;
+                                foreach ($customer->result() as $col) :
+                                    $hitung++;
+
+
+                                    if ($col->id_pelanggan == $row->id_pelanggan) :
+                                        $nama_pelanggan = $col->nama_pelanggan; ?>
+                                        <tr class="clickable-row" data-href="<?php echo site_url('marketing/shopping_cart/index/' . $row->id_so); ?>">
+                                            <td><?php echo $row->tanggal_pesanan; ?></td>
+                                            <td><?php echo $row->id_so; ?></td>
+                                            <td><?php echo $nama_pelanggan; ?></td>
+                                            <td><?php echo $row->total_barang; ?></td>
+                                            <td><?php echo "Rp. " . number_format($row->total_pesanan) ?></td>
+                                        </tr>
+                                    <?php endif;
+                            endforeach;
+                        endif;
+                    endforeach; ?>
                     </tbody>
+
                 </table>
             </div>
+
+            <!-- tab success -->
             <div id="success" class="col s12 white-text content-color">
                 <table class="responsive-table centered highlight">
                     <thead class="bottom-border">
@@ -125,14 +233,32 @@
                     </thead>
 
                     <tbody>
-                        <tr>
-                            <td>02 - 02 - 2058</td>
-                            <td>1125356</td>
-                            <td>Nasirudin Sabiq</td>
-                            <td>2580</td>
-                            <td>Rp. 25800000</td>
-                        </tr>
+                        <?php
+                        $count = 0;
+                        foreach ($sales_order->result() as $row) :
+                            $count++;
+
+                            if ($row->status == 'success') :
+                                $hitung = 0;
+                                foreach ($customer->result() as $col) :
+                                    $hitung++;
+
+
+                                    if ($col->id_pelanggan == $row->id_pelanggan) :
+                                        $nama_pelanggan = $col->nama_pelanggan; ?>
+                                        <tr class="clickable-row" data-href="<?php echo site_url('marketing/shopping_cart/index/' . $row->id_so); ?>">
+                                            <td><?php echo $row->tanggal_pesanan; ?></td>
+                                            <td><?php echo $row->id_so; ?></td>
+                                            <td><?php echo $nama_pelanggan; ?></td>
+                                            <td><?php echo $row->total_barang; ?></td>
+                                            <td><?php echo "Rp. " . number_format($row->total_pesanan) ?></td>
+                                        </tr>
+                                    <?php endif;
+                            endforeach;
+                        endif;
+                    endforeach; ?>
                     </tbody>
+
                 </table>
             </div>
         </div>
