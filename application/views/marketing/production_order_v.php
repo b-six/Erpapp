@@ -63,9 +63,9 @@
                             <td>1125356</td>
                             <td>Teh Bundar</td>
                             <td>2580</td>
-                            <td>
-                                <div id="table-button" onmouseenter="showButton()" onmouseleave="hideButton()">
-                                    <a href="4"><i class="material-icons">delete_forever</i></a>  <a href="1"><i class="material-icons">create</i></a>
+                            <td class="button-container">
+                                <div id="table-button">
+                                    <a href="4"><i class="material-icons delete-button">delete_forever</i></a>  <a href="1"><i class="material-icons edit-button">create</i></a>
                                 </div>
                             </td>
                         </tr>
@@ -74,14 +74,22 @@
                             <td>1125357</td>
                             <td>Teh Bundar</td>
                             <td>2580</td>
-                            <td><a href="4"><i class="material-icons">delete_forever</i></a>  <a href="1"><i class="material-icons">create</i></a></td>
+                            <td class="button-container">
+                                <div id="table-button">
+                                    <a href="4"><i class="material-icons delete-button">delete_forever</i></a>  <a href="1"><i class="material-icons edit-button">create</i></a>
+                                </div>
+                            </td>
                         </tr>
                         <tr>
                             <td>02 - 02 - 2058</td>
                             <td>1125358</td>
                             <td>Teh Bundar</td>
                             <td>2580</td>
-                            <td><a href="4"><i class="material-icons">delete_forever</i></a>  <a href="1"><i class="material-icons">create</i></a></td>
+                            <td class="button-container">
+                                <div id="table-button">
+                                    <a href="4"><i class="material-icons delete-button">delete_forever</i></a>  <a href="1"><i class="material-icons edit-button">create</i></a>
+                                </div>
+                            </td>
                         </tr>
                     </tbody>
                 </table>

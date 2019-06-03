@@ -4,14 +4,10 @@ $(document).ready(function(){
 $(".dropdown-trigger").dropdown();
 
 //untuk nampilin dan nyembunyiin tombol di tabel
-function showButton(){
-	document.getElementById("table-button").classList.add('active');
-}
-
-function hideButton(){
-	document.getElementById("table-button").classList.remove('active');
-}
-
+$("#table-button").css("display", "none");
+$('tr').on('mouseover mouseout', function(){
+	$(this).find('#table-button').toggle();
+});
 
 // tabs-trigger
 $(document).ready(function () {

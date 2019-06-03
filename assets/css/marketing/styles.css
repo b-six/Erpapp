@@ -1,3 +1,27 @@
+/*tombol tabel*/
+td.button-container{
+    width: 80px;
+}
+#table-button{
+    display:none;
+}
+.delete-button, .edit-button{
+    color: white;
+}
+.edit-button:hover{
+    color: #ff8000;
+}
+.delete-button:hover{
+    color: #ed2227;
+}
+/*-----------------------------------------------------------*/
+
+/*table*/
+tr{
+    height: 60px;
+}
+/*-----------------------------------------------------------*/
+
 .blue-dark-grey {
     background-color: #1f202c !important;
 }
