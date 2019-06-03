@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  *
- * Model Customer_model
+ * Model Testimoni_model
  *
  * This Model for ...
  * 
@@ -16,31 +16,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  */
 
-class Customer_model extends CI_Model {
+class Testimoni_model extends CI_Model {
 
   // ------------------------------------------------------------------------
 
-  function get_customer(){
-    $result = $this->db->get('customer');
+  function get_testimoni()
+  {
+    $result = $this->db->get('testimoni');
     return $result;
   }
 
-  function save_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah)
+  function save_testimoni($id_testimoni, $id_pelanggan, $id_so, $testimoni_barang)
   {
-    $date = date('Y-m-d');
     $data = array(
+      'id_testimoni' => $id_testimoni,
       'id_pelanggan' => $id_pelanggan,
-      'nama_pelanggan' => $nama_pelanggan,
-      'tipe_customer' => $tipe_customer,
-      'wilayah' => $wilayah,
-      'sejak' => $date
+      'id_so' => $id_so,
+      'testimoni_barang' => $testimoni_barang
     );
-    $this->db->insert('customer', $data);
+    $this->db->insert('testimoni', $data);
   }
 
   // ------------------------------------------------------------------------
 
 }
 
-/* End of file Customer_model.php */
-/* Location: ./application/models/Customer_model.php */
+/* End of file Testimoni_model.php */
+/* Location: ./application/models/Testimoni_model.php */

@@ -54,6 +54,15 @@ class Sales_order_model extends CI_Model
     $this->db->update('sales_order', $data);
   }
 
+  function update_status_testimoni($id_so, $testimoni)
+  {
+    $data = array(
+      'testimoni' => $testimoni
+    );
+    $this->db->where('id_so', $id_so);
+    $this->db->update('sales_order', $data);
+  }
+
   // ------------------------------------------------------------------------
 
 }
