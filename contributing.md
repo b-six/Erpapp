@@ -1,5 +1,26 @@
-# Contributing to CodeIgniter
+# Contributing Instructions
+First of all, remember we need to separate our work module by module so that this repository will always clean and the code from a module to another not mixed. there are 5 module:
+1. Marketing
+2. SDM
+3. Warehouse
+4. Production
+5. Finance
 
+## how to separate it?
+1. Remember to place any of your code inside **your sub folder**, there are 5 module separated in this project, so there will be 5 sub folder in each CodeIgniter MVC folder and 5 assets sub folder for each `css, js, img` folders.
+
+2. Say what module there are a problem, bug, making project, etc. for example:
+    **marketing**-`bug on filter table`
+
+
+Thanks for contributing,
+
+
+bayuwcksn
+
+*ENDOFMESSAGE*
+
+# Contributing to CodeIgniter
 
 CodeIgniter is a community driven project and accepts contributions of code and documentation from the community. These contributions are made in the form of Issues or [Pull Requests](http://help.github.com/send-pull-requests/) on the [CodeIgniter repository](https://github.com/bcit-ci/CodeIgniter) on GitHub.
 
