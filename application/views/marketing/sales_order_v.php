@@ -46,12 +46,12 @@
                     <div class="row">
                         <div class="input-field col s12">
 
-                        <?php $hitung2 = 0;
+                            <?php $hitung2 = 0;
                             foreach ($customer->result() as $col2) :
                                 $hitung2++;
                                 ?>
                                 <input id="<?php echo $col2->id_pelanggan; ?>" value="<?php echo $col2->wilayah; ?>" hidden>
-                                <input id="<?php echo "x".$col2->id_pelanggan; ?>" value="<?php echo $col2->tipe_customer; ?>" hidden>
+                                <input id="<?php echo "x" . $col2->id_pelanggan; ?>" value="<?php echo $col2->tipe_customer; ?>" hidden>
                             <?php endforeach; ?>
 
                             <select id="id_pelanggan" name="id_pelanggan">
@@ -68,13 +68,13 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" name="show-wilayah" id="show-wilayah" placeholder="-">
+                            <input type="text" name="show-wilayah" id="show-wilayah" placeholder="-" readonly>
                             <label for="show-wilayah">Wilayah</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" name="show-tipe-customer" id="show-tipe-customer" placeholder="-">
+                            <input type="text" name="show-tipe-customer" id="show-tipe-customer" placeholder="-" readonly>
                             <label for="show-tipe-customer">Tipe Customer</label>
                         </div>
                     </div>
@@ -141,6 +141,7 @@
                             <th>Customer</th>
                             <th>Total</th>
                             <th>Harga</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -165,6 +166,11 @@
                                             <td><?php echo $nama_pelanggan; ?></td>
                                             <td><?php echo $row->total_barang; ?></td>
                                             <td><?php echo "Rp. " . number_format($row->total_pesanan) ?></td>
+                                            <td class="button-container">
+                                                <div id="table-button">
+                                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                     <?php endif;
                             endforeach;
@@ -185,6 +191,7 @@
                             <th>Customer</th>
                             <th>Total</th>
                             <th>Harga</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -209,6 +216,11 @@
                                             <td><?php echo $nama_pelanggan; ?></td>
                                             <td><?php echo $row->total_barang; ?></td>
                                             <td><?php echo "Rp. " . number_format($row->total_pesanan) ?></td>
+                                            <td class="button-container">
+                                                <div id="table-button">
+                                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                     <?php endif;
                             endforeach;
@@ -229,6 +241,7 @@
                             <th>Customer</th>
                             <th>Total</th>
                             <th>Harga</th>
+                            <th></th>
                         </tr>
                     </thead>
 
@@ -252,6 +265,11 @@
                                             <td><?php echo $nama_pelanggan; ?></td>
                                             <td><?php echo $row->total_barang; ?></td>
                                             <td><?php echo "Rp. " . number_format($row->total_pesanan) ?></td>
+                                            <td class="button-container">
+                                                <div id="table-button">
+                                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
+                                                </div>
+                                            </td>
                                         </tr>
                                     <?php endif;
                             endforeach;

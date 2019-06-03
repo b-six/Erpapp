@@ -148,6 +148,7 @@
                         <th>Produk</th>
                         <th>Jumlah</th>
                         <th>Harga</th>
+                        <th></th>
                     </tr>
                 </thead>
 
@@ -172,7 +173,12 @@
                             endforeach;
                             ?>
                                 <td> <?php echo $row->jumlah_barang; ?> </td>
-                                <td> <?php echo "Rp. ".number_format($row->total_harga); ?> </td>
+                                <td> <?php echo "Rp. " . number_format($row->total_harga); ?> </td>
+                                <td class="button-container">
+                                    <div id="table-button">
+                                        <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
+                                    </div>
+                                </td>
                             </tr>
                         <?php
                     endif;
