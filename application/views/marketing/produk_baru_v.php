@@ -9,6 +9,39 @@
 <body>
     <!-- navbar -->
     <?php $this->load->view('marketing/partials/navbar.php') ?>
+    
+    <!-- Modal Tambah Produk Baru -->
+    <div id="add-pb-modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+                <div class="col s12 center">
+                    <h4>Tambah Produk Baru</h4>
+                </div>
+
+                <form action="" method="POST">
+                    <div class="input-field"> 
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="" placeholder="Input field">
+                            <label class="control-label" for="">label</label>
+                        </div>
+                    </div>
+                    
+                    <button type="submit" class="btn">label</button>
+                </form>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-add-po" id="submit-add-po">Submit
+                <i class="material-icons right">+</i>
+            </button>
+        </div>
+
+    </div>
+    <!-- /Modal tambah Produk Baru -->
+
+    <!-- konten -->
     <div class="container">
         <br>
         <div class="row">
@@ -21,18 +54,20 @@
                     </div>
                 </nav>
             </div>
+            <!-- /breadcrumb -->
 
             <!-- searchbar -->
             <div class="col s4"><?php $this->load->view('marketing/partials/searchbar.php'); ?></div>
+            <!-- /searchbar -->
 
-            <!-- add sales order -->
+            <!-- add Produk Baru -->
             <div class="col s1 center">
-                <nav class="no-shadows blue-dark-grey"><a href=""><i class="material-icons">add_circle_outline</i></a></nav>
+                <nav class="no-shadows blue-dark-grey"><a href="#add-pb-modal" class="modal-trigger"><i class="material-icons">add_circle_outline</i></a></nav>
             </div>
-
+            <!-- /add Produk Baru -->
         </div>
 
-        <!-- card-->
+        <!-- cards-->
         <div id="pending" class="col s12 white-text content-color">
             <!-- 1 card -->
             <div class="col s12">
@@ -129,14 +164,13 @@
                     </div>
                 </div>
             </div>
-
         </div>
-
-
-
-
+        <!-- /cards -->
     </div>
-    </div>
+    <!-- /konten -->
+
+
+
     <!-- js -->
     <?php $this->load->view('marketing/partials/js.php') ?>
 </body>

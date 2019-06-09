@@ -1,21 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-/**
- *
- * Controller Shopping_cart
- *
- * This controller for ...
- *
- * @package   CodeIgniter
- * @category  Controller
- * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
- * @link      https://github.com/setdjod/myci-extension/
- * @param     ...
- * @return    ...
- *
- */
-
 class Shopping_cart extends CI_Controller
 {
 
