@@ -100,3 +100,106 @@ $('#submit-add-po').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
 	$('#form-add-po').submit();
 });
+
+/////////////////////////////////
+//submit form add PB
+$('#submit-add-pb').click(function () {
+	// when the submit button in the modal is clicked, submit the form
+	// alert("sukses");
+	$('#form-add-pb').submit();
+});
+
+$uploadCrop = $('#upload-demo').croppie({
+	enableExif: true,
+	viewport:{
+		width: 200,
+		height: 200,
+	},
+	boundary: {
+		width: 300,
+		height: 300
+	}
+});
+
+$('#tampilan_produk').on('change', function(){
+	var reader = new FileReader();
+	reader.onload = function (e) {
+		$uploadCrop.croppie('bind', {
+			url: e.target.result
+		}).then(function(){
+			console.log('jQuery bind complete');
+		});
+	}
+	reader.readAsDataURL(this.files[0]);
+});
+
+$('.upload-result').on('click', function (ev){
+	event.preventDefault();
+	$uploadCrop.croppie('result', {
+		type: 'canvas',
+		size: 'viewport'
+	}).then(function (resp){
+		$.ajax({
+			url: '../../index.php/Erpapp/marketing/produk_baru/upload',
+			type: "POST",
+			data: {"image":resp},
+			success: function (response) {
+				console.log(response.imageData);
+				html = '<img src="' + resp + '" />';
+				$("#upload-demo-i").html(html);
+			},
+			error: function (e){
+				html = '<img src="' + resp + '" />';
+				$("#upload-demo-i").html(html);
+				console.log('error');
+			}
+		});
+	});
+});
+
+
+/////////////////////////////////////////////////
+// $('.upload-result').on('click', function (ev){
+// 	$uploadCrop.croppie('result', {
+// 		type: 'canvas',
+// 		size: 'viewport'
+// 	}).then(function (resp){
+// 		$.ajax({
+// 			url: "produk_baru/uploadGambar",
+// 			type: "POST",
+// 			data: {"image":resp},
+// 			success: function (data) {
+// 				html = '<img src="'+ resp + '" />';
+// 				$("#upload-demo-i").html(html);
+// 			}
+// 		});
+// 	});
+// });
+
+// kirim gambar dengan php
+//ambil nama file
+// passing ke javascript
+// masukin ke input form
+
+// $('#submit-add-pb').click(function () {
+// 	// when the submit button in the modal is clicked, submit the form
+// 	// alert("sukses");
+// 	$('#form-add-pb').submit(function(e){
+// 		e.preventDefault();
+// 			$.ajax({
+// 					url:'<?php echo base_url(); ?>marketing/produk_baru/uploadGambar',
+// 					type:"post",
+// 					data:new FormData(this),
+// 					processData:false,
+// 					contentType:false,
+// 					cache:false,
+// 					async:false,
+// 						success: function(data){
+// 							alert("Upload Sukses");
+// 						},
+// 						error: function(data){
+// 							alert("upload Gagal")
+// 						}
+// 			});
+// 		});
+// });

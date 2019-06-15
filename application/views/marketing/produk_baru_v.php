@@ -18,24 +18,89 @@
                     <h4>Tambah Produk Baru</h4>
                 </div>
 
-                <form action="" method="POST">
-                    <div class="input-field"> 
-                        <div class="form-group">
-                            <input type="text" class="form-control" id="" placeholder="Input field">
-                            <label class="control-label" for="">label</label>
+                <form method="post" action="<?php echo base_url('marketing/produk_baru/uploadGambar')?>" class="col s12" id="form-add-pb" enctype="multipart/form-data">
+
+                    <!-- <div class="row">
+                        <div class="input-field col s12">
+                          <input name="nama" id="nama" type="text" >
+                          <label for="nama">Nama</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input name="jenis" id="jenis" type="text" >
+                          <label for="jenis">Jenis</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                          <input name="harga" id="harga" type="number" >
+                          <label for="harga">Harga</label>
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn">label</button>
+
+                    <div class="file-field input-field">
+                        <div class="btn orange">
+                            <span><i class="material-icons">attach_file</i></span>
+                            <input name="file_desain" type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path" type="text" placeholder="File Desain">
+                        </div>
+                    </div> -->
+
+                    <!-- <div class="file-field input-field">
+                        <div class="btn orange">
+                            <span><i class="material-icons">attach_file</i></span>
+                            <input name="tampilan_produk" id="tampilan_produk" type="file">
+                        </div>
+                        <div class="file-path-wrapper">
+                            <input class="file-path" type="text" placeholder="Tampilan Produk">
+                        </div>
+                    </div> -->
+
                 </form>
+                
+                <div class="input-field">
+                    <div class="card"></div>
+                    <div class="card-title">Image Upload</div>
+                    <div class="card-content">
+                        <div class="row">
+                            <div class="col s4 center-align">
+                                <div id="upload-demo" style="width: 350px;"></div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col s4" style="padding-top: 30px;">
+                                <div class="file-field input-field">
+                                    <div class="btn orange">
+                                        <span><i class="material-icons">attach_file</i></span>
+                                        <input name="tampilan_produk" id="tampilan_produk" type="file">
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input class="file-path" type="text" placeholder="Tampilan Produk">
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                        <div class="row">
+                            <button class="btn upload-result">Upload Image</button>
+                            <div class="col s4">
+                                <div id="upload-demo-i" style="background: #e1e1e1; width: 300px; padding: 30px; height: 300px; margin-top: 30px;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-add-po" id="submit-add-po">Submit
-                <i class="material-icons right">+</i>
-            </button>
+            <button class="btn waves-effect waves-light green darken-3" type="submit" name="submit-add-pb" id="submit-add-pb"><i class="material-icons">add</i></button>
         </div>
 
     </div>
