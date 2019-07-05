@@ -4,9 +4,9 @@
             <a href="dashboard" class="brand-logo"><img src="<?php echo base_url('assets/img/marketing/sosro_logo.png') ?>" alt="Sosro Logo" height="60px" width="100px"></a>
 
             <!-- Dropdown Structure -->
-            <ul id="order_DD" class="dropdown-content indigo darken-4">
-                <li><a href="sales_order" class="white-text">Sales Order</a></li>
-                <li><a href="production_order" class="white-text">Production Order</a></li>
+            <ul id="plan_DD" class="dropdown-content indigo darken-4">
+                <li><a href="sales_order" class="white-text">Buat Planing</a></li>
+                <li><a href="production_order" class="white-text">Hasil Planing</a></li>
             </ul>
 
             <ul id="product_DD" class="dropdown-content indigo darken-4">
@@ -30,9 +30,8 @@
 
             <!-- navabar menu -->
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a class="dropdown-trigger bold-font" href="#" data-target="order_DD">ORDER<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger bold-font" href="#" data-target="product_DD">PRODUCT<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger bold-font" href="#" data-target="customer_DD">CUSTOMER<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger bold-font" href="#" data-target="plan_DD">PLAN<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger bold-font" href="#" data-target="product_DD">REPORT<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="acc_DD">Ryumada<i class="material-icons right">account_circle</i></a></li>
             </ul>
         </div>

@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-    <title>Marketing - Data Customer</title>
-    <?php $this->load->view('marketing/partials/css.php') ?>
+    <title>Produksi - Data Customer</title>
+    <?php $this->load->view('produksi/partials/css.php') ?>
 </head>
 
 <body>
     <!-- navbar -->
-    <?php $this->load->view('marketing/partials/navbar.php') ?>
+    <?php $this->load->view('produksi/partials/navbar.php') ?>
 
     <!-- Modal Add Customer -->
     <div id="add-customer-modal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <div class="row">
 
-                <form id="form-add-customer" class="col s12" action="<?php echo site_url('marketing/data_customer/save_customer'); ?>" method="post">
+                <form id="form-add-customer" class="col s12" action="<?php echo site_url('produksi/data_customer/save_customer'); ?>" method="post">
                     <div class="row">
                         <div class="col s12 center">
                             <h4>Tambah Customer</h4>
@@ -90,7 +90,7 @@
             </div>
 
             <!-- searchbar -->
-            <div class="col s4"><?php $this->load->view('marketing/partials/searchbar.php'); ?></div>
+            <div class="col s4"><?php $this->load->view('produksi/partials/searchbar.php'); ?></div>
 
             <!-- add sales order -->
             <div class="col s1 center">
@@ -141,7 +141,7 @@
     </div>
     </div>
     <!-- js -->
-    <?php $this->load->view('marketing/partials/js.php') ?>
+    <?php $this->load->view('produksi/partials/js.php') ?>
 </body>
 
 </html>

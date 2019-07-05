@@ -26,7 +26,7 @@ class Stok_produk extends CI_Controller
 
   public function index()
   {
-    $this->load->view('marketing/stok_produk_v');
+    $this->load->view('produksi/stok_produk_v');
   }
 
 }
