@@ -26,7 +26,7 @@ class Produk_baru extends CI_Controller
 
   public function index()
   {
-    $this->load->view('marketing/produk_baru_v');
+    $this->load->view('produksi/produk_baru_v');
     
   }
 

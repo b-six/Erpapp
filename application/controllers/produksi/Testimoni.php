@@ -22,9 +22,9 @@ class Testimoni extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('marketing/sales_order_model');
-    $this->load->model('marketing/customer_model');
-    $this->load->model('marketing/testimoni_model');
+    $this->load->model('produksi/sales_order_model');
+    $this->load->model('produksi/customer_model');
+    $this->load->model('produksi/testimoni_model');
   }
 
   public function index()
@@ -32,7 +32,7 @@ class Testimoni extends CI_Controller
     $data['sales_order'] = $this->sales_order_model->get_sales_order();
     $data['customer'] = $this->customer_model->get_customer();
     $data['testimoni'] = $this->testimoni_model->get_testimoni();
-    $this->load->view('marketing/testimoni_v', $data);
+    $this->load->view('produksi/testimoni_v', $data);
   }
 
   function save_testimoni()
@@ -44,7 +44,7 @@ class Testimoni extends CI_Controller
     $testimoni = 'Y';
     $this->sales_order_model->update_status_testimoni($id_so, $testimoni);
     $this->testimoni_model->save_testimoni($id_testimoni, $id_pelanggan, $id_so, $testimoni_barang);
-    redirect('marketing/testimoni');
+    redirect('produksi/testimoni');
   }
 }
 

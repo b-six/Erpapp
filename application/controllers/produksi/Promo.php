@@ -26,7 +26,7 @@ class Promo extends CI_Controller
 
   public function index()
   {
-    $this->load->view('marketing/promo_v');
+    $this->load->view('produksi/promo_v');
     
   }
 

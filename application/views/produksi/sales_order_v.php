@@ -2,20 +2,20 @@
 <html lang="en">
 
 <head>
-    <title>Marketing - Sales Order</title>
-    <?php $this->load->view('marketing/partials/css.php') ?>
+    <title>Produksi - Buat Planing</title>
+    <?php $this->load->view('produksi/partials/css.php') ?>
 </head>
 
 <body>
     <!-- navbar -->
-    <?php $this->load->view('marketing/partials/navbar.php') ?>
+    <?php $this->load->view('produksi/partials/navbar.php') ?>
 
     <!-- Modal Add Sales Order -->
     <div id="addSO-modal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <div class="row">
 
-                <form id="form-add-so" class="col s12" action="<?php echo site_url('marketing/sales_order/save_sales_order'); ?>" method="post">
+                <form id="form-add-so" class="col s12" action="<?php echo site_url('produksi/sales_order/save_sales_order'); ?>" method="post">
                     <div class="row">
                         <div class="col s12 center">
                             <h4>Tambah Order</h4>

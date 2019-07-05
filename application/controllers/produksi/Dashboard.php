@@ -26,7 +26,7 @@ class Dashboard extends CI_Controller
 
   public function index()
   {
-    $this->load->view('marketing/dashboard_v');
+    $this->load->view('produksi/dashboard_v');
   }
 
 }

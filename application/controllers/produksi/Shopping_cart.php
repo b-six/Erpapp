@@ -22,10 +22,10 @@ class Shopping_cart extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('marketing/sales_order_model');
-    $this->load->model('marketing/shopping_cart_model');
-    $this->load->model('marketing/customer_model');
-    $this->load->model('marketing/stock_barang_model');
+    $this->load->model('produksi/sales_order_model');
+    $this->load->model('produksi/shopping_cart_model');
+    $this->load->model('produksi/customer_model');
+    $this->load->model('produksi/stock_barang_model');
   }
 
   public function index()
@@ -43,10 +43,10 @@ class Shopping_cart extends CI_Controller
       $data['shopping_cart'] = $this->shopping_cart_model->get_shopping_cart();
       $data['customer'] = $this->customer_model->get_customer();
       $data['stock_barang'] = $this->stock_barang_model->get_stock_barang();
-      $this->load->view('marketing/shopping_cart_v', $data);
+      $this->load->view('produksi/shopping_cart_v', $data);
     } else {
       $address = $this->uri->segment(4);
-      redirect('marketing/' . $address);
+      redirect('produksi/' . $address);
     }
   }
 
@@ -63,7 +63,7 @@ class Shopping_cart extends CI_Controller
     $total_harga_pesanan = $total_pesanan + $total_harga;
     $this->shopping_cart_model->save_shopping_cart($id_so, $id_sc, $id_barang, $jumlah_barang, $total_harga);
     $this->sales_order_model->update_total_pesanan($id_so, $total_harga_pesanan, $total_jumlah_barang);
-    redirect('marketing/shopping_cart/index/' . $id_so);
+    redirect('produksi/shopping_cart/index/' . $id_so);
   }
 
   /* function shopping_cart_view()
