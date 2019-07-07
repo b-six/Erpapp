@@ -3,75 +3,115 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Produk_baru extends CI_Controller
 {
-    
-  public function __construct()
-  {
-    parent::__construct();
-    $this->load->model('marketing/produk_baru_model');
-  }
 
-  public function index()
-  {
-    $this->load->view('marketing/produk_baru_v');
-  }
+    public function __construct(){
+        parent::__construct();
+        $this->load->model('marketing/produk_baru_model');
+    }
 
-  public function tambahProduk(){
-  	$nama_barang = $this->input->post('nama');
-  	$jenis_barang = $this->input->post('jenis');
-  	$harga_barang = $this->input->post('harga');
-  }
+    public function index(){
+        $data['produk_baru'] = $this->produk_baru_model->getProdukBaru();
+        
+        $this->load->view('marketing/produk_baru_v', $data);
+    }
 
-  public function upload(){
-  	echo json_encode(array("imageData"=>'berhasil'));
-  }
+    public function tambahProduk(){
+        //upload file desain
+        $config = array(
+            "upload_path"   => "./document/marketing/produk_baru/desain",
+            "allowed_types" => 'pdf|doc|docx|ppt|pptx',
+            "max_size"    => "16192",
+            "encrypt_name"  => TRUE
+        );
+        //load library upload
+        $this->load->library('upload', $config);
+        // upload file
+        if($this->upload->do_upload('file_desain')){
+            //apabila berhasil
+            $data = array('upload_data' => $this->upload->data());
+            // print_r($data);
+        }else{
+            //apabila error
+            $error = array('error' => $this->upload->display_errors());
+            // print_r($error);
+        }
+        //ambil array upload_data dalam array data
+        $upload_data = $data['upload_data'];
 
-  public function uploadGambar(){
-  	echo json_encode(array("imageData"=>'berhasil'));
-  	return;
+        // hapus tanda kutip (")
+        $tampilan_barang = explode('"', $this->input->post('tampilan-produk'));
+        
+        //membuat id_barang
+        //buat format tanggal
+        $tgl = date("Ymd");
+        //kueri ambil jumlah row yang sama
+        $cari = $this->db->query("SELECT * FROM produk_baru WHERE id_barang LIKE '$tgl%%%'");
+        //ambil jumlah row
+        $hasil = $cari->num_rows();
+        //generate id
+        $hasil2 = $hasil+1;
+        //tambah prefix '0' ke increment
+        // masukkan increment ke id_barang
+        $id_barang = $tgl.str_pad($hasil2, 3, '0', STR_PAD_LEFT);        
 
-  	$data = $this->input->post('image');
+        //siapkan data
+        $data = array(
+            'id_barang'         => $id_barang,
+            'nama'              => $this->input->post('nama'),
+            'jenis'             => $this->input->post('jenis'),
+            'harga'             => $this->input->post('harga'),
+            'file_desain'       => $upload_data['file_name'],
+            'tampilan_produk'   => $tampilan_barang[1]);
 
-  	list($type, $data) = explode(';', $data);
-  	list(, $data)	   = explode(',', $data);
+        // masukkan data ke database
+        $this->produk_baru_model->saveProdukBaru($data);
 
-  	$data = base64_decode($data);
+        $this->index();
+    }
 
-  	$config = array(
-  					"upload_path" 	=> "./document/marketing/produk_baru/tampilan",
-  					"allowed_types" => 'gif|jpg|png',
-  					"max_size"		=> "2048",
-  					"encrypt_name"	=> TRUE
-  	);
+    public function uploadGambar(){
+        $data = $this->input->post('image');
 
-  	$this->load->library('upload', $config);
+        list($type, $data) = explode(';', $data);
+        list(, $data)	     = explode(',', $data);
 
-  // 	// $datax = $this->input->post('image');
-  // 	// $datax = base64_decode($data);
+        $data = base64_decode($data);
+        $imageName = time().uniqid(rand()).'.png';
+        file_put_contents('document/marketing/produk_baru/tampilan/'.$imageName, $data);
+        echo json_encode($imageName);
+        exit();
+    }
 
-  	if($this->upload->do_upload($data)){
-  		$data = array('upload_data'=> $this->upload->data());
-  		echo json_encode(array("imageData"=>$data));
+    function hapusProdukBaru(){
+        $id_barang = $this->input->get('id_barang');
 
-  // 		// print_r($data);
-  // 		// exit();
+        $result = $this->produk_baru_model->getOneProdukBaru($id_barang);
 
-  // 		//balik ke halaman produk_baru
-  // 		// $this->load->view('marketing/produk_baru', $data);
+        foreach($result as $v){
+            $file_desain = $v['file_desain'];
+            $tampilan_produk = $v['tampilan_produk'];
+        }
 
-  // 		// $title = $this->input->post('title');
-  // 		// $image = $data['upload_data']['file_name'];
+        if(unlink('document/marketing/produk_baru/desain/'.$file_desain)){
+            $error = array('file_desain' => 'berhasil');
+        }else{
+            $error = array('file_desain' => 'file_desain tidak ditemukan');
+        }
 
-  // 		// $result = $this->produk_baru_model->save_upload($title, $image);
-  // 		// echo json_decode($result);
-  	}else{
-  		$data = array('error' => $this->upload->display_errors());
-  		echo json_encode(array("imageData"=>$data));
-  // 		// print_r($data);
-  // 		// exit();
-  // 		$this->load->view('marketing/produk_baru', $data);
-  	}
-  }
+        if(unlink('document/marketing/produk_baru/tampilan/'.$tampilan_produk)){
+            $error = array('tampilan_produk' => 'berhasil');
+        }else{
+            $error = array('tampilan_produk' => 'tampilan_produk tidak ditemukan');
+        }
 
+        $this->produk_baru_model->hapusProdukBaru($id_barang);
+
+        $this->index();
+
+
+
+
+    }
 }
 
 /* End of file Produk_baru.php */

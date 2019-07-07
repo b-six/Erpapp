@@ -1,12 +1,16 @@
-/*tombol tabel*/
+/*tombol delete dan edit*/
 td.button-container{
     width: 80px;
 }
-#table-button{
+#table-button, #card-button{
     display:none;
 }
 .delete-button, .edit-button{
     color: white;
+}
+.delete-button.oncard, .edit-button.oncard{
+    color: black;
+    font-size: 40px;
 }
 .edit-button:hover{
     color: #ff8000;
@@ -120,4 +124,14 @@ body {
 .clickable-row {
     cursor: pointer;
 }
-  
+
+/*CARDS*/
+.card-content{
+    padding: 1% !important;
+    height: 130px !important;
+}
+
+/*icon color*/
+i.icon-green{
+    color: #008813;
+}

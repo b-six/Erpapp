@@ -64,6 +64,7 @@
             <?php } ?>
             <!-- /1 card -->
         </div>
+        <!-- /Card Wrapper -->
 
 
 

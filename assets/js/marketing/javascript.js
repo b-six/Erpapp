@@ -95,6 +95,19 @@ $('tr').on('mouseover mouseout', function(){
 	$(this).find('#table-button').toggle();
 });
 
+//untuk nampilin dan nyembunyiin tombol di card view
+$(document).ready(function(){
+	$(document).on('mouseenter', '.card-content', function(){
+		$(this).find("#card-button").show();
+	}).on('mouseleave', '.card-content', function(){
+		$(this).find("#card-button").hide();
+	})
+})
+
+// $('.card-content').on('mouseover mouseout', function(){
+// 	$(this).find('#card-button').toggle();
+// });
+
 //submit form-add-po
 $('#submit-add-po').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
@@ -109,20 +122,29 @@ $('#submit-add-pb').click(function () {
 	$('#form-add-pb').submit();
 });
 
-$uploadCrop = $('#upload-demo').croppie({
-	enableExif: true,
-	viewport:{
-		width: 200,
-		height: 200,
-	},
-	boundary: {
-		width: 300,
-		height: 300
-	}
+//buat ngapus gambar terupload dan load ulang croppie.js
+$('#tampilan_produk').on('click', function(){
+	$('.file-selector').hide();
+	$('.upload-result').show();
+	$('#cropped').remove();
+	$('.croppie-container').removeClass();
+	$uploadCrop = $('#image-view').croppie({
+		enableExif: true,
+		viewport:{
+			width: 200,
+			height: 200,
+		},
+		boundary: {
+			width: 230,
+			height: 230
+		}
+	});
 });
 
+//setelah file dipilih lakukan perubahan
 $('#tampilan_produk').on('change', function(){
 	var reader = new FileReader();
+
 	reader.onload = function (e) {
 		$uploadCrop.croppie('bind', {
 			url: e.target.result
@@ -133,73 +155,49 @@ $('#tampilan_produk').on('change', function(){
 	reader.readAsDataURL(this.files[0]);
 });
 
+//buat ngerotate croppie.js
+$('.rotate').on('click', function(ev){
+	uploadCrop.croppie('rotate', parseInt($(this).data('deg')));
+});
+
+//ngupload file foto hasil crop croppie.js ke server via ajax
 $('.upload-result').on('click', function (ev){
-	event.preventDefault();
+	var url_simpan = $('#nama-tampilanProduk').data('url_simpan');
+	console.log(url_simpan);
 	$uploadCrop.croppie('result', {
 		type: 'canvas',
 		size: 'viewport'
 	}).then(function (resp){
 		$.ajax({
-			url: '../../index.php/Erpapp/marketing/produk_baru/upload',
+			// url: '../../index.php/Erpapp/marketing/produk_baru/uploadGambar',
+			url: url_simpan,
 			type: "POST",
 			data: {"image":resp},
-			success: function (response) {
-				console.log(response.imageData);
-				html = '<img src="' + resp + '" />';
-				$("#upload-demo-i").html(html);
+			success: function (data) {
+				html = '<img id="cropped" src="' + resp + '" />';
+				alert('sukses');
+				$("#image-view").html(html);
+				$('.file-selector').show();
+				$('.upload-result').hide();
+				$('#nama-tampilanProduk').val(data);
 			},
 			error: function (e){
-				html = '<img src="' + resp + '" />';
-				$("#upload-demo-i").html(html);
-				console.log('error');
+				alert('error');
 			}
 		});
 	});
 });
 
+//edit produk baru
+$('.del-pb-trigger').on('click', function(){
+	var id_barang = $(this).data('id_barang');
 
-/////////////////////////////////////////////////
-// $('.upload-result').on('click', function (ev){
-// 	$uploadCrop.croppie('result', {
-// 		type: 'canvas',
-// 		size: 'viewport'
-// 	}).then(function (resp){
-// 		$.ajax({
-// 			url: "produk_baru/uploadGambar",
-// 			type: "POST",
-// 			data: {"image":resp},
-// 			success: function (data) {
-// 				html = '<img src="'+ resp + '" />';
-// 				$("#upload-demo-i").html(html);
-// 			}
-// 		});
-// 	});
-// });
+	console.log(id_barang);
+	$(document).ready(function(){
+		$('#del-pb-modal').modal('open');
+	});
+	var oldUrl = $('#del-pb-button').data('href');
+	var newUrl = oldUrl+id_barang;
 
-// kirim gambar dengan php
-//ambil nama file
-// passing ke javascript
-// masukin ke input form
-
-// $('#submit-add-pb').click(function () {
-// 	// when the submit button in the modal is clicked, submit the form
-// 	// alert("sukses");
-// 	$('#form-add-pb').submit(function(e){
-// 		e.preventDefault();
-// 			$.ajax({
-// 					url:'<?php echo base_url(); ?>marketing/produk_baru/uploadGambar',
-// 					type:"post",
-// 					data:new FormData(this),
-// 					processData:false,
-// 					contentType:false,
-// 					cache:false,
-// 					async:false,
-// 						success: function(data){
-// 							alert("Upload Sukses");
-// 						},
-// 						error: function(data){
-// 							alert("upload Gagal")
-// 						}
-// 			});
-// 		});
-// });
+	$('#del-pb-button').attr('href', newUrl);
+});
