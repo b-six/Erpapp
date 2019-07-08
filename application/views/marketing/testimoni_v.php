@@ -157,7 +157,8 @@
                                 echo $testimoni_barang; ?></td>
                             <td class="button-container">
                                 <div id="table-button">
-                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
+                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> 
+                                    <a href="#"><i class="material-icons edit-button">create</i></a>
                                 </div>
                             </td>
                         </tr>
