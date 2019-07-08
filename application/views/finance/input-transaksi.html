@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+	<!-- <link rel="stylesheet" href="node_modules\materialize-css\dist\css\materialize.css"> -->
+	<link rel="stylesheet" href="css/style.css">
+
+
+	<title>Finance</title>
+</head>
+
+<body style="background-color: teal; color: white">
+
+
+
+	<div class="navbar-fixed">
+		<nav class="no-shadow">
+			<div class="nav-wrapper container">
+				<a href="#" class="brand-logo">Logo</a>
+				<ul id="nav-mobile" class="right hide-on-med-and-down">
+					<li><a href="index.html">Home</a></li>
+					<li class="active"><a href="input-transaksi.html">Input Transaksi</a></li>
+					<li><a href="validasi.html">Validasi</a></li>
+					<li><a href="laporan.html">Laporan</a></li>
+				</ul>
+			</div>
+		</nav>
+	</div>
+
+	<div class="container">
+		<!-- Form -->
+		<div class="bg-input-form">
+			<div class="row">
+				<form class="col s12">
+					<div class="row">
+						<div class="input-field col s6">
+							<input type="text" class="datepicker" placeholder="Masukkan Tanggal">
+							<label for="tgl-transaksi">Tanggal Transaksi</label>
+						</div>
+						<div class="input-field col s6">
+							<input placeholder="Masukkan Nominal" id="nominal" type="number" class="validate">
+							<label for="nominal">Nominal</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<input placeholder="Masukkan Akun Debit" id="akun-debit" type="number" class="validate">
+							<label for="akun-debit">Akun Debit</label>
+						</div>
+						<div class="input-field col s6">
+							<input placeholder="Masukkan Keterangan" id="keterangan" type="text" class="validate">
+							<label for="keterangan">Keterangan</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="input-field col s6">
+							<input placeholder="Masukkan Akun Kredit" id="akun-kredit" type="text" class="validate">
+							<label for="akun-kredit">Akun Kredit</label>
+						</div>
+						<div class="input-field col s6">
+							<button class="btn waves-effect waves-light btn-form right" type="submit"
+								name="action">Submit
+							</button>
+						</div>
+
+					</div>
+				</form>
+			</div>
+		</div>
+
+		<!-- Table -->
+		<table>
+			<thead>
+				<tr>
+					<th>Tanggal</th>
+					<th>Debit</th>
+					<th>Kredit</th>
+					<th>Nominal</th>
+					<th>Keterangan</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>11/23/1997</td>
+					<td>Kas</td>
+					<td>Pendapatan</td>
+					<td>Rp. 11.500.000</td>
+					<td>Penjualan</td>
+				</tr>
+				<tr>
+					<td>11/23/1997</td>
+					<td>Kas</td>
+					<td>Pendapatan</td>
+					<td>Rp. 11.500.000</td>
+					<td>Penjualan</td>
+				</tr>
+				<tr>
+					<td>11/23/1997</td>
+					<td>Kas</td>
+					<td>Pendapatan</td>
+					<td>Rp. 11.500.000</td>
+					<td>Penjualan</td>
+				</tr>
+				<tr>
+					<td>11/23/1997</td>
+					<td>Kas</td>
+					<td>Pendapatan</td>
+					<td>Rp. 11.500.000</td>
+					<td>Penjualan</td>
+				</tr>
+				<tr>
+					<td>11/23/1997</td>
+					<td>Kas</td>
+					<td>Pendapatan</td>
+					<td>Rp. 11.500.000</td>
+					<td>Penjualan</td>
+				</tr>
+
+			</tbody>
+		</table>
+	</div>
+	<script src="node_modules\materialize-css\dist\js\materialize.js">
+	</script>
+	<script src="js/index.js"></script>
+</body>
+
+</html>
