@@ -20,7 +20,7 @@ class Produk_baru extends CI_Controller
         $config = array(
             "upload_path"   => "./document/marketing/produk_baru/desain",
             "allowed_types" => 'pdf|doc|docx|ppt|pptx',
-            "max_size"    => "16192",
+            "max_size"      => "16192",
             "encrypt_name"  => TRUE
         );
         //load library upload
@@ -66,7 +66,7 @@ class Produk_baru extends CI_Controller
         // masukkan data ke database
         $this->produk_baru_model->saveProdukBaru($data);
 
-        $this->index();
+        redirect('marketing/produk_baru');
     }
 
     public function uploadGambar(){
@@ -79,7 +79,6 @@ class Produk_baru extends CI_Controller
         $imageName = time().uniqid(rand()).'.png';
         file_put_contents('document/marketing/produk_baru/tampilan/'.$imageName, $data);
         echo json_encode($imageName);
-        exit();
     }
 
     function hapusProdukBaru(){
@@ -106,11 +105,7 @@ class Produk_baru extends CI_Controller
 
         $this->produk_baru_model->hapusProdukBaru($id_barang);
 
-        $this->index();
-
-
-
-
+        redirect('marketing/produk_baru');
     }
 }
 

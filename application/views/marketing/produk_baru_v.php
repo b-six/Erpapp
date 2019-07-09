@@ -117,21 +117,21 @@
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="nama-edit" id="nama-edit" type="text" >
+                        <input name="nama-edit" class="nama-edit" type="text" >
                         <label for="nama">Nama</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="jenis-edit" id="jenis-edit" type="text" >
+                        <input name="jenis-edit" class="jenis-edit" type="text" >
                         <label for="jenis">Jenis</label>
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name="harga-edit" id="harga-edit" type="number" >
+                        <input name="harga-edit" class="harga-edit" type="number" >
                         <label for="harga">Harga</label>
                     </div>
                 </div>
@@ -144,16 +144,17 @@
                         <input name="file_desain" type="file">
                     </div>
                     <div class="file-path-wrapper">
-                        <input class="file-path" type="text" placeholder="File Desain">
+                        <input class="file_desain-edit" class="file-path" type="text" placeholder="File Desain">
                     </div>
                 </div>
 
                 <!-- simpan nama gambar hasil croppan di sini -->
                 <div class="row" style="display: none;">
                     <div class="input-field col s12">
-                        <input id="nama-tampilanProduk" name="tampilan-produk" id="tampilan-produk" name="tampilan-produk" type="text" >
+                        <input id="nama-tampilanProduk" name="tampilan-produk" class="tampilan_produk-edit" name="tampilan-produk" type="text" >
                     </div>
                 </div>
+                <!-- /simpan nama gambar hasil croppan di sini -->
             </form>
 
             <div class="row" >
@@ -265,31 +266,32 @@
                             <img src="<?php echo (base_url('document/marketing/produk_baru/tampilan/').$v['tampilan_produk']); ?>" width="130" height="130">
                         </div>
                         <div class="card-stacked">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col s4">
-                                        <p><b>Nama Produk</b></p>
-                                        <p><b>Jenis</b></p>
-                                        <p><b>Harga Produk</b></p>
-                                        <br/>
-                                        <p><b>File Desain</b></p>
-                                    </div>
-                                    <div class="col s7">
-                                        <p>: <?php echo $v['nama']; ?></p>
-                                        <p>: <?php echo $v['jenis']; ?></p>
-                                        <p>: <?php echo $v['harga']; ?></p>
-                                        <br/>
-                                        <p>: <a href="<?php echo (base_url('document/marketing/produk_baru/desain/').$v['file_desain']); ?>">Klik untuk membuka file...</a></p>
-                                    </div>
-                                    <div class="col s1" style="height: 100%" >
-                                        <div id="card-button">
-                                            <a href="javascript:void(0);" class="del-pb-trigger" data-id_barang="<?php echo $v['id_barang']; ?>"><i class="material-icons delete-button oncard">delete_forever</i></a>
-                                            <br/><br/>
-                                            <a id="edit-pb-trigger" class="modal-trigger" href="#edit-pb-modal" data-id_barang="<?php echo $v['id_barang']; ?>" data-nama_produk="<?php echo $v['nama']; ?>" data-jenis="<?php echo $v['jenis']; ?>" data-harga="<?php echo $v['harga']; ?>" data-file_desain="<?php echo $v['file_desain']; ?>" data-tampilan_produk="<?php echo $v['tampilan_produk']; ?>"><i class="material-icons edit-button oncard">create</i></a>
-                                        </div>
+                            <!-- card content wrapper -->
+                            <div class="row card-content" style="margin:0px; padding: 1%; height: 130px;">
+                                <div class="col s4">
+                                    <p><b>Nama Produk</b></p>
+                                    <p><b>Jenis</b></p>
+                                    <p><b>Harga Produk</b></p>
+                                    <br/>
+                                    <p><b>File Desain</b></p>
+                                </div>
+                                <div class="col s7">
+                                    <p>: <?php echo $v['nama']; ?></p>
+                                    <p>: <?php echo $v['jenis']; ?></p>
+                                    <p>: <?php echo $v['harga']; ?></p>
+                                    <br/>
+                                    <p>: <a href="<?php echo (base_url('document/marketing/produk_baru/desain/').$v['file_desain']); ?>">Klik untuk membuka file...</a></p>
+                                </div>
+
+                                <div class="col s1" style="height: 100%; padding: inherit; margin: 0px;" >
+                                    <div id="card-button" class="center">
+                                        <a href="javascript:void(0);" class="del-pb-trigger" data-id_barang="<?php echo $v['id_barang']; ?>"><i class="material-icons delete-button oncard">delete_forever</i></a>
+                                        <br/><br/>
+                                        <a class="edit-pb-trigger" class="modal-trigger" href="javascript:void(0);" data-id_barang="<?php echo $v['id_barang']; ?>" data-nama="<?php echo $v['nama']; ?>" data-jenis="<?php echo $v['jenis']; ?>" data-harga="<?php echo $v['harga']; ?>" data-file_desain="<?php echo $v['file_desain']; ?>" data-tampilan_produk="<?php echo $v['tampilan_produk']; ?>"><i class="material-icons edit-button oncard">create</i></a>
                                     </div>
                                 </div>
                             </div>
+                            <!-- /card content wrapper -->
                         </div>
                     </div>
                 </div>

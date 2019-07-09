@@ -10,7 +10,10 @@ td.button-container{
 }
 .delete-button.oncard, .edit-button.oncard{
     color: black;
-    font-size: 40px;
+    font-size: 32px;
+}
+.delete-button.oncard.promo, .edit-button.oncard.promo{
+    font-size: 28px;
 }
 .edit-button:hover{
     color: #ff8000;
@@ -123,12 +126,6 @@ body {
 
 .clickable-row {
     cursor: pointer;
-}
-
-/*CARDS*/
-.card-content{
-    padding: 1% !important;
-    height: 130px !important;
 }
 
 /*icon color*/

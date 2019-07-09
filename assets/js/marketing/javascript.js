@@ -188,7 +188,7 @@ $('.upload-result').on('click', function (ev){
 	});
 });
 
-//edit produk baru
+//hapus produk baru
 $('.del-pb-trigger').on('click', function(){
 	var id_barang = $(this).data('id_barang');
 
@@ -200,4 +200,76 @@ $('.del-pb-trigger').on('click', function(){
 	var newUrl = oldUrl+id_barang;
 
 	$('#del-pb-button').attr('href', newUrl);
+});
+
+//edit produk baru
+$('.edit-pb-trigger').on('click', function(){
+	var id_barang = $(this).data('id_barang');
+	console.log(id_barang);
+
+	var nama_produk = $(this).data('nama');
+	var jenis_produk = $(this).data('jenis');
+	var harga_produk = $(this).data('harga');
+	var file_desain = $(this).data('file_desain');
+	var tampilan_produk = $(this).data('tampilan_produk');
+
+
+	$(document).ready(function(){
+		$('#edit-pb-modal').modal('open');
+	});
+
+	$('.nama-edit').val(nama_produk);
+	$('.jenis-edit').val(jenis_produk);
+	$('.harga-edit').val(harga_produk);
+
+	$('.file_desain-edit').val(file_desain);
+	$('.tampilan_produk-edit').val(tampilan_produk);
+
+});
+
+//image reader==================================================
+function readURL(input){
+	if(input.files && input.files[0]){
+		var reader = new FileReader();
+
+		reader.onload = function(e){
+			$('#banner-preview').attr('src', e.target.result);
+		}
+
+		reader.readAsDataURL(input.files[0]);
+	}
+}
+
+$('#banner-promo').change(function(){
+	readURL(this);
+});
+//==============================================================
+
+$('.edit-promo-trigger').on('click', function(){
+	var id_promo = $(this).data('id_promo');
+	var produk = $(this).data('produk');
+	var jumlah_pembelian = $(this).data('jumlah_pembelian');
+	var banner_promo = $(this).data('banner_promo');
+
+	$(document).ready(function(){
+		$('#edit-promo-modal').modal('open');
+	});
+
+	$('#id_promo-edit').val(id_promo);
+	$('#produk-edit').val(produk);
+	$('#jumlah_pembelian-edit').val(jumlah_pembelian);
+	$('banner_promo-edit').val(banner_promo);
+});
+//hapus Promo
+$('.del-promo-trigger').on('click', function(){
+	var id_promo = $(this).data('id_promo');
+
+	$(document).ready(function(){
+		$('#del-promo-modal').modal('open');
+	});
+
+	var oldUrl = $('#del-promo-button').data('href');
+	var newUrl = oldUrl+id_promo;
+
+	$('#del-promo-button').attr('href', newUrl);
 });
