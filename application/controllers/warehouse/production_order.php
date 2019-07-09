@@ -28,7 +28,10 @@ class production_order extends CI_Controller
   {
     // $data['production_order'] = $this->production_order_model->get_production_order();
     // $data['stock_barang'] = $this->stock_barang_model->get_stock_barang();
-    $this->load->view('warehouse/production_order_v');
+      $this->load->model('warehouse/production_order_model');
+     $data['production_order'] = $this->production_order_model->get_production_order();
+     $data['stock_barang'] = $this->production_order_model->get_stock_barang();
+    $this->load->view('warehouse/production_order_v',$data);
   }
 
 

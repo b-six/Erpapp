@@ -22,15 +22,15 @@ class sales_order extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('warehouse/Sales_order_model');
   }
 
   public function index()
   {
-    // $data['production_order'] = $this->production_order_model->get_production_order();
-    // $data['stock_barang'] = $this->stock_barang_model->get_stock_barang();
-    $this->load->view('warehouse/sales_order_v');
+    $data['sales_order'] = $this->Sales_order_model->get_sales_order();
+    $data['customer'] = $this->Sales_order_model->get_customer();
+    $this->load->view('warehouse/sales_order_v', $data);
   }
-
 
 }
 
