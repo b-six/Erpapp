@@ -43,6 +43,22 @@ class Production_order extends CI_Controller
     redirect('marketing/production_order');
   }
 
+  function update_production_order()
+  {
+    $id_po = $this->input->post('id_po-edit');
+    $id_barang = $this->input->post('id_produk-edit');
+    $jumlah_pesanan = $this->input->post('jumlah_barang-edit');
+    $this->production_order_model->update_production_order($id_po, $jumlah_pesanan, $id_barang);
+    redirect('marketing/production_order');
+  }
+
+  function delete_production_order()
+  {
+    $id_po = $this->input->get('id_po_delete');
+    $this->production_order_model->delete_production_order($id_po);
+    redirect('marketing/production_order');
+  }
+
 }
 
 
