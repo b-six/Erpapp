@@ -22,33 +22,30 @@
 					<li><a href="index.html">Home</a></li>
 					<li><a href="input-transaksi.html">Input Transaksi</a></li>
 					<li><a href="validasi.html">Validasi</a></li>
-					<li class="active"><a href="laporan.html">Laporan</a></li>
+					<li class="active"><a class='dropdown-trigger' href='#' data-target='dropdown1'>Laporan</a></li>
 				</ul>
 			</div>
 		</nav>
 	</div>
 
 	<div class="container">
-		<div class="row">
-			<div class="col s12">
-				<ul class="tabs">
-					<li class="tab col s3"><a href="#test1">Test 1</a></li>
-					<li class="tab col s3"><a class="active" href="#test2">Test 2</a></li>
-					<li class="tab col s3 disabled"><a href="#test3">Disabled Tab</a></li>
-					<li class="tab col s3"><a href="#test4">Test 4</a></li>
-				</ul>
-			</div>
-			<div id="test1" class="col s12">Test 1</div>
-			<div id="test2" class="col s12">Test 2</div>
-			<div id="test3" class="col s12">Test 3</div>
-			<div id="test4" class="col s12">Test 4</div>
-		</div>
+
+		<!-- Dropdown Structure -->
+		<ul id='dropdown1' class='dropdown-content'>
+			<li><a href="#!">Buku Besar</a></li>
+			<li><a href="#!">Jurnal Umum</a></li>
+			<li><a href="#!">Laba Rugi</a></li>
+			<li><a href="#!">Neraca</a></li>
+			<li><a href="#!">Prive</a></li>
+		</ul>
+
 
 	</div>
 
 
-	<script src="C:\xampp\htdocs\Erpapp\application\views\finance\node_modules\materialize-css\dist\js\materialize.js">
+	<script src="node_modules\materialize-css\dist\js\materialize.js">
 	</script>
+	<script src="js/index.js"></script>
 </body>
 
 </html>

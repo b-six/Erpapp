@@ -37,7 +37,7 @@
 				<form class="col s12">
 					<div class="row">
 						<div class="input-field col s6">
-							<input type="text" class="datepicker" placeholder="Masukkan Tanggal">
+							<input type="text" class="datepicker validate" placeholder="Masukkan Tanggal">
 							<label for="tgl-transaksi">Tanggal Transaksi</label>
 						</div>
 						<div class="input-field col s6">
@@ -51,13 +51,14 @@
 							<label for="akun-debit">Akun Debit</label>
 						</div>
 						<div class="input-field col s6">
-							<input placeholder="Masukkan Keterangan" id="keterangan" type="text" class="validate">
+							<input placeholder="Masukkan Keterangan" id="keterangan" type="text" class="validate"
+								autocomplete="off">
 							<label for="keterangan">Keterangan</label>
 						</div>
 					</div>
 					<div class="row">
 						<div class="input-field col s6">
-							<input placeholder="Masukkan Akun Kredit" id="akun-kredit" type="text" class="validate">
+							<input placeholder="Masukkan Akun Kredit" id="akun-kredit" type="number" class="validate">
 							<label for="akun-kredit">Akun Kredit</label>
 						</div>
 						<div class="input-field col s6">
