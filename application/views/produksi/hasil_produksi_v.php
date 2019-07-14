@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Marketing - Production Order</title>
-    <?php $this->load->view('marketing/partials/css.php') ?>
+    <title>Produksi - Hasil Produksi</title>
+    <?php $this->load->view('produksi/partials/css.php') ?>
 </head>
 
 <body>
     <!-- navbar -->
-    <?php $this->load->view('marketing/partials/navbar.php') ?>
+    <?php $this->load->view('produksi/partials/navbar.php') ?>
 
     <!-- Modal Tambah Production Order -->
     <div id="add-po-modal" class="modal modal-fixed-footer">

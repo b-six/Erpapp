@@ -5,20 +5,25 @@
 
             <!-- Dropdown Structure -->
             <ul id="plan_DD" class="dropdown-content indigo darken-4">
-                <li><a href="sales_order" class="white-text">Buat Planing</a></li>
-                <li><a href="production_order" class="white-text">Hasil Planing</a></li>
+                <li><a href="production_order" class="white-text">Production Order</a></li>
+                <li><a href="buat_planning" class="white-text">Buat Planning</a></li>
             </ul>
 
-            <ul id="product_DD" class="dropdown-content indigo darken-4">
-                <li><a href="stok_produk" class="white-text">Stok Produk</a></li>
-                <li><a href="produk_baru" class="white-text">Produk Baru</a></li>
-                <li><a href="promo" class="white-text">Promo</a></li>
+            <ul id="produksi_DD" class="dropdown-content indigo darken-4">
+                <li><a href="bahan_baku" class="white-text">Bahan Baku</a></li>
+                <li><a href="komposisi_produk" class="white-text">Komposisi</a></li>
+                <li><a href="data_produk_jadi" class="white-text">Data Produk Jadi</a></li>
+                <li><a href="hasil_produksi" class="white-text">Hasil Produksi</a></li>
             </ul>
 
-            <ul id="customer_DD" class="dropdown-content indigo darken-4">
-                <li><a href="data_customer" class="white-text">Data Customer</a></li>
-                <li><a href="testimoni" class="white-text">Testimoni</a></li>
+            <ul id="report_DD" class="dropdown-content indigo darken-4">
+                <li><a href="quality_control" class="white-text">Quality Control</a></li>
+                <li><a href="laporan_perbaikan_produksi" class="white-text">Lap. Perbaikan Produksi</a></li>
+                <li><a href="laporan_produksi" class="white-text">Lap. Produksi</a></li>
+                <li><a href="laporan_biaya_produksi" class="white-text">Lap. Biaya Produksi</a></li>
             </ul>
+
+           
 
             <ul id="acc_DD" class="dropdown-content indigo darken-4">
                 <li class="no-pointer-event"><a href="#!" class="white-text">Manager</a></li>
@@ -31,7 +36,8 @@
             <!-- navabar menu -->
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="plan_DD">PLAN<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger bold-font" href="#" data-target="product_DD">REPORT<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger bold-font" href="#" data-target="produksi_DD">PRODUKSI<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger bold-font" href="#" data-target="report_DD">REPORT<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="acc_DD">Ryumada<i class="material-icons right">account_circle</i></a></li>
             </ul>
         </div>

@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  *
- * Controller Production_order
+ * Controller Hasil_produksi
  *
  * This controller for ...
  *
@@ -16,7 +16,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-class Production_order extends CI_Controller
+class Hasil_produksi extends CI_Controller
 {
     
   public function __construct()
@@ -30,7 +30,7 @@ class Production_order extends CI_Controller
   {
     $data['production_order'] = $this->production_order_model->get_production_order();
     $data['stock_barang'] = $this->stock_barang_model->get_stock_barang();
-    $this->load->view('produksi/production_order_v', $data);
+    $this->load->view('produksi/hasil_produksi_v', $data);
   }
 
   function save_production_order()

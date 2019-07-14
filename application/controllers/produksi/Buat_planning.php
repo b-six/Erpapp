@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  *
- * Controller Sales_order
+ * Controller Buat_planning
  *
  * This controller for ...
  *
@@ -16,7 +16,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-class Sales_order extends CI_Controller
+class Buat_planning extends CI_Controller
 {
     
   public function __construct()
@@ -30,7 +30,7 @@ class Sales_order extends CI_Controller
   {
     $data['sales_order'] = $this->sales_order_model->get_sales_order();
     $data['customer'] = $this->customer_model->get_customer();
-    $this->load->view('produksi/sales_order_v', $data);
+    $this->load->view('produksi/buat_planning_v', $data);
   }
 
   function save_sales_order()
