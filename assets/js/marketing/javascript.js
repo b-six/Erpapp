@@ -100,6 +100,7 @@ $('#submit-add-po').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
 	$('#form-add-po').submit();
 });
+<<<<<<< HEAD
 
 /////////////////////////////////
 //submit form add PB
@@ -366,8 +367,7 @@ $('.del-promo-trigger').on('click', function(){
 $('#submit-edit-promo').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
 	$('#form-edit-promo').submit();
-});
-
+=======
 // // show wilayah dan tipe customer pada modal edit so
 $("#id_pelanggan-edit").change(function () {
 	var id_pelanggan = $("#id_pelanggan-edit").val();
@@ -585,3 +585,5 @@ $('#submit-delete-test').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
 	$('#form-delete-test').submit();
 });
+=======
+>>>>>>> parent of 85ef89b... Merge pull request #7 from b-six/Algorithm-add-update-delete
