@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Produksi - Buat Planing</title>
+    <title>Produksi - Buat Planning</title>
     <?php $this->load->view('produksi/partials/css.php') ?>
 </head>
 
@@ -18,7 +18,7 @@
                 <form id="form-add-so" class="col s12" action="<?php echo site_url('produksi/sales_order/save_sales_order'); ?>" method="post">
                     <div class="row">
                         <div class="col s12 center">
-                            <h4>Tambah Order</h4>
+                            <h4>Buat Plan Baru</h4>
                         </div>
                     </div>
 
@@ -100,14 +100,14 @@
             <div class="col s7">
                 <nav class="no-shadows breadcrumbs-style">
                     <div class="nav-wrapper blue-dark-grey">
-                        <a class="breadcrumb no-pointer-event">Order</a>
-                        <a href="sales_order" class="breadcrumb">Sales Order</a>
+                        <a class="breadcrumb no-pointer-event">Plan</a>
+                        <a href="buat_planning" class="breadcrumb">Buat Planning</a>
                     </div>
                 </nav>
             </div>
 
             <!-- searchbar -->
-            <div class="col s4"><?php $this->load->view('marketing/partials/searchbar.php'); ?></div>
+            <div class="col s4"><?php $this->load->view('produksi/partials/searchbar.php'); ?></div>
 
             <!-- add sales order -->
             <div class="col s1 center">
@@ -120,11 +120,11 @@
         <div class="row">
             <div class="col s12">
                 <ul class="tabs blue-dark-grey">
-                    <li class="tab col s2"><a href="#pending" class="active small-font">Pending</a></li>
+                    <li class="tab col s2"><a href="#pending" class="active small-font">Terbaru</a></li>
                     <li class="tab col s2"><a class="small-font" href="#on-process">
-                            On-Process</a></li>
+                            Disetujui</a></li>
                     <li class="tab col s2"><a href="#success" class="small-font">
-                            Success</a></li>
+                            Pending</a></li>
                 </ul>
                 <br>
             </div>
@@ -160,7 +160,7 @@
 
                                     if ($col->id_pelanggan == $row->id_pelanggan) :
                                         $nama_pelanggan = $col->nama_pelanggan; ?>
-                                        <tr class="clickable-row" data-href="<?php echo site_url('marketing/shopping_cart/index/' . $row->id_so); ?>">
+                                        <tr class="clickable-row" data-href="<?php echo site_url('produksi/shopping_cart/index/' . $row->id_so); ?>">
                                             <td><?php echo $row->tanggal_pesanan; ?></td>
                                             <td><?php echo $row->id_so; ?></td>
                                             <td><?php echo $nama_pelanggan; ?></td>
@@ -210,7 +210,7 @@
 
                                     if ($col->id_pelanggan == $row->id_pelanggan) :
                                         $nama_pelanggan = $col->nama_pelanggan; ?>
-                                        <tr class="clickable-row" data-href="<?php echo site_url('marketing/shopping_cart/index/' . $row->id_so); ?>">
+                                        <tr class="clickable-row" data-href="<?php echo site_url('produksi/shopping_cart/index/' . $row->id_so); ?>">
                                             <td><?php echo $row->tanggal_pesanan; ?></td>
                                             <td><?php echo $row->id_so; ?></td>
                                             <td><?php echo $nama_pelanggan; ?></td>
@@ -259,7 +259,7 @@
 
                                     if ($col->id_pelanggan == $row->id_pelanggan) :
                                         $nama_pelanggan = $col->nama_pelanggan; ?>
-                                        <tr class="clickable-row" data-href="<?php echo site_url('marketing/shopping_cart/index/' . $row->id_so); ?>">
+                                        <tr class="clickable-row" data-href="<?php echo site_url('produksi/shopping_cart/index/' . $row->id_so); ?>">
                                             <td><?php echo $row->tanggal_pesanan; ?></td>
                                             <td><?php echo $row->id_so; ?></td>
                                             <td><?php echo $nama_pelanggan; ?></td>
@@ -282,7 +282,7 @@
         </div>
     </div>
     <!-- js -->
-    <?php $this->load->view('marketing/partials/js.php') ?>
+    <?php $this->load->view('produksi/partials/js.php') ?>
 </body>
 
 </html>
