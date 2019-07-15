@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Marketing - Produk Baru</title>
+    <title>Marketing - Stok Produk</title>
     <?php $this->load->view('marketing/partials/css.php') ?>
 </head>
 
@@ -17,7 +17,7 @@
                 <nav class="no-shadows breadcrumbs-style">
                     <div class="nav-wrapper blue-dark-grey">
                         <a class="breadcrumb no-pointer-event">Product</a>
-                        <a href="produk_baru" class="breadcrumb">Produk Baru</a>
+                        <a href="stok_produk" class="breadcrumb">Stok Produk</a>
                     </div>
                 </nav>
             </div>
@@ -37,12 +37,6 @@
             <!-- 1 card -->
             <div class="col s12">
                 <div class="card horizontal black-text m7 hoverable rounded-card">
-                    <div class="card-content center">
-                        1.
-                    </div>
-                    <div class="card-image">
-                        <img src="https://lorempixel.com/100/170/nature/6">
-                    </div>
                     <div class="card-stacked">
                         <div class="card-content">
                             <div class="row">
@@ -59,9 +53,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="card-content center">
-                        <h6 class="small-text"><b>Jumlah Permintaan</b></h6>
-                        <h3>258</h3>
+                    <div class="card-image">
+                        <img src="https://lorempixel.com/100/170/nature/6">
+                    </div>
+                    <div class="card-content">
+                        <h2>258</h2>
                     </div>
                 </div>
             </div>
@@ -69,12 +65,6 @@
             <!-- 1 card -->
             <div class="col s12">
                 <div class="card horizontal black-text m7 hoverable rounded-card">
-                    <div class="card-content center">
-                        2.
-                    </div>
-                    <div class="card-image">
-                        <img src="https://lorempixel.com/100/170/nature/6">
-                    </div>
                     <div class="card-stacked">
                         <div class="card-content">
                             <div class="row">
@@ -84,16 +74,18 @@
                                     <h6><b>Harga Produk</b></h6>
                                 </div>
                                 <div class="col s9">
-                                    <h6>: Sosro1</h6>
+                                    <h6>: Sosro2</h6>
                                     <h6>: 22-02-2022</h6>
                                     <h6>: Rp. 258.000.000,-</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-content center">
-                        <h6 class="small-text"><b>Jumlah Permintaan</b></h6>
-                        <h3>258</h3>
+                    <div class="card-image">
+                        <img src="https://lorempixel.com/100/170/nature/6">
+                    </div>
+                    <div class="card-content">
+                        <h2>258</h2>
                     </div>
                 </div>
             </div>
@@ -101,12 +93,6 @@
             <!-- 1 card -->
             <div class="col s12">
                 <div class="card horizontal black-text m7 hoverable rounded-card">
-                    <div class="card-content center">
-                        3.
-                    </div>
-                    <div class="card-image">
-                        <img src="https://lorempixel.com/100/170/nature/6">
-                    </div>
                     <div class="card-stacked">
                         <div class="card-content">
                             <div class="row">
@@ -116,20 +102,21 @@
                                     <h6><b>Harga Produk</b></h6>
                                 </div>
                                 <div class="col s9">
-                                    <h6>: Sosro1</h6>
+                                    <h6>: Sosro3</h6>
                                     <h6>: 22-02-2022</h6>
                                     <h6>: Rp. 258.000.000,-</h6>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="card-content center">
-                        <h6 class="small-text"><b>Jumlah Permintaan</b></h6>
-                        <h3>258</h3>
+                    <div class="card-image">
+                        <img src="https://lorempixel.com/100/170/nature/6">
+                    </div>
+                    <div class="card-content">
+                        <h2>258</h2>
                     </div>
                 </div>
             </div>
-
         </div>
 
 

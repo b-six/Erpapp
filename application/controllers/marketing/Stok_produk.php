@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  *
- * Controller Promo
+ * Controller Stok_produk
  *
  * This controller for ...
  *
@@ -16,7 +16,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-class Promo extends CI_Controller
+class Stok_produk extends CI_Controller
 {
     
   public function __construct()
@@ -26,12 +26,11 @@ class Promo extends CI_Controller
 
   public function index()
   {
-    $this->load->view('marketing/promo_v');
-    
+    $this->load->view('marketing/stok_produk_v');
   }
 
 }
 
 
-/* End of file Promo.php */
-/* Location: ./application/controllers/Promo.php */
+/* End of file Stok_produk.php */
+/* Location: ./application/controllers/Stok_produk.php */

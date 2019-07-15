@@ -1,19 +1,12 @@
-/*tombol delete dan edit*/
+/*tombol tabel*/
 td.button-container{
     width: 80px;
 }
-#table-button, #card-button{
+#table-button{
     display:none;
 }
 .delete-button, .edit-button{
     color: white;
-}
-.delete-button.oncard, .edit-button.oncard{
-    color: black;
-    font-size: 32px;
-}
-.delete-button.oncard.promo, .edit-button.oncard.promo{
-    font-size: 28px;
 }
 .edit-button:hover{
     color: #ff8000;
@@ -97,18 +90,10 @@ body {
     font-weight: bold;
 }
 
-/*card*/
 .rounded-card {
 	border-radius: 12px 12px 12px 12px;
 	/* or */
 	border-radius: 12px 12px;
-}
-.card-content.card-content-stok-barang{
-    height: 130px;
-    padding: 2%;
-}
-.margin-0{
-    margin: 0;
 }
 
 .small-text {
@@ -135,8 +120,4 @@ body {
 .clickable-row {
     cursor: pointer;
 }
-
-/*icon color*/
-i.icon-green{
-    color: #008813;
-}
+  
