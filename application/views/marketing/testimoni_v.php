@@ -50,9 +50,9 @@
                                         ?>
                                         <option value="<?php echo $col->id_pelanggan ?>"><?php echo $col->id_so ?></option>
                                     <?php
-                                endif;
-                            endforeach;
-                            ?>
+                                    endif;
+                                endforeach;
+                                ?>
                             </select>
                             <label for="id_so">No. Order</label>
                         </div>
@@ -93,6 +93,94 @@
             </button>
         </div>
 
+    </div>
+
+    <!-- Modal Edit Testimoni -->
+    <div id="edit-test-modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+
+                <form id="form-edit-test" class="col s12" action="<?php echo site_url('marketing/testimoni/update_testimoni'); ?>" method="post">
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h4>Edit Testimoni</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="id_so-edit" id="id_so-edit" placeholder="-" value="-" readonly>
+                            <label for="id_so">No. Order</label>
+                        </div>
+                    </div>
+                    <input type="text" name="id_test-edit" id="id_test-edit" readonly hidden>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="show-nama-edit" id="show-nama-edit" placeholder="-" readonly>
+                            <label for="show-nama">Nama</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="show-wilayah-edit" id="show-wilayah-edit" placeholder="-" readonly>
+                            <label for="show-wilayah">Wilayah</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="show-tipe-customer-edit" id="show-tipe-customer-edit" placeholder="-" readonly>
+                            <label for="show-tipe-customer">Tipe Customer</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="pesan-edit" name="pesan-edit" class="materialize-textarea" placeholder="Masukkan Review Anda"></textarea>
+                            <label for="pesan">Pesan</label>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <a href="#konfirm-edit-test" class="btn waves-effect waves-light orange darken-3 modal-trigger">Submit
+                <i class="material-icons right">send</i>
+            </a>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Edit Testimoni -->
+    <div id="konfirm-edit-test" class="modal">
+        <div class="modal-content">
+            <h4>Konfirmasi</h4>
+            <p>Apakah Anda yakin ingin menyimpan perubahan ini?</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
+            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-edit-test" id="submit-edit-test">Ya
+                <i class="material-icons right"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Konfirmasi Delete Testimoni -->
+    <div id="konfirm-delete-test" class="modal">
+        <div class="modal-content">
+            <h4>Konfirmasi</h4>
+            <p>Apakah Anda yakin ingin menghapus data customer ini?</p>
+            <form id="form-delete-test" class="col s12" action="<?php echo site_url('marketing/testimoni/delete_testimoni'); ?>" method="post">
+                <input type="text" id="id_test_delete" name="id_test_delete" hidden>
+                <input type="text" id="id_so_delete_test" name="id_so_delete_test" hidden>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <button class="btn waves-effect waves-light red darken-2" type="submit" name="submit-delete-test" id="submit-delete-test">Delete
+                <i class="material-icons right">delete</i>
+            </button>
+        </div>
     </div>
 
     <!-- konten -->
@@ -147,23 +235,27 @@
                                     ?>
                                     <td><?php echo $row->nama_pelanggan; ?></td>
                                     <td><?php echo $row->tipe_customer; ?></td>
+                                    <input type="text" name="get-wilayah-<?php echo $col->id_so;?>" id="get-wilayah-<?php echo $col->id_so;?>" value="<?php echo $row->wilayah; ?>" hidden>
+                                    <input type="text" value="<?php echo $row->nama_pelanggan; ?>" id="get-nama-<?php echo $col->id_so; ?>" name="get-nama-<?php echo $col->id_so; ?>" hidden>
+                                    <input type="text" value="<?php echo $row->tipe_customer; ?>" id="get-tipe-<?php echo $col->id_so; ?>" name="get-tipe-<?php echo $col->id_so; ?>" hidden>
                                 <?php
-                            endif;
-                        endforeach;
-                        ?>
+                                endif;
+                            endforeach;
+                            ?>
                             <td><?php echo $col->id_so; ?></td>
                             <td><?php
                                 $testimoni_barang = substr($col->testimoni_barang, 0, 25);
                                 echo $testimoni_barang; ?></td>
                             <td class="button-container">
                                 <div id="table-button">
-                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
+                                    <a href="#konfirm-delete-test" class="modal-trigger" id="delete_<?php echo $col->id_testimoni; ?>" data-id_so="<?php echo $col->id_so; ?>" onClick="getIdDelete_test(this.id)" ><i class="material-icons delete-button">delete_forever</i></a>
+                                    <a href="#edit-test-modal" class="modal-trigger" id="edit_test_<?php echo $col->id_so; ?>" onClick="getIdEdit_test(this.id)" data-id_test="<?php echo $col->id_testimoni; ?>"><i class="material-icons edit-button">create</i></a>
                                 </div>
                             </td>
                         </tr>
                     <?php
-                endforeach;
-                ?>
+                    endforeach;
+                    ?>
                 </tbody>
             </table>
         </div>
