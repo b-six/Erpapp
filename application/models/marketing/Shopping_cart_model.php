@@ -39,24 +39,6 @@ class Shopping_cart_model extends CI_Model {
     );
     $this->db->insert('shopping_cart', $data);
   }
-
-  function update_shopping_cart($id_sc, $id_barang, $jumlah_barang, $total_harga)
-  {
-    $data = array(
-      'id_sc' => $id_sc,
-      'id_barang' => $id_barang,
-      'jumlah_barang' => $jumlah_barang,
-      'total_harga' => $total_harga
-    );
-    $this->db->where('id_sc', $id_sc);
-    $this->db->update('shopping_cart', $data);
-  }
-
-  function delete_shopping_cart($id_sc)
-  {
-    $this->db->where('id_sc', $id_sc);
-    $this->db->delete('shopping_cart');
-  }
   // ------------------------------------------------------------------------
 
 }

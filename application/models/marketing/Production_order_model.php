@@ -37,23 +37,6 @@ class Production_order_model extends CI_Model {
     $this->db->insert('production_order', $data);
   }
 
-  function update_production_order($id_po, $jumlah_pesanan, $id_barang)
-  {
-    $data = array(
-      'id_po' => $id_po,
-      'jumlah_pesanan' => $jumlah_pesanan,
-      'id_barang' => $id_barang
-    );
-    $this->db->where('id_po', $id_po);
-    $this->db->update('production_order', $data);
-  }
-
-  function delete_production_order($id_po)
-  {
-    $this->db->where('id_po', $id_po);
-    $this->db->delete('production_order');
-  }
-
   // ------------------------------------------------------------------------
 
 }

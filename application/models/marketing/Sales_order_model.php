@@ -63,47 +63,6 @@ class Sales_order_model extends CI_Model
     $this->db->update('sales_order', $data);
   }
 
-  function update_sales_order($id_so, $id_pelanggan)
-  {
-    $data = array(
-      'id_so' => $id_so,
-      'id_pelanggan' => $id_pelanggan
-    );
-    $this->db->where('id_so', $id_so);
-    $this->db->update('sales_order', $data);
-  }
-
-  function delete_sales_order($id_so)
-  {
-    $this->db->where('id_so', $id_so);
-    $this->db->delete('sales_order');
-  }
-
-  function delete_shopping_cart($id_so)
-  {
-    $this->db->where('id_so', $id_so);
-    $this->db->delete('shopping_cart');
-  }
-
-  function update_kumulasi_delete_sc($id_so, $harga, $jumlah_barang)
-  {
-    $data = array(
-      'total_pesanan' => $harga,
-      'total_barang' => $jumlah_barang
-    );
-    $this->db->where('id_so', $id_so);
-    $this->db->update('sales_order', $data);
-  }
-
-  function delete_testimoni($id_so)
-  {
-    $test = 'N';
-    $data = array(
-      'testimoni' => $test
-    );
-    $this->db->where('id_so', $id_so);
-    $this->db->update('sales_order', $data);
-  }
   // ------------------------------------------------------------------------
 
 }

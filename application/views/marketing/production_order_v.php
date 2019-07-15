@@ -34,13 +34,6 @@
                         }
                     endforeach;
                     $id_po = "P-" . $date . ($jumlahIdSama + 1);
-                    foreach ($production_order->result() as $row) :
-                        $sama = 0;
-                        if ($id_po == $row->id_po){
-                            $sama++;
-                        }
-                    endforeach;
-                    $id_po = "P-" . $date . ($jumlahIdSama + 1 + $sama);
                     ?>
                     <!-- end generate id po -->
 
@@ -80,87 +73,6 @@
             </button>
         </div>
 
-    </div>
-
-    <!-- Modal Edit Production Order -->
-    <div id="edit-po-modal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <div class="row">
-
-                <form id="form-edit-po" class="col s12" action="<?php echo site_url('marketing/production_order/update_production_order'); ?>" method="post">
-                    <div class="row">
-                        <div class="col s12 center">
-                            <h4>Edit Production Order</h4>
-                        </div>
-                    </div>
-
-                    <div class='row'>
-                        <div class='input-field col s12'>
-                            <input id='id_po-edit' name='id_po-edit' type='text' class='validate' autocomplete='off' placeholder="-" readonly>
-                            <label for='harga_satuan'>No. Produksi</label></div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <select id="id_produk-edit" name="id_produk-edit">
-                                <option value="" disabled selected>Pilih Produk</option>
-                                <?php $hitung = 0;
-                                foreach ($stock_barang->result() as $col) :
-                                    $hitung++;
-                                    ?>
-                                    <option value="<?php echo $col->id_barang ?>"><?php echo $col->nama_barang ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <label>Produk</label>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class='input-field col s12'>
-                            <input id='jumlah_barang-edit' name='jumlah_barang-edit' type='number' class='validate' autocomplete='off' placeholder="0" value="">
-                            <label for='jumlah_barang'>Jumlah</label></div>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <a href="#konfirm-edit-PO" class="btn waves-effect waves-light orange darken-3 modal-trigger">Save
-                <i class="material-icons right">save</i>
-            </a>
-        </div>
-
-    </div>
-
-    <!-- Modal Konfirmasi Edit PO -->
-    <div id="konfirm-edit-PO" class="modal">
-        <div class="modal-content">
-            <h4>Konfirmasi</h4>
-            <p>Apakah Anda yakin ingin menyimpan perubahan ini?</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
-            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-edit-po" id="submit-edit-po">Ya
-                <i class="material-icons right"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- Modal Konfirmasi Delete PO -->
-    <div id="konfirm-delete-PO" class="modal">
-        <div class="modal-content">
-            <h4>Konfirmasi</h4>
-            <p>Apakah Anda yakin ingin menghapus production order ini?</p>
-            <form id="form-delete-po" class="col s12" action="<?php echo site_url('marketing/production_order/delete_production_order'); ?>" method="get">
-                <input type="text" id="id_po_delete" name="id_po_delete" hidden>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <button class="btn waves-effect waves-light red darken-2" type="submit" name="submit-delete-po" id="submit-delete-po">Delete
-                <i class="material-icons right">delete</i>
-            </button>
-        </div>
     </div>
 
     <!-- konten -->
@@ -240,13 +152,13 @@
                                     <td><?php echo $row->jumlah_pesanan; ?></td>
                                     <td class="button-container">
                                         <div id="table-button">
-                                            <a href="#konfirm-delete-PO" id="<?php echo $row->id_po; ?>" class="modal-trigger" onClick="getIdDelete_PO(this.id)"><i class="material-icons delete-button">delete_forever</i></a> <a href="#edit-po-modal" class="modal-trigger" id="<?php echo $row->id_po; ?>" onClick="getIdEdit_PO(this.id)"><i class="material-icons edit-button">create</i></a>
+                                            <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
                                         </div>
                                     </td>
                                 </tr>
                             <?php
-                            endif;
-                        endforeach; ?>
+                        endif;
+                    endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -285,17 +197,18 @@
                                             endif;
                                         endforeach;
                                         ?>
+
                                     </td>
                                     <td><?php echo $row->jumlah_pesanan; ?></td>
                                     <td class="button-container">
                                         <div id="table-button">
-                                            <a href="#konfirm-delete-PO" id="<?php echo $row->id_po; ?>" class="modal-trigger" onClick="getIdDelete_PO(this.id)"><i class="material-icons delete-button">delete_forever</i></a> <a href="#edit-po-modal" class="modal-trigger" id="<?php echo $row->id_po; ?>" onClick="getIdEdit_PO(this.id)"><i class="material-icons edit-button">create</i></a>
+                                            <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
                                         </div>
                                     </td>
                                 </tr>
                             <?php
-                            endif;
-                        endforeach; ?>
+                        endif;
+                    endforeach; ?>
                     </tbody>
                 </table>
             </div>
@@ -339,13 +252,13 @@
                                     <td><?php echo $row->jumlah_pesanan; ?></td>
                                     <td class="button-container">
                                         <div id="table-button">
-                                            <a href="#konfirm-delete-PO" id="<?php echo $row->id_po; ?>" class="modal-trigger" onClick="getIdDelete_PO(this.id)"><i class="material-icons delete-button">delete_forever</i></a> <a href="#edit-po-modal" class="modal-trigger" id="<?php echo $row->id_po; ?>" onClick="getIdEdit_PO(this.id)"><i class="material-icons edit-button">create</i></a>
+                                            <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
                                         </div>
                                     </td>
                                 </tr>
                             <?php
-                            endif;
-                        endforeach; ?>
+                        endif;
+                    endforeach; ?>
                     </tbody>
                 </table>
             </div>
