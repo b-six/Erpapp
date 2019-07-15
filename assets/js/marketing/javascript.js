@@ -27,7 +27,7 @@ $(".clickable-row").click(function () {
 	window.location = $(this).data("href");
 });
 
-//show harga satuan produk, jumlah, total harga dan gambar produk pada add sc
+//show harga satuan produk, jumlah, total harga dan gambar produk
 $("#id_produk").change(function () {
 	var id_produk = $("#id_produk").val();
 	var harga_satuan = $("#" + id_produk).val();
@@ -39,11 +39,11 @@ $("jumlah_barang").keypress(function () {
 	$('#total_harga').val($('#jumlah_barang').val() * $('#' + id_produk).val());
 });
 
-var $output2 = $("#total_harga");
-$("#jumlah_barang").keyup(function () {
-	var value = parseFloat($(this).val());
-	var harga_satuan1 = $("#harga_satuan").val();
-	$output2.val(value * harga_satuan1);
+var $output = $("#total_harga");
+$("#jumlah_barang").keyup(function() {
+    var value = parseFloat($(this).val());
+    var harga_satuan1 = $("#harga_satuan").val();
+    $output.val(value*harga_satuan1);
 });
 
 //submit form-add-item-sc
@@ -91,7 +91,7 @@ $('#submit-add-testimoni').click(function () {
 
 //untuk nampilin dan nyembunyiin tombol di tabel
 $("#table-button").css("display", "none");
-$('tr').on('mouseover mouseout', function () {
+$('tr').on('mouseover mouseout', function(){
 	$(this).find('#table-button').toggle();
 });
 
@@ -113,6 +113,7 @@ $('#submit-add-po').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
 	$('#form-add-po').submit();
 });
+<<<<<<< HEAD
 
 /////////////////////////////////
 //submit form add PB
@@ -597,3 +598,5 @@ $('#submit-delete-test').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
 	$('#form-delete-test').submit();
 });
+=======
+>>>>>>> parent of 85ef89b... Merge pull request #7 from b-six/Algorithm-add-update-delete

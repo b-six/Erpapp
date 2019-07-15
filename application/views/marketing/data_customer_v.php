@@ -29,13 +29,6 @@
                         $hitung++;
                     endforeach;
                     $id_pelanggan = $hitung;
-                    foreach ($customer->result() as $row) :
-                        $sama = 0;
-                        if ($id_pelanggan == $row->id_pelanggan){
-                            $sama++;
-                        }
-                    endforeach;
-                    $id_pelanggan = $hitung + $sama;
                     ?>
                     <!-- end generate id customer -->
 
@@ -80,91 +73,6 @@
             </button>
         </div>
 
-    </div>
-
-    <!-- Modal Edit Customer -->
-    <div id="edit-cust-modal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <div class="row">
-
-                <form id="form-edit-cust" class="col s12" action="<?php echo site_url('marketing/data_customer/update_customer'); ?>" method="post">
-                    <div class="row">
-                        <div class="col s12 center">
-                            <h4>Edit Customer</h4>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="id_pelanggan-edit" name="id_pelanggan-edit" type="text" class="validate" autocomplete="off" value=" " readonly>
-                            <label for="id_pelanggan">ID</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" name="nama_pelanggan-edit" id="nama_pelanggan-edit" placeholder="Masukkan Nama Customer" autocomplete="off">
-                            <label for="nama_pelanggan">Nama</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <select id="tipe_customer-edit" name="tipe_customer-edit">
-                                <option value="" disabled selected>Pilih Jenis Customer</option>
-                                <option value="Retailer">Retailer</option>
-                                <option value="Distributor">Distributor</option>
-                                <option value="Personal">Personal</option>
-                            </select>
-                            <label>Jenis</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" name="wilayah-edit" id="wilayah-edit" placeholder="Masukkan Wilayah Pemesanan Customer" autocomplete="off">
-                            <label for="wilayah">Wilayah</label>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <a href="#konfirm-edit-cust" class="btn waves-effect waves-light orange darken-3 modal-trigger">Submit
-                <i class="material-icons right">send</i>
-            </a>
-        </div>
-    </div>
-
-    <!-- Modal Konfirmasi Edit Customer -->
-    <div id="konfirm-edit-cust" class="modal">
-        <div class="modal-content">
-            <h4>Konfirmasi</h4>
-            <p>Apakah Anda yakin ingin menyimpan perubahan ini?</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
-            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-edit-cust" id="submit-edit-cust">Ya
-                <i class="material-icons right"></i>
-            </button>
-        </div>
-    </div>
-
-    <!-- Modal Konfirmasi Delete Customer -->
-    <div id="konfirm-delete-cust" class="modal">
-        <div class="modal-content">
-            <h4>Konfirmasi</h4>
-            <p>Apakah Anda yakin ingin menghapus data customer ini?</p>
-            <form id="form-delete-cust" class="col s12" action="<?php echo site_url('marketing/data_customer/delete_customer'); ?>" method="get">
-                <input type="text" id="id_cust_delete" name="id_cust_delete" hidden>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <button class="btn waves-effect waves-light red darken-2" type="submit" name="submit-delete-cust" id="submit-delete-cust">Delete
-                <i class="material-icons right">delete</i>
-            </button>
-        </div>
     </div>
 
     <!-- konten -->
@@ -218,14 +126,13 @@
                             <td><?php echo $col->sejak; ?></td>
                             <td class="button-container">
                                 <div id="table-button">
-                                    <a href="#konfirm-delete-cust" id="delete_id_<?php echo $col->id_pelanggan; ?>" class="modal-trigger" onClick="getId_cust(this.id)"><i class="material-icons delete-button">delete_forever</i></a>
-                                    <a href="#edit-cust-modal" id="id_pelanggan_<?php echo $col->id_pelanggan; ?>" class="modal-trigger" onClick="getIdEdit_cust(this.id)" data-nama_cust="<?php echo $col->nama_pelanggan; ?>" data-wilayah_cust="<?php echo $col->wilayah; ?>"><i class="material-icons edit-button">create</i></a>
+                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
                                 </div>
                             </td>
                         </tr>
                     <?php
-                    endforeach;
-                    ?>
+                endforeach;
+                ?>
 
                 </tbody>
             </table>

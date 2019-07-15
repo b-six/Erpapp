@@ -37,21 +37,6 @@ class Testimoni_model extends CI_Model {
     $this->db->insert('testimoni', $data);
   }
 
-  function update_testimoni($id_testimoni, $testimoni_barang)
-  {
-    $data = array(
-      'testimoni_barang' => $testimoni_barang
-    );
-    $this->db->where('id_testimoni', $id_testimoni);
-    $this->db->update('testimoni', $data);
-  }
-
-  function delete_testimoni($id_testimoni)
-  {
-    $this->db->where('id_testimoni', $id_testimoni);
-    $this->db->delete('testimoni');
-  }
-
   // ------------------------------------------------------------------------
 
 }
