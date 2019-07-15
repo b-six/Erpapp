@@ -8,6 +8,11 @@ class Promo_model extends CI_Model {
 		
 	}
 
+	function updatePromo($where, $data, $table){
+		$this->db->where('id_promo', $where);
+		$this->db->update($table, $data);
+	}
+
 	function hapusPromo($id_promo){
 		$this->db->where('id_promo', $id_promo);
 		$this->db->delete('promo');

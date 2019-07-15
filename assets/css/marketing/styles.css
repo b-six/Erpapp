@@ -97,10 +97,18 @@ body {
     font-weight: bold;
 }
 
+/*card*/
 .rounded-card {
 	border-radius: 12px 12px 12px 12px;
 	/* or */
 	border-radius: 12px 12px;
+}
+.card-content.card-content-stok-barang{
+    height: 130px;
+    padding: 2%;
+}
+.margin-0{
+    margin: 0;
 }
 
 .small-text {

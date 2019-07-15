@@ -1,10 +1,16 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Produk_baru_model extends CI_Model {
+	function updateProdukBaru($where, $data, $table){
+		$this->db->where('id_barang', $where);
+		$this->db->update($table, $data);
+	}
+
 	function hapusProdukBaru($id_barang){
 		$this->db->where('id_barang', $id_barang);
 		$this->db->delete('produk_baru');
 	}
+
 	function getOneProdukBaru($id_barang){
 		$this->db->where('id_barang', $id_barang);
 		return $this->db->get('produk_baru')->result_array();
@@ -18,6 +24,7 @@ class Produk_baru_model extends CI_Model {
 	function saveProdukBaru($data){
 		$this->db->insert('produk_baru', $data);
 	}
+	
 	function saveUpload($title, $image){
 		$data = array(
 				'title'		=> $title,

@@ -29,7 +29,6 @@
             <div class="col s1 center">
                 <nav class="no-shadows blue-dark-grey"><a class="modal-trigger" href="#add-promo-modal"><i class="material-icons">add_circle_outline</i></a></nav>
             </div>
-
         </div>
 
         <!-- Modal Tambah Promo -->
@@ -106,7 +105,7 @@
                     <h4>Tambah Promo</h4>
                 </div>
 
-                <form method="post" action="<?php echo base_url('marketing/promo/tambahPromo')?>" class="col s12" id="form-add-pb" enctype="multipart/form-data">
+                <form method="post" action="<?php echo base_url('marketing/promo/editPromo')?>" class="col s12" id="form-edit-promo" enctype="multipart/form-data">
 
                     <div class="row">
                         <div class="input-field col s12">
@@ -131,18 +130,11 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input name="banner_promo-edit" id="banner_promo-edit" type="text" >
-                            <label for="banner_promo-edit">Banner Promo Lama</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
                             <div class="file-field input-field">
                                 <div class="card-title">Banner Promo Baru</div>
                                 <div class="btn orange">
                                     <span><i class="material-icons">attach_file</i></span>
-                                    <input id="banner-promo" name="banner_promo" type="file">
+                                    <input id="banner-promo-edit" name="banner_promo" type="file">
                                 </div>
                                 <div class="file-path-wrapper">
                                     <input class="file-path" type="text" placeholder="Banner Promo">
@@ -154,10 +146,9 @@
                     <div class="row">
                         <div class="input-field col s12 center">
                             <label for="banner-preview">Tampilan Banner</label>
-                            <img src="" name="banner-preview" id="banner-preview" width="250" />
+                            <img src="" name="banner-preview" id="banner-preview-edit" width="250" />
                         </div>
                     </div>
-
                 </form> 
             </div>
             <!-- /modal content -->
@@ -165,7 +156,7 @@
             <!-- modal footer -->
             <div class="modal-footer">
                 <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                <button class="btn waves-effect waves-light green darken-3" type="submit" name="submit-add-pb" id="submit-add-pb"><i class="material-icons">add</i></button>
+                <button class="btn waves-effect waves-light green darken-3" type="submit" name="submit-add-pb" id="submit-edit-promo"><i class="material-icons">add</i></button>
             </div>
             <!-- /modal footer -->
         </div>
@@ -225,7 +216,7 @@
                                     <div class="col s2 right-align" style="padding:inherit; height: 100%" >
                                         <div id="card-button">
                                             <a href="javascript:void(0);" class="del-promo-trigger" data-id_promo="<?php echo $v['id_promo']; ?>"><i class="material-icons delete-button oncard promo">delete_forever</i></a>
-                                            <a class="edit-promo-trigger" class="modal-trigger" href="javascript:void(0);" data-id_promo="<?php echo $v['id_promo']; ?>" data-produk="<?php echo $v['produk']; ?>" data-jumlah_pembelian="<?php echo $v['jumlah_pembelian']; ?>" data-banner_promo="<?php echo $v['banner_promo']; ?>"><i class="material-icons edit-button oncard promo">create</i></a>
+                                            <a class="edit-promo-trigger" class="modal-trigger" href="javascript:void(0);" data-id_promo="<?php echo $v['id_promo']; ?>" data-produk="<?php echo $v['produk']; ?>" data-jumlah_pembelian="<?php echo $v['jumlah_pembelian']; ?>" data-banner_promo="<?php echo $v['banner_promo']; ?>" data-tampil_link="<?php echo base_url('document/marketing/promo/'); ?>"><i class="material-icons edit-button oncard promo">create</i></a>
                                         </div>
                                     </div>                                
                                 </div>

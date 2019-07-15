@@ -16,7 +16,51 @@ class Promo extends CI_Controller
 		$this->load->view('marketing/promo_v', $data);
 	}
 
-	function tambahPromo(){
+	function editPromo(){
+		$id_promo = $this->input->post('id_promo');
+		echo $this->input->post('produk');
+		echo $this->input->post('jumlah_pembelian');
+
+		//cek input type file
+		// print_r($_FILES);
+		// echo '<br>'.$_FILES['banner_promo']['error'];
+
+		echo('<br><br>');
+
+		//cek apakah bannernya diedit atau engga
+		if (!empty($_FILES['banner_promo']['name'])) {
+			//bannernya diedit 
+			$upload_data = $this->uploadBanner();
+
+			//ambil data dari database
+			$result = $this->promo_model->getOnePromo($id_promo);
+			$banner_promo = $result[0]['banner_promo'];
+			
+			//hapus banner promo yang lama
+			if(unlink('document/marketing/promo/'.$banner_promo)){
+				$error = array('banner_promo' => 'berhasil');
+			}else{
+				$error = array('banner_promo' => 'banner_promo tidak ditemukan');
+			}
+		}else{
+			//bannernya ga diedit, ambil nama file dari database
+			$result = $this->promo_model->getOnePromo($id_promo);
+
+			$upload_data['file_name'] = $result[0]['banner_promo'];
+		}
+
+		$data = array(
+			'produk'			=> $this->input->post('produk'),
+			'jumlah_pembelian'	=> $this->input->post('jumlah_pembelian'),
+			'banner_promo'		=> $upload_data['file_name']
+		);
+
+
+		$this->promo_model->updatePromo($id_promo, $data, 'promo');
+		redirect('marketing/promo');
+	}
+
+	function uploadBanner(){
 		//upload Banner Promo
 		$config = array(
 			"upload_path" 	=> './document/marketing/promo',
@@ -35,7 +79,12 @@ class Promo extends CI_Controller
 			$error = array('error' => $this->upload->display_errors());
 		}
 		//ambil array upload_data dalam array data
-		$upload_data = $data['upload_data'];
+		return $data['upload_data'];
+	}
+
+	function tambahPromo(){
+		//upload banner promo
+		$upload_data = $this->uploadBanner();
 
 		//siapkan data
 		$data = array(
