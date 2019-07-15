@@ -95,6 +95,19 @@ $('tr').on('mouseover mouseout', function(){
 	$(this).find('#table-button').toggle();
 });
 
+//untuk nampilin dan nyembunyiin tombol di card view
+$(document).ready(function(){
+	$(document).on('mouseenter', '.card-content', function(){
+		$(this).find("#card-button").show();
+	}).on('mouseleave', '.card-content', function(){
+		$(this).find("#card-button").hide();
+	})
+})
+
+// $('.card-content').on('mouseover mouseout', function(){
+// 	$(this).find('#card-button').toggle();
+// });
+
 //submit form-add-po
 $('#submit-add-po').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
