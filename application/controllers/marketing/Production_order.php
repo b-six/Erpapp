@@ -1,24 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-/**
- *
- * Controller Production_order
- *
- * This controller for ...
- *
- * @package   CodeIgniter
- * @category  Controller
- * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
- * @link      https://github.com/setdjod/myci-extension/
- * @param     ...
- * @return    ...
- *
- */
-
 class Production_order extends CI_Controller
 {
-    
+  
   public function __construct()
   {
     parent::__construct();
