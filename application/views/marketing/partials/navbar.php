@@ -10,7 +10,7 @@
             </ul>
 
             <ul id="product_DD" class="dropdown-content indigo darken-4">
-                <li><a href="stok_produk" class="white-text">Stok Produk</a></li>
+                <li><a href="stok_barang" class="white-text">Stok Barang</a></li>
                 <li><a href="produk_baru" class="white-text">Produk Baru</a></li>
                 <li><a href="promo" class="white-text">Promo</a></li>
             </ul>
@@ -31,7 +31,7 @@
             <!-- navabar menu -->
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="order_DD">ORDER<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger bold-font" href="#" data-target="product_DD">PRODUCT<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger bold-font" href="#" data-target="product_DD">PRODUK<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="customer_DD">CUSTOMER<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="acc_DD">Ryumada<i class="material-icons right">account_circle</i></a></li>
             </ul>
