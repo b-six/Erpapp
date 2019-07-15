@@ -33,30 +33,69 @@
             <table class="responsive-table centered highlight">
                 <thead class="bottom-border">
                     <tr>
-                        <th>No. Pemesanan</th>
+                        <th>No.</th>
+                        <th>No. Penerimaan</th>
                         <th>Nama Bahan Baku</th>
                         <th>Jumlah</th>
                         <th>Supplier</th>
-                        <th>Tgl Pengiriman</th>
+                        <th>Tanggal masuk</th>
                         <th colspan="2"> </th>
                     </tr>
                 </thead>
 
-                <tbody>
-                	<tr>
-                    	<td>12345</td>
-                    	<td>12345</td>
-                    	<td>12345</td>
-                    	<td>12345</td>
-                    	<td>12345</td>
-                    	<td class="button-container">
+                 <tbody>
+                    <?php
+                    //$count = 0;
+                    foreach ($bahan_baku_masuk->result() as $col) :
+                        
+                        //$count++;
+                        ?>
+                        <tr>
+                            <?php
+                            
+                            foreach ($bahan_baku->result() as $row) :
+                                $hitung = 0;
+                                foreach ($supplier->result() as $s) :
+                                $hitung++;
+                                if ($row->id_bahan_baku == $col->id_bahan_baku) :
+                                    if ($col->id_supplier == $s->id_supplier) :
+                                    ?>
+                                    <td><?php echo $hitung; ?></td>
+                                    <td><?php echo $col->id_bahan_baku_masuk; ?></td>
+                                    <td><?php echo $row->nama_bahan_baku; ?></td>
+                                    <td><?php echo $col->jml_bahan_baku_masuk; ?></td>
+                                    <td><?php echo $s->nama_supplier; ?></td>
+                                    <td><?php echo $col->tgl_bahan_baku_masuk; ?></td>
+                                    <td class="button-container">
                             <div id="table-button">
-                            	<a href="#" name="sesuai"><i class="material-icons delete-button">check</i></a>
-                            	<a href="#retur" class="modal-trigger" name="retur"><i class="material-icons edit-button">arrow_back</i></a> 
+                                <a href="#" name="sesuai"><i class="material-icons delete-button">check</i></a>
+                                <a href="#retur" class="modal-trigger" name="retur"><i class="material-icons edit-button">arrow_back</i></a> 
                             </div>
                         </td>
-                    </tr>
+                                <?php
+                                endif;
+                            endif;
+                        endforeach;
+                        endforeach;
+                        ?>
+
+                            <!--
+                            <td><?php echo $col->id_so; ?></td>
+                            <td><?php
+                                $testimoni_barang = substr($col->testimoni_barang, 0, 25);
+                                echo $testimoni_barang; ?></td>
+                            <td class="button-container">
+                                <div id="table-button">
+                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> 
+                                    <a href="#"><i class="material-icons edit-button">create</i></a>
+                                </div>
+                            </td>-->
+                        </tr>
+                    <?php
+                endforeach;
+                ?>
                 </tbody>
+
             </table>
         </div>
 

@@ -22,13 +22,17 @@ class stok_bahan_baku extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('warehouse/Bahan_baku_model');
   }
 
   public function index()
   {
-    // $data['production_order'] = $this->production_order_model->get_production_order();
-    // $data['stock_barang'] = $this->stock_barang_model->get_stock_barang();
-    $this->load->view('warehouse/stok_bahan_baku_v');
+    $data['bahan_baku'] = $this->Bahan_baku_model->get_bahan_baku();
+    $data['supplier'] = $this->Bahan_baku_model->get_supplier();
+    $data['bahan_baku_masuk'] = $this->Bahan_baku_model->get_bahan_baku_masuk();
+    $data['bahan_baku_keluar'] = $this->Bahan_baku_model->get_bahan_baku_keluar();
+    $data['surat_jalan_pengiriman_bahan_baku'] = $this->Bahan_baku_model->get_surat_jalan_pengiriman_bahan_baku();
+    $this->load->view('warehouse/stok_bahan_baku_v',$data);
   }
 
 

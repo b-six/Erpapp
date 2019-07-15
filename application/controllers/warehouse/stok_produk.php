@@ -22,7 +22,7 @@ class stok_produk extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('marketing/Stock_barang_model');
+    $this->load->model('warehouse/Stock_barang_model');
   }
 
   public function index()

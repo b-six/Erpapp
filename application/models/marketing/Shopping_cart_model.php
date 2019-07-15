@@ -16,29 +16,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  */
 
-class Shopping_cart_model extends CI_Model {
+class Bahan_baku_details_model extends CI_Model {
 
   // ------------------------------------------------------------------------
 
-  function get_shopping_cart()
+  function get_details()
   {
-    $result = $this->db->get('shopping_cart');
+    $result = $this->db->get('bahan_baku');
     return $result;
   }
 
-  function save_shopping_cart($id_so, $id_sc, $id_barang, $jumlah_barang, $total_harga)
-  {
-    $date = date('Y-m-d');
-    $data = array(
-      'id_sc' => $id_sc,
-      'id_so' => $id_so,
-      'id_barang' => $id_barang,
-      'jumlah_barang' => $jumlah_barang,
-      'total_harga' => $total_harga,
-      'tanggal_pesanan' => $date
-    );
-    $this->db->insert('shopping_cart', $data);
-  }
+ 
   // ------------------------------------------------------------------------
 
 }

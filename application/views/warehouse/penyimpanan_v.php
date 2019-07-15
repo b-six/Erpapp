@@ -47,27 +47,67 @@
             <table class="responsive-table centered highlight">
                 <thead class="bottom-border">
                     <tr>
+                        <th>No</th>
                         <th>Tanggal</th>
-                        <th>ID Produk</th>
+                        <th>ID Produk Masuk</th>
                         <th>Nama Produk</th>
                         <th>Jumlah</th>
                     </tr>
                 </thead>
 
                 <tbody>
-                	<tr>
-                    	<td>12345</td>
-                    	<td>12345</td>
-                    	<td>12345</td>
-                    	<td>12345</td>
-                    	<td class="button-container">
-                            <div id="table-button">
-                            	<a href="#"><i class="material-icons delete-button">delete_forever</i></a> 
-                            	<a href="#"><i class="material-icons edit-button">create</i></a>
+                    <?php
+                    //$count = 0;
+                    foreach ($produk_jadi_masuk->result() as $col) :
+                        
+                        //$count++;
+                        ?>
+                        <tr>
+                            <?php
+                            $hitung = 0;
+                            foreach ($stock_barang->result() as $row) :
+                                
+                                $hitung++;
+                                if ($row->id_barang == $col->id_barang) :
+                                    ?>
+                                    <td><?php echo $hitung; ?></td>
+                                    <td><?php echo $col->tgl_produk_masuk; ?></td>
+                                    <td><?php echo $col->id_produk_jadi_masuk; ?></td>
+                                    <td><?php echo $row->nama_barang; ?></td>
+                                    <td><?php echo $col->jml_barang_masuk; ?></td>
+                                    
+                                    <td class="button-container">
+                                    <div id="table-button">
+                                <a href="#"><i class="material-icons delete-button">delete_forever</i></a> 
+                                <a href="#"><i class="material-icons edit-button">create</i></a>
                             </div>
                         </td>
-                    </tr>
+                    
+                        
+                                <?php
+                                endif;
+                             
+                       
+                        endforeach;
+                        ?>
+
+                            <!--
+                            <td><?php echo $col->id_so; ?></td>
+                            <td><?php
+                                $testimoni_barang = substr($col->testimoni_barang, 0, 25);
+                                echo $testimoni_barang; ?></td>
+                            <td class="button-container">
+                                <div id="table-button">
+                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> 
+                                    <a href="#"><i class="material-icons edit-button">create</i></a>
+                                </div>
+                            </td>-->
+                        </tr>
+                    <?php
+                endforeach;
+                ?>
                 </tbody>
+                    
             </table>
         </div>
 

@@ -22,13 +22,16 @@ class penerimaan extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('warehouse/Bahan_baku_model');
   }
 
   public function index()
   {
     // $data['production_order'] = $this->production_order_model->get_production_order();
-    // $data['stock_barang'] = $this->stock_barang_model->get_stock_barang();
-    $this->load->view('warehouse/penerimaan_v');
+    $data['bahan_baku_masuk'] = $this->Bahan_baku_model->get_bahan_baku_masuk();
+    $data['supplier'] = $this->Bahan_baku_model->get_supplier();
+    $data['bahan_baku'] = $this->Bahan_baku_model->get_bahan_baku();
+    $this->load->view('warehouse/penerimaan_v',$data);
   }
 
 

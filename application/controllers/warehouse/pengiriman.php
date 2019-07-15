@@ -22,13 +22,15 @@ class pengiriman extends CI_Controller
   public function __construct()
   {
     parent::__construct();
+    $this->load->model('warehouse/Stock_barang_model');
   }
 
   public function index()
   {
-    // $data['production_order'] = $this->production_order_model->get_production_order();
-    // $data['stock_barang'] = $this->stock_barang_model->get_stock_barang();
-    $this->load->view('warehouse/pengiriman_v');
+    $data['stock_barang'] = $this->Stock_barang_model->get_stock_barang();
+    $data['customer'] = $this->Stock_barang_model->get_customer();
+    $data['produk_jadi_keluar'] = $this->Stock_barang_model->get_produk_jadi_keluar();
+    $this->load->view('warehouse/pengiriman_v',$data);
   }
 
 
