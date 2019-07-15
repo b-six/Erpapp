@@ -3,7 +3,7 @@ SQLyog Community v13.1.2 (64 bit)
 MySQL - 10.1.37-MariaDB : Database - erpapp
 *********************************************************************
 */
-=======
+
 -- phpMyAdmin SQL Dump
 -- version 4.8.0.1
 -- https://www.phpmyadmin.net/
@@ -28,7 +28,7 @@ USE `erpapp`;
 /*Table structure for table `customer` */
 
 DROP TABLE IF EXISTS `customer`;
-=======
+
 --
 -- Table structure for table `customer`
 --
@@ -51,7 +51,7 @@ insert  into `customer`(`id_pelanggan`,`nama_pelanggan`,`alamat_pelanggan`,`wila
 ('1127','Ryumada Rizuki','Jl. Cipayung','Jakarta Timur','Distributor','2019-06-07'),
 ('3','Akubaruto Rizuki','','Jakarta Selatan','Distributor','2019-06-03'),
 ('4','Bayu Uicaksono','','Cikupa','Personal','2019-06-03');
-=======
+
 --
 -- Dumping data for table `customer`
 --
@@ -79,7 +79,7 @@ CREATE TABLE `gallery` (
 /*Table structure for table `production_order` */
 
 DROP TABLE IF EXISTS `production_order`;
-=======
+
 --
 -- Table structure for table `production_order`
 --
@@ -143,7 +143,7 @@ insert  into `promo`(`id_promo`,`produk`,`jumlah_pembelian`,`banner_promo`) valu
 ('943425356thsz','trnjrsdht mds',422253,'b47508d6835386a750064a20b5c710be.png'),
 ('Guccha','GOGOGO',1236453,'06cd2ea4c46805e149fa72f3f8843046.jpg'),
 ('SOSROMANTAPSUPERJUNI','klaffjafa',2147483647,'5f048b0b6637e8c5e66e645f1455f535.jpg');
-=======
+
 --
 -- Dumping data for table `production_order`
 --
@@ -156,7 +156,7 @@ INSERT INTO `production_order` (`id_po`, `id_barang`, `jumlah_pesanan`, `tanggal
 /*Table structure for table `sales_order` */
 
 DROP TABLE IF EXISTS `sales_order`;
-=======
+
 --
 -- Table structure for table `sales_order`
 --
@@ -180,7 +180,7 @@ insert  into `sales_order`(`id_so`,`tanggal_pesanan`,`id_pelanggan`,`total_baran
 ('201906023','2019-06-02','1127',110,682000,'success','Y'),
 ('201906031','2019-06-03','3',350,2050000,'pending','Y'),
 ('201906032','2019-06-03','4',21,107000,'pending','N');
-=======
+
 --
 -- Dumping data for table `sales_order`
 --
@@ -195,7 +195,7 @@ INSERT INTO `sales_order` (`id_so`, `tanggal_pesanan`, `id_pelanggan`, `total_ba
 /*Table structure for table `shopping_cart` */
 
 DROP TABLE IF EXISTS `shopping_cart`;
-=======
+
 --
 -- Table structure for table `shopping_cart`
 --
@@ -223,7 +223,7 @@ insert  into `shopping_cart`(`id_sc`,`id_so`,`id_barang`,`tanggal_pesanan`,`juml
 ('201906031-2','201906031','2','2019-06-03',150,1050000),
 ('201906032-1','201906032','1','2019-06-03',20,100000),
 ('201906032-2','201906032','2','2019-06-03',1,7000);
-=======
+
 --
 -- Dumping data for table `shopping_cart`
 --
@@ -243,7 +243,7 @@ INSERT INTO `shopping_cart` (`id_sc`, `id_so`, `id_barang`, `tanggal_pesanan`, `
 /*Table structure for table `stock_barang` */
 
 DROP TABLE IF EXISTS `stock_barang`;
-=======
+
 --
 -- Table structure for table `stock_barang`
 --
@@ -262,7 +262,7 @@ CREATE TABLE `stock_barang` (
 insert  into `stock_barang`(`id_barang`,`nama_barang`,`tanggal_kadaluarsa_barang`,`harga_barang`,`jumlah_stok_barang`) values 
 ('1','Teh Kotak','2020-02-01',5000,258),
 ('2','Teh Botol','2019-06-30',7000,200);
-=======
+
 --
 -- Dumping data for table `stock_barang`
 --
@@ -274,7 +274,7 @@ INSERT INTO `stock_barang` (`id_barang`, `nama_barang`, `tanggal_kadaluarsa_bara
 /*Table structure for table `testimoni` */
 
 DROP TABLE IF EXISTS `testimoni`;
-=======
+
 --
 -- Table structure for table `testimoni`
 --
@@ -298,7 +298,7 @@ insert  into `testimoni`(`id_testimoni`,`id_pelanggan`,`id_so`,`testimoni_barang
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
 /*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-=======
+
 --
 -- Dumping data for table `testimoni`
 --
