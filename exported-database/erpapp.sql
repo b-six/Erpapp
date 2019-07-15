@@ -24,8 +24,6 @@ CREATE TABLE `bahan_baku` (
 
 insert  into `bahan_baku`(`id_bahan_baku`,`jml_bahan_baku`,`nama_bahan_baku`,`keterangan_bahan_baku`) values ('BB0001',5000,'Teh Hijau','');
 insert  into `bahan_baku`(`id_bahan_baku`,`jml_bahan_baku`,`nama_bahan_baku`,`keterangan_bahan_baku`) values ('BB0002',5000,'Gula','');
-insert  into `bahan_baku`(`id_bahan_baku`,`jml_bahan_baku`,`nama_bahan_baku`,`keterangan_bahan_baku`) values ('BB0001',5000,'Teh Hijau','');
-insert  into `bahan_baku`(`id_bahan_baku`,`jml_bahan_baku`,`nama_bahan_baku`,`keterangan_bahan_baku`) values ('BB0002',5000,'Gula','');
 
 /*Table structure for table `bahan_baku_keluar` */
 
@@ -38,8 +36,6 @@ CREATE TABLE `bahan_baku_keluar` (
 
 /*Data for the table `bahan_baku_keluar` */
 
-insert  into `bahan_baku_keluar`(`id_bahan_baku_keluar`,`id_bahan_baku`,`jml_bahan_baku_keluar`,`tgl_bahan_baku_keluar`) values ('BBO0000001','BB0001',200,'2019-07-15');
-insert  into `bahan_baku_keluar`(`id_bahan_baku_keluar`,`id_bahan_baku`,`jml_bahan_baku_keluar`,`tgl_bahan_baku_keluar`) values ('BBO0000002','BB0002',200,'2019-07-15');
 insert  into `bahan_baku_keluar`(`id_bahan_baku_keluar`,`id_bahan_baku`,`jml_bahan_baku_keluar`,`tgl_bahan_baku_keluar`) values ('BBO0000001','BB0001',200,'2019-07-15');
 insert  into `bahan_baku_keluar`(`id_bahan_baku_keluar`,`id_bahan_baku`,`jml_bahan_baku_keluar`,`tgl_bahan_baku_keluar`) values ('BBO0000002','BB0002',200,'2019-07-15');
 
@@ -55,8 +51,6 @@ CREATE TABLE `bahan_baku_masuk` (
 
 /*Data for the table `bahan_baku_masuk` */
 
-insert  into `bahan_baku_masuk`(`id_bahan_baku_masuk`,`id_bahan_baku`,`jml_bahan_baku_masuk`,`tgl_bahan_baku_masuk`,`id_supplier`) values ('BBI0000001','BB0001','300','2019-07-15','S0001');
-insert  into `bahan_baku_masuk`(`id_bahan_baku_masuk`,`id_bahan_baku`,`jml_bahan_baku_masuk`,`tgl_bahan_baku_masuk`,`id_supplier`) values ('BBI0000002','BB0002','300','2019-07-15','S0002');
 insert  into `bahan_baku_masuk`(`id_bahan_baku_masuk`,`id_bahan_baku`,`jml_bahan_baku_masuk`,`tgl_bahan_baku_masuk`,`id_supplier`) values ('BBI0000001','BB0001','300','2019-07-15','S0001');
 insert  into `bahan_baku_masuk`(`id_bahan_baku_masuk`,`id_bahan_baku`,`jml_bahan_baku_masuk`,`tgl_bahan_baku_masuk`,`id_supplier`) values ('BBI0000002','BB0002','300','2019-07-15','S0002');
 
