@@ -248,13 +248,8 @@
                                 echo $testimoni_barang; ?></td>
                             <td class="button-container">
                                 <div id="table-button">
-
-                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> 
-                                    <a href="#"><i class="material-icons edit-button">create</i></a>
-
                                     <a href="#konfirm-delete-test" class="modal-trigger" id="delete_<?php echo $col->id_testimoni; ?>" data-id_so="<?php echo $col->id_so; ?>" onClick="getIdDelete_test(this.id)" ><i class="material-icons delete-button">delete_forever</i></a>
                                     <a href="#edit-test-modal" class="modal-trigger" id="edit_test_<?php echo $col->id_so; ?>" onClick="getIdEdit_test(this.id)" data-id_test="<?php echo $col->id_testimoni; ?>"><i class="material-icons edit-button">create</i></a>
-
                                 </div>
                             </td>
                         </tr>
