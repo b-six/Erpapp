@@ -1,21 +1,6 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-/**
- *
- * Controller Data_customer
- *
- * This controller for ...
- *
- * @package   CodeIgniter
- * @category  Controller
- * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
- * @link      https://github.com/setdjod/myci-extension/
- * @param     ...
- * @return    ...
- *
- */
-
 class Data_customer extends CI_Controller
 {
     
@@ -38,6 +23,24 @@ class Data_customer extends CI_Controller
     $tipe_customer = $this->input->post('tipe_customer');
     $wilayah = $this->input->post('wilayah');
     $this->customer_model->save_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah);
+    redirect('marketing/data_customer');
+  }
+
+  function update_customer()
+  {
+    $nama_pelanggan = $this->input->post('nama_pelanggan-edit');
+    $id_pelanggan = $this->input->post('id_pelanggan-edit');
+    $tipe_customer = $this->input->post('tipe_customer-edit');
+    $wilayah = $this->input->post('wilayah-edit');
+    echo $id_pelanggan."**".$nama_pelanggan."**".$tipe_customer."**".$wilayah;
+    $this->customer_model->update_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah);
+    redirect('marketing/data_customer');
+  }
+
+  function delete_customer()
+  {
+    $id_pelanggan = $this->input->get('id_cust_delete');
+    $this->customer_model->delete_customer($id_pelanggan);
     redirect('marketing/data_customer');
   }
 

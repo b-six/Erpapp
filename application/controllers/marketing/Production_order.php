@@ -1,24 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-/**
- *
- * Controller Production_order
- *
- * This controller for ...
- *
- * @package   CodeIgniter
- * @category  Controller
- * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
- * @link      https://github.com/setdjod/myci-extension/
- * @param     ...
- * @return    ...
- *
- */
-
 class Production_order extends CI_Controller
 {
-    
+  
   public function __construct()
   {
     parent::__construct();
@@ -40,6 +25,22 @@ class Production_order extends CI_Controller
     $tanggal = date('Ymd');
     $id_po = $this->input->post('id_po');
     $this->production_order_model->save_production_order($id_po, $jumlah_pesanan, $id_barang, $tanggal);
+    redirect('marketing/production_order');
+  }
+
+  function update_production_order()
+  {
+    $id_po = $this->input->post('id_po-edit');
+    $id_barang = $this->input->post('id_produk-edit');
+    $jumlah_pesanan = $this->input->post('jumlah_barang-edit');
+    $this->production_order_model->update_production_order($id_po, $jumlah_pesanan, $id_barang);
+    redirect('marketing/production_order');
+  }
+
+  function delete_production_order()
+  {
+    $id_po = $this->input->get('id_po_delete');
+    $this->production_order_model->delete_production_order($id_po);
     redirect('marketing/production_order');
   }
 
