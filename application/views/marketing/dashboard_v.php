@@ -2,17 +2,17 @@
 <html lang="en">
 
 <head>
-    <title>Marketing - Dashboard</title>
-    <?php $this->load->view('marketing/partials/css.php') ?>
+    <title>SDM - Dashboard</title>
+    <?php $this->load->view('sdm/partials/css.php') ?>
 </head>
 
 <body>
     <!-- navbar -->
-    <?php $this->load->view('marketing/partials/navbar.php') ?>
+    <?php $this->load->view('sdm/partials/navbar.php') ?>
     <div class="container">
     </div>
     <!-- js -->
-    <?php $this->load->view('marketing/partials/js.php') ?>
+    <?php $this->load->view('sdm/partials/js.php') ?>
 </body>
 
 </html>
