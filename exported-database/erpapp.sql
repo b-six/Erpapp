@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 16, 2019 at 10:00 AM
+-- Generation Time: Jul 16, 2019 at 12:05 PM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -40,6 +40,9 @@ CREATE TABLE IF NOT EXISTS `absensi` (
 -- Dumping data for table `absensi`
 --
 
+INSERT INTO `absensi` (`id_absensi`, `id_pegawai`, `tgl_absensi`, `jam_masuk`, `jam_keluar`, `jenis_absensi`, `status_validasi_absensi`) VALUES
+('12132', 1, '2019-05-20', '11:02:15', '11:02:30', 'normal', 'sudah'),
+('12133', 2, '2019-06-04', '11:00:00', '00:00:00', 'normal', 'sudah');
 
 -- --------------------------------------------------------
 
@@ -172,6 +175,8 @@ CREATE TABLE IF NOT EXISTS `cuti` (
 -- Dumping data for table `cuti`
 --
 
+INSERT INTO `cuti` (`id_cuti`, `id_pegawai`, `tgl_mulai_cuti`, `tgl_selesai_cuti`, `keterangan_cuti`, `status_cuti`) VALUES
+('23', 3, '2019-07-14', '2019-07-16', '', 'disetujui');
 
 -- --------------------------------------------------------
 
@@ -216,6 +221,10 @@ CREATE TABLE IF NOT EXISTS `gaji` (
 -- Dumping data for table `gaji`
 --
 
+INSERT INTO `gaji` (`id_gaji`, `id_pegawai`, `periode_gaji`, `gaji_pokok`, `gaji_lembur`, `pengurangan_gaji`, `gaji_total`, `status_validasi_gaji`) VALUES
+('21', 2, 'Juni', 3000000, 200000, 2500000, 700000, 'disetujui'),
+('22', 1, 'April', 4000000, 0, 2500000, 1500000, 'pending'),
+('23', 2, 'Juni', 5000000, 6969, 0, 0, 'ditolak');
 
 -- --------------------------------------------------------
 
@@ -251,6 +260,10 @@ CREATE TABLE IF NOT EXISTS `golongan` (
 -- Dumping data for table `golongan`
 --
 
+INSERT INTO `golongan` (`id_golongan`, `nama_golongan`) VALUES
+('1', 'I'),
+('2', 'II'),
+('3', 'III');
 
 -- --------------------------------------------------------
 
@@ -282,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `hasil_produksi` (
 CREATE TABLE IF NOT EXISTS `kecamatan` (
   `id_kecamatan` varchar(5) NOT NULL,
   `id_kota` varchar(5) NOT NULL,
-  `nama_kecamatan` int(11) NOT NULL,
+  `nama_kecamatan` text NOT NULL,
   PRIMARY KEY (`id_kecamatan`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -290,6 +303,11 @@ CREATE TABLE IF NOT EXISTS `kecamatan` (
 -- Dumping data for table `kecamatan`
 --
 
+INSERT INTO `kecamatan` (`id_kecamatan`, `id_kota`, `nama_kecamatan`) VALUES
+('1', '1', 'Kecamatan 1'),
+('2', '2', 'Kecamatan 2'),
+('3', '3', 'Kecamatan 3'),
+('4', '4', 'Kecamatan 4');
 
 -- --------------------------------------------------------
 
@@ -309,6 +327,11 @@ CREATE TABLE IF NOT EXISTS `kelurahan` (
 -- Dumping data for table `kelurahan`
 --
 
+INSERT INTO `kelurahan` (`id_kelurahan`, `id_kecamatan`, `nama_kelurahan`, `kode_pos`) VALUES
+('1', '1', 'Depok', '21432'),
+('2', '2', 'Ciputat', '12345'),
+('3', '3', 'Pondok Beji', '21432'),
+('4', '4', 'Ini nama kelurahan', '23564');
 
 -- --------------------------------------------------------
 
@@ -346,6 +369,10 @@ CREATE TABLE IF NOT EXISTS `kota` (
 -- Dumping data for table `kota`
 --
 
+INSERT INTO `kota` (`id_kota`, `id_provinsi`, `nama_kota`) VALUES
+('1', '1', 'Kota 1'),
+('2', '2', 'Kota 2'),
+('3', '3', 'Kota 3');
 
 -- --------------------------------------------------------
 
@@ -438,6 +465,34 @@ CREATE TABLE IF NOT EXISTS `pegawai` (
 -- Dumping data for table `pegawai`
 --
 
+INSERT INTO `pegawai` (`id_pegawai`, `id_pendidikan`, `id_golongan`, `id_satker`, `id_kelurahan`, `password_pegawai`, `nama_pegawai`, `umur`, `alamat`, `no_telp`, `email`, `rekening_pegawai`, `tgl_diterima`, `tgl_berhenti`, `status_pegawai`) VALUES
+(1, '1', '1', '1', '1', '8f7c3c77', 'Rizki Sanik', 444, 'wqqwqwqwqwqw', 212121212, 'rizkusanik@ph.com', 2132422, '2018-01-16', '2019-07-16', 'resign'),
+(2, '2', '2', '2', '2', '4d0badf2', 'Akbar Gayming', 696, 'sqsqwqwqsq', 232312, 'akbarusilat_masterr@huehue.com', 121332, '2018-06-19', '0000-00-00', 'aktif'),
+(3, '3', '3', '3', '3', '34d38f52', 'Bayu Milos', 69, 'sqwqwqsqwqdefwef', 2132323, 'bayu_hehe@hehe.com', 2132323, '2019-07-01', '2019-07-03', 'pensiun');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pelatihan`
+--
+
+CREATE TABLE IF NOT EXISTS `pelatihan` (
+  `id_pelatihan` varchar(20) NOT NULL,
+  `nama_pelatihan` text NOT NULL,
+  `instansi` text NOT NULL,
+  `satuan_kerja` text NOT NULL,
+  `tgl_mulai` date NOT NULL,
+  `tgl_selesai` date NOT NULL,
+  `status_persetujuan` enum('pending','disetujui','ditolak') NOT NULL,
+  PRIMARY KEY (`id_pelatihan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pelatihan`
+--
+
+INSERT INTO `pelatihan` (`id_pelatihan`, `nama_pelatihan`, `instansi`, `satuan_kerja`, `tgl_mulai`, `tgl_selesai`, `status_persetujuan`) VALUES
+('121312', 'Peningkatan Kinerja Pegawai dengan E-Sport', 'RRQ', 'IT', '2018-06-18', '2019-06-20', 'disetujui');
 
 -- --------------------------------------------------------
 
@@ -455,6 +510,10 @@ CREATE TABLE IF NOT EXISTS `pendidikan` (
 -- Dumping data for table `pendidikan`
 --
 
+INSERT INTO `pendidikan` (`id_pendidikan`, `jenjang_pendidikan`) VALUES
+('1', 'S1'),
+('2', 'S2'),
+('3', 'S3');
 
 -- --------------------------------------------------------
 
@@ -494,6 +553,8 @@ CREATE TABLE IF NOT EXISTS `permohonan_resign` (
 -- Dumping data for table `permohonan_resign`
 --
 
+INSERT INTO `permohonan_resign` (`id_resign`, `id_pegawai`, `keterangan_resign`, `status_validasi_resign`) VALUES
+('13', 2, 'Mau turnamen pabji onlen di warnet ali', 'pending');
 
 -- --------------------------------------------------------
 
@@ -630,6 +691,9 @@ CREATE TABLE IF NOT EXISTS `provinsi` (
 -- Dumping data for table `provinsi`
 --
 
+INSERT INTO `provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
+('1', 'Provinsi 1'),
+('2', 'Provinsi 2');
 
 -- --------------------------------------------------------
 
@@ -714,6 +778,10 @@ CREATE TABLE IF NOT EXISTS `satuan_kerja` (
 -- Dumping data for table `satuan_kerja`
 --
 
+INSERT INTO `satuan_kerja` (`id_satker`, `nama_satker`) VALUES
+('1', 'Humas'),
+('2', 'Manajemen'),
+('3', 'IT');
 
 -- --------------------------------------------------------
 
