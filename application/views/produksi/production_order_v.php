@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Marketing - Production Order</title>
+    <title>Produksi - Production Order</title>
     <?php $this->load->view('produksi/partials/css.php') ?>
 </head>
 
@@ -83,7 +83,7 @@
             <div class="col s7">
                 <nav class="no-shadows breadcrumbs-style">
                     <div class="nav-wrapper blue-dark-grey">
-                        <a class="breadcrumb no-pointer-event">Order</a>
+                        <a class="breadcrumb no-pointer-event">Plan</a>
                         <a href="production_order" class="breadcrumb">Production Order</a>
                     </div>
                 </nav>
@@ -103,11 +103,11 @@
         <div class="row">
             <div class="col s12">
                 <ul class="tabs blue-dark-grey">
-                    <li class="tab col s2"><a href="#pending" class="active small-font">Pending</a></li>
+                    <li class="tab col s2"><a href="#pending" class="active small-font">Terbaru</a></li>
                     <li class="tab col s2"><a class="small-font" href="#on-process">
-                            On-Process</a></li>
+                            Disetujui</a></li>
                     <li class="tab col s2"><a href="#success" class="small-font">
-                            Success</a></li>
+                            Pending</a></li>
                 </ul>
                 <br>
             </div>
@@ -265,7 +265,7 @@
         </div>
     </div>
     <!-- js -->
-    <?php $this->load->view('marketing/partials/js.php') ?>
+    <?php $this->load->view('produksi/partials/js.php') ?>
 </body>
 
 </html>

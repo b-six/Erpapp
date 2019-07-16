@@ -18,7 +18,7 @@
 
             <ul id="report_DD" class="dropdown-content indigo darken-4">
                 <li><a href="quality_control" class="white-text">Quality Control</a></li>
-                <li><a href="laporan_perbaikan_produksi" class="white-text">Lap. Perbaikan Produksi</a></li>
+                <li><a href="laporan_perbaikan_produk" class="white-text">Lap. Perbaikan Produk</a></li>
                 <li><a href="laporan_produksi" class="white-text">Lap. Produksi</a></li>
                 <li><a href="laporan_biaya_produksi" class="white-text">Lap. Biaya Produksi</a></li>
             </ul>
