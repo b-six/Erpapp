@@ -12,7 +12,9 @@ class Data_pegawai extends CI_Controller
 
   public function index()
   {
+
     $data['pegawai'] = $this->pegawai_model->get_pegawai();
+    // print_r ($data);
     $this->load->view('sdm/hrd/data_pegawai_v', $data);
   }
 

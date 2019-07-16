@@ -24,7 +24,7 @@
 
                     <!-- generate id pegawai -->
                     <?php
-                    $hitung = 3;
+                    $hitung = 1;
                     foreach ($pegawai->result() as $row) :
                         $hitung++;
                     endforeach;
@@ -35,7 +35,7 @@
                     <div class="row">
                         <div class="input-field col s12">
                             <input id="id_pegawai" name="id_pegawai" type="text" class="validate" autocomplete="off" value="<?php echo $id_pegawai; ?>" readonly>
-                            <label for="id_pegawai">ID</label>
+                            <label for="id_pegawai">ID Pegawai</label>
                         </div>
                     </div>
                     <div class="row">
@@ -173,8 +173,8 @@
                             <td><?php echo $col->status_pegawai; ?></td>
                             <td class="button-container">
                                 <div id="table-button">
-                                <a href="#konfirm-delete-cust" id="delete_id_<?php echo $col->id_pelanggan; ?>" class="modal-trigger" onClick="getId_cust(this.id)"><i class="material-icons delete-button">delete_forever</i></a>
-                                    <a href="#edit-cust-modal" id="id_pelanggan_<?php echo $col->id_pelanggan; ?>" class="modal-trigger" onClick="getIdEdit_cust(this.id)" data-nama_cust="<?php echo $col->nama_pelanggan; ?>" data-wilayah_cust="<?php echo $col->wilayah; ?>"><i class="material-icons edit-button">create</i></a>
+                                <a href="#konfirm-delete-cust" id="delete_id_<?php echo $col->id_pegawai; ?>" class="modal-trigger" onClick="getId_cust(this.id)"><i class="material-icons delete-button">delete_forever</i></a>
+                                    <a href="#edit-cust-modal" id="id_pegawai_<?php echo $col->id_pegawai; ?>" class="modal-trigger" onClick="getIdEdit_cust(this.id)" data-nama_cust="<?php echo $col->nama_pegawai; ?>" data-wilayah_cust="<?php echo $col->alamat; ?>"><i class="material-icons edit-button">create</i></a>
                                 </div>
                             </td>
                         </tr>
