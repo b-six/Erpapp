@@ -5,6 +5,12 @@
 
             <!-- Dropdown Structure -->
 
+            <!-- <ul id="data_pegawai_DD" class="dropdown-content indigo darken-4">
+            </ul> -->
+            
+            <ul id="gaji_DD" class="dropdown-content indigo darken-4">
+            </ul>
+
             <ul id="absensi_DD" class="dropdown-content indigo darken-4">
                 <li><a href="validasi_absensi" class="white-text">Validasi</a></li>
             </ul>
@@ -19,7 +25,7 @@
             </ul>
 
             <ul id="acc_DD" class="dropdown-content indigo darken-4">
-                <li class="no-pointer-event"><a href="#" class="white-text">Manager</a></li>
+                <li class="no-pointer-event"><a href="#!" class="white-text">Manager</a></li>
                 <li class="divider"></li>
                 <li><a href="#!" class="white-text">My Account</a></li>
                 <li><a href="#!" class="white-text">Log Out</a></li>
@@ -27,7 +33,7 @@
 
             <!-- navabar menu -->
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a class="dropdown-trigger bold-font" href="data_pegawai" data-target="data_pegawai_DD">DATA PEGAWAI</a></li>
+                <li><a class="bold-font" href="data_pegawai">DATA PEGAWAI</a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="gaji_DD">PENGGAJIAN</a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="absensi_DD">ABSENSI<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="stts_DD">STATUS PEGAWAI<i class="material-icons right">arrow_drop_down</i></a></li>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>sdm - Dashboard</title>
+    <title>SDM - Dashboard</title>
     <?php $this->load->view('sdm/hrd/partials/css.php') ?>
 </head>
 
