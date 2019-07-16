@@ -24,7 +24,7 @@
 
                     <!-- generate id pegawai -->
                     <?php
-                    $hitung = 0;
+                    $hitung = 3;
                     foreach ($pegawai->result() as $row) :
                         $hitung++;
                     endforeach;
@@ -46,7 +46,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <select id="tipe_pegawai" name="tipe_pegawai">
+                            <select id="id_golongan" name="id_golongan">
                                 <option value="" disabled selected>Pilih Golongan Kerja</option>
                                 <option value="3">III</option>
                                 <option value="2">II</option>
@@ -57,10 +57,45 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
+                            <select id="id_pendidikan" name="id_pendidikan">
+                                <option value="" disabled selected>Pilih Jenjang Pendidikan</option>
+                                <option value="3">S3</option>
+                                <option value="2">S2</option>
+                                <option value="1">S1</option>
+                            </select>
+                            <label>Pendidikan</label>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input id='umur' name='umur' type='number' class='validate' autocomplete='off' placeholder="0" value="">
+                            <label for='jumlah_barang'>Umur</label></div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
                             <input type="text" name="alamat" id="alamat" placeholder="Masukkan alamat pegawai" autocomplete="off">
                             <label for="alamat">Alamat</label>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="email" id="email" placeholder="Masukkan email pegawai" autocomplete="off">
+                            <label for="alamat">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                        <input type="text" class="datepicker" name="tgl_diterima" id="tgl_diterima" placeholder="Masukkan date pegawai diterima" autocomplete="off">
+                            <label for="alamat">Tanggal Diterima</label>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input id='rekening_pegawai' name='rekening' type='number' class='validate' autocomplete='off' placeholder="0" value="">
+                            <label for='jumlah_barang'>Rekening</label></div>
+                    </div>
+                    
+        
                 </form>
 
             </div>
@@ -73,6 +108,23 @@
             </button>
         </div>
 
+    </div>
+
+    <!-- Modal Konfirmasi Delete Customer -->
+    <div id="konfirm-delete-cust" class="modal">
+        <div class="modal-content">
+            <h4>Konfirmasi</h4>
+            <p>Apakah Anda yakin ingin menghapus data pegawai ini?</p>
+            <form id="form-delete-cust" class="col s12" action="<?php echo site_url('marketing/data_customer/delete_customer'); ?>" method="get">
+                <input type="text" id="id_cust_delete" name="id_cust_delete" hidden>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <button class="btn waves-effect waves-light red darken-2" type="submit" name="submit-delete-cust" id="submit-delete-cust">Delete
+                <i class="material-icons right">delete</i>
+            </button>
+        </div>
     </div>
 
     <!-- konten -->
@@ -114,14 +166,15 @@
                         ?>
                         <tr>
                             <td><?php echo $col->nama_pegawai; ?></td>
-                            <td><?php echo $col->gol_pegawai; ?></td>
+                            <td><?php echo $col->id_golongan; ?></td>
                             <td><?php echo $col->alamat; ?></td>
-                            <td><?php echo $col->gabung; ?></td>
-                            <td><?php echo $col->berhenti; ?></td>
-                            <td><?php echo $col->stts; ?></td>
+                            <td><?php echo $col->tgl_diterima; ?></td>
+                            <td><?php echo $col->tgl_berhenti; ?></td>
+                            <td><?php echo $col->status_pegawai; ?></td>
                             <td class="button-container">
                                 <div id="table-button">
-                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
+                                <a href="#konfirm-delete-cust" id="delete_id_<?php echo $col->id_pelanggan; ?>" class="modal-trigger" onClick="getId_cust(this.id)"><i class="material-icons delete-button">delete_forever</i></a>
+                                    <a href="#edit-cust-modal" id="id_pelanggan_<?php echo $col->id_pelanggan; ?>" class="modal-trigger" onClick="getIdEdit_cust(this.id)" data-nama_cust="<?php echo $col->nama_pelanggan; ?>" data-wilayah_cust="<?php echo $col->wilayah; ?>"><i class="material-icons edit-button">create</i></a>
                                 </div>
                             </td>
                         </tr>

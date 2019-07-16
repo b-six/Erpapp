@@ -21,8 +21,8 @@ class Data_pegawai extends CI_Controller
     $id_pegawai = $this->input->post('id_pegawai');
     $nama_pegawai = $this->input->post('nama_pegawai');
     $tipe_pegawai = $this->input->post('tipe_pegawai');
-    $wilayah = $this->input->post('wilayah');
-    $this->pegawai_model->save_pegawai($id_pegawai, $nama_pegawai, $tipe_pegawai, $wilayah);
+    $alamat = $this->input->post('alamat');
+    $this->pegawai_model->save_pegawai($id_pegawai, $nama_pegawai, $tipe_pegawai, $alamat);
     redirect('sdm/data_pegawai');
   }
 

@@ -15,10 +15,10 @@
                 <li><a href="validasi_absensi" class="white-text">Validasi</a></li>
             </ul>
 
-            <ul id="stts_DD" class="dropdown-content indigo darken-4">
-                <li><a href="stts_resign" class="white-text">Resign</a></li>
-                <li><a href="stts_cuti" class="white-text">Cuti</a></li>
-                <li><a href="stts_pensiun" class="white-text">Pensiun</a></li>
+            <ul id="status_pegawai_DD" class="dropdown-content indigo darken-4">
+                <li><a href="status_resign" class="white-text">Resign</a></li>
+                <li><a href="status_cuti" class="white-text">Cuti</a></li>
+                <li><a href="status_pensiun" class="white-text">Pensiun</a></li>
             </ul>
 
             <ul id="pelatihan_DD" class="dropdown-content indigo darken-4">
@@ -36,7 +36,7 @@
                 <li><a class="bold-font" href="data_pegawai">DATA PEGAWAI</a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="gaji_DD">PENGGAJIAN</a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="absensi_DD">ABSENSI<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger bold-font" href="#" data-target="stts_DD">STATUS PEGAWAI<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger bold-font" href="#" data-target="status_pegawai_DD">STATUS PEGAWAI<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="pelatihan_DD">PELATIHAN</a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="acc_DD">Androx27<i class="material-icons right">account_circle</i></a></li>
             </ul>

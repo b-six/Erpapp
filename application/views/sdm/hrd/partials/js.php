@@ -3,5 +3,5 @@
 <script src="<?php echo base_url('assets/js/croppie.min.js'); ?>"></script>
 <!-- <script src="<?php //echo base_url('assets/js/jquery.imgareaselect.min.js'); ?>"></script> -->
 <!-- <script src="<?php //echo base_url('assets/js/jquery.form.min.js'); ?>"></script> -->
-<script src="<?php echo base_url('assets/js/marketing/javascript.js'); ?>"></script>
+<script src="<?php echo base_url('assets/js/sdm/javascript.js'); ?>"></script>
 
