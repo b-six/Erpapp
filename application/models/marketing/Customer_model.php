@@ -1,25 +1,14 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-/**
- *
- * Model Customer_model
- *
- * This Model for ...
- * 
- * @package		CodeIgniter
- * @category	Model
- * @author    Setiawan Jodi <jodisetiawan@fisip-untirta.ac.id>
- * @link      https://github.com/setdjod/myci-extension/
- * @param     ...
- * @return    ...
- *
- */
-
 class Customer_model extends CI_Model
 {
 
   // ------------------------------------------------------------------------
+  function countCustomer($jenis_customer){
+    $this->db->where('tipe_customer', $jenis_customer);
+    return $this->db->count_all_results('customer');
+  }
 
   function get_customer()
   {
