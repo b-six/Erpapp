@@ -14,7 +14,6 @@
     <div id="add-pegawai-modal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <div class="row">
-
                 <form id="form-add-pegawai" class="col s12" action="<?php echo site_url('sdm/data_pegawai/save_pegawai'); ?>" method="post">
                     <div class="row">
                         <div class="col s12 center">
@@ -40,7 +39,7 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" name="nama_pegawai" id="nama_pegawai" placeholder="Masukkan Nama Customer" autocomplete="off">
+                            <input type="text" name="nama_pegawai" id="nama_pegawai" placeholder="Masukkan Nama pegawai" autocomplete="off">
                             <label for="nama_pegawai">Nama</label>
                         </div>
                     </div>
@@ -85,17 +84,68 @@
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                        <input type="text" class="datepicker" name="tgl_diterima" id="tgl_diterima" placeholder="Masukkan date pegawai diterima" autocomplete="off">
+                        <input type="date" class="datepicker" name="tgl_diterima" id="tgl_diterima" placeholder="Masukkan date pegawai diterima" autocomplete="off">
                             <label for="alamat">Tanggal Diterima</label>
                         </div>
                     </div>
                     <div class='row'>
                         <div class='input-field col s12'>
-                            <input id='rekening_pegawai' name='rekening' type='number' class='validate' autocomplete='off' placeholder="0" value="">
+                            <input id='rekening_pegawai' name='rekening_pegawai' type='number' class='validate' autocomplete='off' placeholder="masukkan nomor rekening anda" value="">
                             <label for='jumlah_barang'>Rekening</label></div>
                     </div>
-                    
-        
+                </form>
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" cldass="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-add-pegawai" id="submit-add-pegawai">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Edit pegawai -->
+    <div id="edit-cust-modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+
+                <form id="form-edit-cust" class="col s12" action="<?php echo site_url('marketing/data_customer/update_customer'); ?>" method="post">
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h4>Edit Pegawai</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="id_pelanggan-edit" name="id_pelanggan-edit" type="text" class="validate" autocomplete="off" value=" " readonly>
+                            <label for="id_pelanggan">ID</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="nama_pelanggan-edit" id="nama_pelanggan-edit" placeholder="Masukkan Nama pegawai" autocomplete="off">
+                            <label for="nama_pelanggan">Nama</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select id="tipe_customer-edit" name="tipe_customer-edit">
+                                <option value="" disabled selected>Pilih Jenis pegawai</option>
+                                <option value="Retailer">Retailer</option>
+                                <option value="Distributor">Distributor</option>
+                                <option value="Personal">Personal</option>
+                            </select>
+                            <label>Jenis</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="wilayah-edit" id="wilayah-edit" placeholder="Masukkan Wilayah Pemesanan pegawai" autocomplete="off">
+                            <label for="wilayah">Wilayah</label>
+                        </div>
+                    </div>
                 </form>
 
             </div>
@@ -103,14 +153,28 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-add-pegawai" id="submit-add-pegawai">Submit
+            <a href="#konfirm-edit-cust" class="btn waves-effect waves-light orange darken-3 modal-trigger">Submit
                 <i class="material-icons right">send</i>
-            </button>
+            </a>
         </div>
-
     </div>
 
-    <!-- Modal Konfirmasi Delete Customer -->
+    <!-- Modal Konfirmasi Edit pegawai -->
+    <div id="konfirm-edit-cust" class="modal">
+        <div class="modal-content">
+            <h4>Konfirmasi</h4>
+            <p>Apakah Anda yakin ingin menyimpan perubahan ini?</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
+            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-edit-cust" id="submit-edit-cust">Ya
+                <i class="material-icons right"></i>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Modal Konfirmasi Delete pegawai -->
     <div id="konfirm-delete-cust" class="modal">
         <div class="modal-content">
             <h4>Konfirmasi</h4>

@@ -610,3 +610,8 @@ $('#submit-delete-test').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
 	$('#form-delete-test').submit();
 });
+//submit add-pegawai form
+$('#submit-add-pegawai').click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$('#form-add-pegawai').submit();
+});

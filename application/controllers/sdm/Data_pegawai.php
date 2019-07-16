@@ -22,9 +22,14 @@ class Data_pegawai extends CI_Controller
   {
     $id_pegawai = $this->input->post('id_pegawai');
     $nama_pegawai = $this->input->post('nama_pegawai');
-    $tipe_pegawai = $this->input->post('tipe_pegawai');
+    $golongan = $this->input->post('id_golongan');
+    $id_pendidikan = $this->input->post('id_pendidikan');
+    $umur = $this->input->post('umur');
     $alamat = $this->input->post('alamat');
-    $this->pegawai_model->save_pegawai($id_pegawai, $nama_pegawai, $tipe_pegawai, $alamat);
+    $email = $this->input->post('email');
+    $tgl_diterima = $this->input->post('tgl_diterima');
+    $rekening = $this->input->post('rekening_pegawai');
+    $this->pegawai_model->save_pegawai($id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $tgl_diterima, $rekening);
     redirect('sdm/data_pegawai');
   }
 
