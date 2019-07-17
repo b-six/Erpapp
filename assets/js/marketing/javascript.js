@@ -650,7 +650,7 @@ var customer_chart = new Chart($('#customer_chart'), {
 
 //Dasboard Chart Stok Produk -------------------------------------------------
 var stok_produk_chart = new Chart($('#stok_produk_chart'), {
-	type: 'doughnut',
+	type: 'pie',
 	data: {
 		labels: nama_produk,
 		datasets: [{
@@ -663,6 +663,14 @@ var stok_produk_chart = new Chart($('#stok_produk_chart'), {
 		title: {
 			display: true,
 			text: 'Jumlah Produk'
+		},
+		legend: {
+			position: 'bottom'
+		},
+		elements: {
+			arc: {
+				borderWidth: 0
+			}
 		}
 	}
 });

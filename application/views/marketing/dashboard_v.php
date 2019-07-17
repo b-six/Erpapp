@@ -110,7 +110,7 @@
 				<div class="row">
 					<div class="col s8">
 						<div class="container">
-							<canvas id="customer_chart" width="900" height="1000"></canvas>
+							<canvas id="customer_chart" width="900" height="500"></canvas>
 						</div>
 					</div>
 					<div class="col s4">
