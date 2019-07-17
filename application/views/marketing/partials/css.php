@@ -5,7 +5,7 @@
 
 <!-- css     -->
     <link href="<?php echo base_url('assets/css/materialize.css'); ?>" rel="stylesheet">
-    <!-- <link href="<?php echo base_url('assets/css/marketing/styles.css'); ?>" rel="stylesheet"> -->
+    <link href="<?php echo base_url('assets/css/marketing/styles.css'); ?>" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link href="<?php echo base_url('assets/css/material-icons/material-icons.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/croppie.css'); ?>" rel="stylesheet" >
