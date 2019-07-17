@@ -601,3 +601,79 @@ $('#submit-delete-test').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
 	$('#form-delete-test').submit();
 });
+
+
+// Dashboard Chart Sales_order -------------------------------------
+// label buat di axis X
+console.log(bulan);
+//buat menggambar garis di graphnya
+console.log(sales_order);
+
+var ctx = $('#so_chart');
+var so_chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: bulan,
+        datasets: [
+            {
+                data: sales_order,
+                label: "Sales Order",
+                borderColor: "#ffff00",
+                backgroundColor: "#9b8400",
+                fill: true
+            }
+        ]
+    }
+});
+// --------------- ------------------------------------------------
+
+// Dashboard Chart Customer ---------------------------------------
+var customer_chart = new Chart($('#customer_chart'), {
+    type: 'bar',
+    data: {
+    	labels: jenis_customer,
+    	datasets: [
+    		{
+    			data: jumlah_customer,
+    			label: "Jumlah Customer",
+    			backgroundColor: ["#f2b700", "#26eb97", "#cb0027"],
+    		}
+    	]
+    },
+    options: {
+    	legend: { display: false},
+    	title : {
+    		display: true,
+    		text: 'Jumlah Customer'
+    	}
+    }
+});
+// ------------------------ ---------------------------------------
+
+//Dasboard Chart Stok Produk -------------------------------------------------
+var stok_produk_chart = new Chart($('#stok_produk_chart'), {
+	type: 'pie',
+	data: {
+		labels: nama_produk,
+		datasets: [{
+			label: "Jumlah Produk",
+			backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2"],
+			data: jumlah_produk
+		}]
+	},
+	options: {
+		title: {
+			display: true,
+			text: 'Jumlah Produk'
+		},
+		legend: {
+			position: 'bottom'
+		},
+		elements: {
+			arc: {
+				borderWidth: 0
+			}
+		}
+	}
+});
+//-------------------------- -------------------------------------------------
