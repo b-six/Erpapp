@@ -7,75 +7,9 @@
 </head>
 
 <body>
+
     <!-- navbar -->
     <?php $this->load->view('produksi/partials/navbar.php') ?>
-
-    <!-- Modal Tambah Production Order -->
-    <div id="add-po-modal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <div class="row">
-
-                <form id="form-add-po" class="col s12" action="<?php echo site_url('marketing/production_order/save_production_order'); ?>" method="post">
-                    <div class="row">
-                        <div class="col s12 center">
-                            <h4>Tambah Production Order</h4>
-                        </div>
-                    </div>
-
-                    <!-- generate id po -->
-                    <?php
-                    $hitung = 0;
-                    $jumlahIdSama = 0;
-                    $date = date('Ymd');
-                    foreach ($production_order->result() as $row) :
-                        $hitung++;
-                        if (strpos($row->id_po, $date) !== false) {
-                            $jumlahIdSama++;
-                        }
-                    endforeach;
-                    $id_po = "P-" . $date . ($jumlahIdSama + 1);
-                    ?>
-                    <!-- end generate id po -->
-
-                    <div class='row'>
-                        <div class='input-field col s12'>
-                            <input id='id_po' name='id_po' value="<?php echo $id_po; ?>" type='text' class='validate' autocomplete='off' placeholder="-" readonly>
-                            <label for='harga_satuan'>No. Produksi</label></div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <select id="id_produk" name="id_produk">
-                                <option value="" disabled selected>Pilih Produk</option>
-                                <?php $hitung = 0;
-                                foreach ($stock_barang->result() as $col) :
-                                    $hitung++;
-                                    ?>
-                                    <option value="<?php echo $col->id_barang ?>"><?php echo $col->nama_barang ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <label>Produk</label>
-                        </div>
-                    </div>
-                    <div class='row'>
-                        <div class='input-field col s12'>
-                            <input id='jumlah_barang' name='jumlah_barang' type='number' class='validate' autocomplete='off' placeholder="0" value="">
-                            <label for='jumlah_barang'>Jumlah</label></div>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-add-po" id="submit-add-po">Submit
-                <i class="material-icons right">send</i>
-            </button>
-        </div>
-
-    </div>
-
-    <!-- konten -->
     <div class="container">
         <br>
         <div class="row">
@@ -83,189 +17,126 @@
             <div class="col s7">
                 <nav class="no-shadows breadcrumbs-style">
                     <div class="nav-wrapper blue-dark-grey">
-                        <a class="breadcrumb no-pointer-event">Order</a>
-                        <a href="production_order" class="breadcrumb">Production Order</a>
+                        <a class="breadcrumb no-pointer-event">Laporan</a>
+                        <a href="hasil_produksi" class="breadcrumb">Hasil Produksi</a>
                     </div>
                 </nav>
             </div>
 
             <!-- searchbar -->
-            <div class="col s4"><?php $this->load->view('marketing/partials/searchbar.php'); ?></div>
+            <div class="col s4"><?php $this->load->view('produksi/partials/searchbar.php'); ?></div>
 
             <!-- add sales order -->
             <div class="col s1 center">
-                <nav class="no-shadows blue-dark-grey"><a href="#add-po-modal" class="modal-trigger"><i class="material-icons">add_circle_outline</i></a></nav>
+                <nav class="no-shadows blue-dark-grey"><a href="#modal1" class="modal-trigger"><i class="material-icons">add_circle_outline</i></a></nav>
             </div>
 
         </div>
+        <!-- Modal Structure -->
+        <div id="modal1" class="modal">
+            <!-- modal content -->
+            <div class="modal-content">
+                <div class="col s12 center">
+                    <h4>Tambah Hasil Produksi</h4>
+                </div>
 
+                <form method="post" action="<?php echo base_url('produksi/hasil_produksi/save_hasil_produksi') ?>" class="col s12" id="form-edit-hasil_produksi" enctype="multipart/form-data">
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="id_hasil_produksi" id="id_hasil_produksi" type="text">
+                            <label for="id_hasil_produksi">ID Hasil Produksi</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="jumlah_produk" id="jumlah_produk" type="text">
+                            <label for="jumlah_produk">Jumlah Produk</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="jenis_barang" id="jenis_barang" type="text">
+                            <label for="jenis_barang">Jenis Barang</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="nama_barang" id="nama_barang" type="text">
+                            <label for="nama_barang">Nama Barang</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="tanggal" id="tanggal" type="date">
+                            <label for="tanggal">Tanggal</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="keterangan" id="keterangan" type="text">
+                            <label for="keterangan">Keterangan</label>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+                        <button class="btn waves-effect waves-light green darken-3" type="submit" name="submit-add-pb" id="submit-add-pb"><i class="material-icons">add</i></button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- /modal content -->
+
+
+        </div>
         <!-- tab -->
         <div class="row">
-            <div class="col s12">
-                <ul class="tabs blue-dark-grey">
-                    <li class="tab col s2"><a href="#pending" class="active small-font">Pending</a></li>
-                    <li class="tab col s2"><a class="small-font" href="#on-process">
-                            On-Process</a></li>
-                    <li class="tab col s2"><a href="#success" class="small-font">
-                            Success</a></li>
-                </ul>
-                <br>
-            </div>
-            <!-- konten tab -->
 
-            <!-- tab pending -->
-            <div id="pending" class="col s12 white-text content-color">
-                <table class="responsive-table centered highlight">
+            <!-- tab berlaku -->
+            <div class="col s12 white-text">
+                <!-- 1 card -->
+                <table class="responsive-table centered highlight white-text">
                     <thead class="bottom-border">
                         <tr>
+                            <th>ID Hasil Produksi</th>
+                            <th>Jumlah Produksi</th>
+                            <th>Jenis Barang</th>
+                            <th>Nama Barang</th>
                             <th>Tanggal</th>
-                            <th>No. Produksi</th>
-                            <th>Produk</th>
-                            <th>Jumlah</th>
+                            <th>Keterangan</th>
                             <th></th>
                         </tr>
                     </thead>
 
                     <tbody>
-                        <?php
-                        $count = 0;
-                        foreach ($production_order->result() as $row) :
-                            $count++;
-
-                            if ($row->status == 'pending') :
-                                ?>
-                                <tr>
-                                    <td><?php echo $row->tanggal; ?></td>
-                                    <td><?php echo $row->id_po; ?></td>
-                                    <td>
-                                        <?php
-                                        $hitung = 0;
-                                        foreach ($stock_barang->result() as $col) :
-                                            $hitung++;
-                                            if ($row->id_barang == $col->id_barang) :
-                                                echo $col->nama_barang;
-                                            endif;
-                                        endforeach;
-                                        ?>
-
-                                    </td>
-                                    <td><?php echo $row->jumlah_pesanan; ?></td>
-                                    <td class="button-container">
-                                        <div id="table-button">
-                                            <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php
-                        endif;
-                    endforeach; ?>
+                        <?php foreach ($hasil_produksi->result() as $hp) : ?>
+                            <tr>
+                                <td><?php echo $hp->id_hasil_produksi; ?></td>
+                                <td><?php echo $hp->jumlah_barang; ?></td>
+                                <td><?php echo $hp->jenis_barang; ?></td>
+                                <td><?php echo $hp->nama_barang; ?></td>
+                                <td><?php echo $hp->tgl_hasil_produksi; ?></td>
+                                <td><?php echo $hp->keterangan_barang; ?></td>
+                                <td></td>
+                            </tr>
+                        <?php endforeach; ?>
                     </tbody>
+
                 </table>
             </div>
 
-            <!-- tab onprocess -->
-            <div id="on-process" class="col s12 white-text content-color">
-                <table class="responsive-table centered highlight">
-                    <thead class="bottom-border">
-                        <tr>
-                            <th>Tanggal</th>
-                            <th>No. Produksi</th>
-                            <th>Produk</th>
-                            <th>Jumlah</th>
-                            <th></th>
-                        </tr>
-                    </thead>
+            <!-- tab berakhir -->
 
-                    <tbody>
-                        <?php
-                        $count = 0;
-                        foreach ($production_order->result() as $row) :
-                            $count++;
-
-                            if ($row->status == 'onprocess') :
-                                ?>
-                                <tr>
-                                    <td><?php echo $row->tanggal; ?></td>
-                                    <td><?php echo $row->id_po; ?></td>
-                                    <td>
-                                        <?php
-                                        $hitung = 0;
-                                        foreach ($stock_barang->result() as $col) :
-                                            $hitung++;
-                                            if ($row->id_barang == $col->id_barang) :
-                                                echo $col->nama_barang;
-                                            endif;
-                                        endforeach;
-                                        ?>
-
-                                    </td>
-                                    <td><?php echo $row->jumlah_pesanan; ?></td>
-                                    <td class="button-container">
-                                        <div id="table-button">
-                                            <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php
-                        endif;
-                    endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-
-            <!-- tab success -->
-            <div id="success" class="col s12 white-text content-color">
-                <table class="responsive-table centered highlight">
-                    <thead class="bottom-border">
-                        <tr>
-                            <th>Tanggal</th>
-                            <th>No. Produksi</th>
-                            <th>Produk</th>
-                            <th>Jumlah</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <?php
-                        $count = 0;
-                        foreach ($production_order->result() as $row) :
-                            $count++;
-
-                            if ($row->status == 'success') :
-                                ?>
-                                <tr>
-                                    <td><?php echo $row->tanggal; ?></td>
-                                    <td><?php echo $row->id_po; ?></td>
-                                    <td>
-                                        <?php
-                                        $hitung = 0;
-                                        foreach ($stock_barang->result() as $col) :
-                                            $hitung++;
-                                            if ($row->id_barang == $col->id_barang) :
-                                                echo $col->nama_barang;
-                                            endif;
-                                        endforeach;
-                                        ?>
-
-                                    </td>
-                                    <td><?php echo $row->jumlah_pesanan; ?></td>
-                                    <td class="button-container">
-                                        <div id="table-button">
-                                            <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
-                                        </div>
-                                    </td>
-                                </tr>
-                            <?php
-                        endif;
-                    endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
         </div>
     </div>
+
     <!-- js -->
-    <?php $this->load->view('marketing/partials/js.php') ?>
+    <?php $this->load->view('produksi/partials/js.php') ?>
 </body>
 
 </html>

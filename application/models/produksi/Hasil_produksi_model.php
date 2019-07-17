@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
  *
- * Model Customer_model
+ * Model Hasil_produksi_model
  *
  * This Model for ...
  * 
@@ -16,26 +16,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  */
 
-class Customer_model extends CI_Model {
+class Hasil_produksi_model extends CI_Model {
 
   // ------------------------------------------------------------------------
 
-  function get_customer(){
-    $result = $this->db->get('customer');
+  function get_hasil_produksi_model(){
+    $result = $this->db->get('hasil_produksi');
     return $result;
   }
 
-  function save_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah)
+  function save_hasil_produksi($id_hasil_produksi, $jumlah_produksi, $jenis_barang, $nama_barang, $tanggal, $keterangan_barang)
   {
     $date = date('Y-m-d');
     $data = array(
-      'id_pelanggan' => $id_pelanggan,
-      'nama_pelanggan' => $nama_pelanggan,
-      'tipe_customer' => $tipe_customer,
-      'wilayah' => $wilayah,
-      'sejak' => $date
+      'id_hasil_produksi' => $id_hasil_produksi,
+      'jumlah_barang' => $jumlah_produksi,
+      'jenis_barang' => $jenis_barang,
+      'nama_barang' => $nama_barang,
+      'tgl_hasil_produksi' => $tanggal,
+      'keterangan_barang' => $keterangan_barang
     );
-    $this->db->insert('customer', $data);
+    $this->db->insert('hasil_produksi', $data);
   }
 
   // ------------------------------------------------------------------------

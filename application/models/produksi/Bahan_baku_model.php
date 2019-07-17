@@ -28,7 +28,7 @@ class bahan_baku_model extends CI_Model {
 
 
 
-  function save_bahan_baku($id_bb, $nama_bb, $jumlah_bb)
+  function save_bahan_baku($id_bb, $nama_bb, $jumlah_bb, $tgl_bb)
   {
     $data = array(
       'id_bahan_baku' => $id_bb,

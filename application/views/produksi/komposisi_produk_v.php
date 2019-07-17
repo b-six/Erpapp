@@ -34,17 +34,11 @@
 
         <!-- tab -->
         <div class="row">
-            <div class="col s12">
-                <ul class="tabs blue-dark-grey">
-                    <li class="tab col s2"><a href="#berlaku" class="active small-font">Berlaku</a></li>
-                    <li class="tab col s2"><a class="small-font" href="#berakhir">Berakhir</a></li>
-                </ul>
-                <br>
-            </div>
+           
             <!-- konten tab -->
 
             <!-- tab berlaku -->
-            <div id="berlaku" class="col s12 white-text">
+            <div class="col s12 white-text">
                 <!-- 1 card -->
                 <div class="col s12">
                     <div class="card horizontal black-text m7 hoverable rounded-card">
@@ -133,62 +127,6 @@
                 </div>
             </div>
 
-            <!-- tab berakhir -->
-            <div id="berakhir" class="col s12 white-text">
-                <!-- 1 card -->
-                <div class="col s12">
-                    <div class="card horizontal black-text m7 hoverable rounded-card">
-                        <div class="card-content center bold-font">
-                            1.
-                        </div>
-                        <div class="card-image">
-                            <img src="https://lorempixel.com/100/140/nature/6">
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col s4">
-                                        <h6><b>Id Promo</b></h6>
-                                        <h6><b>Tanggal Berlaku</b></h6>
-                                    </div>
-                                    <div class="col s8">
-                                        <h6>: SOSRO4NIKMAT2019</h6>
-                                        <h6>: 22-02-2022 s/d 22-03-2022 </h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- 1 card -->
-                <div class="col s12">
-                    <div class="card horizontal black-text m7 hoverable rounded-card maxHeight">
-                        <div class="card-content center bold-font">
-                            2.
-                        </div>
-                        <div class="card-image">
-                            <img src="https://lorempixel.com/100/140/nature/6">
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col s4">
-                                        <h6><b>Id Promo</b></h6>
-                                        <h6><b>Tanggal Berlaku</b></h6>
-                                    </div>
-                                    <div class="col s8">
-                                        <h6>: SOSRO5NIKMAT2019</h6>
-                                        <h6>: 22-02-2022 s/d 22-03-2022 </h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
         </div>
     </div>
     <!-- js -->

@@ -32,12 +32,7 @@
 
         </div>
 		<div class="row">
-            <div class="col s12">
-                <ul class="tabs blue-dark-grey">
-                    <li class="tab col s2"><a href="#" class="active small-font">Berlaku</a></li>
-                </ul>
-                <br>
-            </div>
+            
         <!-- card-->
        <table class="responsive-table centered highlight white-text">
                     <thead class="bottom-border">

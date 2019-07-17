@@ -32,12 +32,7 @@
 
         </div>
 		<div class="row">
-            <div class="col s12">
-                <ul class="tabs blue-dark-grey">
-                    <li class="tab col s2"><a href="#" class="active small-font">Berlaku</a></li>
-                </ul>
-                <br>
-            </div>
+            
         <table class="responsive-table centered highlight white-text">
                     <thead class="bottom-border">
                         <tr>
@@ -54,13 +49,13 @@
 
                     <tbody>
                         <tr>
-						<td>b81ba73bn </td>
-						<td>2-02-2022 </td>
-						<td>cn1982h58 </td>
-						<td>d192ndnq8 </td>
-						<td>e85h172bn </td>
-						<td>fmanbs923 </td>
-						<td>g881nm8na </td>
+						<td>b81ba73bn</td>
+						<td>2-02-2022</td>
+						<td>cn1982h58</td>
+						<td>d192ndnq8</td>
+						<td>e85h172bn</td>
+						<td>fmanbs923</td>
+						<td>100 dus</td>
 						<td> </td>
 						</tr>
                     </tbody>

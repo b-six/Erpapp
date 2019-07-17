@@ -34,17 +34,9 @@
 
         <!-- tab -->
         <div class="row">
-            <div class="col s12">
-                <ul class="tabs blue-dark-grey">
-                    <li class="tab col s2"><a href="#berlaku" class="active small-font">Berlaku</a></li>
-                    <li class="tab col s2"><a class="small-font" href="#berakhir">Berakhir</a></li>
-                </ul>
-                <br>
-            </div>
-            <!-- konten tab -->
-
+            
             <!-- tab berlaku -->
-            <div id="berlaku" class="col s12 white-text">
+            <div class="col s12 white-text">
                 <!-- 1 card -->
                 <table class="responsive-table centered highlight white-text">
                     <thead class="bottom-border">
@@ -78,31 +70,7 @@
             </div>
 
             <!-- tab berakhir -->
-            <div id="berakhir" class="col s12 white-text">
-                <!-- 1 card -->
-                <table class="responsive-table centered highlight white-text">
-                    <thead class="bottom-border">
-                        <tr>
-							<th>ID Quality Control</th>
-							<th>ID Hasil Produksi</th>
-                            <th>Status</th>
-							<th>Kategory</th>
-							<th></th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-						<td>a </td>
-						<td>b </td>
-						<td>c </td>
-						<td>d </td>
-						</tr>
-                    </tbody>
-
-                </table>
-
-            </div>
+            
         </div>
     </div>
     <!-- js -->

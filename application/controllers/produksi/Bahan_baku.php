@@ -34,7 +34,9 @@ class Bahan_baku extends CI_Controller
 		$id_bb = $this->input->post('id_bahan_baku_produksi');
 		$nama_bb = $this->input->post('nama_bb_produksi');
 		$jumlah_bb = $this->input->post('jumlah_bb_produksi');
-		$this->bahan_baku_model->save_bahan_baku($id_bb, $nama_bb, $jumlah_bb);
+		$tgl_bb = $this->input->post('tgl_bb_produksi');
+
+		$this->bahan_baku_model->save_bahan_baku($id_bb, $nama_bb, $jumlah_bb, $tgl_bb);
 		redirect(base_url('produksi/bahan_baku'));
 	}
 }

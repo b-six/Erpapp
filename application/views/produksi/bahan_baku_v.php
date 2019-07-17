@@ -44,8 +44,14 @@
                             <input name="jumlah_bb_produksi" id="jumlah_bb_produksi" type="text" >
                             <label for="jumlah_bb_produksi">Jumlah Bahan Baku Produksi</label>
                         </div>
+                   
                     </div>
-
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input name="tgl_bb_produksi" id="tgl_bb_produksi" type="date" >
+                            <label for="tgl_bb_produksi">Tanggal Masuk</label>
+                        </div>
+                    </div>
                    <!-- <div class="row"> -->
                    <!--     <div class="input-field col s12"> -->
                    <!--         <div class="file-field input-field">    -->
