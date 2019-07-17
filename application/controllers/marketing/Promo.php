@@ -8,15 +8,20 @@ class Promo extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('marketing/promo_model');
+		if ($this->session->userdata('status') == NULL) {
+			redirect('welcome');
+		}
 	}
 
-	public function index(){
+	public function index()
+	{
 		$data['promo'] = $this->promo_model->getPromo();
 
 		$this->load->view('marketing/promo_v', $data);
 	}
 
-	function editPromo(){
+	function editPromo()
+	{
 		$id_promo = $this->input->post('id_promo');
 		echo $this->input->post('produk');
 		echo $this->input->post('jumlah_pembelian');
@@ -25,7 +30,7 @@ class Promo extends CI_Controller
 		// print_r($_FILES);
 		// echo '<br>'.$_FILES['banner_promo']['error'];
 
-		echo('<br><br>');
+		echo ('<br><br>');
 
 		//cek apakah bannernya diedit atau engga
 		if (!empty($_FILES['banner_promo']['name'])) {
@@ -35,14 +40,14 @@ class Promo extends CI_Controller
 			//ambil data dari database
 			$result = $this->promo_model->getOnePromo($id_promo);
 			$banner_promo = $result[0]['banner_promo'];
-			
+
 			//hapus banner promo yang lama
-			if(unlink('document/marketing/promo/'.$banner_promo)){
+			if (unlink('document/marketing/promo/' . $banner_promo)) {
 				$error = array('banner_promo' => 'berhasil');
-			}else{
+			} else {
 				$error = array('banner_promo' => 'banner_promo tidak ditemukan');
 			}
-		}else{
+		} else {
 			//bannernya ga diedit, ambil nama file dari database
 			$result = $this->promo_model->getOnePromo($id_promo);
 
@@ -60,7 +65,8 @@ class Promo extends CI_Controller
 		redirect('marketing/promo');
 	}
 
-	function uploadBanner(){
+	function uploadBanner()
+	{
 		//upload Banner Promo
 		$config = array(
 			"upload_path" 	=> './document/marketing/promo',
@@ -71,10 +77,10 @@ class Promo extends CI_Controller
 		//load library upload
 		$this->load->library('upload', $config);
 		//upload file
-		if($this->upload->do_upload('banner_promo')){
+		if ($this->upload->do_upload('banner_promo')) {
 			//apabila berhasil
 			$data = array('upload_data' => $this->upload->data());
-		}else{
+		} else {
 			//apabila error
 			$error = array('error' => $this->upload->display_errors());
 		}
@@ -82,7 +88,8 @@ class Promo extends CI_Controller
 		return $data['upload_data'];
 	}
 
-	function tambahPromo(){
+	function tambahPromo()
+	{
 		//upload banner promo
 		$upload_data = $this->uploadBanner();
 
@@ -99,18 +106,19 @@ class Promo extends CI_Controller
 		redirect('marketing/promo');
 	}
 
-	function hapusPromo(){
+	function hapusPromo()
+	{
 		$id_promo = $this->input->get('id_promo');
 
 		$result = $this->promo_model->getOnePromo($id_promo);
 
-		foreach($result as $v){
+		foreach ($result as $v) {
 			$banner_promo = $v['banner_promo'];
 		}
 
-		if(unlink('document/marketing/promo/'.$banner_promo)){
+		if (unlink('document/marketing/promo/' . $banner_promo)) {
 			$error = array('banner_promo' => 'berhasil');
-		}else{
+		} else {
 			$error = array('banner_promo' => 'banner_promo tidak ditemukan');
 		}
 
@@ -118,8 +126,6 @@ class Promo extends CI_Controller
 
 		redirect('marketing/promo');
 	}
-
-
 }
 
 

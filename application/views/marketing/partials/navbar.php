@@ -20,20 +20,19 @@
                 <li><a href="testimoni" class="">Testimoni</a></li>
             </ul>
 
-            <ul id="acc_DD" class="dropdown-content ">
-                <li class="no-pointer-event"><a href="#!" class="">Manager</a></li>
-                <li class="divider"></li>
-                <li><a href="#!" class="">My Account</a></li>
-                <li><a href="#!" class="">Log Out</a></li>
-            </ul>
 
+            <ul id="acc_DD" class="dropdown-content ">
+                <li class="no-pointer-event"><a href="#!" class=""><?php echo strtoupper($this->session->userdata('level')); ?></a></li>
+                <li class="divider"></li>
+                <li><a href="<?php echo base_url('welcome/log_out'); ?>" class="white-text">Log Out</a></li>
+            </ul>
 
             <!-- navabar menu -->
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="order_DD">ORDER<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="product_DD">PRODUK<i class="material-icons right">arrow_drop_down</i></a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="customer_DD">CUSTOMER<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger bold-font" href="#" data-target="acc_DD">Ryumada<i class="material-icons right">account_circle</i></a></li>
+                <li><a class="dropdown-trigger bold-font" href="#" data-target="acc_DD"><?php echo $this->session->userdata('nama'); ?><i class="material-icons right">account_circle</i></a></li>
             </ul>
         </div>
     </nav>

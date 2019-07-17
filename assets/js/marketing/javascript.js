@@ -95,19 +95,13 @@ $("tr").on("mouseover mouseout", function() {
 });
 
 //untuk nampilin dan nyembunyiin tombol di card view
-$(document).ready(function() {
-	$(document)
-		.on("mouseenter", ".card-content", function() {
-			$(this)
-				.find("#card-button")
-				.show();
-		})
-		.on("mouseleave", ".card-content", function() {
-			$(this)
-				.find("#card-button")
-				.hide();
-		});
-});
+$(document).ready(function () {
+	$(document).on('mouseenter', '.card-content', function () {
+		$(this).find("#card-button").show();
+	}).on('mouseleave', '.card-content', function () {
+		$(this).find("#card-button").hide();
+	})
+})
 
 // $('.card-content').on('mouseover mouseout', function(){
 // 	$(this).find('#card-button').toggle();
@@ -129,14 +123,12 @@ $("#submit-add-pb").click(function() {
 
 //Script buat ngecrop gambar ====================================================================================
 //buat ngapus gambar terupload dan load ulang croppie.js
-$(".tampilan_produk").on("click", function() {
-	$(".file-selector").hide();
-	$(".btn-crop").show();
-	$("#cropped").remove();
-	$(".croppie-container")
-		.removeClass("croppie-container")
-		.addClass("image-crop-view");
-	$uploadCrop = $(".image-crop-view").croppie({
+$('.tampilan_produk').on('click', function () {
+	$('.file-selector').hide();
+	$('.btn-crop').show();
+	$('#cropped').remove();
+	$('.croppie-container').removeClass('croppie-container').addClass('image-crop-view');
+	$uploadCrop = $('.image-crop-view').croppie({
 		enableExif: true,
 		viewport: {
 			width: 200,
@@ -149,39 +141,35 @@ $(".tampilan_produk").on("click", function() {
 	});
 });
 //setelah file dipilih lakukan perubahan
-$(".tampilan_produk").on("change", function() {
+$('.tampilan_produk').on('change', function () {
 	var reader = new FileReader();
 
-	reader.onload = function(e) {
-		$uploadCrop
-			.croppie("bind", {
-				url: e.target.result
-			})
-			.then(function() {
-				console.log("jQuery bind complete");
-			});
-	};
+	reader.onload = function (e) {
+		$uploadCrop.croppie('bind', {
+			url: e.target.result
+		}).then(function () {
+			console.log('jQuery bind complete');
+		});
+	}
 	reader.readAsDataURL(this.files[0]);
 });
 //buat ngerotate croppie.js
-$(".rotate").on("click", function(ev) {
-	uploadCrop.croppie("rotate", parseInt($(this).data("deg")));
+$('.rotate').on('click', function (ev) {
+	uploadCrop.croppie('rotate', parseInt($(this).data('deg')));
 });
 //taruh hasil croppan dalam frame hasil crop, sama taruh base64 codenya di input text
-$(".btn-crop").on("click", function(ev) {
-	$uploadCrop
-		.croppie("result", {
-			type: "canvas",
-			size: "viewport"
-		})
-		.then(function(resp) {
-			html = '<img id="cropped" src="' + resp + '" />';
-			alert("sukses");
-			$(".image-crop-view").html(html);
-			$(".file-selector").show();
-			$(".btn-crop").hide();
-			$(".hasil-tampilan-produk").val(resp);
-		});
+$('.btn-crop').on('click', function (ev) {
+	$uploadCrop.croppie('result', {
+		type: 'canvas',
+		size: 'viewport'
+	}).then(function (resp) {
+		html = '<img id="cropped" src="' + resp + '" />';
+		alert('sukses');
+		$(".image-crop-view").html(html);
+		$('.file-selector').show();
+		$('.btn-crop').hide();
+		$('.hasil-tampilan-produk').val(resp);
+	});
 });
 //===============================================================================================================
 
@@ -216,14 +204,12 @@ $(".btn-crop").on("click", function(ev) {
 
 //Script buat ngecrop gambar edit =================================================================================
 //buat ngapus gambar terupload dan load ulang croppie.js
-$(".tampilan_produk-edit").on("click", function() {
-	$(".file-selector").hide();
-	$(".btn-crop-edit").show();
-	$("#cropped").remove();
-	$(".croppie-container")
-		.removeClass("croppie-container")
-		.addClass("image-crop-view-edit");
-	$uploadCrop = $(".image-crop-view-edit").croppie({
+$('.tampilan_produk-edit').on('click', function () {
+	$('.file-selector').hide();
+	$('.btn-crop-edit').show();
+	$('#cropped').remove();
+	$('.croppie-container').removeClass('croppie-container').addClass('image-crop-view-edit');
+	$uploadCrop = $('.image-crop-view-edit').croppie({
 		enableExif: true,
 		viewport: {
 			width: 200,
@@ -236,69 +222,66 @@ $(".tampilan_produk-edit").on("click", function() {
 	});
 });
 //setelah file dipilih lakukan perubahan
-$(".tampilan_produk-edit").on("change", function() {
+$('.tampilan_produk-edit').on('change', function () {
 	var reader = new FileReader();
 
-	reader.onload = function(e) {
-		$uploadCrop
-			.croppie("bind", {
-				url: e.target.result
-			})
-			.then(function() {
-				console.log("jQuery bind complete");
-			});
-	};
+	reader.onload = function (e) {
+		$uploadCrop.croppie('bind', {
+			url: e.target.result
+		}).then(function () {
+			console.log('jQuery bind complete');
+		});
+	}
 	reader.readAsDataURL(this.files[0]);
 });
 //buat ngerotate croppie.js
-$(".rotate").on("click", function(ev) {
-	uploadCrop.croppie("rotate", parseInt($(this).data("deg")));
+$('.rotate').on('click', function (ev) {
+	uploadCrop.croppie('rotate', parseInt($(this).data('deg')));
 });
 //taruh hasil croppan dalam frame hasil crop, sama taruh base64 codenya di input text
-$(".btn-crop-edit").on("click", function(ev) {
-	$uploadCrop
-		.croppie("result", {
-			type: "canvas",
-			size: "viewport"
-		})
-		.then(function(resp) {
-			html = '<img id="cropped" src="' + resp + '" />';
-			alert("sukses");
-			$(".image-crop-view-edit").html(html);
-			$(".file-selector").show();
-			$(".btn-crop-edit").hide();
-			$(".hasil-tampilan-produk").val(resp);
-		});
+$('.btn-crop-edit').on('click', function (ev) {
+	$uploadCrop.croppie('result', {
+		type: 'canvas',
+		size: 'viewport'
+	}).then(function (resp) {
+		html = '<img id="cropped" src="' + resp + '" />';
+		alert('sukses');
+		$(".image-crop-view-edit").html(html);
+		$('.file-selector').show();
+		$('.btn-crop-edit').hide();
+		$('.hasil-tampilan-produk').val(resp);
+	});
 });
 //===============================================================================================================
 
 //hapus produk baru
-$(".del-pb-trigger").on("click", function() {
-	var id_barang = $(this).data("id_barang");
+$('.del-pb-trigger').on('click', function () {
+	var id_barang = $(this).data('id_barang');
 
 	console.log(id_barang);
-	$(document).ready(function() {
-		$("#del-pb-modal").modal("open");
+	$(document).ready(function () {
+		$('#del-pb-modal').modal('open');
 	});
-	var oldUrl = $("#del-pb-button").data("href");
+	var oldUrl = $('#del-pb-button').data('href');
 	var newUrl = oldUrl + id_barang;
 
 	$("#del-pb-button").attr("href", newUrl);
 });
 
 //edit produk baru
-$(".edit-pb-trigger").on("click", function() {
-	var id_barang = $(this).data("id_barang");
 
-	var nama_produk = $(this).data("nama");
-	var jenis_produk = $(this).data("jenis");
-	var harga_produk = $(this).data("harga");
-	var file_desain = $(this).data("file_desain");
-	var tampilan_produk = $(this).data("tampilan_produk");
-	var tampil_link = $(this).data("tampil_link");
+$('.edit-pb-trigger').on('click', function () {
+	var id_barang = $(this).data('id_barang');
 
-	$(document).ready(function() {
-		$("#edit-pb-modal").modal("open");
+	var nama_produk = $(this).data('nama');
+	var jenis_produk = $(this).data('jenis');
+	var harga_produk = $(this).data('harga');
+	var file_desain = $(this).data('file_desain');
+	var tampilan_produk = $(this).data('tampilan_produk');
+	var tampil_link = $(this).data('tampil_link');
+
+	$(document).ready(function () {
+		$('#edit-pb-modal').modal('open');
 	});
 	$(".id_barang").val(id_barang);
 	$(".nama-edit").val(nama_produk);
@@ -325,15 +308,16 @@ function readURL(input) {
 	if (input.files && input.files[0]) {
 		var reader = new FileReader();
 
-		reader.onload = function(e) {
-			$("#banner-preview").attr("src", e.target.result);
-		};
+		reader.onload = function (e) {
+			$('#banner-preview').attr('src', e.target.result);
+		}
 
 		reader.readAsDataURL(input.files[0]);
 	}
 }
 
-$("#banner-promo").change(function() {
+
+$('#banner-promo').change(function () {
 	readURL(this);
 });
 //==============================================================
@@ -372,7 +356,6 @@ function readEditedURL(input) {
 		reader.readAsDataURL(input.files[0]);
 	}
 }
-
 $("#banner-promo-edit").change(function() {
 	readEditedURL(this);
 });
@@ -535,6 +518,7 @@ $("#submit-delete-sc").click(function() {
 function getIdEdit_cust(clicked_id) {
 	var clickedSplit = clicked_id.split("_");
 	var id_pelanggan = clickedSplit[2];
+  
 	$("#id_pelanggan-edit").attr("value", id_pelanggan);
 	$("#nama_pelanggan-edit").attr(
 		"value",
@@ -595,3 +579,79 @@ $("#submit-delete-test").click(function() {
 	/* when the submit button in the modal is clicked, submit the form */
 	$("#form-delete-test").submit();
 });
+
+
+// Dashboard Chart Sales_order -------------------------------------
+// label buat di axis X
+console.log(bulan);
+//buat menggambar garis di graphnya
+console.log(sales_order);
+
+var ctx = $('#so_chart');
+var so_chart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: bulan,
+        datasets: [
+            {
+                data: sales_order,
+                label: "Sales Order",
+                borderColor: "#ffff00",
+                backgroundColor: "#9b8400",
+                fill: true
+            }
+        ]
+    }
+});
+// --------------- ------------------------------------------------
+
+// Dashboard Chart Customer ---------------------------------------
+var customer_chart = new Chart($('#customer_chart'), {
+    type: 'bar',
+    data: {
+    	labels: jenis_customer,
+    	datasets: [
+    		{
+    			data: jumlah_customer,
+    			label: "Jumlah Customer",
+    			backgroundColor: ["#f2b700", "#26eb97", "#cb0027"],
+    		}
+    	]
+    },
+    options: {
+    	legend: { display: false},
+    	title : {
+    		display: true,
+    		text: 'Jumlah Customer'
+    	}
+    }
+});
+// ------------------------ ---------------------------------------
+
+//Dasboard Chart Stok Produk -------------------------------------------------
+var stok_produk_chart = new Chart($('#stok_produk_chart'), {
+	type: 'pie',
+	data: {
+		labels: nama_produk,
+		datasets: [{
+			label: "Jumlah Produk",
+			backgroundColor: ["#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2","#3cba9f","#e8c3b9","#c45850","#3e95cd", "#8e5ea2"],
+			data: jumlah_produk
+		}]
+	},
+	options: {
+		title: {
+			display: true,
+			text: 'Jumlah Produk'
+		},
+		legend: {
+			position: 'bottom'
+		},
+		elements: {
+			arc: {
+				borderWidth: 0
+			}
+		}
+	}
+});
+//-------------------------- -------------------------------------------------
