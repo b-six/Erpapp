@@ -153,7 +153,7 @@ function idDel(idDelete){
 	
 }
 //submit form-delete-dpj
-$('#delete-sjdpj').click(function () {
+$('#submit-delete-sjdpj').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
 	$('#form-delete-sjdpj').submit();
 });

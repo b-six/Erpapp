@@ -190,7 +190,7 @@
         <div class="modal-content">
             <h4>Konfirmasi</h4>
             <p>Apakah Anda yakin ingin menghapus data penyimpanan ini?</p>
-            <form id="form-delete-sjdpj" class="col s12" action="<?php echo base_url('warehouse/sj_produk_jadi/deleteDataSjdpj'); ?>" method="get">
+           <form id="form-delete-sjdpj" class="col s12" action="<?php echo site_url('warehouse/sj_produk_jadi/deleteDataSjdpj'); ?>" method="get">
                 <input type="text" id="id_sjdpj_delete" name="id_sjdpj_delete" hidden>
             </form>
         </div>
