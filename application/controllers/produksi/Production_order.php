@@ -7,8 +7,8 @@ class Production_order extends CI_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->load->model('marketing/production_order_model');
-    $this->load->model('marketing/stock_barang_model');
+    $this->load->model('produksi/production_order_model');
+    $this->load->model('produksi/stock_barang_model');
   }
 
   public function index()
@@ -18,32 +18,21 @@ class Production_order extends CI_Controller
     $this->load->view('produksi/production_order_v', $data);
   }
 
-  function save_production_order()
+  public function ubah_onprocess()
   {
-    $id_barang = $this->input->post('id_produk');
-    $jumlah_pesanan = $this->input->post('jumlah_barang');
-    $tanggal = date('Ymd');
-    $id_po = $this->input->post('id_po');
-    $this->production_order_model->save_production_order($id_po, $jumlah_pesanan, $id_barang, $tanggal);
-    redirect('marketing/production_order');
+    $id_po = $this->input->get('id_po');
+    $status = "onprocess";
+    $this->production_order_model->update_status($status, $id_po);
+    redirect(base_url('produksi/production_order'));
   }
 
-  function update_production_order()
+  public function ubah_success()
   {
-    $id_po = $this->input->post('id_po-edit');
-    $id_barang = $this->input->post('id_produk-edit');
-    $jumlah_pesanan = $this->input->post('jumlah_barang-edit');
-    $this->production_order_model->update_production_order($id_po, $jumlah_pesanan, $id_barang);
-    redirect('marketing/production_order');
+    $id_po = $this->input->get('id_po');
+    $status = "success";
+    $this->production_order_model->update_status($status, $id_po);
+    redirect(base_url('produksi/production_order'));
   }
-
-  function delete_production_order()
-  {
-    $id_po = $this->input->get('id_po_delete');
-    $this->production_order_model->delete_production_order($id_po);
-    redirect('marketing/production_order');
-  }
-
 }
 
 
