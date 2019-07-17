@@ -27,7 +27,7 @@ class Pegawai_model extends CI_Model
     return $result;
   }
 
-  function save_pegawai($id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $tgl_diterima, $rekening)
+  function save_pegawai($id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $tgl_diterima, $rekening_pegawai, $no_telp)
   {
     $data = array(
       'id_pegawai' => $id_pegawai,
@@ -38,21 +38,25 @@ class Pegawai_model extends CI_Model
       'alamat' => $alamat,
       'email' => $email,
       'tgl_diterima' => $tgl_diterima,
-      'rekening_pegawai' => $rekening
+      'rekening_pegawai' => $rekening_pegawai,
+      'no_telp' => $no_telp
     );
     $this->db->insert('pegawai', $data);
   }
 
-  function update_pegawai( $id_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $rekening)
+  function update_pegawai( $id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $rekening, $no_telp, $stts)
   {
     $data = array(
       'id_pegawai' => $id_pegawai,
+      'nama_pegawai' => $nama_pegawai,
       'id_golongan' => $golongan,
       'id_pendidikan' => $id_pendidikan,
       'umur' => $umur,
       'alamat' => $alamat,
       'email' => $email,
-      'rekening_pegawai' => $rekening
+      'rekening_pegawai' => $rekening_pegawai,
+      'no_telp' => $no_telp,
+      'status_pegawai' => $stts
     );
     $this->db->where('id_pegawai', $id_pegawai);
     $this->db->update('pegawai', $data);

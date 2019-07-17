@@ -29,10 +29,33 @@ class Data_pegawai extends CI_Controller
     $email = $this->input->post('email');
     $tgl_diterima = $this->input->post('tgl_diterima');
     $rekening = $this->input->post('rekening_pegawai');
-    $this->pegawai_model->save_pegawai($id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $tgl_diterima, $rekening);
+    $no_telp = $this->input->post('no_telp');
+    $this->pegawai_model->save_pegawai($id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $tgl_diterima, $rekening, $no_telp);
+    redirect('sdm/data_pegawai');
+  }
+  function update_pegawai()
+  {
+    $id_pegawai = $this->input->post('id_pegawai-edit');
+    $nama_pegawai = $this->input->post('nama_pegawai-edit');
+    $golongan = $this->input->post('id_golongan');
+    $id_pendidikan = $this->input->post('id_pendidikan');
+    $umur = $this->input->post('umur');
+    $alamat = $this->input->post('alamat-edit');
+    $email = $this->input->post('email-edit');
+    $rekening = $this->input->post('rekening_pegawai-edit');
+    $no_telp = $this->input->post('no_telp-edit');
+    $stts = $this->input->post('stts');
+    $this->pegawai_model->update_pegawai($id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $rekening, $no_telp, $stts);
+    // echo $id_pegawai. "**". $nama_pegawai;
     redirect('sdm/data_pegawai');
   }
 
+  function delete_pegawai()
+  {
+    $id_pegawai = $this->input->get('id_pegawai_delete');
+    $this->pegawai_model->delete_pegawai($id_pegawai);
+    redirect('sdm/data_pegawai');
+  }
 }
 
 

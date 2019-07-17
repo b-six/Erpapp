@@ -67,7 +67,7 @@
                     </div>
                     <div class='row'>
                         <div class='input-field col s12'>
-                            <input id='umur' name='umur' type='number' class='validate' autocomplete='off' placeholder="0" value="">
+                            <input id='umur-edit' name='umur' type='number' class='validate' autocomplete='off' placeholder="0" value="">
                             <label for='jumlah_barang'>Umur</label></div>
                     </div>
                     <div class="row">
@@ -90,15 +90,20 @@
                     </div>
                     <div class='row'>
                         <div class='input-field col s12'>
-                            <input id='rekening_pegawai' name='rekening_pegawai' type='number' class='validate' autocomplete='off' placeholder="masukkan nomor rekening anda" value="">
-                            <label for='jumlah_barang'>Rekening</label></div>
+                            <input id='rekening_pegawai' name='rekening_pegawai' type='number' class='validate' autocomplete='off' placeholder="masukkan nomor rekening pegawai" value="">
+                            <label for='rekening'>Rekening</label></div>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input id='no_telp' name='no_telp' type='number' class='validate' autocomplete='off' placeholder="masukkan nomor telepon pegawai" value="">
+                            <label for='no_telpon'>No. Telpon (+62)</label></div>
                     </div>
                 </form>
             </div>
 
         </div>
         <div class="modal-footer">
-            <a href="#!" cldass="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
             <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-add-pegawai" id="submit-add-pegawai">Submit
                 <i class="material-icons right">send</i>
             </button>
@@ -106,11 +111,11 @@
     </div>
 
     <!-- Modal Edit pegawai -->
-    <div id="edit-cust-modal" class="modal modal-fixed-footer">
+    <div id="edit-pegawai-modal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <div class="row">
 
-                <form id="form-edit-cust" class="col s12" action="<?php echo site_url('marketing/data_customer/update_customer'); ?>" method="post">
+                <form id="form-edit-pegawai" class="col s12" action="<?php echo site_url('sdm/data_pegawai/update_pegawai'); ?>" method="post">
                     <div class="row">
                         <div class="col s12 center">
                             <h4>Edit Pegawai</h4>
@@ -119,55 +124,97 @@
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="id_pelanggan-edit" name="id_pelanggan-edit" type="text" class="validate" autocomplete="off" value=" " readonly>
-                            <label for="id_pelanggan">ID</label>
+                            <input id="id_pegawai-edit" name="id_pegawai-edit" type="text" class="validate" autocomplete="off" value=" " readonly>
+                            <label for="id_pegawai">ID Pegawai</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" name="nama_pelanggan-edit" id="nama_pelanggan-edit" placeholder="Masukkan Nama pegawai" autocomplete="off">
-                            <label for="nama_pelanggan">Nama</label>
+                            <input type="text" name="nama_pegawai-edit" id="nama_pegawai-edit" placeholder="Masukkan Nama pegawai" autocomplete="off">
+                            <label for="nama_pegawai">Nama</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <select id="tipe_customer-edit" name="tipe_customer-edit">
-                                <option value="" disabled selected>Pilih Jenis pegawai</option>
-                                <option value="Retailer">Retailer</option>
-                                <option value="Distributor">Distributor</option>
-                                <option value="Personal">Personal</option>
+                            <select id="id_golongan" name="id_golongan">
+                                <option value="" disabled selected>Pilih Golongan Kerja</option>
+                                <option value="3">III</option>
+                                <option value="2">II</option>
+                                <option value="1">I</option>
                             </select>
-                            <label>Jenis</label>
+                            <label>Golongan</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" name="wilayah-edit" id="wilayah-edit" placeholder="Masukkan Wilayah Pemesanan pegawai" autocomplete="off">
-                            <label for="wilayah">Wilayah</label>
+                            <select id="id_pendidikan" name="id_pendidikan">
+                                <option value="" disabled selected>Pilih Jenjang Pendidikan</option>
+                                <option value="3">S3</option>
+                                <option value="2">S2</option>
+                                <option value="1">S1</option>
+                            </select>
+                            <label>Pendidikan</label>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input id='umur' name='umur' type='number' class='validate' autocomplete='off' placeholder="0" value="">
+                            <label for='jumlah_barang'>Umur</label></div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="alamat-edit" id="alamat-edit" placeholder="Masukkan alamat pegawai" autocomplete="off">
+                            <label for="alamat">Alamat</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="email-edit" id="email-edit" placeholder="Masukkan email pegawai" autocomplete="off">
+                            <label for="alamat">Email</label>
+                        </div>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input id='rekening_pegawai-edit' name='rekening_pegawai-edit' type='number' class='validate' autocomplete='off' placeholder="masukkan nomor rekening pegawai" value="">
+                            <label for='rekening'>Rekening</label></div>
+                    </div>
+                    <div class='row'>
+                        <div class='input-field col s12'>
+                            <input id='no_telp-edit' name='no_telp-edit' type='number' class='validate' autocomplete='off' placeholder="masukkan nomor telepon pegawai" value="">
+                            <label for='no_telpon'>No. Telpon</label></div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select id="status_pegawai" name="stts">
+                                <option value="" disabled selected>Pilih Status Pegawai</option>
+                                <option value="1">Aktif</option>
+                                <option value="2">Pensiun</option>
+                                <option value="3">Resign</option>
+                            </select>
+                            <label>Status</label>
                         </div>
                     </div>
                 </form>
-
             </div>
-
         </div>
+        
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <a href="#konfirm-edit-cust" class="btn waves-effect waves-light orange darken-3 modal-trigger">Submit
+            <a href="#konfirm-edit-pegawai" class="btn waves-effect waves-light orange darken-3 modal-trigger">Submit
                 <i class="material-icons right">send</i>
             </a>
         </div>
     </div>
 
     <!-- Modal Konfirmasi Edit pegawai -->
-    <div id="konfirm-edit-cust" class="modal">
+    <div id="konfirm-edit-pegawai" class="modal">
         <div class="modal-content">
             <h4>Konfirmasi</h4>
             <p>Apakah Anda yakin ingin menyimpan perubahan ini?</p>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
-            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-edit-cust" id="submit-edit-cust">Ya
+            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-edit-pegawai" id="submit-edit-pegawai">Ya
                 <i class="material-icons right"></i>
             </button>
         </div>
@@ -175,17 +222,17 @@
 
 
     <!-- Modal Konfirmasi Delete pegawai -->
-    <div id="konfirm-delete-cust" class="modal">
+    <div id="konfirm-delete-pegawai" class="modal">
         <div class="modal-content">
             <h4>Konfirmasi</h4>
             <p>Apakah Anda yakin ingin menghapus data pegawai ini?</p>
-            <form id="form-delete-cust" class="col s12" action="<?php echo site_url('marketing/data_customer/delete_customer'); ?>" method="get">
-                <input type="text" id="id_cust_delete" name="id_cust_delete" hidden>
+            <form id="form-delete-pegawai" class="col s12" action="<?php echo site_url('sdm/data_pegawai/delete_pegawai'); ?>" method="get">
+                <input type="text" id="id_pegawai_delete" name="id_pegawai_delete" hidden>
             </form>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <button class="btn waves-effect waves-light red darken-2" type="submit" name="submit-delete-cust" id="submit-delete-cust">Delete
+            <button class="btn waves-effect waves-light red darken-2" type="submit" name="submit-delete-pegawai" id="submit-delete-pegawai">Delete
                 <i class="material-icons right">delete</i>
             </button>
         </div>
@@ -237,8 +284,8 @@
                             <td><?php echo $col->status_pegawai; ?></td>
                             <td class="button-container">
                                 <div id="table-button">
-                                <a href="#konfirm-delete-cust" id="delete_id_<?php echo $col->id_pegawai; ?>" class="modal-trigger" onClick="getId_cust(this.id)"><i class="material-icons delete-button">delete_forever</i></a>
-                                    <a href="#edit-cust-modal" id="id_pegawai_<?php echo $col->id_pegawai; ?>" class="modal-trigger" onClick="getIdEdit_cust(this.id)" data-nama_cust="<?php echo $col->nama_pegawai; ?>" data-wilayah_cust="<?php echo $col->alamat; ?>"><i class="material-icons edit-button">create</i></a>
+                                <a href="#konfirm-delete-pegawai" id="delete_id_<?php echo $col->id_pegawai; ?>" class="modal-trigger" onClick="getId_pegawai(this.id)"><i class="material-icons delete-button">delete_forever</i></a>
+                                    <a href="#edit-pegawai-modal" id="id_pegawai_<?php echo $col->id_pegawai; ?>" class="modal-trigger" onClick="getIdEdit_pegawai_1(this.id)" data-nama_pegawai="<?php echo $col->nama_pegawai; ?>" data-id_golongan="<?php echo $col->id_golongan; ?>" data-id_pendidikan="<?php echo $col->id_pendidikan; ?>" data-umur="<?php echo $col->umur; ?>"data-alamat="<?php echo $col->alamat; ?>" data-email="<?php echo $col->email; ?>" data-rekening_pegawai="<?php echo $col->rekening_pegawai;?>" data-no_telp="<?php echo $col->no_telp;?>"><i class="material-icons edit-button">create</i></a>
                                 </div>
                             </td>
                         </tr>

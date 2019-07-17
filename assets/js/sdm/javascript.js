@@ -63,35 +63,35 @@ $('#submit-add-sc').click(function () {
 	$('#form-add-item-sc').submit();
 });
 
-// show wilayah dan tipe customer
-$("#id_pelanggan").change(function () {
-	var id_pelanggan = $("#id_pelanggan").val();
-	var wilayah = $("#" + id_pelanggan).val();
-	var tipe_customer = $("#x" + id_pelanggan).val();
+// show wilayah dan tipe pegawai
+$("#id_pegawai").change(function () {
+	var id_pegawai = $("#id_pegawai").val();
+	var wilayah = $("#" + id_pegawai).val();
+	var tipe_pegawai = $("#x" + id_pegawai).val();
 	$("#show-wilayah")
 		.attr("value", wilayah);
-	$("#show-tipe-customer")
-		.attr("value", tipe_customer)
+	$("#show-tipe-pegawai")
+		.attr("value", tipe_pegawai)
 });
 
-//submit form-add-customer
-$('#submit-add-customer').click(function () {
+//submit form-add-pegawai
+$('#submit-add-pegawai').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
-	$('#form-add-customer').submit();
+	$('#form-add-pegawai').submit();
 });
 
-//show nama, wilayah dan tipe customer pada form add-testimoni
+//show nama, wilayah dan tipe pegawai pada form add-testimoni
 $("#id_so").change(function () {
-	var id_pelanggan = $("#id_so").val();
-	var nama = $("#nama-" + id_pelanggan).val();
-	var wilayah = $("#wilayah-" + id_pelanggan).val();
-	var tipe_customer = $("#tipe-" + id_pelanggan).val();
+	var id_pegawai = $("#id_so").val();
+	var nama = $("#nama-" + id_pegawai).val();
+	var wilayah = $("#wilayah-" + id_pegawai).val();
+	var tipe_pegawai = $("#tipe-" + id_pegawai).val();
 	$("#show-nama")
 		.attr("value", nama);
 	$("#show-wilayah")
 		.attr("value", wilayah);
-	$("#show-tipe-customer")
-		.attr("value", tipe_customer)
+	$("#show-tipe-pegawai")
+		.attr("value", tipe_pegawai)
 });
 
 //submit form-add-testimoni
@@ -393,37 +393,51 @@ $('#submit-edit-promo').click(function () {
 	$('#form-edit-promo').submit();
 });
 
-// // show wilayah dan tipe customer pada modal edit so
-$("#id_pelanggan-edit").change(function () {
-	var id_pelanggan = $("#id_pelanggan-edit").val();
-	var wilayah = $("#" + id_pelanggan).val();
-	var tipe_customer = $("#x" + id_pelanggan).val();
+// // show wilayah dan tipe pegawai pada modal edit so
+$("#id_pegawai-edit").change(function () {
+	var id_pegawai = $("#id_pegawai-edit").val();
+	var wilayah = $("#" + id_pegawai).val();
+	var tipe_pegawai = $("#x" + id_pegawai).val();
 	$("#show-wilayah-edit")
 		.attr("value", wilayah);
-	$("#show-tipe-customer-edit")
-		.attr("value", tipe_customer)
+	$("#show-tipe-pegawai-edit")
+		.attr("value", tipe_pegawai)
 });
 
-//get id ketika klik tombol edit, kemudian id di pass ke modal edit so
-function getIdEdit(clicked_id) {
-	var id_edit = clicked_id;
-	$("#id_so_edit").attr("value", id_edit);
-	var id_pelanggan = $("#id_pelanggan_edit-" + id_edit).val();
-	var nama_pelanggan = $("#nama_pelanggan_edit-" + id_edit).val();
-	$("#nama-customer")
-		.attr("value", nama_pelanggan)
-		.css("font-weight", "bold");
-	$("#id_so_edit")
-		.css("font-weight", "bold");
-	$("#option-" + id_pelanggan).attr("selected", "");
+//get id ketika klik tombol edit, kemudian id di pass ke modal edit
+function getIdEdit_pegawai_1(clicked_id) {
+	// var id_edit = clicked_id;
+	// $("#id_so_edit").attr("value", id_edit);
+	// var id_pegawai = $("#id_pegawai_edit-" + id_edit).val();
+	// $("#nama-pegawai")
+	// 	.attr("value", nama_pegawai)
+	// 	.css("font-weight", "bold");
+	// $("#id_so_edit")
+	// 	.css("font-weight", "bold");
+	// $("#option-" + id_pegawai).attr("selected", "");
+	var id_split = clicked_id.split("_");
+	var id_pegawai = id_split[2];
+	var nama_pegawai = $("#id_pegawai_" + id_pegawai).data("nama_pegawai");
+	var id_golongan = $("#id_pegawai_" + id_pegawai).data("id_golongan");
+	var id_pendidikan = $("#id_pegawai_" + id_pegawai).data("id_pendidikan");
+	var umur = $("#id_pegawai_" + id_pegawai).data("umur");
+	var alamat = $("#id_pegawai_" + id_pegawai).data("alamat");
+	var email = $("#id_pegawai_" + id_pegawai).data("email");
+	var rekening_pegawai = $("#id_pegawai_" + id_pegawai).data("rekening_pegawai");
+	var no_telp = $("#id_pegawai_" + id_pegawai).data("no_telp");
+	
+	$('#id_pegawai-edit').attr("value", id_pegawai);
+	$('#nama_pegawai-edit').attr("value", nama_pegawai);
+	$('#alamat-edit').attr("value", alamat);
+	$('#email-edit').attr("value", email);
+	$('#umur').attr("value", umur);
+	$('#rekening_pegawai-edit').attr("value", rekening_pegawai);
+	$('#no_telp-edit').attr("value", no_telp);
+	// alert(alamat)
+}
 
-	var id_pelanggan = $("#id_pelanggan-edit").val();
-	var wilayah = $("#" + id_pelanggan).val();
-	var tipe_customer = $("#x" + id_pelanggan).val();
-	$("#show-wilayah-edit")
-		.attr("value", wilayah);
-	$("#show-tipe-customer-edit")
-		.attr("value", tipe_customer)
+function test(){
+	alert('huheuh');
 }
 
 //submit form-edit-so
@@ -541,36 +555,36 @@ $('#submit-delete-sc').click(function () {
 	$('#form-delete-sc').submit();
 });
 
-//get id untuk edit customer
-function getIdEdit_cust(clicked_id) {
+//get id untuk edit pegawai
+function getIdEdit_pegawai(clicked_id) {
 	var clickedSplit = clicked_id.split("_");
-	var id_pelanggan = clickedSplit[2];
-	$("#id_pelanggan-edit")
-		.attr("value", id_pelanggan);
-	$("#nama_pelanggan-edit")
-		.attr("value", ($("#id_pelanggan_" + id_pelanggan).data('nama_cust')));
+	var id_pegawai = clickedSplit[2];
+	$("#id_pegawai-edit")
+		.attr("value", id_pegawai);
+	$("#nama_pegawai-edit")
+		.attr("value", ($("#id_pegawai_" + id_pegawai).data('nama_pegawai')));
 	$("#wilayah-edit")
-		.attr("value", ($("#id_pelanggan_" + id_pelanggan).data('wilayah_cust')));
+		.attr("value", ($("#id_pegawai_" + id_pegawai).data('wilayah_pegawai')));
 }
 
-//submit form-edit-customer
-$('#submit-edit-cust').click(function () {
+//submit form-edit-pegawai
+$('#submit-edit-pegawai').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
-	$('#form-edit-cust').submit();
+	$('#form-edit-pegawai').submit();
 });
 
-//get id untuk delete customer
-function getId_cust(clicked_id) {
+//get id untuk delete pegawai
+function getId_pegawai(clicked_id) {
 	var Split = clicked_id.split("_");
-	var id_pelanggan = Split[2];
-	$("#id_cust_delete")
-		.attr("value", id_pelanggan);
+	var id_pegawai = Split[2];
+	$("#id_pegawai_delete")
+		.attr("value", id_pegawai);
 }
 
-//submit form-delete-customer
-$('#submit-delete-cust').click(function () {
+//submit form-delete-pegawai
+$('#submit-delete-pegawai').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
-	$('#form-delete-cust').submit();
+	$('#form-delete-pegawai').submit();
 });
 
 //get id untuk edit testimoni
@@ -583,7 +597,7 @@ function getIdEdit_test(test_edit_id) {
 		.attr("value", $("#get-nama-" + id_so).val());
 	$("#show-wilayah-edit")
 		.attr("value", $("#get-wilayah-" + id_so).val());
-	$("#show-tipe-customer-edit")
+	$("#show-tipe-pegawai-edit")
 		.attr("value", $("#get-tipe-" + id_so).val());
 	$("#id_test-edit")
 		.attr("value", $("#" + test_edit_id).data('id_test'));
