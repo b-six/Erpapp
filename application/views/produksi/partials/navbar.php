@@ -1,7 +1,7 @@
 <div class="navbar-fixed">
     <nav class="no-shadows">
         <div class="nav-wrapper blue-dark-grey darken-4">
-            <a href="dashboard" class="brand-logo"><img src="<?php echo base_url('assets/img/marketing/sosro_logo.png') ?>" alt="Sosro Logo" height="60px" width="100px"></a>
+            <a href="dashboard" class="brand-logo"><img src="<?php echo base_url('assets/img/produksi/sosro_logo.png') ?>" alt="Sosro Logo" height="60px" width="100px"></a>
 
             <!-- Dropdown Structure -->
            

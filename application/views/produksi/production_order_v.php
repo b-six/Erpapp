@@ -18,7 +18,7 @@
             <div class="col s7">
                 <nav class="no-shadows breadcrumbs-style">
                     <div class="nav-wrapper blue-dark-grey">
-                        <a class="breadcrumb no-pointer-event">Order</a>
+                        <a class="breadcrumb no-pointer-event">Plan</a>
                         <a href="production_order" class="breadcrumb">Production Order</a>
                     </div>
                 </nav>
