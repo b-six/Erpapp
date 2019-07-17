@@ -42,6 +42,13 @@ class penyimpanan extends CI_Controller
       redirect('warehouse/penyimpanan');
   }
 
+  public function deleteDataPjm(){
+    // $id_produk_jadi_masuk = $this->input->get('id_produk_jadi_masuk_delete');
+    $id_produk_jadi_masuk_delete = $this->input->get('id_produk_jadi_masuk_delete');
+    $this->Stock_barang_model->delete_data_pjm($id_produk_jadi_masuk_delete);
+    redirect('warehouse/penyimpanan');
+  }
+
 
 }
 

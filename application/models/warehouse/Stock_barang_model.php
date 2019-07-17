@@ -66,6 +66,15 @@ function get_produk_jadi_keluar(){
 
     $this->db->insert('produk_jadi_keluar', $data);
   }
+  function delete_data_pjm($id_produk_jadi_masuk_delete){
+    $this->db->where('id_produk_jadi_masuk', $id_produk_jadi_masuk_delete);
+    $this->db->delete('produk_jadi_masuk');
+  }
+
+  function delete_data_pjk($id_pjk_delete){
+    $this->db->where('id_produk_keluar', $id_pjk_delete);
+    $this->db->delete('produk_jadi_keluar');
+  }
 
   // ------------------------------------------------------------------------
   

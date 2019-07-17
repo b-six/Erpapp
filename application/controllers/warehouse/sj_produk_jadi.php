@@ -36,6 +36,25 @@ class sj_produk_jadi extends CI_Controller
     $this->load->view('warehouse/sj_produk_jadi_v',$data);
   }
 
+  public function inputSjdpj()
+  {
+      $no_surat_jalan_dpj = $this->input->post('no_surat_jalan_dpj');
+      $id_barang = $this->input->post('id_barang');
+      $nama_distributor = $this->input->post('nama_distributor');
+      $tgl_surat_jalan_dpj = $this->input->post('tgl_surat_jalan_dpj');
+      $sales_order = $this->input->post('id_so');
+
+    $this->Surat_jalan_model->tambah_data_dpj($no_surat_jalan_dpj, $id_barang, $nama_distributor, $tgl_surat_jalan_dpj, $sales_order);
+    redirect('warehouse/sj_produk_jadi');
+  }
+  public function deleteDataSjdpj(){
+    // $id_sjdpj_delete = $this->input->get('id_sjdpj_delete');
+    echo $this->input->get('id_sjdpj_delete');
+    exit();
+    $this->Surat_jalan_model->delete_data_sjdpj($id_sjdpj_delete);
+    redirect('warehouse/sj_produk_jadi');
+  }
+
 
 }
 

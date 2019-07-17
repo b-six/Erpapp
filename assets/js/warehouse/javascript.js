@@ -116,4 +116,45 @@ function idEdit(idEdit){
 	$('#jmlproduk-edit').attr("value",$('#'+idEdit).data('jumlah'));
 	
 }
+//delete penyimpanan
+function idDelete (idDelete){
+	$('#id_produk_jadi_masuk_delete')
+	.attr("value",idDelete);
+
+	console.log(idDelete);
+	
+}
+//submit form-delete-pjm
+$('#submit-delete-pjm').click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$('#form-delete-pjm').submit();
+});
+
+//delete pengiriman
+function getidDelete (idDelete){
+	$('#id_pjk_delete')
+	.attr("value",idDelete);
+
+	console.log(idDelete);
+	
+}
+//submit form-delete-pjm
+$('#submit-delete-pjk').click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$('#form-delete-pjk').submit();
+});
+
+//delete surat jalan dpj
+function idDel(idDelete){
+	$('#id_sjdpj_delete')
+	.attr("value",idDelete);
+
+	console.log(idDelete);
+	
+}
+//submit form-delete-dpj
+$('#delete-sjdpj').click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$('#form-delete-sjdpj').submit();
+});
 

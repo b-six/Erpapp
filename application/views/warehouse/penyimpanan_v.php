@@ -253,14 +253,14 @@
     <div id="konfirm-delete-PJM" class="modal">
         <div class="modal-content">
             <h4>Konfirmasi</h4>
-            <p>Apakah Anda yakin ingin menghapus sales order ini?</p>
-            <form id="form-delete-so" class="col s12" action="<?php echo site_url('marketing/sales_order/delete_sales_order'); ?>" method="get">
-                <input type="text" id="id_so_delete" name="id_so_delete" hidden>
+            <p>Apakah Anda yakin ingin menghapus data penyimpanan ini?</p>
+            <form id="form-delete-pjm" class="col s12" action="<?php echo site_url('warehouse/penyimpanan/deleteDataPjm'); ?>" method="get">
+                <input type="text" id="id_produk_jadi_masuk_delete" name="id_produk_jadi_masuk_delete" hidden>
             </form>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <button class="btn waves-effect waves-light red darken-2" type="submit" name="submit-delete-so" id="submit-delete-so">Delete
+            <button class="btn waves-effect waves-light red darken-2" type="submit" name="submit-delete-pjm" id="submit-delete-pjm">Delete
                 <i class="material-icons right">delete</i>
             </button>
         </div>

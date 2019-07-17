@@ -44,6 +44,13 @@ class pengiriman extends CI_Controller
     redirect('warehouse/pengiriman');
 
   }
+
+  public function deleteDataPjk(){
+    // $id_produk_jadi_masuk = $this->input->get('id_produk_jadi_masuk_delete');
+    $id_pjk_delete = $this->input->get('id_pjk_delete');
+    $this->Stock_barang_model->delete_data_pjk($id_pjk_delete);
+    redirect('warehouse/pengiriman');
+  }
 }
 
 

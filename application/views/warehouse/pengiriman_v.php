@@ -86,7 +86,7 @@
                                     <td class="button-container">
                                     <td class="button-container">
                             <div id="table-button">
-                                <a href="#"><i class="material-icons delete-button">delete_forever</i></a> 
+                                <a class="modal-trigger" href="#konfirm-delete-PJK" id="<?php echo $col->id_produk_keluar;  ?>" onclick="getidDelete(this.id)"><i class="material-icons delete-button">delete_forever</i></a> 
                                 <a href="#"><i class="material-icons edit-button">create</i></a>
                             </div>
                         </td>
@@ -203,6 +203,23 @@
             </button>
         </div>
   	</div>
+
+    <!-- Modal Konfirmasi Delete -->
+    <div id="konfirm-delete-PJK" class="modal">
+        <div class="modal-content">
+            <h4>Konfirmasi</h4>
+            <p>Apakah Anda yakin ingin menghapus data pengiriman ini?</p>
+            <form id="form-delete-pjk" class="col s12" action="<?php echo site_url('warehouse/pengiriman/deleteDataPjk'); ?>" method="get">
+                <input type="text" id="id_pjk_delete" name="id_pjk_delete" hidden>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <button class="btn waves-effect waves-light red darken-2" type="submit" name="submit-delete-pjk" id="submit-delete-pjk">Delete
+                <i class="material-icons right">delete</i>
+            </button>
+        </div>
+    </div>
 	
 	<?php $this->load->view('warehouse/_partials/js.php') ?>
 </body>

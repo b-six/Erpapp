@@ -11,7 +11,9 @@
 	
 	<div class="container">
         <br>
-        <!-- <h3 class="laporan">Laporan Jumlah Stok Produk yang Ada di Warehouse</h3> -->
+        <div class="laporan">
+        <h3>Laporan Jumlah Stok Produk yang Ada di Warehouse</h3>
+        </div>
         <div class="row">
             <!-- breadcrumb -->
             <div class="col s6">
@@ -59,14 +61,6 @@
                     </tr>
                 </thead>
 
-                <!--<tbody>
-                	<tr>
-                    	<td>12345</td>
-                    	<td>12345</td>
-                    	<td>12345</td>
-                    	<td>12345</td>
-                    </tr>
-                </tbody>-->
                 <tbody>
                     <?php
                     //$count = 0;

@@ -1,5 +1,5 @@
 
-@media screen, print {
+@media print {
     * { color: black; background: white; }
    table { font-size: 80%; }
    nav {
@@ -13,6 +13,7 @@
    }
    .laporan{
     display: block;
+    text-align: center;
    }
 
 }
@@ -20,6 +21,7 @@
 .laporan{
     display: none;
     text-align: center;
+    color: black;
 }
 
 /*tombol delete dan edit*/
