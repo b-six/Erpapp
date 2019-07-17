@@ -142,7 +142,7 @@
                                 <td class="<?php echo $warna; ?>"><?php echo $pen->status_validasi_gaji; ?></td>
                                 <td class="button-container">
                                     <div id="table-button">
-                                        <a href="#validasi-gaji-modal" id="validasi_<?php echo $peg->nama_pegawai; ?>" data-periode="<?php echo $pen->periode_gaji; ?>" data-golongan="<?php echo $peg->id_golongan; ?>" data-gaji_pokok="<?php echo $pen->gaji_pokok; ?>" data-gaji_lembur="<?php echo $pen->gaji_lembur; ?>" data-pengurangan_gaji="<?php echo $pen->pengurangan_gaji; ?>" data-total_gaji="<?php echo ($pen->gaji_pokok)+($pen->gaji_lembur)-($pen->pengurangan_gaji); ?>" class="modal-trigger"><i class="material-icons edit-button">create</i></a>
+                                        <a href="#validasi-gaji-modal" onClick="validasiTampil(this.id)" id="validasi_<?php echo $peg->nama_pegawai; ?>" data-periode="<?php echo $pen->periode_gaji; ?>" data-golongan="<?php echo $peg->id_golongan; ?>" data-gaji_pokok="<?php echo $pen->gaji_pokok; ?>" data-gaji_lembur="<?php echo $pen->gaji_lembur; ?>" data-pengurangan_gaji="<?php echo $pen->pengurangan_gaji; ?>" data-total_gaji="<?php echo ($pen->gaji_pokok)+($pen->gaji_lembur)-($pen->pengurangan_gaji); ?>" class="modal-trigger"><i class="material-icons edit-button">create</i></a>
                                     </div>
                                 </td>
                                 </tr>

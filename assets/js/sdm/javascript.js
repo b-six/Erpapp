@@ -639,3 +639,9 @@ $('#submit-add-pegawai').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
 	$('#form-add-pegawai').submit();
 });
+
+//tampilkan validasi data gaji
+function validasiTampil(clicked_id){
+	var id_splitx = clicked_id.split("_");
+	var id
+}
