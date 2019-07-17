@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>produksi - Production Order</title>
+    <title>Produksi - Production Order</title>
     <?php $this->load->view('produksi/partials/css.php') ?>
 </head>
 
