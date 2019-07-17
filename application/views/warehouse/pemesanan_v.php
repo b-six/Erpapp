@@ -98,6 +98,7 @@
                                       
                             <div id="table-button">
                                 <a href="<?php echo base_url("warehouse/pemesanan/delete?id=". $col->id_pemesanan_bb); ?>" id="delete_<?php echo $col->id_pemesanan_bb;?>" name="delete" onClick="getDelete(this.id)" data-id_pemesanan_bb="<?php echo $col->id_pemesanan_bb; ?>"><i class="material-icons delete-button">delete_forever</i></a> 
+                                <a href="#pemesanan-edit" id="edit_<?php echo $col->id_pemesanan_bb;?>" onClick="getEdit(this.id)" data-id_pemesanan_bb="<?php echo $col->id_pemesanan_bb; ?>" class="modal-trigger"><i class="material-icons delete-button">create</i></a> 
                                 
                             </div>
                         </td>
@@ -310,8 +311,8 @@ $hitung = 0;
             </div>
         </div>
 <!-- update status pemesanan-->
-        <div id="pesan" action="<?php echo site_url('warehouse/pemesanan/pesan'); ?>" method="get" value="<?php echo $col->id_pemesanan_bb; ?>" hidden>
-        </div>
+        <!-- <div id="pesan" action="<?php echo site_url('warehouse/pemesanan/pesan'); ?>" method="get" value="<?php echo $col->id_pemesanan_bb; ?>" hidden>
+        </div> -->
 
 <!-- generate id sales order -->
                     <?php
@@ -410,6 +411,98 @@ $hitung = 0;
             </button>
         </div>
   	</div>
+
+<!-- modal edit -->
+    <div id="pemesanan-edit" class="modal modal-fixed-footer">
+        <div class="row">
+        <form id="form-edit-so" class="col s12" action="<?php echo site_url('warehouse/pemesanan/save_pemesanan'); ?>" method="post">
+        <div class="row">
+            <div class="col s12 right">
+                <h5>Form Pemesanan</h5>
+            </div>
+        </div>
+<!-- update status pemesanan-->
+        <!-- <div id="pesan" action="<?php echo site_url('warehouse/pemesanan/pesan'); ?>" method="get" value="<?php echo $col->id_pemesanan_bb; ?>" hidden>
+        </div> -->
+
+
+
+        <div class="row">
+            <div class="col s12">
+                <div class="col s12">
+                <div class="input-field col s12">
+                    <input type="text" name="id_pemesanan_bb-edit" id="id_pemesanan_bb-edit" placeholder="" value=" " readonly >
+                    <label for="id_pemesanan_bb-edit">ID Pemesanan</label>
+                </div>
+            </div>
+                <div class="input-field col s12">
+                    <select id="id-bahan-baku" name="id-bahan-baku" me="id-bahan-baku">
+                                <option value="" disabled selected>Pilih Bahan Baku</option>
+                                <?php $hitung = 0;
+                                foreach ($bahan_baku->result() as $col) :
+                                    $hitung++;
+                                    ?>
+                                    <option id="<?php echo $col->id_bahan_baku ?>" value="<?php echo $col->id_bahan_baku ?>"><?php echo $col->nama_bahan_baku ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                </div>
+            </div>
+
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <input type="text" name="jmlbb" id="jmlbb" placeholder="Masukan Jumlah">
+                    <label for="jmlbb">Jumlah</label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <select id="id-supplier" name="id-supplier" me="id-supplier">
+                                <option value="" disabled selected>Pilih Supplier</option>
+                                <?php $hitung = 0;
+                                foreach ($supplier->result() as $col) :
+                                    $hitung++;
+                                    ?>
+                                    <option id="<?php echo $col->id_supplier ?>" value="<?php echo $col->id_supplier ?>"><?php echo $col->nama_supplier ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                    <label>Supplier</label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <input type="date" name="tglkirim" id="tglkirim" placeholder="Masukan Tanggal Pengiriman">
+                    <label for="jmlbb">Tanggal Pengiriman</label>
+                </div>
+            </div>
+        </div>
+        <div class="col s12">
+                <div class="input-field col s12">
+                    <input type="text" name="status" id="status" placeholder="status" value="Belum disetujui" readonly hidden>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="pemesanan" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <button class="btn waves-effect orange darken-3" type="submit" name="tambah_pemesanan" id="tambah_pemesanan"> <a href="#konfirm" class="modal-trigger">Submit</a>
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Modal Konfirm -->
+    <div id="konfirm" class="modal">
+        <div class="modal-content">
+            <h5>Apakah Data akan Disimpan? </h5>
+        </div>
+        <div class="modal-footer">
+            <a href="pemesanan" class="modal-close waves-effe   ct waves-green btn-flat">Tidak</a>
+            <button class="btn waves-effect orange darken-3" type="submit" name="tambah_pemesanan" id="tambah_pemesanan">Ya</a>
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+    </div>
+
           
 	
 	<?php $this->load->view('warehouse/_partials/js.php') ?>

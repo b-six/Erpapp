@@ -73,17 +73,14 @@
                                     <td><?php echo $col->nama_kurir; ?></td>
                                     <td><?php echo $col->tgl_surat_jalan_pbb; ?></td>
                         <td class="button-container">
-                           
-                                <input type="text" id="no_surat_jalan_pbb-<?php echo $col->no_surat_jalan_pbb; ?>" value="<?php echo $col->no_surat_jalan_pbb; ?>" hidden>
-                                <input type="text" id="id_bahan_baku-<?php echo $row->id_bahan_baku; ?>" value="<?php echo $row->nama_bahan_baku; ?>" hidden>
-                            
                             <div id="table-button">
+                                
                                 <a href="<?php echo base_url("warehouse/sj_bahan_baku/delete?id=". $col->no_surat_jalan_pbb); ?>" id="delete_<?php echo $col->no_surat_jalan_pbb;?>" name="delete"  data-no_surat_jalan_pbb="<?php echo $col->no_surat_jalan_pbb; ?>"><i class="material-icons delete-button">delete_forever</i></a> 
-                                <a href="#edit_sjpbb" id="edit_<?php echo $col->no_surat_jalan_pbb;?>" name="delete"  onClick="getIdEdit(this.id)" data-no_surat_jalan_pbb="<?php echo $col->no_surat_jalan_pbb; ?>" class="modal-trigger"><i class="material-icons edit-button">create</i></a>
+                                <a href="#"><i class="material-icons edit-button">create</i></a>
                                 <a href="#"><i class="material-icons edit-button">print</i></a>
                             </div>
                         </td>
-                                 
+                                    </td>
 
                                 </tr>
                                 <?php
@@ -161,7 +158,7 @@
                                 foreach ($bahan_baku->result() as $col) :
                                     $hitung++;
                                     ?>
-                                    <option id="option-<?php echo $col->id_bahan_baku; ?>" "value="<?php echo $col->id_bahan_baku ?>"><?php echo $col->nama_bahan_baku ?></option>
+                                    <option value="<?php echo $col->id_bahan_baku ?>"><?php echo $col->nama_bahan_baku ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <label>Bahan baku</label>
@@ -197,14 +194,14 @@
             <form id="form-edit-sjpbb" class="col s12" action="<?php echo site_url('warehouse/sj_bahan_baku/edit_surat_jalan_pbb'); ?>" method="post">
                 <div class="row">
                     <div class="col s12 center">
-                       <h4>Form Edit Surat Jalan DBB</h4>
+                       <h4>Form Input Surat Jalan DBB</h4>
                    </div>
                </div>
 
                 
         <div class="row">
              <div class="input-field col s12">
-                    <input id="no_surat_jalan_pbb" name="no_surat_jalan_pbb" type="text" class="validate" autocomplete="off" value=" " readonly>
+                    <input id="no_surat_jalan_pbb" name="no_surat_jalan_pbb" type="text" class="validate" autocomplete="off" value="<?php echo $no_surat_jalan_pbb; ?>" readonly>
                     <label for="no_surat_jalan_pbb">No. SJPBB</label>
                 </div>
             

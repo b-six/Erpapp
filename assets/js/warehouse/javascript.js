@@ -127,3 +127,11 @@ function getRetur(id_bahan_baku) {
 	$('#id_supplier').attr("value", id_supplier);
 }
 
+function getEdit(id_pemesanan_bb) {
+	var id_supplier = $("#"+ id_pemesanan_bb).data('id_pemesanan_bb');
+	var id_split = id_bahan_baku.split("_");
+	var id_bbm = id_split[1];
+	$('#id_pemesanan_bb-edit').attr("value", id_supplier);
+	$('#id_supplier').attr("value", id_supplier);
+}
+
