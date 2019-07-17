@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  *
- * Controller Bahan Baku
+ * Controller Promo
  *
  * This controller for ...
  *
@@ -16,7 +16,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-class Bahan_baku extends CI_Controller
+class Data_produk_jadi extends CI_Controller
 {
     
   public function __construct()
@@ -26,7 +26,7 @@ class Bahan_baku extends CI_Controller
 
   public function index()
   {
-    $this->load->view('produksi/bahan_baku_v');
+    $this->load->view('produksi/data_produk_jadi_v');
     
   }
 

@@ -25,7 +25,7 @@
             </div>
 
             <!-- searchbar -->
-            <div class="col s4"><?php $this->load->view('produksi/partials/searchbar.php'); ?></div>
+            <div class="col s4"><?php $this->load->view('marketing/partials/searchbar.php'); ?></div>
 
         </div>
 
@@ -80,6 +80,7 @@
 
                                     </td>
                                     <td><?php echo $row->jumlah_pesanan; ?></td>
+
                                     <td><a href="<?php echo base_url('produksi/production_order/ubah_onprocess?id_po='.$row->id_po); ?>"><i class="material-icons">check_circle_outline</i></a></td>
                                 </tr>
                             <?php
@@ -126,7 +127,6 @@
                                     </td>
                                     <td><?php echo $row->jumlah_pesanan; ?></td>
                                     <td><a href="<?php echo base_url('produksi/production_order/ubah_success?id_po='.$row->id_po); ?>"><i class="material-icons">check_circle_outline</i></a></td>
-                                    
                                 </tr>
                             <?php
                             endif;
