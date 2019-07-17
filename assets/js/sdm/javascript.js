@@ -12,20 +12,20 @@ $(document).ready(function () {
 });
 
 //select ded
-$(document).ready(function(){
-    $('.datepicker').datepicker();
-  });
-          
+$(document).ready(function () {
+	$('.datepicker').datepicker();
+});
+
 // select-form-trigger
 $(document).ready(function () {
 	$('select').formSelect();
 });
 
 // select time
-$(document).ready(function(){
-    $('.timepicker').timepicker();
-  });
-          
+$(document).ready(function () {
+	$('.timepicker').timepicker();
+});
+
 
 //submit form add SO
 $('#submit-add-so').click(function () {
@@ -107,10 +107,10 @@ $('tr').on('mouseover mouseout', function () {
 });
 
 //untuk nampilin dan nyembunyiin tombol di card view
-$(document).ready(function(){
-	$(document).on('mouseenter', '.card-content', function(){
+$(document).ready(function () {
+	$(document).on('mouseenter', '.card-content', function () {
 		$(this).find("#card-button").show();
-	}).on('mouseleave', '.card-content', function(){
+	}).on('mouseleave', '.card-content', function () {
 		$(this).find("#card-button").hide();
 	})
 })
@@ -268,21 +268,21 @@ $('#submit-add-pb').click(function () {
 //===============================================================================================================
 
 //hapus produk baru
-$('.del-pb-trigger').on('click', function(){
+$('.del-pb-trigger').on('click', function () {
 	var id_barang = $(this).data('id_barang');
 
 	console.log(id_barang);
-	$(document).ready(function(){
+	$(document).ready(function () {
 		$('#del-pb-modal').modal('open');
 	});
 	var oldUrl = $('#del-pb-button').data('href');
-	var newUrl = oldUrl+id_barang;
+	var newUrl = oldUrl + id_barang;
 
 	$('#del-pb-button').attr('href', newUrl);
 });
 
 //edit produk baru
-$('.edit-pb-trigger').on('click', function(){
+$('.edit-pb-trigger').on('click', function () {
 	var id_barang = $(this).data('id_barang');
 
 	var nama_produk = $(this).data('nama');
@@ -292,7 +292,7 @@ $('.edit-pb-trigger').on('click', function(){
 	var foto = $(this).data('foto');
 	var tampil_link = $(this).data('tampil_link');
 
-	$(document).ready(function(){
+	$(document).ready(function () {
 		$('#edit-pb-modal').modal('open');
 	});
 	$('.id_barang').val(id_barang);
@@ -302,7 +302,7 @@ $('.edit-pb-trigger').on('click', function(){
 
 	$('.file_desain-edit').val(file_desain);
 
-	newUrl = tampil_link+foto;
+	newUrl = tampil_link + foto;
 
 	html = '<img id="cropped" src="' + newUrl + '" />';
 
@@ -317,11 +317,11 @@ $('#submit-edit-pb').click(function () {
 
 
 //image reader add ==============================================
-function readURL(input){
-	if(input.files && input.files[0]){
+function readURL(input) {
+	if (input.files && input.files[0]) {
 		var reader = new FileReader();
 
-		reader.onload = function(e){
+		reader.onload = function (e) {
 			$('#banner-preview').attr('src', e.target.result);
 		}
 
@@ -329,20 +329,20 @@ function readURL(input){
 	}
 }
 
-$('#banner-promo').change(function(){
+$('#banner-promo').change(function () {
 	readURL(this);
 });
 //==============================================================
 
 // edit promo
-$('.edit-promo-trigger').on('click', function(){
+$('.edit-promo-trigger').on('click', function () {
 	var id_promo = $(this).data('id_promo');
 	var produk = $(this).data('produk');
 	var jumlah_pembelian = $(this).data('jumlah_pembelian');
 	var banner_promo = $(this).data('banner_promo');
 	var oldUrl = $(this).data('tampil_link');
 
-	$(document).ready(function(){
+	$(document).ready(function () {
 		$('#edit-promo-modal').modal('open');
 	});
 
@@ -350,18 +350,18 @@ $('.edit-promo-trigger').on('click', function(){
 	$('#produk-edit').val(produk);
 	$('#jumlah_pembelian-edit').val(jumlah_pembelian);
 
-	var newUrl = oldUrl+banner_promo;
+	var newUrl = oldUrl + banner_promo;
 	console.log(newUrl);
 
 	$('#banner-preview-edit').attr('src', newUrl);
 });
 
 //image reader edit promo
-function readEditedURL(input){
+function readEditedURL(input) {
 	if (input.files && input.files[0]) {
 		var reader = new FileReader();
 
-		reader.onload = function(e){
+		reader.onload = function (e) {
 			$('#banner-preview-edit').attr('src', e.target.result);
 		}
 
@@ -369,20 +369,20 @@ function readEditedURL(input){
 	}
 }
 
-$('#banner-promo-edit').change(function(){
+$('#banner-promo-edit').change(function () {
 	readEditedURL(this);
 });
 
 //hapus Promo
-$('.del-promo-trigger').on('click', function(){
+$('.del-promo-trigger').on('click', function () {
 	var id_promo = $(this).data('id_promo');
 
-	$(document).ready(function(){
+	$(document).ready(function () {
 		$('#del-promo-modal').modal('open');
 	});
 
 	var oldUrl = $('#del-promo-button').data('href');
-	var newUrl = oldUrl+id_promo;
+	var newUrl = oldUrl + id_promo;
 
 	$('#del-promo-button').attr('href', newUrl);
 });
@@ -429,8 +429,8 @@ function getIdEdit_pegawai_1(clicked_id) {
 	var foto = $("#id_pegawai_" + id_pegawai).data('foto');
 	// console.log(foto);
 	var tampil_link = $("#id_pegawai_" + id_pegawai).data('tampil_link');
-	
-	newUrl = tampil_link+foto;
+
+	newUrl = tampil_link + foto;
 	console.log(newUrl);
 
 
@@ -446,7 +446,7 @@ function getIdEdit_pegawai_1(clicked_id) {
 	// alert(alamat)
 }
 
-function test(){
+function test() {
 	alert('huheuh');
 }
 
@@ -641,7 +641,22 @@ $('#submit-add-pegawai').click(function () {
 });
 
 //tampilkan validasi data gaji
-function validasiTampil(clicked_id){
+function validasiTampil(clicked_id) {
+
+	$('#nama_pegawai_valid')
+		.attr("value", $('#' + clicked_id).data('nama_pegawai'));
+	$('#periode')
+		.attr("value", $('#' + clicked_id).data('periode'));
+		$('#golongan')
+		.attr("value", $('#' + clicked_id).data('golongan'));
+		$('#gaji_pokok')
+		.attr("value", $('#' + clicked_id).data('gaji_pokok'));
+		$('#gaji_lembur')
+		.attr("value", $('#' + clicked_id).data('gaji_lembur'));
+		$('#pengurangan')
+		.attr("value", $('#' + clicked_id).data('pengurangan_gaji'));
+		$('#total')
+		.attr("value", $('#' + clicked_id).data('total_gaji'));
 	var id_splitx = clicked_id.split("_");
-	var id
+	var id_gaji = $id_splitx[1];
 }
