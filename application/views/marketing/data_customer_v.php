@@ -31,7 +31,7 @@
                     $id_pelanggan = $hitung;
                     foreach ($customer->result() as $row) :
                         $sama = 0;
-                        if ($id_pelanggan == $row->id_pelanggan){
+                        if ($id_pelanggan == $row->id_pelanggan) {
                             $sama++;
                         }
                     endforeach;
@@ -43,6 +43,18 @@
                         <div class="input-field col s12">
                             <input id="id_pelanggan" name="id_pelanggan" type="text" class="validate" autocomplete="off" value="<?php echo $id_pelanggan; ?>" readonly>
                             <label for="id_pelanggan">ID</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email_pelanggan" name="email_pelanggan" type="email" class="validate" autocomplete="off" value="" placeholder="Masukkan Email Customer">
+                            <label for="email_pelanggan">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password_pelanggan" name="password_pelanggan" type="password" class="validate" autocomplete="off" value="" placeholder="Masukkan Password Customer">
+                            <label for="password_pelanggan">Password</label>
                         </div>
                     </div>
                     <div class="row">
@@ -98,6 +110,18 @@
                         <div class="input-field col s12">
                             <input id="id_pelanggan-edit" name="id_pelanggan-edit" type="text" class="validate" autocomplete="off" value=" " readonly>
                             <label for="id_pelanggan">ID</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="email_pelanggan-edit" name="email_pelanggan-edit" type="email" class="validate" autocomplete="off" value=" - ">
+                            <label for="email_pelanggan-edit">Email</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="password_pelanggan-edit" name="password_pelanggan-edit" type="password" class="validate" autocomplete="off" value="" placeholder="Masukkan Password Baru">
+                            <label for="password_pelanggan-edit">Password</label>
                         </div>
                     </div>
                     <div class="row">
@@ -198,6 +222,7 @@
                     <tr>
                         <th>Nama Customer</th>
                         <th>Jenis Customer</th>
+                        <th>E-Mail</th>
                         <th>Wilayah</th>
                         <th>Bergabung Sejak</th>
                         <th></th>
@@ -214,12 +239,13 @@
                         <tr>
                             <td><?php echo $col->nama_pelanggan; ?></td>
                             <td><?php echo $col->tipe_customer; ?></td>
+                            <td><?php echo $col->email; ?></td>
                             <td><?php echo $col->wilayah; ?></td>
                             <td><?php echo $col->sejak; ?></td>
                             <td class="button-container">
                                 <div id="table-button">
                                     <a href="#konfirm-delete-cust" id="delete_id_<?php echo $col->id_pelanggan; ?>" class="modal-trigger" onClick="getId_cust(this.id)"><i class="material-icons delete-button">delete_forever</i></a>
-                                    <a href="#edit-cust-modal" id="id_pelanggan_<?php echo $col->id_pelanggan; ?>" class="modal-trigger" onClick="getIdEdit_cust(this.id)" data-nama_cust="<?php echo $col->nama_pelanggan; ?>" data-wilayah_cust="<?php echo $col->wilayah; ?>"><i class="material-icons edit-button">create</i></a>
+                                    <a href="#edit-cust-modal" id="id_pelanggan_<?php echo $col->id_pelanggan; ?>" class="modal-trigger" onClick="getIdEdit_cust(this.id)" data-nama_cust="<?php echo $col->nama_pelanggan; ?>" data-wilayah_cust="<?php echo $col->wilayah; ?>" data-email_cust="<?php echo $col->email; ?>"><i class="material-icons edit-button">create</i></a>
                                 </div>
                             </td>
                         </tr>

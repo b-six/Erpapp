@@ -25,7 +25,9 @@ class Data_customer extends CI_Controller
     $nama_pelanggan = $this->input->post('nama_pelanggan');
     $tipe_customer = $this->input->post('tipe_customer');
     $wilayah = $this->input->post('wilayah');
-    $this->customer_model->save_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah);
+    $email = $this->input->post('email_pelanggan');
+    $password = $this->input->post('password_pelanggan');
+    $this->customer_model->save_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah, $email, $password);
     redirect('marketing/data_customer');
   }
 
@@ -35,8 +37,9 @@ class Data_customer extends CI_Controller
     $id_pelanggan = $this->input->post('id_pelanggan-edit');
     $tipe_customer = $this->input->post('tipe_customer-edit');
     $wilayah = $this->input->post('wilayah-edit');
-    echo $id_pelanggan."**".$nama_pelanggan."**".$tipe_customer."**".$wilayah;
-    $this->customer_model->update_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah);
+    $email = $this->input->post('email_pelanggan-edit');
+    $password = $this->input->post('password_pelanggan-edit');
+    $this->customer_model->update_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah, $email, $password);
     redirect('marketing/data_customer');
   }
 

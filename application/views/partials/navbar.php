@@ -6,7 +6,7 @@
 
             <!-- navabar menu -->
             <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a class="bold-font" href="#" >Login<i class="material-icons right">account_circle</i></a></li>
+                <li><a class="bold-font" href="#">Login</a></li>
             </ul>
         </div>
     </nav>
