@@ -35,6 +35,14 @@ class Penggajian extends CI_Controller
     $this->testimoni_model->save_testimoni($id_testimoni, $id_pelanggan, $id_so, $testimoni_barang);
     redirect('marketing/testimoni');
   }
+
+  function update_status()
+  {
+    $id_gaji = $this->input->post('id_gaji');
+    $status_validasi_gaji = $this->input->post('status_gaji');
+    $this->penggajian_model->update_status($id_gaji, $status_validasi_gaji);
+    redirect('sdm/penggajian');
+  }
 }
 
 

@@ -12,15 +12,16 @@ class Penggajian_model extends CI_Model
     return $result;
   }
 
-  function delete_testimoni($id_so)
+
+  function update_status($id_gaji, $status_validasi_gaji)
   {
-    $test = 'N';
     $data = array(
-      'testimoni' => $test
+      'status_validasi_gaji' => $status_validasi_gaji
     );
-    $this->db->where('id_so', $id_so);
-    $this->db->update('sales_order', $data);
+    $this->db->where('id_gaji', $id_gaji);
+    $this->db->update('gaji', $data);
   }
+
   // ------------------------------------------------------------------------
 
 }

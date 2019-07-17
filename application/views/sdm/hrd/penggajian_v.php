@@ -15,7 +15,7 @@
         <div class="modal-content">
             <div class="row">
 
-                <form id="form-edit-cust" class="col s12" action="<?php echo site_url('marketing/data_customer/update_customer'); ?>" method="post">
+                <form id="form-validasi-gaji" class="col s12" action="<?php echo site_url('sdm/penggajian/update_status'); ?>" method="post">
                     <div class="row">
                         <div class="col s12 center">
                             <h4>Validasi Data Gaji</h4>
@@ -34,7 +34,8 @@
                             <label for="periode">Periode</label>
                         </div>
                     </div>
-
+                    <input type="text" name="status_gaji" id="status_gaji" hidden>
+                    <input type="text" name="id_gaji" id="id_gaji" hidden>
                     <div class="row">
                         <div class="input-field col s12">
                             <input type="text" name="golongan" id="golongan" placeholder="-" autocomplete="off">
@@ -77,11 +78,11 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <a href="#konfirm-edit-cust" class="btn waves-effect waves-light green darken-3 modal-trigger">Setujui
-                
+            <a href="#!" class="btn waves-effect waves-light green darken-3 modal-trigger" id="setuju-button">Setujui
+
             </a>
-            <a href="#konfirm-edit-cust" class="btn waves-effect waves-light red darken-3 modal-trigger">Tolak
-               
+            <a href="#!" class="btn waves-effect waves-light red darken-3 modal-trigger" id="tolak-button">Tolak
+
             </a>
         </div>
     </div>
@@ -145,7 +146,7 @@
                                 <td class="<?php echo $warna; ?>"><?php echo $pen->status_validasi_gaji; ?></td>
                                 <td class="button-container">
                                     <div id="table-button">
-                                        <a href="#validasi-gaji-modal" onClick="validasiTampil(this.id)" id="validasi_<?php echo $pen->id_gaji; ?>" data-nama_pegawai="<?php echo $peg->nama_pegawai;  ?>" data-periode="<?php echo $pen->periode_gaji; ?>" data-golongan="<?php echo $peg->id_golongan; ?>" data-gaji_pokok="<?php echo $pen->gaji_pokok; ?>" data-gaji_lembur="<?php echo $pen->gaji_lembur; ?>" data-pengurangan_gaji="<?php echo $pen->pengurangan_gaji; ?>" data-total_gaji="<?php echo ($pen->gaji_pokok)+($pen->gaji_lembur)-($pen->pengurangan_gaji); ?>" class="modal-trigger"><i class="material-icons edit-button">create</i></a>
+                                        <a href="#validasi-gaji-modal" onClick="validasiTampil(this.id)" id="validasi_<?php echo $pen->id_gaji; ?>" data-nama_pegawai="<?php echo $peg->nama_pegawai;  ?>" data-periode="<?php echo $pen->periode_gaji; ?>" data-golongan="<?php echo $peg->id_golongan; ?>" data-gaji_pokok="<?php echo $pen->gaji_pokok; ?>" data-gaji_lembur="<?php echo $pen->gaji_lembur; ?>" data-pengurangan_gaji="<?php echo $pen->pengurangan_gaji; ?>" data-total_gaji="<?php echo ($pen->gaji_pokok) + ($pen->gaji_lembur) - ($pen->pengurangan_gaji); ?>" class="modal-trigger"><i class="material-icons edit-button">create</i></a>
                                     </div>
                                 </td>
                                 </tr>

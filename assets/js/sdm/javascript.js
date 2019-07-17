@@ -647,16 +647,30 @@ function validasiTampil(clicked_id) {
 		.attr("value", $('#' + clicked_id).data('nama_pegawai'));
 	$('#periode')
 		.attr("value", $('#' + clicked_id).data('periode'));
-		$('#golongan')
+	$('#golongan')
 		.attr("value", $('#' + clicked_id).data('golongan'));
-		$('#gaji_pokok')
+	$('#gaji_pokok')
 		.attr("value", $('#' + clicked_id).data('gaji_pokok'));
-		$('#gaji_lembur')
+	$('#gaji_lembur')
 		.attr("value", $('#' + clicked_id).data('gaji_lembur'));
-		$('#pengurangan')
+	$('#pengurangan')
 		.attr("value", $('#' + clicked_id).data('pengurangan_gaji'));
-		$('#total')
+	$('#total')
 		.attr("value", $('#' + clicked_id).data('total_gaji'));
 	var id_splitx = clicked_id.split("_");
-	var id_gaji = $id_splitx[1];
+	var id_gaji = id_splitx[1];
+	$('#id_gaji').attr('value', id_gaji);
 }
+//submit form-validasi gaji disetujui
+$('#setuju-button').click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$('#status_gaji').attr("value", 'disetujui');
+	$('#form-validasi-gaji').submit();
+});
+
+//submit form-validasi gaji ditolak
+$('#tolak-button').click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$('#status_gaji').attr("value", 'ditolak');
+	$('#form-validasi-gaji').submit();
+});
