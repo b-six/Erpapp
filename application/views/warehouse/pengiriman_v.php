@@ -58,21 +58,24 @@
 
                  <tbody>
                     <?php
+                    $hitung = 0;
                     //$count = 0;
                     foreach ($produk_jadi_keluar->result() as $col) :
                         
                         //$count++;
                         ?>
-                        <tr>
+                        
                             <?php
                             
                             foreach ($stock_barang->result() as $row) :
-                                $hitung = 0;
+                                
                                 foreach ($customer->result() as $s) :
-                                $hitung++;
+                                
                                 if ($row->id_barang == $col->id_barang) :
                                     if ($col->id_pelanggan == $s->id_pelanggan) :
+                                        $hitung++;
                                     ?>
+                                    <tr>
                                     <td><?php echo $hitung; ?></td>
                                     <td><?php echo $col->tgl_produk_keluar; ?></td>
                                     <td><?php echo $col->id_produk_keluar; ?></td>
@@ -81,12 +84,13 @@
                                     <td><?php echo $s->nama_pelanggan; ?></td>
                                     
                                     <td class="button-container">
-                            <td class="button-container">
+                                    <td class="button-container">
                             <div id="table-button">
                                 <a href="#"><i class="material-icons delete-button">delete_forever</i></a> 
                                 <a href="#"><i class="material-icons edit-button">create</i></a>
                             </div>
                         </td>
+                        </tr>
                         
                                 <?php
                                 endif;
@@ -106,7 +110,7 @@
                                     <a href="#"><i class="material-icons edit-button">create</i></a>
                                 </div>
                             </td>-->
-                        </tr>
+                        
                     <?php
                 endforeach;
                 ?>
@@ -117,37 +121,68 @@
     </div>
     <!-- modal input -->
   	<div id="pengiriman-modal" class="modal modal-fixed-footer">
+        <?php
+            $count = 0; 
+            foreach ($produk_jadi_keluar->result() as $x) {
+                $count++;
+            }
+            $id_produk_keluar = 'POUT000000'.($count+1);
+
+        ?>
     	<div class="row">
             <div class="col s12 right">
                 <h5>Form Input Produk Keluar</h5>
             </div>
         </div>
+        <form action="<?php echo site_url('warehouse/pengiriman/inputPjk') ?>" method="post" id="pjk" name="pjk">
+        <input type="text" name="id_produk_keluar" id="id_produk_keluar" value="<?php echo $id_produk_keluar ?>" placeholder="" hidden>
         <div class="row">
+            <div class="col s12">
+        		<div class="input-field col s12">
+                	<select name="id_barang" id="id_barang">
+                        <option value="" disabled selected>Pilih Produk</option>
+                        <?php foreach ($stock_barang->result() as $row) :
+
+                         ?>
+                        <option id="option-<?php echo $row->id_barang; ?>" data-namabarang="<?php echo $row->nama_barang; ?>" value="<?php echo $row->id_barang; ?>"><?php echo $row->nama_barang; ?></option>
+                        <?php 
+                        endforeach; 
+                    ?>
+                        
+                    </select>
+                    <label for="id_barang">Pilih Produk</label>
+               	</div>
+        	</div>
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <select name="id_pelanggan" id="id_pelanggan">
+                        <option value="" disabled selected>Pilih Customer</option>
+                        <?php foreach ($customer->result() as $row) :
+
+                         ?>
+                        <option id="option-<?php echo $row->id_pelanggan; ?>" data-namapelanggan="<?php echo $row->nama_pelanggan; ?>" value="<?php echo $row->id_pelanggan; ?>"><?php echo $row->nama_pelanggan; ?></option>
+                        <?php 
+                        endforeach; 
+                    ?>
+                        
+                    </select>
+                    <label for="id_barang">Pilih Customer yang akan dituju</label>
+                </div>
+            </div>
         	<div class="col s12">
         		<div class="input-field col s12">
-                	<input type="text" name="idproduk" id="idproduk">
-                    <label for="idproduk">ID Produk</label>
+                	<input type="text" name="jml_produk_keluar" id="jml_produk_keluar">
+                    <label for="jml_produk_keluar">Jumlah Produk</label>
                	</div>
         	</div>
         	<div class="col s12">
         		<div class="input-field col s12">
-                	<input type="text" name="namaproduk" id="namaproduk">
-                    <label for="namaproduk">Nama Produk</label>
-               	</div>
-        	</div>
-        	<div class="col s12">
-        		<div class="input-field col s12">
-                	<input type="text" name="jmlproduk" id="jmlproduk">
-                    <label for="jmlproduk">Jumlah Produk</label>
-               	</div>
-        	</div>
-        	<div class="col s12">
-        		<div class="input-field col s12">
-                	<input type="date" name="tgl" id="tgl">
-                    <label for="tgl">Tanggal</label>
+                	<input type="date" name="tgl_produk_keluar" id="tgl_produk_keluar">
+                    <label for="tgl_produk_keluar">Tanggal</label>
                	</div>
         	</div>
         </div>
+        </form>
     	<div class="modal-footer">
             <a href="pengiriman" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
             <button class="btn waves-effect orange darken-3" type="submit" name="keluar_produk" id="keluar_produk"> <a href="#konfirm" class="modal-trigger">Submit</a>
@@ -157,13 +192,13 @@
   	</div>
 
   	<!-- Modal Konfirm -->
-  	<div id="konfirm" class="modal">
+  	<div id="konfirm" class="modal modal-custom">
     	<div class="modal-content">
-	    	<h5>Apakah Data akan Disimpan? </h5>
+	    	<h6>Apakah Data akan Disimpan? </h6>
     	</div>
     	<div class="modal-footer">
             <a href="pengiriman" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
-            <button class="btn waves-effect orange darken-3" type="submit" name="konfirm_tambah" id="konfirm_tambah"> <a href="#!" class="modal-trigger">Ya</a>
+            <button class="btn waves-effect orange darken-3" type="submit" name="tambah_pjk" id="tambah_pjk">Ya
                 <i class="material-icons right">send</i>
             </button>
         </div>

@@ -95,12 +95,25 @@ $('tr').on('mouseover mouseout', function(){
 	$(this).find('#table-button').toggle();
 });
 
-//submit form-add-po
-$('#submit-add-po').click(function () {
+//submit form-add-pjm
+$('#konfirm_tambah').click(function () {
 	/* when the submit button in the modal is clicked, submit the form */
-	$('#form-add-po').submit();
+	$('#pjm').submit();
+});
+
+//submit form-add-pjk
+$('#tambah_pjk').click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$('#pjk').submit();
 });
 
 $(document).ready(function(){
     $('.datepicker').datepicker();
   });
+
+function idEdit(idEdit){
+	$('#id_pjm_edit').attr("value",idEdit);
+	$('#jmlproduk-edit').attr("value",$('#'+idEdit).data('jumlah'));
+	
+}
+

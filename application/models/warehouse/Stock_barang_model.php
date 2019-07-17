@@ -19,7 +19,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Stock_barang_model extends CI_Model {
 
   // ------------------------------------------------------------------------
-
+  public function __construct(){
+    parent::__construct();
+  }
+  
   function get_stock_barang(){
     $result = $this->db->get('stock_barang');
     return $result;
@@ -39,8 +42,33 @@ function get_produk_jadi_keluar(){
     $result3 = $this->db->get('produk_jadi_masuk');
     return $result3;
   }
-   
+  function tambah_data_pjm($id_produk_jadi_masuk, $id_barang, $jml_barang_masuk, $tgl_produk_masuk){
+    $tgl_produk_masuk = date('Y-m-d');
+    $data = array(
+      'id_produk_jadi_masuk' => $id_produk_jadi_masuk,
+      'id_barang' => $id_barang,
+      'jml_barang_masuk' => $jml_barang_masuk,
+      'tgl_produk_masuk' => $tgl_produk_masuk,
+    );
+
+      $this->db->insert('produk_jadi_masuk', $data);
+  }
+
+  function tambah_data_pjk($id_produk_keluar, $id_barang, $id_pelanggan, $jml_produk_keluar, $tgl_produk_keluar){
+    $tgl_produk_keluar = date('Y-m-d');
+    $data = array(
+      'id_produk_keluar' => $id_produk_keluar,
+      'id_barang' => $id_barang,
+      'id_pelanggan' => $id_pelanggan,
+      'jml_produk_keluar' => $jml_produk_keluar,
+      'tgl_produk_keluar' => $tgl_produk_keluar,
+    );
+
+    $this->db->insert('produk_jadi_keluar', $data);
+  }
+
   // ------------------------------------------------------------------------
+  
 
 }
 

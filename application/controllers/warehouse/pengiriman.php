@@ -33,7 +33,17 @@ class pengiriman extends CI_Controller
     $this->load->view('warehouse/pengiriman_v',$data);
   }
 
+  public function inputPjk(){
+    $id_produk_keluar = $this->input->post('id_produk_keluar');
+    $id_barang = $this->input->post('id_barang');
+    $id_pelanggan = $this->input->post('id_pelanggan');
+    $jml_produk_keluar = $this->input->post('jml_produk_keluar');
+    $tgl_produk_keluar = $this->input->post('tgl_produk_keluar');
 
+    $this->Stock_barang_model->tambah_data_pjk($id_produk_keluar, $id_barang, $id_pelanggan, $jml_produk_keluar, $tgl_produk_keluar);
+    redirect('warehouse/pengiriman');
+
+  }
 }
 
 

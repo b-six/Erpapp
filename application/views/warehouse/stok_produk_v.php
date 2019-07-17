@@ -11,6 +11,7 @@
 	
 	<div class="container">
         <br>
+        <!-- <h3 class="laporan">Laporan Jumlah Stok Produk yang Ada di Warehouse</h3> -->
         <div class="row">
             <!-- breadcrumb -->
             <div class="col s6">
@@ -35,7 +36,7 @@
             </div>
 
             <!-- tambah pemesanan -->
-            <div class="col s2">
+            <div class="col s2 iconicon">
                 <a class="waves-effect waves-light btn-large btn-floating"><i class="material-icons">file_download</i>button</a>
                 <a class="waves-effect waves-light btn-large btn-floating"><i class="material-icons">print</i>button</a>
             </div>

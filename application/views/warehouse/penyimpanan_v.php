@@ -58,18 +58,21 @@
                 <tbody>
                     <?php
                     //$count = 0;
+                    $hitung = 0;
                     foreach ($produk_jadi_masuk->result() as $col) :
                         
                         //$count++;
                         ?>
                         <tr>
                             <?php
-                            $hitung = 0;
+                            
                             foreach ($stock_barang->result() as $row) :
                                 
-                                $hitung++;
+                                
                                 if ($row->id_barang == $col->id_barang) :
+                                    $hitung++;
                                     ?>
+
                                     <td><?php echo $hitung; ?></td>
                                     <td><?php echo $col->tgl_produk_masuk; ?></td>
                                     <td><?php echo $col->id_produk_jadi_masuk; ?></td>
@@ -78,8 +81,8 @@
                                     
                                     <td class="button-container">
                                     <div id="table-button">
-                                <a href="#"><i class="material-icons delete-button">delete_forever</i></a> 
-                                <a href="#"><i class="material-icons edit-button">create</i></a>
+                                <a class="modal-trigger" href="#konfirm-delete-PJM" id="<?php echo $col->id_produk_jadi_masuk;  ?>" onclick="idDelete(this.id)"><i class="material-icons delete-button">delete_forever</i></a> 
+                                <a class="modal-trigger" href="#penyimpanan-modal-edit" id="<?php echo $col->id_produk_jadi_masuk; ?>" onclick="idEdit(this.id)" data-jumlah="<?php echo $col->jml_barang_masuk; ?>"><i class="material-icons edit-button">create</i></a>
                             </div>
                         </td>
                     
@@ -114,57 +117,154 @@
     </div>
     <!-- modal input -->
   	<div id="penyimpanan-modal" class="modal modal-fixed-footer">
+        <?php 
+
+        // generate id pjm
+        $count = 0;
+        foreach ($produk_jadi_masuk->result() as $x) {
+            $count++;
+        }
+        $id_produk_jadi_masuk = 'PIN000000'.($count+1);
+        ?>
+
     	<div class="row">
             <div class="col s12 right">
                 <h5>Form Input Produk Masuk</h5>
             </div>
         </div>
+        <form action="<?php echo site_url('warehouse/penyimpanan/inputDataPjm') ?>" id="pjm" name="pjm" method="post">
+        <input type="text" name="id_produk_jadi_masuk" id="id_produk_jadi_masuk" value="<?php echo $id_produk_jadi_masuk ?>" placeholder="" hidden>
         <div class="row">
         	<div class="col s12">
         		<div class="input-field col s12">
-                	<input type="text" name="idproduk" id="idproduk">
-                    <label for="idproduk">ID Produk</label>
+                	<select name="id_barang" id="id_barang">
+                        <option value="" disabled selected>Pilih Produk</option>
+                        <?php foreach ($stock_barang->result() as $row) :
+
+                         ?>
+                        <option id="option-<?php echo $row->id_barang; ?>" data-namabarang="<?php echo $row->nama_barang; ?>" value="<?php echo $row->id_barang; ?>"><?php echo $row->nama_barang; ?></option>
+                        <?php 
+                        endforeach; 
+                    ?>
+                        
+                    </select>
+                    <label for="id_barang">Pilih Produk</label>
                	</div>
         	</div>
         	<div class="col s12">
         		<div class="input-field col s12">
-                	<input type="text" name="namaproduk" id="namaproduk">
-                    <label for="namaproduk">Nama Produk</label>
+                	<input type="text" name="jml_barang_masuk" id="jml_barang_masuk">
+                    <label for="jml_barang_masuk">Jumlah Produk</label>
                	</div>
         	</div>
         	<div class="col s12">
         		<div class="input-field col s12">
-                	<input type="text" name="jmlproduk" id="jmlproduk">
-                    <label for="jmlproduk">Jumlah Produk</label>
-               	</div>
-        	</div>
-        	<div class="col s12">
-        		<div class="input-field col s12">
-                	<input type="date" name="tgl" id="tgl">
-                    <label for="tgl">Tanggal</label>
+                	<input type="date" name="tgl_produk_masuk" id="tgl_produk_masuk">
+                    <label for="tgl_produk_masuk">Tanggal</label>
                	</div>
         	</div>
         </div>
     	<div class="modal-footer">
             <a href="penyimpanan" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <button class="btn waves-effect orange darken-3" type="submit" name="tambah_produk" id="tambah_produk"> <a href="#konfirm" class="modal-trigger">Submit</a>
+            <a href="#konfirm" class="modal-trigger"> <button class="btn waves-effect orange darken-3" type="submit" name="tambah_produk" id="tambah_produk"> Submit
+                <i class="material-icons right">send</i>
+            </button>
+            </a>
+        </div>
+        </form>
+  	</div>
+
+    <!-- modal edit -->
+    <div id="penyimpanan-modal-edit" class="modal modal-fixed-footer">
+        <div class="row">
+            <div class="col s12 right">
+                <h5>Form Edit Produk Masuk</h5>
+            </div>
+        </div>
+        <form action="" id="pjm-edit" name="pjm-edit" method="post">
+        <input type="text" name="id_pjm_edit" id="id_pjm_edit" hidden>
+        <div class="row">
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <select name="idproduk-edit" id="idproduk-edit">
+                        <option value="" disabled selected>Pilih Produk</option>
+                        <?php foreach ($stock_barang->result() as $row) :
+
+                         ?>
+                        <option value="<?php echo $row->id_barang; ?>"><?php echo $row->nama_barang; ?></option>
+                        <?php 
+                        endforeach; 
+                    ?>
+                        
+                    </select>
+                    <label for="idproduk-edit">Pilih Produk</label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <input type="text" name="jmlproduk-edit" id="jmlproduk-edit" placeholder=" ">
+                    <label for="jmlproduk-edit">Jumlah Produk</label>
+                </div>
+            </div>
+            <div class="col s12">
+                <div class="input-field col s12">
+                    <input type="date" name="tgl-edit" id="tgl-edit">
+                    <label for="tgl-edit">Tanggal</label>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="penyimpanan" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <a href="#konfirm-edit" class="modal-trigger"> <button class="btn waves-effect orange darken-3" type="submit" name="edit_produk" id="edit_produk"> Submit
+                <i class="material-icons right">send</i>
+            </button>
+            </a>
+        </div>
+        </form>
+    </div>
+
+  	<!-- Modal Konfirm -->
+  	<div id="konfirm" class="modal modal-custom">
+    	<div class="modal-content">
+	    	<h6>Apakah Data akan Disimpan? </h6>
+    	</div>
+    	<div class="modal-footer">
+            <a href="penyimpanan" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
+            <button class="btn waves-effect orange darken-3" type="submit" name="konfirm_tambah" id="konfirm_tambah">Ya
                 <i class="material-icons right">send</i>
             </button>
         </div>
   	</div>
 
-  	<!-- Modal Konfirm -->
-  	<div id="konfirm" class="modal">
-    	<div class="modal-content">
-	    	<h5>Apakah Data akan Disimpan? </h5>
-    	</div>
-    	<div class="modal-footer">
+    <!-- Modal Konfirm Edit -->
+    <div id="konfirm-edit" class="modal modal-custom">
+        <div class="modal-content">
+            <h6>Apakah Data akan Disimpan? </h6>
+        </div>
+        <div class="modal-footer">
             <a href="penyimpanan" class="modal-close waves-effect waves-green btn-flat">Tidak</a>
-            <button class="btn waves-effect orange darken-3" type="submit" name="konfirm_tambah" id="konfirm_tambah"> <a href="#!" class="modal-trigger">Ya</a>
+            <button class="btn waves-effect orange darken-3" type="submit" name="konfirm_edit" id="konfirm_edit">Ya
                 <i class="material-icons right">send</i>
             </button>
         </div>
-  	</div>
+    </div>
+
+    <!-- Modal Konfirmasi Delete -->
+    <div id="konfirm-delete-PJM" class="modal">
+        <div class="modal-content">
+            <h4>Konfirmasi</h4>
+            <p>Apakah Anda yakin ingin menghapus sales order ini?</p>
+            <form id="form-delete-so" class="col s12" action="<?php echo site_url('marketing/sales_order/delete_sales_order'); ?>" method="get">
+                <input type="text" id="id_so_delete" name="id_so_delete" hidden>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <button class="btn waves-effect waves-light red darken-2" type="submit" name="submit-delete-so" id="submit-delete-so">Delete
+                <i class="material-icons right">delete</i>
+            </button>
+        </div>
+    </div>
 	
 	<?php $this->load->view('warehouse/_partials/js.php') ?>
 </body>
