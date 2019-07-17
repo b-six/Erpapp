@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Testimoni extends CI_Controller
+class Penggajian extends CI_Controller
 {
 
   public function __construct()
@@ -10,6 +10,8 @@ class Testimoni extends CI_Controller
     $this->load->model('marketing/sales_order_model');
     $this->load->model('marketing/customer_model');
     $this->load->model('marketing/testimoni_model');
+    $this->load->model('sdm/penggajian_model');
+    $this->load->model('sdm/pegawai_model');
   }
 
   public function index()
@@ -17,7 +19,9 @@ class Testimoni extends CI_Controller
     $data['sales_order'] = $this->sales_order_model->get_sales_order();
     $data['customer'] = $this->customer_model->get_customer();
     $data['testimoni'] = $this->testimoni_model->get_testimoni();
-    $this->load->view('marketing/testimoni_v', $data);
+    $data['penggajian'] = $this->penggajian_model->get_penggajian();
+    $data['pegawai'] = $this->pegawai_model->get_pegawai();
+    $this->load->view('sdm/hrd/penggajian_v', $data);
   }
 
   function save_testimoni()

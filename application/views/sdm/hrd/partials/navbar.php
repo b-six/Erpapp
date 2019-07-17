@@ -7,9 +7,6 @@
 
             <!-- <ul id="data_pegawai_DD" class="dropdown-content indigo darken-4">
             </ul> -->
-            
-            <ul id="gaji_DD" class="dropdown-content indigo darken-4">
-            </ul>
 
             <ul id="absensi_DD" class="dropdown-content indigo darken-4">
                 <li><a href="validasi_absensi" class="white-text">Validasi</a></li>
@@ -34,10 +31,10 @@
             <!-- navabar menu -->
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a class="bold-font" href="data_pegawai">DATA PEGAWAI</a></li>
-                <li><a class="dropdown-trigger bold-font" href="#" data-target="gaji_DD">PENGGAJIAN</a></li>
+                <li><a class="bold-font" href="penggajian">PENGGAJIAN</a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="absensi_DD">ABSENSI<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger bold-font" href="#" data-target="status_pegawai_DD">STATUS PEGAWAI<i class="material-icons right">arrow_drop_down</i></a></li>
-                <li><a class="dropdown-trigger bold-font" href="#" data-target="pelatihan_DD">PELATIHAN</a></li>
+                <li><a class="dropdown-trigger bold-font" href="status_pegawai" data-target="status_pegawai_DD">STATUS PEGAWAI<i class="material-icons right">arrow_drop_down</i></a></li>
+                <li><a class="dropdown-trigger bold-font" href="pelatihan" data-target="pelatihan_DD">PELATIHAN</a></li>
                 <li><a class="dropdown-trigger bold-font" href="#" data-target="acc_DD">Androx27<i class="material-icons right">account_circle</i></a></li>
             </ul>
         </div>

@@ -136,54 +136,54 @@ $('#submit-add-pb').click(function () {
 
 //Script buat ngecrop gambar ====================================================================================
 //buat ngapus gambar terupload dan load ulang croppie.js
-$('.tampilan_produk').on('click', function(){
-	$('.file-selector').hide();
-	$('.btn-crop').show();
-	$('#cropped').remove();
-	$('.croppie-container').removeClass('croppie-container').addClass('image-crop-view');
-	$uploadCrop = $('.image-crop-view').croppie({
-		enableExif: true,
-		viewport:{
-			width: 200,
-			height: 200,
-		},
-		boundary: {
-			width: 230,
-			height: 230
-		}
-	});
-});
-//setelah file dipilih lakukan perubahan
-$('.tampilan_produk').on('change', function(){
-	var reader = new FileReader();
+// $('.foto').on('click', function(){
+// 	$('.file-selector').hide();
+// 	$('.btn-crop').show();
+// 	$('#cropped').remove();
+// 	$('.croppie-container').removeClass('croppie-container').addClass('image-crop-view');
+// 	$uploadCrop = $('.image-crop-view').croppie({
+// 		enableExif: true,
+// 		viewport:{
+// 			width: 200,
+// 			height: 200,
+// 		},
+// 		boundary: {
+// 			width: 230,
+// 			height: 230
+// 		}
+// 	});
+// });
+// //setelah file dipilih lakukan perubahan
+// $('.foto').on('change', function(){
+// 	var reader = new FileReader();
 
-	reader.onload = function (e) {
-		$uploadCrop.croppie('bind', {
-			url: e.target.result
-		}).then(function(){
-			console.log('jQuery bind complete');
-		});
-	}
-	reader.readAsDataURL(this.files[0]);
-});
-//buat ngerotate croppie.js
-$('.rotate').on('click', function(ev){
-	uploadCrop.croppie('rotate', parseInt($(this).data('deg')));
-});
-//taruh hasil croppan dalam frame hasil crop, sama taruh base64 codenya di input text
-$('.btn-crop').on('click', function (ev){
-	$uploadCrop.croppie('result', {
-		type: 'canvas',
-		size: 'viewport'
-	}).then(function (resp){
-		html = '<img id="cropped" src="' + resp + '" />';
-		alert('sukses');
-		$(".image-crop-view").html(html);
-		$('.file-selector').show();
-		$('.btn-crop').hide();
-		$('.hasil-tampilan-produk').val(resp);
-	});
-});
+// 	reader.onload = function (e) {
+// 		$uploadCrop.croppie('bind', {
+// 			url: e.target.result
+// 		}).then(function(){
+// 			console.log('jQuery bind complete');
+// 		});
+// 	}
+// 	reader.readAsDataURL(this.files[0]);
+// });
+// //buat ngerotate croppie.js
+// $('.rotate').on('click', function(ev){
+// 	uploadCrop.croppie('rotate', parseInt($(this).data('deg')));
+// });
+// //taruh hasil croppan dalam frame hasil crop, sama taruh base64 codenya di input text
+// $('.btn-crop').on('click', function (ev){
+// 	$uploadCrop.croppie('result', {
+// 		type: 'canvas',
+// 		size: 'viewport'
+// 	}).then(function (resp){
+// 		html = '<img id="cropped" src="' + resp + '" />';
+// 		alert('sukses');
+// 		$(".image-crop-view").html(html);
+// 		$('.file-selector').show();
+// 		$('.btn-crop').hide();
+// 		$('.tampilan-foto').val(resp);
+// 	});
+// });
 //===============================================================================================================
 
 // //ngupload file foto hasil crop croppie.js ke server via ajax
@@ -217,54 +217,54 @@ $('.btn-crop').on('click', function (ev){
 
 //Script buat ngecrop gambar edit =================================================================================
 //buat ngapus gambar terupload dan load ulang croppie.js
-$('.tampilan_produk-edit').on('click', function(){
-	$('.file-selector').hide();
-	$('.btn-crop-edit').show();
-	$('#cropped').remove();
-	$('.croppie-container').removeClass('croppie-container').addClass('image-crop-view-edit');
-	$uploadCrop = $('.image-crop-view-edit').croppie({
-		enableExif: true,
-		viewport:{
-			width: 200,
-			height: 200,
-		},
-		boundary: {
-			width: 230,
-			height: 230
-		}
-	});
-});
-//setelah file dipilih lakukan perubahan
-$('.tampilan_produk-edit').on('change', function(){
-	var reader = new FileReader();
+// $('.foto-edit').on('click', function(){
+// 	$('.file-selector').hide();
+// 	$('.btn-crop-edit').show();
+// 	$('#cropped').remove();
+// 	$('.croppie-container').removeClass('croppie-container').addClass('image-crop-view-edit');
+// 	$uploadCrop = $('.image-crop-view-edit').croppie({
+// 		enableExif: true,
+// 		viewport:{
+// 			width: 200,
+// 			height: 200,
+// 		},
+// 		boundary: {
+// 			width: 230,
+// 			height: 230
+// 		}
+// 	});
+// });
+// //setelah file dipilih lakukan perubahan
+// $('.foto-edit').on('change', function(){
+// 	var reader = new FileReader();
 
-	reader.onload = function (e) {
-		$uploadCrop.croppie('bind', {
-			url: e.target.result
-		}).then(function(){
-			console.log('jQuery bind complete');
-		});
-	}
-	reader.readAsDataURL(this.files[0]);
-});
-//buat ngerotate croppie.js
-$('.rotate').on('click', function(ev){
-	uploadCrop.croppie('rotate', parseInt($(this).data('deg')));
-});
-//taruh hasil croppan dalam frame hasil crop, sama taruh base64 codenya di input text
-$('.btn-crop-edit').on('click', function (ev){
-	$uploadCrop.croppie('result', {
-		type: 'canvas',
-		size: 'viewport'
-	}).then(function (resp){
-		html = '<img id="cropped" src="' + resp + '" />';
-		alert('sukses');
-		$(".image-crop-view-edit").html(html);
-		$('.file-selector').show();
-		$('.btn-crop-edit').hide();
-		$('.hasil-tampilan-produk').val(resp);
-	});
-});
+// 	reader.onload = function (e) {
+// 		$uploadCrop.croppie('bind', {
+// 			url: e.target.result
+// 		}).then(function(){
+// 			console.log('jQuery bind complete');
+// 		});
+// 	}
+// 	reader.readAsDataURL(this.files[0]);
+// });
+// //buat ngerotate croppie.js
+// $('.rotate').on('click', function(ev){
+// 	uploadCrop.croppie('rotate', parseInt($(this).data('deg')));
+// });
+// //taruh hasil croppan dalam frame hasil crop, sama taruh base64 codenya di input text
+// $('.btn-crop-edit').on('click', function (ev){
+// 	$uploadCrop.croppie('result', {
+// 		type: 'canvas',
+// 		size: 'viewport'
+// 	}).then(function (resp){
+// 		html = '<img id="cropped" src="' + resp + '" />';
+// 		alert('sukses');
+// 		$(".image-crop-view-edit").html(html);
+// 		$('.file-selector').show();
+// 		$('.btn-crop-edit').hide();
+// 		$('.tampilan-foto').val(resp);
+// 	});
+// });
 //===============================================================================================================
 
 //hapus produk baru
@@ -289,7 +289,7 @@ $('.edit-pb-trigger').on('click', function(){
 	var jenis_produk = $(this).data('jenis');
 	var harga_produk = $(this).data('harga');
 	var file_desain = $(this).data('file_desain');
-	var tampilan_produk = $(this).data('tampilan_produk');
+	var foto = $(this).data('foto');
 	var tampil_link = $(this).data('tampil_link');
 
 	$(document).ready(function(){
@@ -302,7 +302,7 @@ $('.edit-pb-trigger').on('click', function(){
 
 	$('.file_desain-edit').val(file_desain);
 
-	newUrl = tampil_link+tampilan_produk;
+	newUrl = tampil_link+foto;
 
 	html = '<img id="cropped" src="' + newUrl + '" />';
 
@@ -425,7 +425,16 @@ function getIdEdit_pegawai_1(clicked_id) {
 	var email = $("#id_pegawai_" + id_pegawai).data("email");
 	var rekening_pegawai = $("#id_pegawai_" + id_pegawai).data("rekening_pegawai");
 	var no_telp = $("#id_pegawai_" + id_pegawai).data("no_telp");
+	// var file_desain = $(this).data('file_desain');
+	var foto = $("#id_pegawai_" + id_pegawai).data('foto');
+	// console.log(foto);
+	var tampil_link = $("#id_pegawai_" + id_pegawai).data('tampil_link');
 	
+	newUrl = tampil_link+foto;
+	console.log(newUrl);
+
+
+
 	$('#id_pegawai-edit').attr("value", id_pegawai);
 	$('#nama_pegawai-edit').attr("value", nama_pegawai);
 	$('#alamat-edit').attr("value", alamat);
@@ -433,6 +442,7 @@ function getIdEdit_pegawai_1(clicked_id) {
 	$('#umur').attr("value", umur);
 	$('#rekening_pegawai-edit').attr("value", rekening_pegawai);
 	$('#no_telp-edit').attr("value", no_telp);
+	$('#banner-preview-edit').attr('src', newUrl);
 	// alert(alamat)
 }
 

@@ -2,20 +2,74 @@
 <html lang="en">
 
 <head>
-    <title>Marketing - Testimoni</title>
-    <?php $this->load->view('marketing/partials/css.php') ?>
+    <title>SDM - Penggajian</title>
+    <?php $this->load->view('sdm/hrd/partials/css.php') ?>
 </head>
 
 <body>
     <!-- navbar -->
-    <?php $this->load->view('marketing/partials/navbar.php') ?>
+    <?php $this->load->view('sdm/hrd/partials/navbar.php') ?>
+
+    <!-- Modal Validasi Gaji -->
+    <div id="validasi-gaji-modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+
+                <form id="form-edit-cust" class="col s12" action="<?php echo site_url('marketing/data_customer/update_customer'); ?>" method="post">
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h4>Edit Customer</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input id="id_pelanggan-edit" name="id_pelanggan-edit" type="text" class="validate" autocomplete="off" value=" " readonly>
+                            <label for="id_pelanggan">ID</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="nama_pelanggan-edit" id="nama_pelanggan-edit" placeholder="Masukkan Nama Customer" autocomplete="off">
+                            <label for="nama_pelanggan">Nama</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <select id="tipe_customer-edit" name="tipe_customer-edit">
+                                <option value="" disabled selected>Pilih Jenis Customer</option>
+                                <option value="Retailer">Retailer</option>
+                                <option value="Distributor">Distributor</option>
+                                <option value="Personal">Personal</option>
+                            </select>
+                            <label>Jenis</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="wilayah-edit" id="wilayah-edit" placeholder="Masukkan Wilayah Pemesanan Customer" autocomplete="off">
+                            <label for="wilayah">Wilayah</label>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <a href="#konfirm-edit-cust" class="btn waves-effect waves-light orange darken-3 modal-trigger">Submit
+                <i class="material-icons right">send</i>
+            </a>
+        </div>
+    </div>
 
     <!-- Modal Add Testimoni -->
     <div id="add-testimoni-modal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <div class="row">
 
-                <form id="form-add-testimoni" class="col s12" action="<?php echo site_url('marketing/testimoni/save_testimoni'); ?>" method="post">
+                <form id="form-add-testimoni" class="col s12" action="<?php echo site_url('sdm/testimoni/save_testimoni'); ?>" method="post">
                     <div class="row">
                         <div class="col s12 center">
                             <h4>Tambah Testimoni</h4>
@@ -50,9 +104,9 @@
                                         ?>
                                         <option value="<?php echo $col->id_pelanggan ?>"><?php echo $col->id_so ?></option>
                                     <?php
-                                endif;
-                            endforeach;
-                            ?>
+                                    endif;
+                                endforeach;
+                                ?>
                             </select>
                             <label for="id_so">No. Order</label>
                         </div>
@@ -110,7 +164,7 @@
             </div>
 
             <!-- searchbar -->
-            <div class="col s4"><?php $this->load->view('marketing/partials/searchbar.php'); ?></div>
+            <div class="col s4"><?php $this->load->view('sdm/hrd/partials/searchbar.php'); ?></div>
 
             <!-- add sales order -->
             <div class="col s1 center">
@@ -124,46 +178,50 @@
             <table class="responsive-table centered highlight">
                 <thead class="bottom-border">
                     <tr>
-                        <th>Nama Customer</th>
-                        <th>Jenis Customer</th>
-                        <th>No. Order</th>
-                        <th>Pesan</th>
+                        <th>No.</th>
+                        <th>Nama</th>
+                        <th>Golongan</th>
+                        <th>Gaji Total</th>
+                        <th>Periode</th>
+                        <th>Status</th>
                         <th></th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php
-                    $count = 0;
-                    foreach ($testimoni->result() as $col) :
-                        $count++;
-                        ?>
-                        <tr>
-                            <?php
-                            $hitung = 0;
-                            foreach ($customer->result() as $row) :
-                                $hitung++;
-                                if ($row->id_pelanggan == $col->id_pelanggan) :
-                                    ?>
-                                    <td><?php echo $row->nama_pelanggan; ?></td>
-                                    <td><?php echo $row->tipe_customer; ?></td>
-                                <?php
-                            endif;
-                        endforeach;
-                        ?>
-                            <td><?php echo $col->id_so; ?></td>
-                            <td><?php
-                                $testimoni_barang = substr($col->testimoni_barang, 0, 25);
-                                echo $testimoni_barang; ?></td>
-                            <td class="button-container">
-                                <div id="table-button">
-                                    <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
-                                </div>
-                            </td>
+                    $warna = 'none';
+                    $count = 1;
+                    foreach ($penggajian->result() as $pen) :
+                        ?> <td><?php echo $count; ?></td>
+                        <?php foreach ($pegawai->result() as $peg) :
+                            if ($peg->id_pegawai == $pen->id_pegawai) : ?>
+                                <td><?php echo $peg->nama_pegawai; ?></td>
+                                <td><?php echo $peg->id_golongan; ?></td>
+                            <?php endif;
+                        endforeach; ?>
+                        <td><?php echo $pen->gaji_total; ?></td>
+                        <td><?php echo $pen->periode_gaji; ?></td>
+                        <?php if ($pen->status_validasi_gaji == 'disetujui') {
+                            $warna = 'green';
+                        }
+                        if ($pen->status_validasi_gaji == 'pending') {
+                            $warna = 'grey';
+                        }
+                        if ($pen->status_validasi_gaji == 'ditolak') {
+                            $warna = 'red';
+                        } ?>
+                        <td class="<?php echo $warna; ?>"><?php echo $pen->status_validasi_gaji; ?></td>
+                        <td class="button-container">
+                            <div id="table-button">
+                            <a href="" class="modal-trigger"><i class="material-icons edit-button">create</i></a>
+                            </div>
+                        </td>
                         </tr>
-                    <?php
-                endforeach;
-                ?>
+                        <?php
+                        $count++;
+                    endforeach;
+                    ?>
                 </tbody>
             </table>
         </div>
@@ -171,7 +229,7 @@
     </div>
     </div>
     <!-- js -->
-    <?php $this->load->view('marketing/partials/js.php') ?>
+    <?php $this->load->view('sdm/hrd/partials/js.php') ?>
 </body>
 
 </html>
