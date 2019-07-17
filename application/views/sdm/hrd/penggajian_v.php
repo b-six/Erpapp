@@ -18,37 +18,56 @@
                 <form id="form-edit-cust" class="col s12" action="<?php echo site_url('marketing/data_customer/update_customer'); ?>" method="post">
                     <div class="row">
                         <div class="col s12 center">
-                            <h4>Edit Customer</h4>
+                            <h4>Validasi Data Gaji</h4>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s12">
-                            <input id="id_pelanggan-edit" name="id_pelanggan-edit" type="text" class="validate" autocomplete="off" value=" " readonly>
-                            <label for="id_pelanggan">ID</label>
+                            <input type="text" name="nama_pegawai" id="nama_pegawai" placeholder="-" autocomplete="off">
+                            <label for="nama_pegawai">Nama</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" name="nama_pelanggan-edit" id="nama_pelanggan-edit" placeholder="Masukkan Nama Customer" autocomplete="off">
-                            <label for="nama_pelanggan">Nama</label>
+                            <input type="text" name="periode" id="periode" placeholder="-" autocomplete="off">
+                            <label for="periode">Periode</label>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="golongan" id="golongan" placeholder="-" autocomplete="off">
+                            <label for="golongan">Golongan</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <h6><b>Rincian</b></h6>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <select id="tipe_customer-edit" name="tipe_customer-edit">
-                                <option value="" disabled selected>Pilih Jenis Customer</option>
-                                <option value="Retailer">Retailer</option>
-                                <option value="Distributor">Distributor</option>
-                                <option value="Personal">Personal</option>
-                            </select>
-                            <label>Jenis</label>
+                            <input type="text" name="gaji_pokok" id="gaji_pokok" placeholder="-" autocomplete="off">
+                            <label for="golongan">Gaji Pokok</label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-field col s12">
-                            <input type="text" name="wilayah-edit" id="wilayah-edit" placeholder="Masukkan Wilayah Pemesanan Customer" autocomplete="off">
-                            <label for="wilayah">Wilayah</label>
+                            <input type="text" name="gaji_lembur" id="gaji_lembur" placeholder="-" autocomplete="off">
+                            <label for="golongan">Gaji Lembur</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="pengurangan" id="pengurangan" placeholder="-" autocomplete="off">
+                            <label for="golongan">Pengurangan Gaji</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="total" id="total" placeholder="-" autocomplete="off">
+                            <label for="golongan">Total</label>
                         </div>
                     </div>
                 </form>
@@ -62,91 +81,6 @@
                 <i class="material-icons right">send</i>
             </a>
         </div>
-    </div>
-
-    <!-- Modal Add Testimoni -->
-    <div id="add-testimoni-modal" class="modal modal-fixed-footer">
-        <div class="modal-content">
-            <div class="row">
-
-                <form id="form-add-testimoni" class="col s12" action="<?php echo site_url('sdm/testimoni/save_testimoni'); ?>" method="post">
-                    <div class="row">
-                        <div class="col s12 center">
-                            <h4>Tambah Testimoni</h4>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-
-                            <?php $hitung2 = 0;
-                            foreach ($customer->result() as $col2) :
-                                $hitung2++;
-                                ?>
-                                <input id="<?php echo "nama-" . $col2->id_pelanggan; ?>" value="<?php echo $col2->nama_pelanggan; ?>" hidden>
-                                <input id="<?php echo "wilayah-" . $col2->id_pelanggan; ?>" value="<?php echo $col2->wilayah; ?>" hidden>
-                                <input id="<?php echo "tipe-" . $col2->id_pelanggan; ?>" value="<?php echo $col2->tipe_customer; ?>" hidden>
-                            <?php endforeach; ?>
-
-                            <?php $hitung3 = 0;
-                            foreach ($sales_order->result() as $col3) :
-                                $hitung3++;
-                                ?>
-                                <input id="<?php echo "id-so-" . $col3->id_pelanggan; ?>" name="<?php echo "id-so-" . $col3->id_pelanggan; ?>" value="<?php echo $col3->id_so; ?>" hidden>
-                            <?php endforeach; ?>
-
-                            <select id="id_so" name="id_so">
-                                <option value="" disabled selected>Select No. Order</option>
-                                <?php $hitung = 0;
-                                foreach ($sales_order->result() as $col) :
-                                    $hitung++;
-                                    if ($col->testimoni == 'N') :
-                                        ?>
-                                        <option value="<?php echo $col->id_pelanggan ?>"><?php echo $col->id_so ?></option>
-                                    <?php
-                                    endif;
-                                endforeach;
-                                ?>
-                            </select>
-                            <label for="id_so">No. Order</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" name="show-nama" id="show-nama" placeholder="-" readonly>
-                            <label for="show-nama">Nama</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" name="show-wilayah" id="show-wilayah" placeholder="-" readonly>
-                            <label for="show-wilayah">Wilayah</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" name="show-tipe-customer" id="show-tipe-customer" placeholder="-" readonly>
-                            <label for="show-tipe-customer">Tipe Customer</label>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <textarea id="pesan" name="pesan" class="materialize-textarea" placeholder="Masukkan Review Anda"></textarea>
-                            <label for="pesan">Pesan</label>
-                        </div>
-                    </div>
-                </form>
-
-            </div>
-
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-add-testimoni" id="submit-add-testimoni">Submit
-                <i class="material-icons right">send</i>
-            </button>
-        </div>
-
     </div>
 
     <!-- konten -->
@@ -165,11 +99,6 @@
 
             <!-- searchbar -->
             <div class="col s4"><?php $this->load->view('sdm/hrd/partials/searchbar.php'); ?></div>
-
-            <!-- add sales order -->
-            <div class="col s1 center">
-                <nav class="no-shadows blue-dark-grey"><a href="#add-testimoni-modal" class="modal-trigger"><i class="material-icons">add_circle_outline</i></a></nav>
-            </div>
 
         </div>
 
@@ -198,26 +127,29 @@
                             if ($peg->id_pegawai == $pen->id_pegawai) : ?>
                                 <td><?php echo $peg->nama_pegawai; ?></td>
                                 <td><?php echo $peg->id_golongan; ?></td>
-                            <?php endif;
+
+                                <td><?php echo $pen->gaji_total; ?></td>
+                                <td><?php echo $pen->periode_gaji; ?></td>
+                                <?php if ($pen->status_validasi_gaji == 'disetujui') {
+                                    $warna = 'green';
+                                }
+                                if ($pen->status_validasi_gaji == 'pending') {
+                                    $warna = 'grey';
+                                }
+                                if ($pen->status_validasi_gaji == 'ditolak') {
+                                    $warna = 'red';
+                                } ?>
+                                <td class="<?php echo $warna; ?>"><?php echo $pen->status_validasi_gaji; ?></td>
+                                <td class="button-container">
+                                    <div id="table-button">
+                                        <a href="#validasi-gaji-modal" id="validasi_<?php echo $peg->nama_pegawai; ?>" data-periode="<?php echo $pen->periode_gaji; ?>" data-golongan="<?php echo $peg->id_golongan; ?>" data-gaji_pokok="<?php echo $pen->gaji_pokok; ?>" data-gaji_lembur="<?php echo $pen->gaji_lembur; ?>" data-pengurangan_gaji="<?php echo $pen->pengurangan_gaji; ?>" data-total_gaji="<?php echo ($pen->gaji_pokok)+($pen->gaji_lembur)-($pen->pengurangan_gaji); ?>" class="modal-trigger"><i class="material-icons edit-button">create</i></a>
+                                    </div>
+                                </td>
+                                </tr>
+                            <?php
+
+                            endif;
                         endforeach; ?>
-                        <td><?php echo $pen->gaji_total; ?></td>
-                        <td><?php echo $pen->periode_gaji; ?></td>
-                        <?php if ($pen->status_validasi_gaji == 'disetujui') {
-                            $warna = 'green';
-                        }
-                        if ($pen->status_validasi_gaji == 'pending') {
-                            $warna = 'grey';
-                        }
-                        if ($pen->status_validasi_gaji == 'ditolak') {
-                            $warna = 'red';
-                        } ?>
-                        <td class="<?php echo $warna; ?>"><?php echo $pen->status_validasi_gaji; ?></td>
-                        <td class="button-container">
-                            <div id="table-button">
-                            <a href="" class="modal-trigger"><i class="material-icons edit-button">create</i></a>
-                            </div>
-                        </td>
-                        </tr>
                         <?php
                         $count++;
                     endforeach;
