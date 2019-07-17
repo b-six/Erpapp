@@ -50,6 +50,18 @@ class Data_pegawai extends CI_Controller
     redirect('sdm/data_pegawai');
   }
 
+  public function uploadGambar(){
+    $data = $this->input->post('image');
+
+    list($type, $data) = explode(';', $data);
+    list(, $data)	     = explode(',', $data);
+
+    $data = base64_decode($data);
+    $imageName = time().uniqid(rand()).'.png';
+    file_put_contents('document/marketing/produk_baru/tampilan/'.$imageName, $data);
+    echo json_encode($imageName);
+}
+
   function delete_pegawai()
   {
     $id_pegawai = $this->input->get('id_pegawai_delete');

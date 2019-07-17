@@ -273,7 +273,7 @@
                     <?php
                     $count = 0;
                     foreach ($pegawai->result() as $col) :
-                        $count++;
+                        $count++; 
                         ?>
                         <tr>
                             <td><?php echo $col->nama_pegawai; ?></td>
@@ -281,7 +281,18 @@
                             <td><?php echo $col->alamat; ?></td>
                             <td><?php echo $col->tgl_diterima; ?></td>
                             <td><?php echo $col->tgl_berhenti; ?></td>
-                            <td><?php echo $col->status_pegawai; ?></td>
+                            <?php 
+                            $status_warna = $col->status_pegawai;
+                            if ($status_warna == 'aktif') {
+                            $warna = 'green';
+                        }
+                        else if ($status_warna == 'resign') {
+                            $warna = 'red';
+                        }
+                        else if ($status_warna == 'pensiun') {
+                            $warna = 'grey';
+                        } ?>
+                            <td class="<?php echo $warna;?>"><?php echo $col->status_pegawai; ?></td>
                             <td class="button-container">
                                 <div id="table-button">
                                 <a href="#konfirm-delete-pegawai" id="delete_id_<?php echo $col->id_pegawai; ?>" class="modal-trigger" onClick="getId_pegawai(this.id)"><i class="material-icons delete-button">delete_forever</i></a>
