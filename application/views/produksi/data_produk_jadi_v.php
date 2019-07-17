@@ -2,13 +2,13 @@
 <html lang="en">
 
 <head>
-    <title>Marketing - Promo</title>
-    <?php $this->load->view('marketing/partials/css.php') ?>
+    <title>Produksi - Data Produk Jadi</title>
+    <?php $this->load->view('produksi/partials/css.php') ?>
 </head>
 
 <body>
     <!-- navbar -->
-    <?php $this->load->view('marketing/partials/navbar.php') ?>
+    <?php $this->load->view('produksi/partials/navbar.php') ?>
     <div class="container">
         <br>
         <div class="row">
@@ -16,8 +16,8 @@
             <div class="col s7">
                 <nav class="no-shadows breadcrumbs-style">
                     <div class="nav-wrapper blue-dark-grey">
-                        <a class="breadcrumb no-pointer-event">Product</a>
-                        <a href="promo" class="breadcrumb">Promo</a>
+                        <a class="breadcrumb no-pointer-event">Produksi</a>
+                        <a href="promo" class="breadcrumb">Data Produk Jadi</a>
                     </div>
                 </nav>
             </div>
@@ -52,18 +52,22 @@
                             1.
                         </div>
                         <div class="card-image">
-                            <img src="https://lorempixel.com/100/140/nature/6">
+                            <img width="40px" height="100px" src="<?php echo base_url('assets/img/produksi/250.jpg'); ?>">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s4">
-                                        <h6><b>Id Promo</b></h6>
-                                        <h6><b>Tanggal Berlaku</b></h6>
+                                        <h6><b>Id Produk</b></h6>
+                                        <h6><b>Nama Produk</b></h6>
+                                        <h6><b>Waktu Produksi</b></h6>
+                                        <h6><b>Tanggal Kadaluarsa</b></h6>
                                     </div>
                                     <div class="col s8">
-                                        <h6>: SOSRO1NIKMAT2019</h6>
-                                        <h6>: 22-02-2022 s/d 22-03-2022 </h6>
+                                        <h6>: SOSROTEHBOTOL250ML</h6>
+                                        <h6>: Teh Botol 250 ml</h6>
+                                        <h6>: 22-02-2022</h6>
+                                        <h6>: 22-02-2023</h6>
                                     </div>
                                 </div>
                             </div>
@@ -79,18 +83,22 @@
                             2.
                         </div>
                         <div class="card-image">
-                            <img src="https://lorempixel.com/100/140/nature/6">
+                            <img width="40px" height="100px" src="<?php echo base_url('assets/img/produksi/ft350.jpg'); ?>">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
                                 <div class="row">
-                                    <div class="col s4">
-                                        <h6><b>Id Promo</b></h6>
-                                        <h6><b>Tanggal Berlaku</b></h6>
+                                <div class="col s4">
+                                        <h6><b>Id Produk</b></h6>
+                                        <h6><b>Nama Produk</b></h6>
+                                        <h6><b>Waktu Produksi</b></h6>
+                                        <h6><b>Tanggal Kadaluarsa</b></h6>
                                     </div>
                                     <div class="col s8">
-                                        <h6>: SOSRO2NIKMAT2019</h6>
-                                        <h6>: 22-02-2022 s/d 22-03-2022 </h6>
+                                        <h6>: SOSROFRUITTEA250ML</h6>
+                                        <h6>: Fruit Tea 350 ml</h6>
+                                        <h6>: 22-02-2022</h6>
+                                        <h6>: 22-02-2023</h6>
                                     </div>
                                 </div>
                             </div>
@@ -106,18 +114,22 @@
                             3.
                         </div>
                         <div class="card-image">
-                            <img src="https://lorempixel.com/100/140/nature/6">
+                            <img width="40px" height="100px" src="<?php echo base_url('assets/img/produksi/yz350.jpg'); ?>">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
                                 <div class="row">
-                                    <div class="col s4">
-                                        <h6><b>Id Promo</b></h6>
-                                        <h6><b>Tanggal Berlaku</b></h6>
+                                <div class="col s4">
+                                        <h6><b>Id Produk</b></h6>
+                                        <h6><b>Nama Produk</b></h6>
+                                        <h6><b>Waktu Produksi</b></h6>
+                                        <h6><b>Tanggal Kadaluarsa</b></h6>
                                     </div>
                                     <div class="col s8">
-                                        <h6>: SOSRO3NIKMAT2019</h6>
-                                        <h6>: 22-02-2022 s/d 22-03-2022 </h6>
+                                        <h6>: SOSROYUZUTEA250ML</h6>
+                                        <h6>: Yuzu Tea 350 ml</h6>
+                                        <h6>: 22-02-2022</h6>
+                                        <h6>: 22-02-2023</h6>
                                     </div>
                                 </div>
                             </div>
@@ -186,7 +198,7 @@
         </div>
     </div>
     <!-- js -->
-    <?php $this->load->view('marketing/partials/js.php') ?>
+    <?php $this->load->view('produksi/partials/js.php') ?>
 </body>
 
 </html>

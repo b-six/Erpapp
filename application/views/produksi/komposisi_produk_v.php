@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Produksi - Bahan Baku</title>
+    <title>Produksi - Komposisi Produk</title>
     <?php $this->load->view('produksi/partials/css.php') ?>
 </head>
 
@@ -17,7 +17,7 @@
                 <nav class="no-shadows breadcrumbs-style">
                     <div class="nav-wrapper blue-dark-grey">
                         <a class="breadcrumb no-pointer-event">Produksi</a>
-                        <a href="bahan_baku" class="breadcrumb">Bahan Baku</a>
+                        <a href="promo" class="breadcrumb">Komposisi Produk</a>
                     </div>
                 </nav>
             </div>
@@ -36,15 +36,15 @@
         <div class="row">
             <div class="col s12">
                 <ul class="tabs blue-dark-grey">
-                    <li class="tab col s2"><a href="#kemasan" class="active small-font">Kemasan</a></li>
-                    <li class="tab col s2"><a class="small-font" href="#minuman">Minuman</a></li>
+                    <li class="tab col s2"><a href="#berlaku" class="active small-font">Berlaku</a></li>
+                    <li class="tab col s2"><a class="small-font" href="#berakhir">Berakhir</a></li>
                 </ul>
                 <br>
             </div>
             <!-- konten tab -->
 
-            <!-- tab kemasan -->
-            <div id="kemasan" class="col s12 white-text">
+            <!-- tab berlaku -->
+            <div id="berlaku" class="col s12 white-text">
                 <!-- 1 card -->
                 <div class="col s12">
                     <div class="card horizontal black-text m7 hoverable rounded-card">
@@ -52,20 +52,20 @@
                             1.
                         </div>
                         <div class="card-image">
-                            <img width="40px" height="100px" src="<?php echo base_url('assets/img/produksi/btl.jpg'); ?>">
+                            <img width="40px" height="100px" src="<?php echo base_url('assets/img/produksi/tbtss.jpg'); ?>">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s4">
-                                        <h6><b>Id Bahan Baku</b></h6>
-                                        <h6><b>Jenis Bahan Baku</b></h6>
-                                        <h6><b>Tanggal Berlaku</b></h6>
+                                        <h6><b>Id Komposisi</b></h6>
+                                        <h6><b>Nama Produk</b></h6>
+                                        <h6><b>Komposisi</b></h6>
                                     </div>
                                     <div class="col s8">
-                                        <h6>: SOSRO1PLASTIK</h6>
-                                        <h6>: Plastik</h6>
-                                        <h6>: 22-02-2022 s/d 22-03-2022 </h6>
+                                        <h6>: SOSROKOMPOSISITEHBOTOL</h6>
+                                        <h6>: Teh Botol</h6>
+                                        <h6>: Air, Ekstrak Teh Melati dan Gula Water, Extract of Jasmine Tea and Sugar</h6>
                                     </div>
                                 </div>
                             </div>
@@ -81,20 +81,20 @@
                             2.
                         </div>
                         <div class="card-image">
-                            <img style="margin-left:20px;margin-right:20px; " width="40px" height="100px" src="<?php echo base_url('assets/img/produksi/250.jpg'); ?>">
+                            <img width="40px" height="100px" src="<?php echo base_url('assets/img/produksi/ft.png'); ?>">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s4">
-                                        <h6><b>Id Bahan Baku</b></h6>
-                                        <h6><b>Jenis Bahan Baku</b></h6>
-                                        <h6><b>Tanggal Berlaku</b></h6>
+                                        <h6><b>Id Komposisi</b></h6>
+                                        <h6><b>Nama Produk</b></h6>
+                                        <h6><b>Komposisi</b></h6>
                                     </div>
                                     <div class="col s8">
-                                        <h6>: SOSRO2KARDUS</h6>
-                                        <h6>: Kardus</h6>
-                                        <h6>: 22-02-2022 s/d 22-03-2022 </h6>
+                                        <h6>: SOSROKOMPOSISIFRUITTEA</h6>
+                                        <h6>: Fruit Tea</h6>
+                                        <h6>: Air, gula, sirup jagung tinggi fruktosa, teh hitam, pengatur keasaman asam sitrat, natrium sitrat, konsentrat buah, perisa identik alami dan antikosidan (Asam askorbat).</h6>
                                     </div>
                                 </div>
                             </div>
@@ -110,20 +110,20 @@
                             3.
                         </div>
                         <div class="card-image">
-                            <img width="40px" height="100px" src="<?php echo base_url('assets/img/produksi/klg.jpg'); ?>">
+                            <img width="40px" height="100px" src="<?php echo base_url('assets/img/produksi/yuzu.png'); ?>">
                         </div>
                         <div class="card-stacked">
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s4">
-                                        <h6><b>Id Bahan Baku</b></h6>
-                                        <h6><b>Jenis Bahan Baku</b></h6>
-                                        <h6><b>Tanggal Berlaku</b></h6>
+                                        <h6><b>Id Komposisi</b></h6>
+                                        <h6><b>Nama Produk</b></h6>
+                                        <h6><b>Komposisi</b></h6>
                                     </div>
                                     <div class="col s8">
-                                        <h6>: SOSRO3KALENG</h6>
-                                        <h6>: Kaleng</h6>
-                                        <h6>: 22-02-2022 s/d 22-03-2022 </h6>
+                                        <h6>: SOSROKOMPOSISIYUZUTEA</h6>
+                                        <h6>: Yuzu Tea</h6>
+                                        <h6>: Air, gula, teh hijau, perisa sintetik yuzu, pengatur keasaman (asam sitrat, natrim sitrat), konsentrat buah lemon, dan antioksidan (asam askorbat).</h6>
                                     </div>
                                 </div>
                             </div>
@@ -133,8 +133,8 @@
                 </div>
             </div>
 
-            <!-- tab minuman -->
-            <div id="minuman" class="col s12 white-text">
+            <!-- tab berakhir -->
+            <div id="berakhir" class="col s12 white-text">
                 <!-- 1 card -->
                 <div class="col s12">
                     <div class="card horizontal black-text m7 hoverable rounded-card">
@@ -148,42 +148,11 @@
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s4">
-                                        <h6><b>Id Bahan Baku</b></h6>
-                                        <h6><b>Jenis Bahan Baku</b></h6>
+                                        <h6><b>Id Promo</b></h6>
                                         <h6><b>Tanggal Berlaku</b></h6>
                                     </div>
                                     <div class="col s8">
-                                        <h6>: SOSROEKSTRAKTEHMELATI</h6>
-                                        <h6>: Ekstrak Teh</h6>
-                                        <h6>: 22-02-2022 s/d 22-03-2022 </h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-
-                <!-- 1 card -->
-                <div class="col s12">
-                    <div class="card horizontal black-text m7 hoverable rounded-card">
-                        <div class="card-content center bold-font">
-                            1.
-                        </div>
-                        <div class="card-image">
-                            <img src="https://lorempixel.com/100/140/nature/6">
-                        </div>
-                        <div class="card-stacked">
-                            <div class="card-content">
-                                <div class="row">
-                                    <div class="col s4">
-                                        <h6><b>Id Bahan Baku</b></h6>
-                                        <h6><b>Jenis Bahan Baku</b></h6>
-                                        <h6><b>Tanggal Berlaku</b></h6>
-                                    </div>
-                                    <div class="col s8">
-                                        <h6>: SOSROGULA</h6>
-                                        <h6>: Gula</h6>
+                                        <h6>: SOSRO4NIKMAT2019</h6>
                                         <h6>: 22-02-2022 s/d 22-03-2022 </h6>
                                     </div>
                                 </div>
@@ -206,13 +175,11 @@
                             <div class="card-content">
                                 <div class="row">
                                     <div class="col s4">
-                                        <h6><b>Id Bahan Baku</b></h6>
-                                        <h6><b>Jenis Bahan Baku</b></h6>
+                                        <h6><b>Id Promo</b></h6>
                                         <h6><b>Tanggal Berlaku</b></h6>
                                     </div>
                                     <div class="col s8">
-                                        <h6>: SOSROPERASABUAH</h6>
-                                        <h6>: Perasa Buah-buahan</h6>
+                                        <h6>: SOSRO5NIKMAT2019</h6>
                                         <h6>: 22-02-2022 s/d 22-03-2022 </h6>
                                     </div>
                                 </div>
