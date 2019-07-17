@@ -46,6 +46,11 @@ class Bahan_baku_model extends CI_Model {
     $result4 = $this->db->get('surat_jalan_pengiriman_bahan_baku');
     return $result4;
   }
+
+   function get_retur_bahan_baku(){
+    $result5 = $this->db->get('retur_bahan_baku');
+    return $result5;
+  }
   // ------------------------------------------------------------------------
 
 }

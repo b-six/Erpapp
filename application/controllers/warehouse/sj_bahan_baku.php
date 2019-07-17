@@ -33,9 +33,28 @@ class sj_bahan_baku extends CI_Controller
     $data['sales_order'] = $this->Sales_order_model->get_sales_order();
     $data['surat_jalan_pengiriman_bahan_baku'] = $this->Surat_jalan_model->get_surat_jalan_pengiriman_bahan_baku();
     $data['bahan_baku'] = $this->Bahan_baku_model->get_bahan_baku();
+    $data['stock_barang'] = $this->Stock_barang_model->get_stock_barang();
     $this->load->view('warehouse/sj_bahan_baku_v',$data);
   }
 
+function save_surat_jalan_pbb()
+  {
+    $no_surat_jalan_pbb = $this->input->post('no_surat_jalan_pbb');
+    $id_bahan_baku = $this->input->post('id_bahan_baku');
+    $nama_kurir = $this->input->post('namadist');
+    $tgl_surat_jalan_pbb = $this->input->post('tgl');
+
+    $this->Surat_jalan_model->save_surat_jalan_pbb($no_surat_jalan_pbb, $id_bahan_baku, $nama_kurir, $tgl_surat_jalan_pbb);
+    redirect('warehouse/sj_bahan_baku');
+  }
+
+function delete()
+  { 
+    $no_surat_jalan_pbb = $this->input->get("id");
+    $this->Surat_jalan_model->delete_sjpbb($no_surat_jalan_pbb);
+   redirect('warehouse/sj_bahan_baku');
+
+  }
 
 }
 

@@ -32,7 +32,7 @@
             
 
         </div>
-
+</div>
         <!-- konten tab -->
         <div id="tabelsjdpj" class="col s12 white-text content-color">
             <table class="responsive-table centered highlight">
@@ -106,7 +106,7 @@
             </table>
         </div>
 
-    </div>
+    
     <!-- modal input -->
   	<div id="sj_produk" class="modal modal-fixed-footer">
     	<div class="row">

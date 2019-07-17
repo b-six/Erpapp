@@ -32,6 +32,7 @@ class stok_bahan_baku extends CI_Controller
     $data['bahan_baku_masuk'] = $this->Bahan_baku_model->get_bahan_baku_masuk();
     $data['bahan_baku_keluar'] = $this->Bahan_baku_model->get_bahan_baku_keluar();
     $data['surat_jalan_pengiriman_bahan_baku'] = $this->Bahan_baku_model->get_surat_jalan_pengiriman_bahan_baku();
+    $data['retur_bahan_baku'] = $this->Bahan_baku_model->get_retur_bahan_baku();
     $this->load->view('warehouse/stok_bahan_baku_v',$data);
   }
 

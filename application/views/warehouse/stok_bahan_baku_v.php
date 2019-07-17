@@ -58,22 +58,37 @@
                 <?php
                     $count = 0;
                     foreach ($bahan_baku->result() as $col) :
-                        $count++;
+                         $count++;
                         ?>
-                        <tr class="clickable-row" data-href="<?php echo site_url('warehouse/bahan_baku_details/index/' . $col->id_bahan_baku); ?>">
+                        
                             <?php
                             //$hitung = 0;
             
                             foreach ($bahan_baku->result() as $row) :
                               //$hitung++;
-                                if ($row->id_bahan_baku == $col->id_bahan_baku) :
+                                
+                                //foreach ($retur_bahan_baku->result() as $s) :
+                                   
                                     ?>
+                            <?php
+                                   
+                                if ($row->id_bahan_baku == $col->id_bahan_baku) :
+                                    //if($row->id_bahan_baku == $s->id_bahan_baku):
+                                    // $jml_asli = $col->jml_bahan_baku;
+                                    // $jml_retur = $s->jml_bahan_baku;
+                                    // $jml_akhir = $jml_asli- $jml_retur;
+                                    ?>
+                                    <tr>
                                     <td><?php echo $count; ?></td>
                                     <td><?php echo $row->nama_bahan_baku; ?></td>
-                                    <td><?php echo $row->jml_bahan_baku; ?></td>
-                                    
+                                    <td><?php echo $col->jml_bahan_baku; ?></td>
+                                    <!-- <td><?php echo $row->jml_bahan_baku; ?></td>
+                                     -->
+                                </tr>
                                 <?php
-                            endif;
+                            //endif;
+                        endif;
+                        // endforeach;
                         endforeach;
                         ?>
 
@@ -88,7 +103,7 @@
                                     <a href="#"><i class="material-icons edit-button">create</i></a>
                                 </div>
                             </td>-->
-                        </tr>
+                        
                     <?php
                 endforeach;
                 ?>

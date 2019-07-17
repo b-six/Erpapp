@@ -104,3 +104,49 @@ $('#submit-add-po').click(function () {
 $(document).ready(function(){
     $('.datepicker').datepicker();
   });
+
+//submit form add SO
+$('#save_retur_bahan_baku').click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$('#form-add-retur-bahan-baku').submit();
+});
+
+//submit form add SJPBB
+$('#konfirm_tambah').click(function () {
+	/* when the submit button in the modal is clicked, submit the form */
+	$('#form-add-sjpbb').submit();
+});
+
+
+//form retur
+function getRetur(id_bahan_baku) {
+	var id_supplier = $("#"+id_bahan_baku).data('id_supplier');
+	var id_split = id_bahan_baku.split("_");
+	var id_bbm = id_split[1];
+	$('#id-bahan-baku').attr("value", id_bbm);
+	$('#id_supplier').attr("value", id_supplier);
+}
+
+//get id ketika klik tombol edit, kemudian id di pass ke modal edit so
+function getIdEdit(clicked_id) {
+	var id_edit = clicked_id;
+	$("#no_surat_jalan_pbb").attr("value", id_edit);
+	var suratjalan = $("#no_surat_jalan_pbb-" + id_edit).val();
+	var id_bb = $("#id_bahan_baku-" + id_edit).val();
+	$("#id_bahan_baku")
+		.attr("value", id_bb)
+		.css("font-weight", "bold");
+	$("#no_surat_jalan_pbb")
+		.css("font-weight", "bold");
+	$("#option-" + suratjalan).attr("selected", "");
+	$("#namadist")
+	.attr("value", suratjalan);
+
+	var id_pelanggan = $("#id_pelanggan-edit").val();
+	var wilayah = $("#" + id_pelanggan).val();
+	var tipe_customer = $("#x" + id_pelanggan).val();
+	$("#show-wilayah-edit")
+		.attr("value", wilayah);
+	$("#show-tipe-customer-edit")
+		.attr("value", tipe_customer)
+}
