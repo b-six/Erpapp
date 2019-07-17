@@ -16,7 +16,7 @@ class Customer_model extends CI_Model
     return $result;
   }
 
-  function save_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah)
+  function save_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah, $email, $password)
   {
     $date = date('Y-m-d');
     $data = array(
@@ -24,17 +24,21 @@ class Customer_model extends CI_Model
       'nama_pelanggan' => $nama_pelanggan,
       'tipe_customer' => $tipe_customer,
       'wilayah' => $wilayah,
-      'sejak' => $date
+      'sejak' => $date,
+      'email' => $email,
+      'password' => $password
     );
     $this->db->insert('customer', $data);
   }
 
-  function update_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah)
+  function update_customer($id_pelanggan, $nama_pelanggan, $tipe_customer, $wilayah, $email, $password)
   {
     $data = array(
       'nama_pelanggan' => $nama_pelanggan,
       'tipe_customer' => $tipe_customer,
-      'wilayah' => $wilayah
+      'wilayah' => $wilayah,
+      'email' => $email,
+      'password' => $password
     );
     $this->db->where('id_pelanggan', $id_pelanggan);
     $this->db->update('customer', $data);
