@@ -10,75 +10,64 @@
     <!-- navbar -->
     <?php $this->load->view('produksi/partials/navbar.php') ?>
 
-    <!-- Modal Add Sales Order -->
+    <!-- Modal Add Planning -->
     <div id="addSO-modal" class="modal modal-fixed-footer">
         <div class="modal-content">
             <div class="row">
+				
+				 <div class="col s12 center">
+                <h4>Tambah Produk Baru</h4>
+				</div>
+			
+                 <form method="post" action="<?php echo base_url('produksi/buat_planning/save_planning')?>" class="col s12" id="form-add-pb" enctype="multipart/form-data">
 
-                <form id="form-add-so" class="col s12" action="<?php echo site_url('produksi/sales_order/save_sales_order'); ?>" method="post">
-                    <div class="row">
-                        <div class="col s12 center">
-                            <h4>Buat Plan Baru</h4>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="nama" id="nama" type="text" >
+                        <label for="nama">Bahan Baku Produksi</label>
                     </div>
+                </div>
 
-                    <!-- generate id sales order -->
-                    <?php
-                    $hitung = 0;
-                    $jumlahIdSama = 0;
-                    $date = date('Ymd');
-                    foreach ($sales_order->result() as $row) :
-                        $hitung++;
-                        if (strpos($row->id_so, $date) !== false) {
-                            $jumlahIdSama++;
-                        }
-                    endforeach;
-                    $id_so = $date . ($jumlahIdSama + 1);
-                    ?>
-                    <!-- end generate id sales order -->
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="jenis" id="jenis" type="text" >
+                        <label for="jenis">Jadwal Perencanaan</label>
+                    </div>
+                </div>
 
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input id="id_so" name="id_so" type="text" class="validate" autocomplete="off" value="<?php echo $id_so; ?>" readonly>
-                            <label for="id_so">No. Order</label>
-                        </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name="harga" id="harga" type="number" >
+                        <label for="harga">Harga Produksi</label>
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
+                </div>
+				
+				<div class="row">
+                    <div class="input-field col s12">
+                        <input name="harga" id="harga" type="number" >
+                        <label for="harga">Pegawai</label>
+                    </div>
+                </div>
 
-                            <?php $hitung2 = 0;
-                            foreach ($customer->result() as $col2) :
-                                $hitung2++;
-                                ?>
-                                <input id="<?php echo $col2->id_pelanggan; ?>" value="<?php echo $col2->wilayah; ?>" hidden>
-                                <input id="<?php echo "x" . $col2->id_pelanggan; ?>" value="<?php echo $col2->tipe_customer; ?>" hidden>
-                            <?php endforeach; ?>
 
-                            <select id="id_pelanggan" name="id_pelanggan">
-                                <option value="" disabled selected>Select Customer</option>
-                                <?php $hitung = 0;
-                                foreach ($customer->result() as $col) :
-                                    $hitung++;
-                                    ?>
-                                    <option value="<?php echo $col->id_pelanggan ?>"><?php echo $col->nama_pelanggan ?></option>
-                                <?php endforeach; ?>
-                            </select>
-                            <label>Customer</label>
-                        </div>
+                <div class="file-field input-field">
+                    <div class="card-title">File Desain</div>
+                    <div class="btn orange">
+                        <span><i class="material-icons">attach_file</i></span>
+                        <input name="file_desain" type="file">
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" name="show-wilayah" id="show-wilayah" placeholder="-" readonly>
-                            <label for="show-wilayah">Wilayah</label>
-                        </div>
+                    <div class="file-path-wrapper">
+                        <input class="file-path" type="text" placeholder="File Desain">
                     </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input type="text" name="show-tipe-customer" id="show-tipe-customer" placeholder="-" readonly>
-                            <label for="show-tipe-customer">Tipe Customer</label>
-                        </div>
+                </div>
+
+                <!-- simpan nama gambar hasil croppan di sini -->
+                <div class="row" style="display: none;">
+                    <div class="input-field col s12">
+                        <input class="hasil-tampilan-produk" name="hasil-tampilan-produk" id="tampilan-produk" name="tampilan-produk" type="text" >
                     </div>
-                </form>
+                </div>
+            </form>
 
             </div>
 
@@ -136,11 +125,11 @@
                 <table class="responsive-table centered highlight">
                     <thead class="bottom-border">
                         <tr>
-                            <th>Tanggal</th>
-                            <th>No. Order</th>
-                            <th>Customer</th>
-                            <th>Total</th>
-                            <th>Harga</th>
+                            <th>ID Perencanaan Produksi</th>
+                            <th>ID Bahan Baku Produksi</th>
+                            <th>ID Production Order</th>
+                            <th>ID Pegawai</th>
+                            <th>Jadwal Perencanaan</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -186,11 +175,11 @@
                 <table class="responsive-table centered highlight">
                     <thead class="bottom-border">
                         <tr>
-                            <th>Tanggal</th>
-                            <th>No. Order</th>
-                            <th>Customer</th>
-                            <th>Total</th>
-                            <th>Harga</th>
+                            <th>ID Perencanaan Produksi</th>
+                            <th>ID Bahan Baku Produksi</th>
+                            <th>ID Production Order</th>
+                            <th>ID Pegawai</th>
+                            <th>Jadwal Perencanaan</th>
                             <th></th>
                         </tr>
                     </thead>
@@ -236,11 +225,11 @@
                 <table class="responsive-table centered highlight">
                     <thead class="bottom-border">
                         <tr>
-                            <th>Tanggal</th>
-                            <th>No. Order</th>
-                            <th>Customer</th>
-                            <th>Total</th>
-                            <th>Harga</th>
+                            <th>ID Perencanaan Produksi</th>
+                            <th>ID Bahan Baku Produksi</th>
+                            <th>ID Production Order</th>
+                            <th>ID Pegawai</th>
+                            <th>Jadwal Perencanaan</th>
                             <th></th>
                         </tr>
                     </thead>
