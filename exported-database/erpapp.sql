@@ -1,16 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0.1
--- https://www.phpmyadmin.net/
+-- version 3.3.9
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Waktu pembuatan: 17 Jul 2019 pada 19.15
--- Versi server: 10.1.32-MariaDB
--- Versi PHP: 5.6.36
+-- Host: localhost
+-- Generation Time: Jul 18, 2019 at 03:04 AM
+-- Server version: 5.5.8
+-- PHP Version: 5.3.5
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
-SET time_zone = "+00:00";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
@@ -25,19 +22,47 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `absensi`
 --
 
-CREATE TABLE `admin` (
+DROP TABLE IF EXISTS `absensi`;
+CREATE TABLE IF NOT EXISTS `absensi` (
+  `id_absensi` varchar(20) NOT NULL DEFAULT '',
+  `id_pegawai` int(7) NOT NULL,
+  `tgl_absensi` date NOT NULL,
+  `jam_masuk` time NOT NULL,
+  `jam_keluar` time NOT NULL,
+  `jenis_absensi` enum('normal','lembur','cuti','alfa') NOT NULL,
+  `status_validasi_absensi` enum('sudah','belum') NOT NULL,
+  PRIMARY KEY (`id_absensi`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `absensi`
+--
+
+INSERT INTO `absensi` (`id_absensi`, `id_pegawai`, `tgl_absensi`, `jam_masuk`, `jam_keluar`, `jenis_absensi`, `status_validasi_absensi`) VALUES
+('12132', 1, '2019-05-20', '11:02:15', '11:02:30', 'normal', 'sudah'),
+('12133', 2, '2019-06-04', '11:00:00', '00:00:00', 'normal', 'sudah');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `admin`
+--
+
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE IF NOT EXISTS `admin` (
   `username` varchar(69) NOT NULL,
   `password` varchar(12) NOT NULL,
   `nama` varchar(258) NOT NULL,
   `modul` enum('marketing','produksi','hrd','warehouse','finance') NOT NULL,
-  `level` enum('admin','manajer','user') NOT NULL
+  `level` enum('admin','manajer','user') NOT NULL,
+  PRIMARY KEY (`username`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`username`, `password`, `nama`, `modul`, `level`) VALUES
@@ -51,10 +76,11 @@ INSERT INTO `admin` (`username`, `password`, `nama`, `modul`, `level`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bahan_baku`
+-- Table structure for table `bahan_baku`
 --
 
-CREATE TABLE `bahan_baku` (
+DROP TABLE IF EXISTS `bahan_baku`;
+CREATE TABLE IF NOT EXISTS `bahan_baku` (
   `id_bahan_baku` varchar(100) NOT NULL,
   `jml_bahan_baku` int(255) NOT NULL,
   `nama_bahan_baku` varchar(100) NOT NULL,
@@ -62,7 +88,7 @@ CREATE TABLE `bahan_baku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `bahan_baku`
+-- Dumping data for table `bahan_baku`
 --
 
 INSERT INTO `bahan_baku` (`id_bahan_baku`, `jml_bahan_baku`, `nama_bahan_baku`, `keterangan_bahan_baku`) VALUES
@@ -72,10 +98,11 @@ INSERT INTO `bahan_baku` (`id_bahan_baku`, `jml_bahan_baku`, `nama_bahan_baku`, 
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bahan_baku_keluar`
+-- Table structure for table `bahan_baku_keluar`
 --
 
-CREATE TABLE `bahan_baku_keluar` (
+DROP TABLE IF EXISTS `bahan_baku_keluar`;
+CREATE TABLE IF NOT EXISTS `bahan_baku_keluar` (
   `id_bahan_baku_keluar` varchar(100) NOT NULL,
   `id_bahan_baku` varchar(100) NOT NULL,
   `jml_bahan_baku_keluar` int(255) NOT NULL,
@@ -83,7 +110,7 @@ CREATE TABLE `bahan_baku_keluar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `bahan_baku_keluar`
+-- Dumping data for table `bahan_baku_keluar`
 --
 
 INSERT INTO `bahan_baku_keluar` (`id_bahan_baku_keluar`, `id_bahan_baku`, `jml_bahan_baku_keluar`, `tgl_bahan_baku_keluar`) VALUES
@@ -93,10 +120,11 @@ INSERT INTO `bahan_baku_keluar` (`id_bahan_baku_keluar`, `id_bahan_baku`, `jml_b
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bahan_baku_masuk`
+-- Table structure for table `bahan_baku_masuk`
 --
 
-CREATE TABLE `bahan_baku_masuk` (
+DROP TABLE IF EXISTS `bahan_baku_masuk`;
+CREATE TABLE IF NOT EXISTS `bahan_baku_masuk` (
   `id_bahan_baku_masuk` varchar(100) NOT NULL,
   `id_bahan_baku` varchar(100) NOT NULL,
   `jml_bahan_baku_masuk` varchar(255) NOT NULL,
@@ -105,7 +133,7 @@ CREATE TABLE `bahan_baku_masuk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `bahan_baku_masuk`
+-- Dumping data for table `bahan_baku_masuk`
 --
 
 INSERT INTO `bahan_baku_masuk` (`id_bahan_baku_masuk`, `id_bahan_baku`, `jml_bahan_baku_masuk`, `tgl_bahan_baku_masuk`, `id_supplier`) VALUES
@@ -115,10 +143,11 @@ INSERT INTO `bahan_baku_masuk` (`id_bahan_baku_masuk`, `id_bahan_baku`, `jml_bah
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `bahan_baku_produksi`
+-- Table structure for table `bahan_baku_produksi`
 --
 
-CREATE TABLE `bahan_baku_produksi` (
+DROP TABLE IF EXISTS `bahan_baku_produksi`;
+CREATE TABLE IF NOT EXISTS `bahan_baku_produksi` (
   `id_bahan_baku_produksi` varchar(100) NOT NULL,
   `id_bahan_baku` varchar(100) NOT NULL,
   `nama_bb_produksi` varchar(255) NOT NULL,
@@ -126,13 +155,19 @@ CREATE TABLE `bahan_baku_produksi` (
   `tgl_masuk` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `bahan_baku_produksi`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `customer`
+-- Table structure for table `customer`
 --
 
-CREATE TABLE `customer` (
+DROP TABLE IF EXISTS `customer`;
+CREATE TABLE IF NOT EXISTS `customer` (
   `id_pelanggan` varchar(30) NOT NULL,
   `nama_pelanggan` varchar(30) NOT NULL,
   `alamat_pelanggan` varchar(30) NOT NULL,
@@ -144,7 +179,7 @@ CREATE TABLE `customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `customer`
+-- Dumping data for table `customer`
 --
 
 INSERT INTO `customer` (`id_pelanggan`, `nama_pelanggan`, `alamat_pelanggan`, `wilayah`, `tipe_customer`, `sejak`, `email`, `password`) VALUES
@@ -157,10 +192,35 @@ INSERT INTO `customer` (`id_pelanggan`, `nama_pelanggan`, `alamat_pelanggan`, `w
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `data_produk_jadi`
+-- Table structure for table `cuti`
 --
 
-CREATE TABLE `data_produk_jadi` (
+DROP TABLE IF EXISTS `cuti`;
+CREATE TABLE IF NOT EXISTS `cuti` (
+  `id_cuti` varchar(20) NOT NULL,
+  `id_pegawai` int(7) NOT NULL,
+  `tgl_mulai_cuti` date NOT NULL,
+  `tgl_selesai_cuti` date NOT NULL,
+  `keterangan_cuti` text NOT NULL,
+  `status_cuti` enum('pending','disetujui','ditolak') NOT NULL,
+  PRIMARY KEY (`id_cuti`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `cuti`
+--
+
+INSERT INTO `cuti` (`id_cuti`, `id_pegawai`, `tgl_mulai_cuti`, `tgl_selesai_cuti`, `keterangan_cuti`, `status_cuti`) VALUES
+('23', 3, '2019-07-14', '2019-07-16', '', 'disetujui');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `data_produk_jadi`
+--
+
+DROP TABLE IF EXISTS `data_produk_jadi`;
+CREATE TABLE IF NOT EXISTS `data_produk_jadi` (
   `id_produk` varchar(100) NOT NULL,
   `id_hasil_produksi` varchar(100) NOT NULL,
   `jml_produk` int(100) NOT NULL,
@@ -169,25 +229,87 @@ CREATE TABLE `data_produk_jadi` (
   `tgl_kadaluarsa` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `data_produk_jadi`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `gallery`
+-- Table structure for table `gaji`
 --
 
-CREATE TABLE `gallery` (
-  `id` int(11) NOT NULL,
+DROP TABLE IF EXISTS `gaji`;
+CREATE TABLE IF NOT EXISTS `gaji` (
+  `id_gaji` varchar(20) NOT NULL,
+  `id_pegawai` int(7) NOT NULL,
+  `periode_gaji` varchar(9) NOT NULL,
+  `gaji_pokok` float NOT NULL,
+  `gaji_lembur` float NOT NULL,
+  `pengurangan_gaji` float NOT NULL,
+  `gaji_total` float NOT NULL,
+  `status_validasi_gaji` enum('pending','disetujui','ditolak') NOT NULL,
+  PRIMARY KEY (`id_gaji`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `gaji`
+--
+
+INSERT INTO `gaji` (`id_gaji`, `id_pegawai`, `periode_gaji`, `gaji_pokok`, `gaji_lembur`, `pengurangan_gaji`, `gaji_total`, `status_validasi_gaji`) VALUES
+('21', 2, 'Juni', 3000000, 200000, 2500000, 700000, 'disetujui'),
+('22', 1, 'April', 4000000, 0, 2500000, 1500000, 'pending'),
+('23', 2, 'Juni', 5000000, 6969, 0, 0, 'ditolak');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `gallery`
+--
+
+DROP TABLE IF EXISTS `gallery`;
+CREATE TABLE IF NOT EXISTS `gallery` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) DEFAULT NULL,
   `file_name` varchar(40) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `gallery`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `hasil_produksi`
+-- Table structure for table `golongan`
 --
 
-CREATE TABLE `hasil_produksi` (
+DROP TABLE IF EXISTS `golongan`;
+CREATE TABLE IF NOT EXISTS `golongan` (
+  `id_golongan` varchar(3) NOT NULL,
+  `nama_golongan` text NOT NULL,
+  PRIMARY KEY (`id_golongan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `golongan`
+--
+
+INSERT INTO `golongan` (`id_golongan`, `nama_golongan`) VALUES
+('1', 'I'),
+('2', 'II'),
+('3', 'III');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `hasil_produksi`
+--
+
+DROP TABLE IF EXISTS `hasil_produksi`;
+CREATE TABLE IF NOT EXISTS `hasil_produksi` (
   `id_hasil_produksi` varchar(100) NOT NULL,
   `jumlah_barang` varchar(100) NOT NULL,
   `jenis_barang` varchar(100) NOT NULL,
@@ -196,26 +318,110 @@ CREATE TABLE `hasil_produksi` (
   `keterangan_barang` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `hasil_produksi`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `komposisi_produk`
+-- Table structure for table `kecamatan`
 --
 
-CREATE TABLE `komposisi_produk` (
+DROP TABLE IF EXISTS `kecamatan`;
+CREATE TABLE IF NOT EXISTS `kecamatan` (
+  `id_kecamatan` varchar(5) NOT NULL,
+  `id_kota` varchar(5) NOT NULL,
+  `nama_kecamatan` text NOT NULL,
+  PRIMARY KEY (`id_kecamatan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kecamatan`
+--
+
+INSERT INTO `kecamatan` (`id_kecamatan`, `id_kota`, `nama_kecamatan`) VALUES
+('1', '1', 'Kecamatan 1'),
+('2', '2', 'Kecamatan 2'),
+('3', '3', 'Kecamatan 3'),
+('4', '4', 'Kecamatan 4');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `kelurahan`
+--
+
+DROP TABLE IF EXISTS `kelurahan`;
+CREATE TABLE IF NOT EXISTS `kelurahan` (
+  `id_kelurahan` varchar(5) NOT NULL,
+  `id_kecamatan` varchar(5) NOT NULL,
+  `nama_kelurahan` text NOT NULL,
+  `kode_pos` text NOT NULL,
+  PRIMARY KEY (`id_kelurahan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kelurahan`
+--
+
+INSERT INTO `kelurahan` (`id_kelurahan`, `id_kecamatan`, `nama_kelurahan`, `kode_pos`) VALUES
+('1', '1', 'Depok', '21432'),
+('2', '2', 'Ciputat', '12345'),
+('3', '3', 'Pondok Beji', '21432'),
+('4', '4', 'Ini nama kelurahan', '23564');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `komposisi_produk`
+--
+
+DROP TABLE IF EXISTS `komposisi_produk`;
+CREATE TABLE IF NOT EXISTS `komposisi_produk` (
   `id_komposisi_produk` varchar(100) NOT NULL,
   `id_produk` varchar(100) NOT NULL,
   `id_bahan_baku_produksi` varchar(100) NOT NULL,
   `cara_pengolahan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `komposisi_produk`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `laporan_biaya_produksi`
+-- Table structure for table `kota`
 --
 
-CREATE TABLE `laporan_biaya_produksi` (
+DROP TABLE IF EXISTS `kota`;
+CREATE TABLE IF NOT EXISTS `kota` (
+  `id_kota` varchar(5) NOT NULL,
+  `id_provinsi` varchar(5) NOT NULL,
+  `nama_kota` text NOT NULL,
+  PRIMARY KEY (`id_kota`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kota`
+--
+
+INSERT INTO `kota` (`id_kota`, `id_provinsi`, `nama_kota`) VALUES
+('1', '1', 'Kota 1'),
+('2', '2', 'Kota 2'),
+('3', '3', 'Kota 3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `laporan_biaya_produksi`
+--
+
+DROP TABLE IF EXISTS `laporan_biaya_produksi`;
+CREATE TABLE IF NOT EXISTS `laporan_biaya_produksi` (
   `id_biaya_produksi` varchar(100) NOT NULL,
   `id_hasil_produksi` varchar(100) NOT NULL,
   `biaya_tenaga_kerja` int(100) NOT NULL,
@@ -223,13 +429,19 @@ CREATE TABLE `laporan_biaya_produksi` (
   `biaya_peralatan` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `laporan_biaya_produksi`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `laporan_perbaikan_produksi`
+-- Table structure for table `laporan_perbaikan_produksi`
 --
 
-CREATE TABLE `laporan_perbaikan_produksi` (
+DROP TABLE IF EXISTS `laporan_perbaikan_produksi`;
+CREATE TABLE IF NOT EXISTS `laporan_perbaikan_produksi` (
   `id_perbaikan_produk` varchar(100) NOT NULL,
   `id_quality_control` varchar(100) NOT NULL,
   `jumlah_perbaian` int(100) NOT NULL,
@@ -237,13 +449,19 @@ CREATE TABLE `laporan_perbaikan_produksi` (
   `keterangan_perbaikan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `laporan_perbaikan_produksi`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `laporan_produksi`
+-- Table structure for table `laporan_produksi`
 --
 
-CREATE TABLE `laporan_produksi` (
+DROP TABLE IF EXISTS `laporan_produksi`;
+CREATE TABLE IF NOT EXISTS `laporan_produksi` (
   `id_laporan_produksi` varchar(100) NOT NULL,
   `id_hasil_produksi` varchar(100) NOT NULL,
   `id_perencanaan_produksi` varchar(100) NOT NULL,
@@ -253,13 +471,101 @@ CREATE TABLE `laporan_produksi` (
   `jumlah_barang` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `laporan_produksi`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `perencanaan_produksi`
+-- Table structure for table `pegawai`
 --
 
-CREATE TABLE `perencanaan_produksi` (
+DROP TABLE IF EXISTS `pegawai`;
+CREATE TABLE IF NOT EXISTS `pegawai` (
+  `id_pegawai` int(7) NOT NULL DEFAULT '0',
+  `id_pendidikan` varchar(3) NOT NULL,
+  `id_golongan` varchar(2) NOT NULL,
+  `id_satker` varchar(2) NOT NULL,
+  `id_kelurahan` varchar(5) NOT NULL,
+  `password_pegawai` varchar(8) NOT NULL,
+  `nama_pegawai` varchar(35) NOT NULL,
+  `umur` int(2) NOT NULL,
+  `alamat` text NOT NULL,
+  `no_telp` bigint(12) NOT NULL,
+  `email` varchar(35) NOT NULL,
+  `rekening_pegawai` bigint(10) NOT NULL,
+  `tgl_diterima` date NOT NULL,
+  `tgl_berhenti` date NOT NULL,
+  `status_pegawai` enum('aktif','pensiun','resign') NOT NULL,
+  PRIMARY KEY (`id_pegawai`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pegawai`
+--
+
+INSERT INTO `pegawai` (`id_pegawai`, `id_pendidikan`, `id_golongan`, `id_satker`, `id_kelurahan`, `password_pegawai`, `nama_pegawai`, `umur`, `alamat`, `no_telp`, `email`, `rekening_pegawai`, `tgl_diterima`, `tgl_berhenti`, `status_pegawai`) VALUES
+(1, '1', '1', '1', '1', '8f7c3c77', 'Rizki Sanik', 444, 'wqqwqwqwqwqw', 212121212, 'rizkusanik@ph.com', 2132422, '2018-01-16', '2019-07-16', 'resign'),
+(2, '2', '2', '2', '2', '4d0badf2', 'Akbar Gayming', 696, 'sqsqwqwqsq', 232312, 'akbarusilat_masterr@huehue.com', 121332, '2018-06-19', '0000-00-00', 'aktif'),
+(3, '3', '3', '3', '3', '34d38f52', 'Bayu Milos', 69, 'sqwqwqsqwqdefwef', 2132323, 'bayu_hehe@hehe.com', 2132323, '2019-07-01', '2019-07-03', 'pensiun');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pelatihan`
+--
+
+DROP TABLE IF EXISTS `pelatihan`;
+CREATE TABLE IF NOT EXISTS `pelatihan` (
+  `id_pelatihan` varchar(20) NOT NULL,
+  `nama_pelatihan` text NOT NULL,
+  `instansi` text NOT NULL,
+  `satuan_kerja` text NOT NULL,
+  `tgl_mulai` date NOT NULL,
+  `tgl_selesai` date NOT NULL,
+  `status_persetujuan` enum('pending','disetujui','ditolak') NOT NULL,
+  PRIMARY KEY (`id_pelatihan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pelatihan`
+--
+
+INSERT INTO `pelatihan` (`id_pelatihan`, `nama_pelatihan`, `instansi`, `satuan_kerja`, `tgl_mulai`, `tgl_selesai`, `status_persetujuan`) VALUES
+('121312', 'Peningkatan Kinerja Pegawai dengan E-Sport', 'RRQ', 'IT', '2018-06-18', '2019-06-20', 'disetujui');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `pendidikan`
+--
+
+DROP TABLE IF EXISTS `pendidikan`;
+CREATE TABLE IF NOT EXISTS `pendidikan` (
+  `id_pendidikan` varchar(3) NOT NULL,
+  `jenjang_pendidikan` text NOT NULL,
+  PRIMARY KEY (`id_pendidikan`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pendidikan`
+--
+
+INSERT INTO `pendidikan` (`id_pendidikan`, `jenjang_pendidikan`) VALUES
+('1', 'S1'),
+('2', 'S2'),
+('3', 'S3');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `perencanaan_produksi`
+--
+
+DROP TABLE IF EXISTS `perencanaan_produksi`;
+CREATE TABLE IF NOT EXISTS `perencanaan_produksi` (
   `id_perencanaan_produksi` varchar(100) NOT NULL,
   `id_bahan_baku_produksi` varchar(100) NOT NULL,
   `id_po` varchar(100) NOT NULL,
@@ -267,13 +573,41 @@ CREATE TABLE `perencanaan_produksi` (
   `jadwal_perencanaan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `perencanaan_produksi`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `production_order`
+-- Table structure for table `permohonan_resign`
 --
 
-CREATE TABLE `production_order` (
+DROP TABLE IF EXISTS `permohonan_resign`;
+CREATE TABLE IF NOT EXISTS `permohonan_resign` (
+  `id_resign` varchar(20) NOT NULL,
+  `id_pegawai` int(7) NOT NULL,
+  `keterangan_resign` text NOT NULL,
+  `status_validasi_resign` enum('pending','disetujui','ditolak') NOT NULL,
+  PRIMARY KEY (`id_resign`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `permohonan_resign`
+--
+
+INSERT INTO `permohonan_resign` (`id_resign`, `id_pegawai`, `keterangan_resign`, `status_validasi_resign`) VALUES
+('13', 2, 'Mau turnamen pabji onlen di warnet ali', 'pending');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `production_order`
+--
+
+DROP TABLE IF EXISTS `production_order`;
+CREATE TABLE IF NOT EXISTS `production_order` (
   `id_po` varchar(30) NOT NULL,
   `id_barang` varchar(30) NOT NULL,
   `jumlah_pesanan` int(11) NOT NULL,
@@ -282,7 +616,7 @@ CREATE TABLE `production_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `production_order`
+-- Dumping data for table `production_order`
 --
 
 INSERT INTO `production_order` (`id_po`, `id_barang`, `jumlah_pesanan`, `tanggal`, `status`) VALUES
@@ -293,10 +627,11 @@ INSERT INTO `production_order` (`id_po`, `id_barang`, `jumlah_pesanan`, `tanggal
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk_baru`
+-- Table structure for table `produk_baru`
 --
 
-CREATE TABLE `produk_baru` (
+DROP TABLE IF EXISTS `produk_baru`;
+CREATE TABLE IF NOT EXISTS `produk_baru` (
   `id_barang` varchar(30) NOT NULL,
   `nama` varchar(30) NOT NULL,
   `jenis` varchar(64) NOT NULL,
@@ -306,7 +641,7 @@ CREATE TABLE `produk_baru` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `produk_baru`
+-- Dumping data for table `produk_baru`
 --
 
 INSERT INTO `produk_baru` (`id_barang`, `nama`, `jenis`, `harga`, `file_desain`, `tampilan_produk`) VALUES
@@ -317,10 +652,11 @@ INSERT INTO `produk_baru` (`id_barang`, `nama`, `jenis`, `harga`, `file_desain`,
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk_jadi_keluar`
+-- Table structure for table `produk_jadi_keluar`
 --
 
-CREATE TABLE `produk_jadi_keluar` (
+DROP TABLE IF EXISTS `produk_jadi_keluar`;
+CREATE TABLE IF NOT EXISTS `produk_jadi_keluar` (
   `id_produk_keluar` varchar(100) NOT NULL,
   `id_barang` varchar(100) NOT NULL,
   `id_pelanggan` varchar(100) NOT NULL,
@@ -329,7 +665,7 @@ CREATE TABLE `produk_jadi_keluar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `produk_jadi_keluar`
+-- Dumping data for table `produk_jadi_keluar`
 --
 
 INSERT INTO `produk_jadi_keluar` (`id_produk_keluar`, `id_barang`, `id_pelanggan`, `jml_produk_keluar`, `tgl_produk_keluar`) VALUES
@@ -339,10 +675,11 @@ INSERT INTO `produk_jadi_keluar` (`id_produk_keluar`, `id_barang`, `id_pelanggan
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `produk_jadi_masuk`
+-- Table structure for table `produk_jadi_masuk`
 --
 
-CREATE TABLE `produk_jadi_masuk` (
+DROP TABLE IF EXISTS `produk_jadi_masuk`;
+CREATE TABLE IF NOT EXISTS `produk_jadi_masuk` (
   `id_produk_jadi_masuk` varchar(100) NOT NULL,
   `id_barang` varchar(100) NOT NULL,
   `jml_barang_masuk` int(255) NOT NULL,
@@ -350,7 +687,7 @@ CREATE TABLE `produk_jadi_masuk` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `produk_jadi_masuk`
+-- Dumping data for table `produk_jadi_masuk`
 --
 
 INSERT INTO `produk_jadi_masuk` (`id_produk_jadi_masuk`, `id_barang`, `jml_barang_masuk`, `tgl_produk_masuk`) VALUES
@@ -360,10 +697,11 @@ INSERT INTO `produk_jadi_masuk` (`id_produk_jadi_masuk`, `id_barang`, `jml_baran
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `promo`
+-- Table structure for table `promo`
 --
 
-CREATE TABLE `promo` (
+DROP TABLE IF EXISTS `promo`;
+CREATE TABLE IF NOT EXISTS `promo` (
   `id_promo` varchar(128) NOT NULL,
   `produk` varchar(256) DEFAULT NULL,
   `jumlah_pembelian` int(11) DEFAULT NULL,
@@ -371,7 +709,7 @@ CREATE TABLE `promo` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `promo`
+-- Dumping data for table `promo`
 --
 
 INSERT INTO `promo` (`id_promo`, `produk`, `jumlah_pembelian`, `banner_promo`) VALUES
@@ -382,23 +720,51 @@ INSERT INTO `promo` (`id_promo`, `produk`, `jumlah_pembelian`, `banner_promo`) V
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `quality_control`
+-- Table structure for table `provinsi`
 --
 
-CREATE TABLE `quality_control` (
+DROP TABLE IF EXISTS `provinsi`;
+CREATE TABLE IF NOT EXISTS `provinsi` (
+  `id_provinsi` varchar(5) NOT NULL,
+  `nama_provinsi` text NOT NULL,
+  PRIMARY KEY (`id_provinsi`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `provinsi`
+--
+
+INSERT INTO `provinsi` (`id_provinsi`, `nama_provinsi`) VALUES
+('1', 'Provinsi 1'),
+('2', 'Provinsi 2');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `quality_control`
+--
+
+DROP TABLE IF EXISTS `quality_control`;
+CREATE TABLE IF NOT EXISTS `quality_control` (
   `id_quality_control` int(100) NOT NULL,
   `id_hasil_produksi` int(100) NOT NULL,
   `status` varchar(100) NOT NULL,
   `kategori` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `quality_control`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `retur_bahan_baku`
+-- Table structure for table `retur_bahan_baku`
 --
 
-CREATE TABLE `retur_bahan_baku` (
+DROP TABLE IF EXISTS `retur_bahan_baku`;
+CREATE TABLE IF NOT EXISTS `retur_bahan_baku` (
   `id_retur` varchar(100) NOT NULL,
   `tgl_retur` date NOT NULL,
   `id_bahan_baku` varchar(100) NOT NULL,
@@ -406,13 +772,19 @@ CREATE TABLE `retur_bahan_baku` (
   `id_supplier` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `retur_bahan_baku`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `sales_order`
+-- Table structure for table `sales_order`
 --
 
-CREATE TABLE `sales_order` (
+DROP TABLE IF EXISTS `sales_order`;
+CREATE TABLE IF NOT EXISTS `sales_order` (
   `id_so` varchar(30) NOT NULL,
   `tanggal_pesanan` date NOT NULL,
   `id_pelanggan` varchar(30) NOT NULL,
@@ -423,7 +795,7 @@ CREATE TABLE `sales_order` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `sales_order`
+-- Dumping data for table `sales_order`
 --
 
 INSERT INTO `sales_order` (`id_so`, `tanggal_pesanan`, `id_pelanggan`, `total_barang`, `total_pesanan`, `status`, `testimoni`) VALUES
@@ -434,10 +806,33 @@ INSERT INTO `sales_order` (`id_so`, `tanggal_pesanan`, `id_pelanggan`, `total_ba
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `shopping_cart`
+-- Table structure for table `satuan_kerja`
 --
 
-CREATE TABLE `shopping_cart` (
+DROP TABLE IF EXISTS `satuan_kerja`;
+CREATE TABLE IF NOT EXISTS `satuan_kerja` (
+  `id_satker` varchar(3) NOT NULL,
+  `nama_satker` text NOT NULL,
+  PRIMARY KEY (`id_satker`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `satuan_kerja`
+--
+
+INSERT INTO `satuan_kerja` (`id_satker`, `nama_satker`) VALUES
+('1', 'Humas'),
+('2', 'Manajemen'),
+('3', 'IT');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `shopping_cart`
+--
+
+DROP TABLE IF EXISTS `shopping_cart`;
+CREATE TABLE IF NOT EXISTS `shopping_cart` (
   `id_sc` varchar(30) NOT NULL,
   `id_so` varchar(30) NOT NULL,
   `id_barang` varchar(30) NOT NULL,
@@ -447,7 +842,7 @@ CREATE TABLE `shopping_cart` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `shopping_cart`
+-- Dumping data for table `shopping_cart`
 --
 
 INSERT INTO `shopping_cart` (`id_sc`, `id_so`, `id_barang`, `tanggal_pesanan`, `jumlah_barang`, `total_harga`) VALUES
@@ -460,10 +855,11 @@ INSERT INTO `shopping_cart` (`id_sc`, `id_so`, `id_barang`, `tanggal_pesanan`, `
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `stock_barang`
+-- Table structure for table `stock_barang`
 --
 
-CREATE TABLE `stock_barang` (
+DROP TABLE IF EXISTS `stock_barang`;
+CREATE TABLE IF NOT EXISTS `stock_barang` (
   `id_barang` varchar(30) NOT NULL,
   `nama_barang` varchar(256) NOT NULL,
   `tanggal_kadaluarsa_barang` date NOT NULL,
@@ -472,7 +868,7 @@ CREATE TABLE `stock_barang` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `stock_barang`
+-- Dumping data for table `stock_barang`
 --
 
 INSERT INTO `stock_barang` (`id_barang`, `nama_barang`, `tanggal_kadaluarsa_barang`, `harga_barang`, `jumlah_stok_barang`) VALUES
@@ -502,21 +898,28 @@ INSERT INTO `stock_barang` (`id_barang`, `nama_barang`, `tanggal_kadaluarsa_bara
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `stock_produk_jadi`
+-- Table structure for table `stock_produk_jadi`
 --
 
-CREATE TABLE `stock_produk_jadi` (
+DROP TABLE IF EXISTS `stock_produk_jadi`;
+CREATE TABLE IF NOT EXISTS `stock_produk_jadi` (
   `id_barang` varchar(100) NOT NULL,
   `jml_stock_produk` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `stock_produk_jadi`
+--
+
+
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `supplier`
+-- Table structure for table `supplier`
 --
 
-CREATE TABLE `supplier` (
+DROP TABLE IF EXISTS `supplier`;
+CREATE TABLE IF NOT EXISTS `supplier` (
   `id_supplier` varchar(100) NOT NULL,
   `nama_supplier` varchar(1000) NOT NULL,
   `telp_supplier` varchar(20) NOT NULL,
@@ -524,7 +927,7 @@ CREATE TABLE `supplier` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `supplier`
+-- Dumping data for table `supplier`
 --
 
 INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `telp_supplier`, `alamat_supplier`) VALUES
@@ -534,10 +937,11 @@ INSERT INTO `supplier` (`id_supplier`, `nama_supplier`, `telp_supplier`, `alamat
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `surat_jalan_distribusi_produk_jadi`
+-- Table structure for table `surat_jalan_distribusi_produk_jadi`
 --
 
-CREATE TABLE `surat_jalan_distribusi_produk_jadi` (
+DROP TABLE IF EXISTS `surat_jalan_distribusi_produk_jadi`;
+CREATE TABLE IF NOT EXISTS `surat_jalan_distribusi_produk_jadi` (
   `no_surat_jalan_dpj` varchar(100) NOT NULL,
   `id_barang` varchar(100) NOT NULL,
   `nama_distributor` varchar(100) NOT NULL,
@@ -546,7 +950,7 @@ CREATE TABLE `surat_jalan_distribusi_produk_jadi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `surat_jalan_distribusi_produk_jadi`
+-- Dumping data for table `surat_jalan_distribusi_produk_jadi`
 --
 
 INSERT INTO `surat_jalan_distribusi_produk_jadi` (`no_surat_jalan_dpj`, `id_barang`, `nama_distributor`, `tgl_surat_jalan_dpj`, `jml_produk_jadi_keluar`) VALUES
@@ -556,10 +960,11 @@ INSERT INTO `surat_jalan_distribusi_produk_jadi` (`no_surat_jalan_dpj`, `id_bara
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `surat_jalan_pengiriman_bahan_baku`
+-- Table structure for table `surat_jalan_pengiriman_bahan_baku`
 --
 
-CREATE TABLE `surat_jalan_pengiriman_bahan_baku` (
+DROP TABLE IF EXISTS `surat_jalan_pengiriman_bahan_baku`;
+CREATE TABLE IF NOT EXISTS `surat_jalan_pengiriman_bahan_baku` (
   `no_surat_jalan_pbb` varchar(100) NOT NULL,
   `id_bahan_baku` varchar(100) NOT NULL,
   `nama_kurir` varchar(100) NOT NULL,
@@ -567,7 +972,7 @@ CREATE TABLE `surat_jalan_pengiriman_bahan_baku` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `surat_jalan_pengiriman_bahan_baku`
+-- Dumping data for table `surat_jalan_pengiriman_bahan_baku`
 --
 
 INSERT INTO `surat_jalan_pengiriman_bahan_baku` (`no_surat_jalan_pbb`, `id_bahan_baku`, `nama_kurir`, `tgl_surat_jalan_pbb`) VALUES
@@ -577,10 +982,11 @@ INSERT INTO `surat_jalan_pengiriman_bahan_baku` (`no_surat_jalan_pbb`, `id_bahan
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `testimoni`
+-- Table structure for table `testimoni`
 --
 
-CREATE TABLE `testimoni` (
+DROP TABLE IF EXISTS `testimoni`;
+CREATE TABLE IF NOT EXISTS `testimoni` (
   `id_testimoni` varchar(35) NOT NULL,
   `id_pelanggan` varchar(30) NOT NULL,
   `id_so` varchar(30) NOT NULL,
@@ -588,7 +994,7 @@ CREATE TABLE `testimoni` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `testimoni`
+-- Dumping data for table `testimoni`
 --
 
 INSERT INTO `testimoni` (`id_testimoni`, `id_pelanggan`, `id_so`, `testimoni_barang`) VALUES
