@@ -3,11 +3,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Stok_barang extends CI_Controller
 {
-    
+
   public function __construct()
   {
     parent::__construct();
     $this->load->model('marketing/stock_barang_model');
+    if ($this->session->userdata('status') == NULL) {
+      redirect('welcome');
+    }
   }
 
   public function index()
@@ -19,11 +22,10 @@ class Stok_barang extends CI_Controller
     $this->load->view('marketing/stok_barang_v', $data);
     // Pseudecode
 
-   	// panggil method fetch table di model 
-   	// ambil semua data bungkus dalam array
-   	// tampilkan view
+    // panggil method fetch table di model 
+    // ambil semua data bungkus dalam array
+    // tampilkan view
   }
-
 }
 
 

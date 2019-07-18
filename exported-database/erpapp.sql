@@ -13,7 +13,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `erpapp`
@@ -152,8 +152,7 @@ CREATE TABLE IF NOT EXISTS `bahan_baku_produksi` (
   `id_bahan_baku` varchar(100) NOT NULL,
   `nama_bb_produksi` varchar(255) NOT NULL,
   `jumlah_bb_produksi` int(255) NOT NULL,
-  `tgl_masuk` date NOT NULL,
-  PRIMARY KEY (`id_bahan_baku_produksi`)
+  `tgl_masuk` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -175,19 +174,20 @@ CREATE TABLE IF NOT EXISTS `customer` (
   `wilayah` varchar(30) NOT NULL,
   `tipe_customer` enum('Retailer','Personal','Distributor') NOT NULL,
   `sejak` date NOT NULL,
-  PRIMARY KEY (`id_pelanggan`)
+  `email` varchar(258) NOT NULL,
+  `password` varchar(12) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`id_pelanggan`, `nama_pelanggan`, `alamat_pelanggan`, `wilayah`, `tipe_customer`, `sejak`) VALUES
-('1126', 'RVZ Didan', 'Jl. Medan Raya', 'Medan', 'Retailer', '2019-06-06'),
-('1127', 'Ryumada Rizuki', 'Jl. Cipayung', 'Jakarta Timur', 'Distributor', '2019-06-07'),
-('3', 'Akubaruto Rizuki', '', 'Jakarta Selatan', 'Distributor', '2019-06-03'),
-('4', 'Bayu Uicaksono', '', 'Cikupa', 'Personal', '2019-06-03'),
-('5', 'Nasirudin Sabiq', '', 'Depok', 'Personal', '2019-07-09');
+INSERT INTO `customer` (`id_pelanggan`, `nama_pelanggan`, `alamat_pelanggan`, `wilayah`, `tipe_customer`, `sejak`, `email`, `password`) VALUES
+('1126', 'RVZ Didan', 'Jl. Medan Raya', 'Medan', 'Retailer', '2019-06-06', 'rvzdidan@gmail.com', '123456'),
+('1127', 'Ryumada Rizuki', 'Jl. Cipayung', 'Jakarta Timur', 'Distributor', '2019-06-07', 'ryumada@msn.cn', '123456'),
+('3', 'Akubaruto Rizuki', '', 'Jakarta Selatan', 'Distributor', '2019-06-03', 'alogirthm@hotmail.com', '123456'),
+('4', 'Bayu Uicaksono', '', 'Cikupa', 'Personal', '2019-06-03', 'bay@gmail.com', '12345'),
+('5', 'Nasirudin Sabiq', '', 'Depok', 'Personal', '2019-07-09', 'nassabiq@gmail.com', '123456');
 
 -- --------------------------------------------------------
 
@@ -226,8 +226,7 @@ CREATE TABLE IF NOT EXISTS `data_produk_jadi` (
   `jml_produk` int(100) NOT NULL,
   `nama_produk` varchar(100) NOT NULL,
   `tgl_produk` date NOT NULL,
-  `tgl_kadaluarsa` date NOT NULL,
-  PRIMARY KEY (`id_produk`)
+  `tgl_kadaluarsa` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -273,9 +272,8 @@ DROP TABLE IF EXISTS `gallery`;
 CREATE TABLE IF NOT EXISTS `gallery` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) DEFAULT NULL,
-  `file_name` varchar(40) DEFAULT NULL,
-  KEY `id` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `file_name` varchar(40) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `gallery`
@@ -317,8 +315,7 @@ CREATE TABLE IF NOT EXISTS `hasil_produksi` (
   `jenis_barang` varchar(100) NOT NULL,
   `nama_barang` varchar(100) NOT NULL,
   `tgl_hasil_produksi` date NOT NULL,
-  `keterangan_barang` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_hasil_produksi`)
+  `keterangan_barang` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -386,8 +383,7 @@ CREATE TABLE IF NOT EXISTS `komposisi_produk` (
   `id_komposisi_produk` varchar(100) NOT NULL,
   `id_produk` varchar(100) NOT NULL,
   `id_bahan_baku_produksi` varchar(100) NOT NULL,
-  `cara_pengolahan` varchar(255) NOT NULL,
-  PRIMARY KEY (`id_komposisi_produk`)
+  `cara_pengolahan` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -430,8 +426,7 @@ CREATE TABLE IF NOT EXISTS `laporan_biaya_produksi` (
   `id_hasil_produksi` varchar(100) NOT NULL,
   `biaya_tenaga_kerja` int(100) NOT NULL,
   `biaya_waktu_produksi` int(100) NOT NULL,
-  `biaya_peralatan` int(100) NOT NULL,
-  PRIMARY KEY (`id_biaya_produksi`)
+  `biaya_peralatan` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -451,8 +446,7 @@ CREATE TABLE IF NOT EXISTS `laporan_perbaikan_produksi` (
   `id_quality_control` varchar(100) NOT NULL,
   `jumlah_perbaian` int(100) NOT NULL,
   `jenis_produk` varchar(100) NOT NULL,
-  `keterangan_perbaikan` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_perbaikan_produk`)
+  `keterangan_perbaikan` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -474,8 +468,7 @@ CREATE TABLE IF NOT EXISTS `laporan_produksi` (
   `id_perbaikan_produk` varchar(100) NOT NULL,
   `id_biaya_produksi` varchar(100) NOT NULL,
   `tgl_laporan` date NOT NULL,
-  `jumlah_barang` int(100) NOT NULL,
-  PRIMARY KEY (`id_laporan_produksi`)
+  `jumlah_barang` int(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -577,8 +570,7 @@ CREATE TABLE IF NOT EXISTS `perencanaan_produksi` (
   `id_bahan_baku_produksi` varchar(100) NOT NULL,
   `id_po` varchar(100) NOT NULL,
   `id_pegawai` varchar(100) NOT NULL,
-  `jadwal_perencanaan` date NOT NULL,
-  PRIMARY KEY (`id_perencanaan_produksi`)
+  `jadwal_perencanaan` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -620,8 +612,7 @@ CREATE TABLE IF NOT EXISTS `production_order` (
   `id_barang` varchar(30) NOT NULL,
   `jumlah_pesanan` int(11) NOT NULL,
   `tanggal` date NOT NULL,
-  `status` enum('pending','onprocess','success') NOT NULL DEFAULT 'pending',
-  PRIMARY KEY (`id_po`)
+  `status` enum('pending','onprocess','success') NOT NULL DEFAULT 'pending'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -646,8 +637,7 @@ CREATE TABLE IF NOT EXISTS `produk_baru` (
   `jenis` varchar(64) NOT NULL,
   `harga` float NOT NULL,
   `file_desain` text NOT NULL,
-  `tampilan_produk` text NOT NULL,
-  PRIMARY KEY (`id_barang`)
+  `tampilan_produk` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -671,9 +661,7 @@ CREATE TABLE IF NOT EXISTS `produk_jadi_keluar` (
   `id_barang` varchar(100) NOT NULL,
   `id_pelanggan` varchar(100) NOT NULL,
   `jml_produk_keluar` int(255) NOT NULL,
-  `tgl_produk_keluar` date NOT NULL,
-  PRIMARY KEY (`id_produk_keluar`),
-  KEY `id_barang` (`id_barang`)
+  `tgl_produk_keluar` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -695,9 +683,7 @@ CREATE TABLE IF NOT EXISTS `produk_jadi_masuk` (
   `id_produk_jadi_masuk` varchar(100) NOT NULL,
   `id_barang` varchar(100) NOT NULL,
   `jml_barang_masuk` int(255) NOT NULL,
-  `tgl_produk_masuk` date NOT NULL,
-  PRIMARY KEY (`id_produk_jadi_masuk`),
-  KEY `id_barang` (`id_barang`)
+  `tgl_produk_masuk` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -719,8 +705,7 @@ CREATE TABLE IF NOT EXISTS `promo` (
   `id_promo` varchar(128) NOT NULL,
   `produk` varchar(256) DEFAULT NULL,
   `jumlah_pembelian` int(11) DEFAULT NULL,
-  `banner_promo` text,
-  PRIMARY KEY (`id_promo`)
+  `banner_promo` text
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -764,8 +749,7 @@ CREATE TABLE IF NOT EXISTS `quality_control` (
   `id_quality_control` int(100) NOT NULL,
   `id_hasil_produksi` int(100) NOT NULL,
   `status` varchar(100) NOT NULL,
-  `kategori` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_quality_control`)
+  `kategori` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -785,10 +769,7 @@ CREATE TABLE IF NOT EXISTS `retur_bahan_baku` (
   `tgl_retur` date NOT NULL,
   `id_bahan_baku` varchar(100) NOT NULL,
   `jml_bahan_baku` int(255) NOT NULL,
-  `id_supplier` varchar(100) NOT NULL,
-  PRIMARY KEY (`id_retur`),
-  KEY `id_bahan_baku` (`id_bahan_baku`),
-  KEY `id_supplier` (`id_supplier`)
+  `id_supplier` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -810,8 +791,7 @@ CREATE TABLE IF NOT EXISTS `sales_order` (
   `total_barang` int(11) NOT NULL,
   `total_pesanan` float NOT NULL,
   `status` enum('pending','onprocess','success') NOT NULL,
-  `testimoni` enum('Y','N') NOT NULL DEFAULT 'N',
-  PRIMARY KEY (`id_so`)
+  `testimoni` enum('Y','N') NOT NULL DEFAULT 'N'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -821,7 +801,7 @@ CREATE TABLE IF NOT EXISTS `sales_order` (
 INSERT INTO `sales_order` (`id_so`, `tanggal_pesanan`, `id_pelanggan`, `total_barang`, `total_pesanan`, `status`, `testimoni`) VALUES
 ('201906022', '2019-06-02', '4', 2, 12000, 'onprocess', 'N'),
 ('201906023', '2019-06-02', '1127', 70, 750000, 'success', 'Y'),
-('201907081', '2019-07-08', '5', 1321341, 5285360000, 'pending', 'Y');
+('201907081', '2019-07-08', '5', 40, 240000, 'pending', 'Y');
 
 -- --------------------------------------------------------
 
@@ -858,8 +838,7 @@ CREATE TABLE IF NOT EXISTS `shopping_cart` (
   `id_barang` varchar(30) NOT NULL,
   `tanggal_pesanan` date NOT NULL,
   `jumlah_barang` int(10) NOT NULL,
-  `total_harga` float NOT NULL,
-  PRIMARY KEY (`id_sc`)
+  `total_harga` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -870,7 +849,7 @@ INSERT INTO `shopping_cart` (`id_sc`, `id_so`, `id_barang`, `tanggal_pesanan`, `
 ('201906022-1', '201906022', 'FT-1', '2019-06-02', 2, 12000),
 ('201906023-1', '201906023', 'P-3', '2019-06-02', 20, 400000),
 ('201906023-2', '201906023', 'TBS-3', '2019-06-02', 50, 350000),
-('201907081-1', '201907081', 'CC-1', '2019-07-08', 1321321, 5285280000),
+('201907081-1', '201907081', 'FT-3', '2019-07-08', 20, 160000),
 ('201907081-2', '201907081', 'CC-1', '2019-07-08', 20, 80000);
 
 -- --------------------------------------------------------
@@ -885,8 +864,7 @@ CREATE TABLE IF NOT EXISTS `stock_barang` (
   `nama_barang` varchar(256) NOT NULL,
   `tanggal_kadaluarsa_barang` date NOT NULL,
   `harga_barang` float NOT NULL,
-  `jumlah_stok_barang` int(11) NOT NULL,
-  PRIMARY KEY (`id_barang`)
+  `jumlah_stok_barang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -926,8 +904,7 @@ INSERT INTO `stock_barang` (`id_barang`, `nama_barang`, `tanggal_kadaluarsa_bara
 DROP TABLE IF EXISTS `stock_produk_jadi`;
 CREATE TABLE IF NOT EXISTS `stock_produk_jadi` (
   `id_barang` varchar(100) NOT NULL,
-  `jml_stock_produk` int(255) NOT NULL,
-  PRIMARY KEY (`id_barang`)
+  `jml_stock_produk` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -946,8 +923,7 @@ CREATE TABLE IF NOT EXISTS `supplier` (
   `id_supplier` varchar(100) NOT NULL,
   `nama_supplier` varchar(1000) NOT NULL,
   `telp_supplier` varchar(20) NOT NULL,
-  `alamat_supplier` varchar(1000) NOT NULL,
-  PRIMARY KEY (`id_supplier`)
+  `alamat_supplier` varchar(1000) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -970,9 +946,7 @@ CREATE TABLE IF NOT EXISTS `surat_jalan_distribusi_produk_jadi` (
   `id_barang` varchar(100) NOT NULL,
   `nama_distributor` varchar(100) NOT NULL,
   `tgl_surat_jalan_dpj` date NOT NULL,
-  `jml_produk_jadi_keluar` int(255) NOT NULL,
-  PRIMARY KEY (`no_surat_jalan_dpj`),
-  KEY `id_barang` (`id_barang`)
+  `jml_produk_jadi_keluar` int(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -994,9 +968,7 @@ CREATE TABLE IF NOT EXISTS `surat_jalan_pengiriman_bahan_baku` (
   `no_surat_jalan_pbb` varchar(100) NOT NULL,
   `id_bahan_baku` varchar(100) NOT NULL,
   `nama_kurir` varchar(100) NOT NULL,
-  `tgl_surat_jalan_pbb` date NOT NULL,
-  PRIMARY KEY (`no_surat_jalan_pbb`),
-  KEY `id_bahan_baku` (`id_bahan_baku`)
+  `tgl_surat_jalan_pbb` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1018,8 +990,7 @@ CREATE TABLE IF NOT EXISTS `testimoni` (
   `id_testimoni` varchar(35) NOT NULL,
   `id_pelanggan` varchar(30) NOT NULL,
   `id_so` varchar(30) NOT NULL,
-  `testimoni_barang` text NOT NULL,
-  PRIMARY KEY (`id_testimoni`)
+  `testimoni_barang` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -1029,3 +1000,184 @@ CREATE TABLE IF NOT EXISTS `testimoni` (
 INSERT INTO `testimoni` (`id_testimoni`, `id_pelanggan`, `id_so`, `testimoni_barang`) VALUES
 ('T-201906023', '1127', '201906023', 'kita bikin startup'),
 ('T-201907081', '5', '201907081', 'yoman');
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indeks untuk tabel `admin`
+--
+ALTER TABLE `admin`
+  ADD PRIMARY KEY (`username`);
+
+--
+-- Indeks untuk tabel `bahan_baku_produksi`
+--
+ALTER TABLE `bahan_baku_produksi`
+  ADD PRIMARY KEY (`id_bahan_baku_produksi`);
+
+--
+-- Indeks untuk tabel `customer`
+--
+ALTER TABLE `customer`
+  ADD PRIMARY KEY (`id_pelanggan`);
+
+--
+-- Indeks untuk tabel `data_produk_jadi`
+--
+ALTER TABLE `data_produk_jadi`
+  ADD PRIMARY KEY (`id_produk`);
+
+--
+-- Indeks untuk tabel `gallery`
+--
+ALTER TABLE `gallery`
+  ADD KEY `id` (`id`);
+
+--
+-- Indeks untuk tabel `hasil_produksi`
+--
+ALTER TABLE `hasil_produksi`
+  ADD PRIMARY KEY (`id_hasil_produksi`);
+
+--
+-- Indeks untuk tabel `komposisi_produk`
+--
+ALTER TABLE `komposisi_produk`
+  ADD PRIMARY KEY (`id_komposisi_produk`);
+
+--
+-- Indeks untuk tabel `laporan_biaya_produksi`
+--
+ALTER TABLE `laporan_biaya_produksi`
+  ADD PRIMARY KEY (`id_biaya_produksi`);
+
+--
+-- Indeks untuk tabel `laporan_perbaikan_produksi`
+--
+ALTER TABLE `laporan_perbaikan_produksi`
+  ADD PRIMARY KEY (`id_perbaikan_produk`);
+
+--
+-- Indeks untuk tabel `laporan_produksi`
+--
+ALTER TABLE `laporan_produksi`
+  ADD PRIMARY KEY (`id_laporan_produksi`);
+
+--
+-- Indeks untuk tabel `perencanaan_produksi`
+--
+ALTER TABLE `perencanaan_produksi`
+  ADD PRIMARY KEY (`id_perencanaan_produksi`);
+
+--
+-- Indeks untuk tabel `production_order`
+--
+ALTER TABLE `production_order`
+  ADD PRIMARY KEY (`id_po`);
+
+--
+-- Indeks untuk tabel `produk_baru`
+--
+ALTER TABLE `produk_baru`
+  ADD PRIMARY KEY (`id_barang`);
+
+--
+-- Indeks untuk tabel `produk_jadi_keluar`
+--
+ALTER TABLE `produk_jadi_keluar`
+  ADD PRIMARY KEY (`id_produk_keluar`),
+  ADD KEY `id_barang` (`id_barang`);
+
+--
+-- Indeks untuk tabel `produk_jadi_masuk`
+--
+ALTER TABLE `produk_jadi_masuk`
+  ADD PRIMARY KEY (`id_produk_jadi_masuk`),
+  ADD KEY `id_barang` (`id_barang`);
+
+--
+-- Indeks untuk tabel `promo`
+--
+ALTER TABLE `promo`
+  ADD PRIMARY KEY (`id_promo`);
+
+--
+-- Indeks untuk tabel `quality_control`
+--
+ALTER TABLE `quality_control`
+  ADD PRIMARY KEY (`id_quality_control`);
+
+--
+-- Indeks untuk tabel `retur_bahan_baku`
+--
+ALTER TABLE `retur_bahan_baku`
+  ADD PRIMARY KEY (`id_retur`),
+  ADD KEY `id_bahan_baku` (`id_bahan_baku`),
+  ADD KEY `id_supplier` (`id_supplier`);
+
+--
+-- Indeks untuk tabel `sales_order`
+--
+ALTER TABLE `sales_order`
+  ADD PRIMARY KEY (`id_so`);
+
+--
+-- Indeks untuk tabel `shopping_cart`
+--
+ALTER TABLE `shopping_cart`
+  ADD PRIMARY KEY (`id_sc`);
+
+--
+-- Indeks untuk tabel `stock_barang`
+--
+ALTER TABLE `stock_barang`
+  ADD PRIMARY KEY (`id_barang`);
+
+--
+-- Indeks untuk tabel `stock_produk_jadi`
+--
+ALTER TABLE `stock_produk_jadi`
+  ADD PRIMARY KEY (`id_barang`);
+
+--
+-- Indeks untuk tabel `supplier`
+--
+ALTER TABLE `supplier`
+  ADD PRIMARY KEY (`id_supplier`);
+
+--
+-- Indeks untuk tabel `surat_jalan_distribusi_produk_jadi`
+--
+ALTER TABLE `surat_jalan_distribusi_produk_jadi`
+  ADD PRIMARY KEY (`no_surat_jalan_dpj`),
+  ADD KEY `id_barang` (`id_barang`);
+
+--
+-- Indeks untuk tabel `surat_jalan_pengiriman_bahan_baku`
+--
+ALTER TABLE `surat_jalan_pengiriman_bahan_baku`
+  ADD PRIMARY KEY (`no_surat_jalan_pbb`),
+  ADD KEY `id_bahan_baku` (`id_bahan_baku`);
+
+--
+-- Indeks untuk tabel `testimoni`
+--
+ALTER TABLE `testimoni`
+  ADD PRIMARY KEY (`id_testimoni`);
+
+--
+-- AUTO_INCREMENT untuk tabel yang dibuang
+--
+
+--
+-- AUTO_INCREMENT untuk tabel `gallery`
+--
+ALTER TABLE `gallery`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
