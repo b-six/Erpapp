@@ -10,6 +10,9 @@ class Testimoni extends CI_Controller
     $this->load->model('marketing/sales_order_model');
     $this->load->model('marketing/customer_model');
     $this->load->model('marketing/testimoni_model');
+    if ($this->session->userdata('status') == NULL) {
+      redirect('welcome');
+    }
   }
 
   public function index()

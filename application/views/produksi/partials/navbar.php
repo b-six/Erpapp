@@ -12,14 +12,14 @@
                 <li><a href="hasil_produksi" class="white-text">Hasil Produksi</a></li>
             </ul>
 
-            <ul id="report_DD" class="dropdown-content indigo darken-4">
+            <ul id="report_DD" class="dropdown-content ">
                 <li><a href="quality_control" class="white-text">Quality Control</a></li>
                 <li><a href="laporan_perbaikan_produk" class="white-text">Lap. Perbaikan Produk</a></li>
                 <li><a href="laporan_produksi" class="white-text">Lap. Produksi</a></li>
                 <li><a href="laporan_biaya_produksi" class="white-text">Lap. Biaya Produksi</a></li>
-            </ul>
+            </ul>           
 
-            <ul id="acc_DD" class="dropdown-content indigo darken-4">
+            <ul id="acc_DD" class="dropdown-content ">
                 <li class="no-pointer-event"><a href="#!" class="white-text">Manager</a></li>
                 <li class="divider"></li>
                 <li><a href="#!" class="white-text">My Account</a></li>
