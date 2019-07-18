@@ -26,7 +26,7 @@ class Komposisi_produk extends CI_Controller
 
   public function index()
   {
-    $this->load->view('produksi/komposisi_produk_v');
+    $this->load->view('produksi/promo_v');
     
   }
 

@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  *
- * Controller Bahan Baku
+ * Controller Testimoni
  *
  * This controller for ...
  *
@@ -18,27 +18,36 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Bahan_baku extends CI_Controller
 {
-    public function __construct()
-	{
-		parent::__construct();
-		$this->load->model('produksi/bahan_baku_model');
-	}
-  
-	public function index(){
-		$data['bahan_baku'] = $this->bahan_baku_model->get_bahan_baku();
 
-		$this->load->view('produksi/bahan_baku_v', $data);
+  public function __construct()
+  {
+    parent::__construct();
+    $this->load->model('produksi/sales_order_model');
+    $this->load->model('produksi/customer_model');
+    $this->load->model('produksi/testimoni_model');
+  }
 
-	}
-	function save_bahan_baku(){
-		$id_bb = $this->input->post('id_bahan_baku_produksi');
-		$nama_bb = $this->input->post('nama_bb_produksi');
-		$jumlah_bb = $this->input->post('jumlah_bb_produksi');
-		$tgl_bb = $this->input->post('tgl_bb_produksi');
+  public function index()
+  {
+    $data['sales_order'] = $this->sales_order_model->get_sales_order();
+    $data['customer'] = $this->customer_model->get_customer();
+    $data['testimoni'] = $this->testimoni_model->get_testimoni();
+    $this->load->view('produksi/bahan_baku_v', $data);
+  }
 
-		$this->bahan_baku_model->save_bahan_baku($id_bb, $nama_bb, $jumlah_bb, $tgl_bb);
-		redirect(base_url('produksi/bahan_baku'));
-	}
+  function save_testimoni()
+  {
+    $id_pelanggan = $this->input->post('id_so');
+    $id_so = $this->input->post('id-so-' . $id_pelanggan);
+    $id_testimoni = "T-" . $id_so;
+    $testimoni_barang = $this->input->post('pesan');
+    $testimoni = 'Y';
+    $this->sales_order_model->update_status_testimoni($id_so, $testimoni);
+    $this->testimoni_model->save_testimoni($id_testimoni, $id_pelanggan, $id_so, $testimoni_barang);
+    redirect('produksi/testimoni');
+  }
 }
-/* End of file Promo.php */
-/* Location: ./application/controllers/Promo.php */
+
+
+/* End of file Testimoni.php */
+/* Location: ./application/controllers/Testimoni.php */
