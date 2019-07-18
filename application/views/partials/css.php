@@ -4,7 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
 <!-- css     -->
-    <link href="<?php echo base_url('assets/css/materialize.min.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/css/materialize.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/home/styles.css'); ?>" rel="stylesheet">
     <!-- <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
     <link href="<?php echo base_url('assets/css/material-icons/material-icons.css'); ?>" rel="stylesheet">
