@@ -11,6 +11,9 @@ class Shopping_cart extends CI_Controller
     $this->load->model('marketing/shopping_cart_model');
     $this->load->model('marketing/customer_model');
     $this->load->model('marketing/stock_barang_model');
+    if ($this->session->userdata('status') == NULL) {
+      redirect('welcome');
+    }
   }
 
   public function index()
@@ -63,7 +66,7 @@ class Shopping_cart extends CI_Controller
     $total_harga_before = $this->input->post('total_harga-before');
     $jumlah_barang = $this->input->post('jumlah_barang-edit');
     $total_harga = $this->input->post('total_harga-edit');
-    $kumulasi_harga = $total_harga-$total_harga_before;
+    $kumulasi_harga = $total_harga - $total_harga_before;
     $kumulasi_jumlah_barang = $jumlah_barang - $jumlah_barang_now;
     $total_pesanan = $total_harga_before + $kumulasi_harga;
     $kumulatif_total_hargaA = $total_pesanan - $total_harga_before;
@@ -71,7 +74,7 @@ class Shopping_cart extends CI_Controller
     $total_barang = $total_barang_edit + $kumulasi_jumlah_barang;
     $this->shopping_cart_model->update_shopping_cart($id_sc, $id_barang, $jumlah_barang, $total_harga, $total_pesanan);
     $this->sales_order_model->update_total_pesanan($id_so, $kumulatif_total_hargaB, $total_barang);
-    redirect('marketing/shopping_cart/index/'.$id_sc_index);
+    redirect('marketing/shopping_cart/index/' . $id_sc_index);
   }
 
   function delete_shopping_cart()
@@ -87,7 +90,7 @@ class Shopping_cart extends CI_Controller
     $this->shopping_cart_model->delete_shopping_cart($id_sc);
     $this->sales_order_model->update_kumulasi_delete_sc($id_so, $harga, $jumlah_barang);
     $id_sc_index = intval($id_sc);
-    redirect('marketing/shopping_cart/index/'.$id_sc_index);
+    redirect('marketing/shopping_cart/index/' . $id_sc_index);
   }
 
   /* function shopping_cart_view()

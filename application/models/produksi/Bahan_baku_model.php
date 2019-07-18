@@ -16,26 +16,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  */
 
-class Testimoni_model extends CI_Model {
+class bahan_baku_model extends CI_Model {
 
   // ------------------------------------------------------------------------
 
-  function get_testimoni()
+  function get_bahan_baku()
   {
-    $result = $this->db->get('testimoni');
+    $result = $this->db->get('bahan_baku');
     return $result;
   }
 
-  function save_testimoni($id_testimoni, $id_pelanggan, $id_so, $testimoni_barang)
+
+
+  function save_bahan_baku($id_bb, $nama_bb, $jumlah_bb, $tgl_bb)
   {
     $data = array(
-      'id_testimoni' => $id_testimoni,
-      'id_pelanggan' => $id_pelanggan,
-      'id_so' => $id_so,
-      'testimoni_barang' => $testimoni_barang
+      'id_bahan_baku' => $id_bb,
+      'jml_bahan_baku' => $jumlah_bb,
+      'nama_bahan_baku' => $nama_bb
     );
-    $this->db->insert('testimoni', $data);
+    $this->db->insert('bahan_baku', $data);
   }
+  function getPromo(){
+    return $this->db->get('promo')->result_array();
+  } 
 
   // ------------------------------------------------------------------------
 
