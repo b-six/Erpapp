@@ -5,11 +5,6 @@ class Sales_order_model extends CI_Model
 {
 
   // ------------------------------------------------------------------------
-  function countSalesOrder($bulan, $tahun){
-    $where = 'MONTH(tanggal_pesanan) = ' . $bulan . ' AND YEAR(tanggal_pesanan) = ' . $tahun;
-    $this->db->where($where);
-    return $this->db->count_all_results('sales_order');
-  }
 
   function get_sales_order()
   {

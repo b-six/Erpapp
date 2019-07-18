@@ -7,81 +7,95 @@
 </head>
 
 <body>
-            <div id="add-bahan-baku" class="modal modal-fixed-footer" >
-            <!-- modal content -->
-            <div class="modal-content">
-                <div class="col s12 center">
-                    <h4>Tambah Bahan Baku</h4>
-                </div>
-
-                <form method="post" action="<?php echo base_url('produksi/bahan_baku/save_bahan_baku')?>" class="col s12" id="form-add-pb" enctype="multipart/form-data">
-                    <!-- generate id bahan baku -->
-
-                    <?php
-                    $hitung = 0; 
-                    foreach($bahan_baku->result() as $bb) :
-                        $hitung++;
-                    endforeach;
-                    $id_bb = "BB000".($hitung+1);
-                    ?>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input name="id_bahan_baku_produksi" id="id_bahan_baku_produksi" type="text" value="<?php echo $id_bb; ?>" readonly>
-                            <label for="id_bahan_baku_produksi">ID bahan baku produksi</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input name="nama_bb_produksi" id="nama_bb_produksi" type="text" >
-                            <label for="nama_bb_produksi">Nama Bahan Baku Produksi</label>
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input name="jumlah_bb_produksi" id="jumlah_bb_produksi" type="text" >
-                            <label for="jumlah_bb_produksi">Jumlah Bahan Baku Produksi</label>
-                        </div>
-                   
-                    </div>
-                    <div class="row">
-                        <div class="input-field col s12">
-                            <input name="tgl_bb_produksi" id="tgl_bb_produksi" type="date" >
-                            <label for="tgl_bb_produksi">Tanggal Masuk</label>
-                        </div>
-                    </div>
-                   <!-- <div class="row"> -->
-                   <!--     <div class="input-field col s12"> -->
-                   <!--         <div class="file-field input-field">    -->
-                   <!--             <div class="card-title">Banner Promo</div>  -->
-                   <!--             <div class="btn orange"> -->
-                   <!--                 <span><i class="material-icons">attach_file</i></span> -->
-                   <!--                 <input id="banner-promo" name="banner_promo" type="file"> -->
-                   <!--             </div> -->
-                   <!--             <div class="file-path-wrapper"> -->
-                   <!--                 <input class="file-path" type="text" placeholder="Banner Promo"> -->
-                   <!--             </div>-->
-                   <!--         </div>-->
-                   <!--     </div>-->
-                   <!-- </div> -->
-
-                   
-
-                </form>
-            </div>
-            <!-- /modal content -->
-
-            <!-- modal footer -->
-            <div class="modal-footer">
-                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
-                <button class="btn waves-effect waves-light green darken-3" type="submit" name="submit-add-pb" id="submit-add-pb"><i class="material-icons">add</i></button>
-            </div>
-            <!-- /modal footer -->
-        </div>
     <!-- navbar -->
     <?php $this->load->view('produksi/partials/navbar.php') ?>
+
+    <!-- Modal Add Testimoni -->
+    <div id="add-testimoni-modal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <div class="row">
+
+                <form id="form-add-testimoni" class="col s12" action="<?php echo site_url('produksi/testimoni/save_testimoni'); ?>" method="post">
+                    <div class="row">
+                        <div class="col s12 center">
+                            <h4>Tambah Testimoni</h4>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s12">
+
+                            <?php $hitung2 = 0;
+                            foreach ($customer->result() as $col2) :
+                                $hitung2++;
+                                ?>
+                                <input id="<?php echo "nama-" . $col2->id_pelanggan; ?>" value="<?php echo $col2->nama_pelanggan; ?>" hidden>
+                                <input id="<?php echo "wilayah-" . $col2->id_pelanggan; ?>" value="<?php echo $col2->wilayah; ?>" hidden>
+                                <input id="<?php echo "tipe-" . $col2->id_pelanggan; ?>" value="<?php echo $col2->tipe_customer; ?>" hidden>
+                            <?php endforeach; ?>
+
+                            <?php $hitung3 = 0;
+                            foreach ($sales_order->result() as $col3) :
+                                $hitung3++;
+                                ?>
+                                <input id="<?php echo "id-so-" . $col3->id_pelanggan; ?>" name="<?php echo "id-so-" . $col3->id_pelanggan; ?>" value="<?php echo $col3->id_so; ?>" hidden>
+                            <?php endforeach; ?>
+
+                            <select id="id_so" name="id_so">
+                                <option value="" disabled selected>Select No. Order</option>
+                                <?php $hitung = 0;
+                                foreach ($sales_order->result() as $col) :
+                                    $hitung++;
+                                    if ($col->testimoni == 'N') :
+                                        ?>
+                                        <option value="<?php echo $col->id_pelanggan ?>"><?php echo $col->id_so ?></option>
+                                    <?php
+                                endif;
+                            endforeach;
+                            ?>
+                            </select>
+                            <label for="id_so">No. Order</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="show-nama" id="show-nama" placeholder="-" readonly>
+                            <label for="show-nama">Nama</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="show-wilayah" id="show-wilayah" placeholder="-" readonly>
+                            <label for="show-wilayah">Wilayah</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <input type="text" name="show-tipe-customer" id="show-tipe-customer" placeholder="-" readonly>
+                            <label for="show-tipe-customer">Tipe Customer</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <textarea id="pesan" name="pesan" class="materialize-textarea" placeholder="Masukkan Review Anda"></textarea>
+                            <label for="pesan">Pesan</label>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
+            <button class="btn waves-effect waves-light orange darken-3" type="submit" name="submit-add-testimoni" id="submit-add-testimoni">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- konten -->
     <div class="container">
         <br>
         <div class="row">
@@ -89,44 +103,58 @@
             <div class="col s7">
                 <nav class="no-shadows breadcrumbs-style">
                     <div class="nav-wrapper blue-dark-grey">
-                        <a class="breadcrumb no-pointer-event">Produksi</a>
-                        <a href="bahan_baku" class="breadcrumb">Bahan Baku</a>
+                        <a class="breadcrumb no-pointer-event">Customer</a>
+                        <a href="" class="breadcrumb">Testimoni</a>
                     </div>
                 </nav>
             </div>
 
             <!-- searchbar -->
-            <div class="col s4"><?php $this->load->view('produksi/partials/searchbar.php'); ?></div>
+            <div class="col s4"><?php $this->load->view('marketing/partials/searchbar.php'); ?></div>
 
             <!-- add sales order -->
             <div class="col s1 center">
-                <nav class="no-shadows blue-dark-grey"><a class="modal-trigger" href="#add-bahan-baku"><i class="material-icons">add_circle_outline</i></a></nav>
+                <nav class="no-shadows blue-dark-grey"><a href="#add-testimoni-modal" class="modal-trigger"><i class="material-icons">add_circle_outline</i></a></nav>
             </div>
 
         </div>
 
+        <!-- konten tab -->
         <div id="pending" class="col s12 white-text content-color">
             <table class="responsive-table centered highlight">
                 <thead class="bottom-border">
                     <tr>
-                        <th>ID Bahan Baku</th>
-                        <th>Nama Bahan Baku</th>
-                        <th>Jumlah Bahan Baku</th>
+                        <th>Nama Customer</th>
+                        <th>Jenis Customer</th>
+                        <th>No. Order</th>
+                        <th>Pesan</th>
                         <th></th>
                     </tr>
                 </thead>
 
                 <tbody>
-
                     <?php
                     $count = 0;
-                    foreach ($bahan_baku->result() as $col) :
+                    foreach ($testimoni->result() as $col) :
                         $count++;
                         ?>
                         <tr>
-                            <td><?php echo $col->id_bahan_baku; ?></td>
-                            <td><?php echo $col->nama_bahan_baku; ?></td>
-                            <td><?php echo $col->jml_bahan_baku; ?></td>
+                            <?php
+                            $hitung = 0;
+                            foreach ($customer->result() as $row) :
+                                $hitung++;
+                                if ($row->id_pelanggan == $col->id_pelanggan) :
+                                    ?>
+                                    <td><?php echo $row->nama_pelanggan; ?></td>
+                                    <td><?php echo $row->tipe_customer; ?></td>
+                                <?php
+                            endif;
+                        endforeach;
+                        ?>
+                            <td><?php echo $col->id_so; ?></td>
+                            <td><?php
+                                $testimoni_barang = substr($col->testimoni_barang, 0, 25);
+                                echo $testimoni_barang; ?></td>
                             <td class="button-container">
                                 <div id="table-button">
                                     <a href="#"><i class="material-icons delete-button">delete_forever</i></a> <a href="#"><i class="material-icons edit-button">create</i></a>
@@ -136,16 +164,14 @@
                     <?php
                 endforeach;
                 ?>
-
                 </tbody>
             </table>
         </div>
-</div>
 
-        </div>
+    </div>
     </div>
     <!-- js -->
-    <?php $this->load->view('produksi/partials/js.php') ?>
+    <?php $this->load->view('marketing/partials/js.php') ?>
 </body>
 
 </html>
