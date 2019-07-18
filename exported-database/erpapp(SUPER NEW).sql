@@ -183,7 +183,7 @@ CREATE TABLE `gaji` (
 insert  into `gaji`(`id_gaji`,`id_pegawai`,`periode_gaji`,`gaji_pokok`,`gaji_lembur`,`pengurangan_gaji`,`gaji_total`,`status_validasi_gaji`) values 
 ('21',2,'Juni',3000000,200000,2500000,700000,'disetujui'),
 ('22',1,'April',4000000,0,2500000,1500000,'pending'),
-('23',2,'Juni',5000000,6969,0,0,'ditolak');
+('23',2,'Juni',5000000,2500000,0,2500000,'ditolak');
 
 /*Table structure for table `gallery` */
 
@@ -377,7 +377,8 @@ CREATE TABLE `pegawai` (
 /*Data for the table `pegawai` */
 
 insert  into `pegawai`(`id_pegawai`,`id_pendidikan`,`id_golongan`,`id_satker`,`id_kelurahan`,`password_pegawai`,`nama_pegawai`,`umur`,`alamat`,`no_telp`,`email`,`rekening_pegawai`,`tgl_diterima`,`tgl_berhenti`,`status_pegawai`,`sk_file`,`foto`) values 
-(1,'3','1','','','','Akbaru',26,'Jl. sqwqw',8217382673,'qwqwqw@',27,'2019-07-08','0000-00-00','aktif',NULL,'4a87c12f92763310f2c6e0261a996f65.png');
+(1,'','','','','','Akbaru',26,'Jl. sqwqw',8217382673,'qwqwqw@',0,'2019-07-08','0000-00-00','resign',NULL,''),
+(2,'1','3','','','','Bayu',32,'Jl. Alamat 434',3534232,'bayu@ph.com',26,'2019-07-15','0000-00-00','aktif',NULL,'7dea61f76dabf60b5253a05133db53c2.jpg');
 
 /*Table structure for table `pelatihan` */
 
