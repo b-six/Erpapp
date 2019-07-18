@@ -3,7 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 /**
  *
- * Controller Promo
+ * Controller Produk_baru
  *
  * This controller for ...
  *
@@ -16,7 +16,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-class Komposisi_produk extends CI_Controller
+class Laporan_perbaikan_produk extends CI_Controller
 {
     
   public function __construct()
@@ -26,12 +26,12 @@ class Komposisi_produk extends CI_Controller
 
   public function index()
   {
-    $this->load->view('produksi/komposisi_produk_v');
+    $this->load->view('produksi/Laporan_perbaikan_produk_v');
     
   }
 
 }
 
 
-/* End of file Promo.php */
-/* Location: ./application/controllers/Promo.php */
+/* End of file Produk_baru.php */
+/* Location: ./application/controllers/Produk_baru.php */

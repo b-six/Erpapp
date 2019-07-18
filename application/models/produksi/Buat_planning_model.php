@@ -16,30 +16,28 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  *
  */
 
-class bahan_baku_model extends CI_Model {
+class Buat_planning_model extends CI_Model 
+{
 
   // ------------------------------------------------------------------------
 
-  function get_bahan_baku()
+  function get_perencanaan_produksi()
   {
-    $result = $this->db->get('bahan_baku');
+    $result = $this->db->get('perencanaan_produksi');
     return $result;
   }
 
-
-
-  function save_bahan_baku($id_bb, $nama_bb, $jumlah_bb, $tgl_bb)
+  function save_perencanaan_produksi($id_perencanaan_produksi, $id_bahan_baku_produksi, $jadwal_perencanaan,$id_po,$id_pegawai)
   {
     $data = array(
-      'id_bahan_baku' => $id_bb,
-      'jml_bahan_baku' => $jumlah_bb,
-      'nama_bahan_baku' => $nama_bb
+      'id_perencanaan_produksi' => $id_perencanaan_produksi,
+      'id_bahan_baku_produksi' => $id_bahan_baku_produksi,
+      'jadwal_perencanaan' => $jadwal_perencanaan,
+      'id_po' => $id_po,
+      'id_pegawai' => $id_pegawai,
     );
-    $this->db->insert('bahan_baku', $data);
+    $this->db->insert('perencanaan_produksi', $data);
   }
-  function getPromo(){
-    return $this->db->get('promo')->result_array();
-  } 
 
   // ------------------------------------------------------------------------
 

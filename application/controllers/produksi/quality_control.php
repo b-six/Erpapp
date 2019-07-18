@@ -16,7 +16,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
  *
  */
 
-class Komposisi_produk extends CI_Controller
+class Quality_control extends CI_Controller
 {
     
   public function __construct()
@@ -26,7 +26,7 @@ class Komposisi_produk extends CI_Controller
 
   public function index()
   {
-    $this->load->view('produksi/komposisi_produk_v');
+    $this->load->view('produksi/quality_control_v');
     
   }
 
