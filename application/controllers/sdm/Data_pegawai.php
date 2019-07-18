@@ -50,7 +50,13 @@ class Data_pegawai extends CI_Controller
     $no_telp = $this->input->post('no_telp-edit');
     $stts = $this->input->post('stts');
     $foto = $this->simpanFoto('foto');
-    $this->pegawai_model->update_pegawai($id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $rekening, $no_telp, $stts, $foto);
+    if($stts=='aktif') {
+      $tgl_berhenti = null;
+    } else {
+      $tgl_berhenti = date("Y-m-d");
+    }
+    
+    $this->pegawai_model->update_pegawai($id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $rekening, $no_telp, $stts, $foto, $tgl_berhenti);
     // echo $id_pegawai. "**". $nama_pegawai;
     redirect('sdm/data_pegawai');
   }
@@ -127,6 +133,7 @@ class Data_pegawai extends CI_Controller
     $this->pegawai_model->delete_pegawai($id_pegawai);
     redirect('sdm/data_pegawai');
   }
+
 }
 
 

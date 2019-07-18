@@ -45,7 +45,7 @@ class Pegawai_model extends CI_Model
     $this->db->insert('pegawai', $data);
   }
 
-  function update_pegawai( $id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $rekening, $no_telp, $stts, $foto)
+  function update_pegawai( $id_pegawai, $nama_pegawai, $golongan, $id_pendidikan, $umur, $alamat, $email, $rekening, $no_telp, $stts, $foto, $tgl_berhenti)
   {
     $data = array(
       'id_pegawai' => $id_pegawai,
@@ -58,7 +58,8 @@ class Pegawai_model extends CI_Model
       'rekening_pegawai' => $rekening_pegawai,
       'no_telp' => $no_telp,
       'status_pegawai' => $stts,
-      'foto' => $foto
+      'foto' => $foto,
+      'tgl_berhenti' => $tgl_berhenti
     );
     $this->db->where('id_pegawai', $id_pegawai);
     $this->db->update('pegawai', $data);
