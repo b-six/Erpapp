@@ -1,0 +1,28 @@
+{
+  "name": "erpapp",
+  "version": "1.0.0",
+  "description": "ERP Application",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^6.0.1",
+    "materialize-css": "^1.0.0-rc.2",
+    "sass": "^1.22.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/b-six/Erpapp.git"
+  },
+  "keywords": [
+    "erpapp"
+  ],
+  "author": "Mock1ng, RizkiTH, algorithm, Androx27",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/b-six/Erpapp/issues"
+  },
+  "homepage": "https://github.com/b-six/Erpapp#readme"
+}
