@@ -30,7 +30,7 @@
 				<div class="col s2 m2">
 					<a href="welcome/login?modul=Marketing&login=1">
 						<div class="card orange marketing z-depth-4" id="marketing-card">
-							<div class="card-image waves-effect waves-block waves-light">
+							<div class="card-image  waves-block ">
 								<img class="activator icon-home" src="<?php echo base_url('assets/img/home/marketing.png'); ?>">
 							</div>
 							<div class="card-content">
@@ -44,7 +44,7 @@
 				<div class="col s2 m2">
 					<a href="welcome/login?modul=HRD&login=1">
 						<div class="card green z-depth-4" id="sdm-card">
-							<div class="card-image waves-effect waves-block waves-light">
+							<div class="card-image  waves-block ">
 								<img class="activator icon-home" src="<?php echo base_url('assets/img/home/hrd.png'); ?>">
 							</div>
 							<div class="card-content">
@@ -58,7 +58,7 @@
 				<div class="col s2 m2">
 					<a href="welcome/login?modul=Finance&login=1">
 						<div class="card teal z-depth-4" id="finance-card">
-							<div class="card-image waves-effect waves-block waves-light">
+							<div class="card-image  waves-block ">
 								<img class="activator icon-home" src="<?php echo base_url('assets/img/home/finance.png'); ?>">
 							</div>
 							<div class="card-content">
@@ -72,7 +72,7 @@
 				<div class="col s2 m2">
 					<a href="welcome/login?modul=Warehouse&login=1">
 						<div class="card red z-depth-4" id="warehouse-card">
-							<div class="card-image waves-effect waves-block waves-light">
+							<div class="card-image  waves-block ">
 								<img class="activator icon-home" src="<?php echo base_url('assets/img/home/warehouse.png'); ?>">
 							</div>
 							<div class="card-content">
@@ -86,7 +86,7 @@
 				<div class="col s2 m2" id="produksi-card">
 					<a href="welcome/login?modul=Produksi&login=1">
 						<div class="card red darken-4 z-depth-4">
-							<div class="card-image waves-effect waves-block waves-light">
+							<div class="card-image  waves-block ">
 								<img class="activator icon-home" src="<?php echo base_url('assets/img/home/produksi.png'); ?>">
 							</div>
 							<div class="card-content">

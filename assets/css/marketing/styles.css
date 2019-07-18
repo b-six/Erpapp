@@ -1676,40 +1676,6 @@
 
 .orange-text.text-lighten-3 {
   color: #ffcc80 !important;
-
-/*Dashboard Styles*/
-/*d = dashboard*/
-.row.dtab-content{
-    padding: 1%;
-    margin: 5px;
-}
-.col.m3.card.dcard{
-    margin-left: 1%;
-}
-.card.dcard, .tabs.dcard{
-    margin-left: 1%;
-}
-.tabs.dcard{
-    height: auto;
-}
-.col.s9.dtab-name{
-    border-right: 1px solid white;
-    margin: 0px;
-    padding: 0px;
-}
-.dcard.active{
-    filter: brightness(120%);
-    transition: all 0.5s ease;
-}
-
-/*col setting*/
-.col.s4.height-auto{
-    height: auto;
-}
-
-/*tombol delete dan edit*/
-td.button-container{
-    width: 80px;
 }
 
 .orange.lighten-2 {

@@ -84,7 +84,7 @@
 						</div>
 					</div>
 					<div class="col s4">
-						<table class="responsive-table white-text highlight">
+						<table class="responsive-table  highlight">
 							<thead class="bottom-border">
 								<tr>
 									<th>Bulan</th>
