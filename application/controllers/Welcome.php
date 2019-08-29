@@ -63,7 +63,15 @@ class Welcome extends CI_Controller
 
 		}
 		endforeach;
-
+		if($modul=='hrd' && $masuk>0){
+			redirect('sdm/dashboard');
+			exit();
+		}
+		if ($modul=='finance' && $masuk>0){
+			
+			header('location: ../../ERPapp-finance');
+			exit();
+		}
 		if($masuk >0)
 		{
 			redirect(''.$modul.'/dashboard');
